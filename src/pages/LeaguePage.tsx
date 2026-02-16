@@ -31,7 +31,7 @@ function getRankIcon(rank: number) {
 export default function LeaguePage() {
   return (
     <div className="pb-20">
-      <StatsBar streak={12} xp={1450} hearts={5} />
+      <StatsBar />
 
       <div className="px-4 py-6 max-w-lg mx-auto">
         {/* League Header */}
