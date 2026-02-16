@@ -2,16 +2,18 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
-import { BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal } from "lucide-react";
+import { BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal, Sparkles } from "lucide-react";
 import { getCurrentWeekProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
-import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
+import { getCompletedLessonsCountForDate, getLessonProgress, isLessonUnlocked } from "../lib/lessonProgress";
 import {
   getCorrectAnswersForDate,
   getDailyGoalTargets,
   getTodayCorrectAnswers,
   getTodayXpProgress,
 } from "../lib/dailyGoals";
+import { lessonCatalog } from "../data/lessonCatalog";
+import { getProfileStats } from "../lib/profileStats";
 
 const GOAL_DEFINITIONS = [
   {
@@ -50,7 +52,6 @@ const quickActions = [
   },
 ];
 
-const TOTAL_XP = 1450;
 const XP_PER_LEVEL = 1000;
 
 function getGoalCompletionRatio(current: number, target: number) {
@@ -68,6 +69,7 @@ export default function HomePage() {
   const profileSettings = getStoredProfileSettings();
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
+  const profileStats = getProfileStats();
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
@@ -131,12 +133,43 @@ export default function HomePage() {
     [dailyGoalTargets.correctAnswers, dailyGoalTargets.lessons, dailyGoalTargets.xp, weeklyProgress],
   );
 
-  const currentLevel = Math.floor(TOTAL_XP / XP_PER_LEVEL) + 1;
-  const currentLevelXp = TOTAL_XP % XP_PER_LEVEL;
+  const currentLevel = Math.floor(profileStats.xp / XP_PER_LEVEL) + 1;
+  const currentLevelXp = profileStats.xp % XP_PER_LEVEL;
+
+  const progress = getLessonProgress();
+  const orderedLessonIds = lessonCatalog.map((lesson) => lesson.id);
+  const nextUnlockedLesson = lessonCatalog.find(
+    (lesson) => !progress[lesson.id] && isLessonUnlocked(lesson.id, orderedLessonIds, progress),
+  );
+  const lessonToReview = lessonCatalog.find((lesson) => {
+    const stars = progress[lesson.id]?.stars ?? 0;
+    return stars > 0 && stars < 3;
+  });
+
+  const todayFocus = nextUnlockedLesson
+    ? {
+        title: `Bugün ne yapmalıyım? ${nextUnlockedLesson.emoji} ${nextUnlockedLesson.title}`,
+        description: "Sıradaki dersi tamamla ve serini canlı tut.",
+        actionLabel: "Derse Devam Et",
+        to: `/lesson/${nextUnlockedLesson.id}`,
+      }
+    : lessonToReview
+      ? {
+          title: `Bugün ne yapmalıyım? ${lessonToReview.emoji} ${lessonToReview.title}`,
+          description: "Zorlandığın konuyu tekrar et ve 3 yıldızı hedefle.",
+          actionLabel: "Tekrar Et",
+          to: `/lesson/${lessonToReview.id}`,
+        }
+      : {
+          title: "Bugün ne yapmalıyım? Hızlı tekrar",
+          description: "Kısa bir pratikle ritmini koru.",
+          actionLabel: "Pratik Yap",
+          to: "/learn?view=tutorial",
+        };
 
   return (
     <div className="pb-20">
-      <StatsBar streak={12} xp={TOTAL_XP} hearts={5} />
+      <StatsBar />
 
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}
@@ -145,6 +178,24 @@ export default function HomePage() {
           <div>
             <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
           </div>
+        </div>
+
+        <div className="bg-card rounded-2xl p-4 shadow-card border border-gold/30">
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <h2 className="font-extrabold text-foreground flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-gold" />
+                {todayFocus.title}
+              </h2>
+              <p className="text-xs text-muted-foreground font-semibold mt-2">{todayFocus.description}</p>
+            </div>
+          </div>
+          <button
+            onClick={() => navigate(todayFocus.to)}
+            className="w-full gradient-hero shadow-button-primary rounded-xl py-3 text-sm font-extrabold text-primary-foreground active:translate-y-1 active:shadow-none transition-all"
+          >
+            {todayFocus.actionLabel}
+          </button>
         </div>
 
         {/* XP Progress */}

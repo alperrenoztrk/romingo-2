@@ -191,7 +191,7 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
 
   return (
     <div className="pb-20">
-      <StatsBar streak={learnerStats.streakDays} xp={1450} hearts={5} />
+      <StatsBar />
 
       <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
         {/* Avatar & Name */}

@@ -11,6 +11,7 @@ import { addTodayProgress } from "../lib/weeklyProgress";
 import { orderedLessonIds } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked, saveLessonCompletion } from "../lib/lessonProgress";
 import { addTodayCorrectAnswer } from "../lib/dailyGoals";
+import { applyLessonCompletion } from "../lib/profileStats";
 
 export default function LessonPage() {
   const { id } = useParams<{ id: string }>();
@@ -46,6 +47,7 @@ export default function LessonPage() {
         addTodayProgress(lesson.xpReward);
         const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : 1;
         saveLessonCompletion(lesson.id, stars);
+        applyLessonCompletion({ xpEarned: lesson.xpReward, heartsRemaining: hearts });
         progressSavedRef.current = true;
       }
       setCompleted(true);
@@ -80,6 +82,12 @@ export default function LessonPage() {
 
   if (completed) {
     const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : hearts > 0 ? 1 : 0;
+    const comboBonus = stars >= 3 ? 20 : stars >= 2 ? 10 : 0;
+    const tomorrowGoal =
+      stars >= 3
+        ? "Yarın iki ders tamamlayarak serini büyüt."
+        : "Yarın aynı konuyu tekrar edip 3 yıldızı hedefle.";
+
     return (
       <LessonComplete
         lesson={lesson}
@@ -87,6 +95,8 @@ export default function LessonPage() {
         totalCount={exercises.length}
         stars={stars}
         xpEarned={lesson.xpReward}
+        comboBonus={comboBonus}
+        tomorrowGoal={tomorrowGoal}
         onContinue={() => navigate("/learn")}
       />
     );
