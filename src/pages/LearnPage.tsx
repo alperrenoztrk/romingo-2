@@ -28,6 +28,10 @@ const lessons: Lesson[] = [
   { id: "14", title: "Ulaşım", emoji: "🚌", status: "locked", stars: 0, level: 5 },
   { id: "15", title: "Ev ve Odalar", emoji: "🏠", status: "locked", stars: 0, level: 5 },
   { id: "16", title: "Zaman İfadeleri", emoji: "⏰", status: "locked", stars: 0, level: 5 },
+  { id: "17", title: "Temel Fiiller", emoji: "🏃", status: "locked", stars: 0, level: 6 },
+  { id: "18", title: "Günlük Rutin", emoji: "🗓️", status: "locked", stars: 0, level: 6 },
+  { id: "19", title: "Restoran", emoji: "🍽️", status: "locked", stars: 0, level: 6 },
+  { id: "20", title: "Yönler ve Konum", emoji: "🧭", status: "locked", stars: 0, level: 6 },
 ];
 
 const levelColors = [
