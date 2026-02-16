@@ -20,6 +20,7 @@ describe("HomePage", () => {
     );
 
     expect(screen.getByText("İyi akşamlar tester!")).toBeInTheDocument();
+    expect(screen.queryByText(/SEVİYE/i)).not.toBeInTheDocument();
 
     getHoursSpy.mockRestore();
   });
