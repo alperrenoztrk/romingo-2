@@ -65,7 +65,6 @@ function AppContent() {
         <div className="text-center">
           <div className="text-8xl leading-none animate-bounce">🦩</div>
           <h1 className="mt-4 text-4xl font-extrabold tracking-wide text-rose-700 dark:text-pink-300">Romingo</h1>
-          <p className="mt-2 text-base font-medium text-rose-800/80 dark:text-pink-200/90">Flamingo ile öğrenme başlıyor...</p>
         </div>
       </div>
     );
