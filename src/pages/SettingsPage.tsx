@@ -32,9 +32,6 @@ export default function SettingsPage() {
       <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
         <div>
           <h1 className="text-2xl font-black text-foreground">Ayarlar</h1>
-          <p className="text-sm font-semibold text-muted-foreground mt-1">
-            Hesabını ve uygulama tercihlerini buradan yönetebilirsin.
-          </p>
         </div>
 
         <section className="bg-card rounded-2xl p-4 shadow-card space-y-3">
@@ -45,7 +42,6 @@ export default function SettingsPage() {
               <UserCircle className="w-5 h-5 text-sky-brand" />
               <div className="text-left">
                 <div className="font-bold text-sm text-foreground">Profil Bilgileri</div>
-                <div className="text-xs font-semibold text-muted-foreground">Ad, kullanıcı adı ve avatar</div>
               </div>
             </div>
             <ChevronRight className="w-4 h-4 text-muted-foreground" />
@@ -56,7 +52,6 @@ export default function SettingsPage() {
               <Shield className="w-5 h-5 text-success" />
               <div className="text-left">
                 <div className="font-bold text-sm text-foreground">Gizlilik ve Güvenlik</div>
-                <div className="text-xs font-semibold text-muted-foreground">Şifre ve hesap koruması</div>
               </div>
             </div>
             <ChevronRight className="w-4 h-4 text-muted-foreground" />
@@ -71,7 +66,6 @@ export default function SettingsPage() {
               <Bell className="w-5 h-5 text-flamingo" />
               <div>
                 <div className="font-bold text-sm text-foreground">Bildirimler</div>
-                <div className="text-xs font-semibold text-muted-foreground">Ders ve seri bildirimlerini al</div>
               </div>
             </div>
             <Switch
@@ -85,7 +79,6 @@ export default function SettingsPage() {
               <Moon className="w-5 h-5 text-gold" />
               <div>
                 <div className="font-bold text-sm text-foreground">Karanlık Mod</div>
-                <div className="text-xs font-semibold text-muted-foreground">Gece çalışmaları için daha yumuşak tema</div>
               </div>
             </div>
             <Switch
@@ -99,7 +92,6 @@ export default function SettingsPage() {
               <Globe className="w-5 h-5 text-sky-brand" />
               <div>
                 <div className="font-bold text-sm text-foreground">Günlük Hatırlatma</div>
-                <div className="text-xs font-semibold text-muted-foreground">Her gün aynı saatte öğrenme hatırlatıcısı</div>
               </div>
             </div>
             <Switch
