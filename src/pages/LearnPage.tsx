@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
-import { Lock, Star, CheckCircle } from "lucide-react";
+import { Lock, Star, CheckCircle, Volume2 } from "lucide-react";
 import { lessonsData } from "../data/lessons";
 
 interface Lesson {
@@ -147,6 +147,19 @@ export default function LearnPage() {
   const tutorialView = searchParams.get("view") === "tutorial";
   const levels = [...new Set(lessons.map((l) => l.level))];
 
+  const speakText = (text: string, lang: string) => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang;
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
+  };
+
   return (
     <div className="pb-20">
       <StatsBar streak={12} xp={1450} hearts={5} />
@@ -192,8 +205,28 @@ export default function LearnPage() {
                           key={`${lesson.id}-${word.tr}-${word.ro}`}
                           className="rounded-xl bg-muted/60 p-3"
                         >
-                          <p className="text-sm font-bold text-foreground">{word.tr}</p>
-                          <p className="text-xs font-semibold text-muted-foreground">{word.ro}</p>
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="text-sm font-bold text-foreground">{word.tr}</p>
+                            <button
+                              type="button"
+                              aria-label={`${word.tr} cümlesini dinle`}
+                              onClick={() => speakText(word.tr, "tr-TR")}
+                              className="p-1.5 rounded-lg bg-card text-muted-foreground hover:text-foreground hover:bg-background transition-colors"
+                            >
+                              <Volume2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                          <div className="mt-1 flex items-center justify-between gap-2">
+                            <p className="text-xs font-semibold text-muted-foreground">{word.ro}</p>
+                            <button
+                              type="button"
+                              aria-label={`${word.ro} cümlesini dinle`}
+                              onClick={() => speakText(word.ro, "ro-RO")}
+                              className="p-1.5 rounded-lg bg-card text-muted-foreground hover:text-foreground hover:bg-background transition-colors"
+                            >
+                              <Volume2 className="w-4 h-4" />
+                            </button>
+                          </div>
                         </div>
                       ))
                     ) : (
