@@ -166,7 +166,7 @@ export default function LearnPage() {
 
       <div className="px-4 py-6 max-w-lg mx-auto">
         <h1 className="text-xl font-black text-foreground text-center mb-2">
-          {tutorialView ? "🦩 Pratik Tutorial" : "🦩 Türkçe Öğren"}
+          {tutorialView ? "🦩 Pratik Tutorial" : "🦩 Romence Öğren"}
         </h1>
         <p className="text-center text-muted-foreground text-sm font-semibold mb-8">
           {tutorialView
