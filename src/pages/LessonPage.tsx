@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { lessonsData } from "../data/lessons";
 import { X, Heart, Check, ArrowRight } from "lucide-react";
@@ -8,11 +8,16 @@ import TranslationEx from "../components/exercises/TranslationEx";
 import MatchingEx from "../components/exercises/MatchingEx";
 import LessonComplete from "../components/LessonComplete";
 import { addTodayProgress } from "../lib/weeklyProgress";
+import { orderedLessonIds } from "../data/lessonCatalog";
+import { getLessonProgress, isLessonUnlocked, saveLessonCompletion } from "../lib/lessonProgress";
 
 export default function LessonPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const lesson = lessonsData[id || ""];
+  const lessonId = id || "";
+  const lessonProgress = getLessonProgress();
+  const isUnlocked = isLessonUnlocked(lessonId, orderedLessonIds, lessonProgress);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hearts, setHearts] = useState(5);
@@ -37,6 +42,8 @@ export default function LessonPage() {
     if (currentIndex + 1 >= lesson.exercises.length || hearts <= 0) {
       if (!progressSavedRef.current && hearts > 0) {
         addTodayProgress(lesson.xpReward);
+        const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : 1;
+        saveLessonCompletion(lesson.id, stars);
         progressSavedRef.current = true;
       }
       setCompleted(true);
@@ -47,12 +54,22 @@ export default function LessonPage() {
     }
   }, [currentIndex, hearts, lesson]);
 
+  useEffect(() => {
+    if (lesson && !isUnlocked) {
+      navigate("/learn", { replace: true });
+    }
+  }, [isUnlocked, lesson, navigate]);
+
   if (!lesson) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-muted-foreground font-bold">Ders bulunamadı</p>
       </div>
     );
+  }
+
+  if (!isUnlocked) {
+    return null;
   }
 
   const exercises = lesson.exercises;

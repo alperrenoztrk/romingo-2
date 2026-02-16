@@ -1,7 +1,10 @@
+import { useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import { Lock, Star, CheckCircle, Volume2 } from "lucide-react";
 import { lessonsData } from "../data/lessons";
+import { lessonCatalog } from "../data/lessonCatalog";
+import { getLessonProgress, isLessonUnlocked } from "../lib/lessonProgress";
 
 interface Lesson {
   id: string;
@@ -11,29 +14,6 @@ interface Lesson {
   stars: number;
   level: number;
 }
-
-const lessons: Lesson[] = [
-  { id: "1", title: "Selamlaşma", emoji: "👋", status: "completed", stars: 3, level: 1 },
-  { id: "2", title: "Tanışma", emoji: "🤝", status: "completed", stars: 2, level: 1 },
-  { id: "3", title: "Sayılar", emoji: "🔢", status: "completed", stars: 3, level: 1 },
-  { id: "4", title: "Renkler", emoji: "🎨", status: "current", stars: 0, level: 2 },
-  { id: "5", title: "Yiyecekler", emoji: "🍎", status: "current", stars: 0, level: 2 },
-  { id: "6", title: "İçecekler", emoji: "☕", status: "current", stars: 0, level: 2 },
-  { id: "7", title: "Aile", emoji: "👨‍👩‍👧", status: "current", stars: 0, level: 3 },
-  { id: "8", title: "Hayvanlar", emoji: "🦩", status: "current", stars: 0, level: 3 },
-  { id: "9", title: "Meslekler", emoji: "👩‍⚕️", status: "current", stars: 0, level: 3 },
-  { id: "10", title: "Günler", emoji: "📅", status: "current", stars: 0, level: 4 },
-  { id: "11", title: "Mevsimler", emoji: "🌸", status: "current", stars: 0, level: 4 },
-  { id: "12", title: "Hava Durumu", emoji: "🌤️", status: "current", stars: 0, level: 4 },
-  { id: "13", title: "Alışveriş", emoji: "🛍️", status: "current", stars: 0, level: 5 },
-  { id: "14", title: "Ulaşım", emoji: "🚌", status: "current", stars: 0, level: 5 },
-  { id: "15", title: "Ev ve Odalar", emoji: "🏠", status: "current", stars: 0, level: 5 },
-  { id: "16", title: "Zaman İfadeleri", emoji: "⏰", status: "current", stars: 0, level: 5 },
-  { id: "17", title: "Temel Fiiller", emoji: "🏃", status: "current", stars: 0, level: 6 },
-  { id: "18", title: "Günlük Rutin", emoji: "🗓️", status: "current", stars: 0, level: 6 },
-  { id: "19", title: "Restoran", emoji: "🍽️", status: "current", stars: 0, level: 6 },
-  { id: "20", title: "Yönler ve Konum", emoji: "🧭", status: "current", stars: 0, level: 6 },
-];
 
 const levelColors = [
   "gradient-success",
@@ -145,6 +125,26 @@ export default function LearnPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const tutorialView = searchParams.get("view") === "tutorial";
+  const lessons = useMemo<Lesson[]>(() => {
+    const progress = getLessonProgress();
+    const orderedLessonIds = lessonCatalog.map((lesson) => lesson.id);
+
+    return lessonCatalog.map((lesson) => {
+      const completion = progress[lesson.id];
+
+      if (completion) {
+        return { ...lesson, status: "completed" as const, stars: completion.stars };
+      }
+
+      const unlocked = isLessonUnlocked(lesson.id, orderedLessonIds, progress);
+      return {
+        ...lesson,
+        status: unlocked ? ("current" as const) : ("locked" as const),
+        stars: 0,
+      };
+    });
+  }, []);
+
   const levels = [...new Set(lessons.map((l) => l.level))];
 
   const speakText = (text: string, lang: string) => {
@@ -191,10 +191,11 @@ export default function LearnPage() {
                       </p>
                     </div>
                     <button
+                      disabled={lesson.status === "locked"}
                       onClick={() => navigate(`/lesson/${lesson.id}`)}
-                      className="gradient-sky shadow-button-sky rounded-xl px-3 py-2 text-xs font-extrabold text-primary-foreground active:translate-y-1 active:shadow-none transition-all"
+                      className="gradient-sky shadow-button-sky rounded-xl px-3 py-2 text-xs font-extrabold text-primary-foreground active:translate-y-1 active:shadow-none transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Derse Git
+                      {lesson.status === "locked" ? "Kilitli" : "Derse Git"}
                     </button>
                   </div>
 
