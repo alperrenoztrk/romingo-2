@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
 import { BookOpen, Languages, Target, Star, TrendingUp } from "lucide-react";
+import { getCurrentWeekProgress } from "../lib/weeklyProgress";
 
 const quickActions = [
   {
@@ -33,22 +34,25 @@ export default function HomePage() {
   const navigate = useNavigate();
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
-  const [weeklyHeights, setWeeklyHeights] = useState([60, 80, 45, 90, 70, 30, 0]);
+  const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
   const [updatedAt, setUpdatedAt] = useState(new Date());
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setWeeklyHeights((prev) => {
-        const todayIndex = (new Date().getDay() + 6) % 7;
-        const next = [...prev];
-        next[todayIndex] = Math.min(100, Number((next[todayIndex] + Math.random() * 2.5).toFixed(1)));
-        return next;
-      });
+    const syncProgress = () => {
+      setWeeklyProgress(getCurrentWeekProgress());
       setUpdatedAt(new Date());
-    }, 3000);
+    };
 
-    return () => clearInterval(interval);
+    const interval = setInterval(syncProgress, 1000);
+    window.addEventListener("storage", syncProgress);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("storage", syncProgress);
+    };
   }, []);
+
+  const maxProgress = Math.max(...weeklyProgress.map((item) => item.progress), 0);
 
   return (
     <div className="pb-20">
@@ -143,28 +147,32 @@ export default function HomePage() {
             </div>
           </div>
           <div className="flex items-end justify-between gap-1">
-            {["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"].map((day, i) => {
+            {weeklyProgress.map((item, i) => {
               const isToday = i === (new Date().getDay() + 6) % 7;
+              const hasProgress = item.progress > 0;
+              const heightPercent = hasProgress
+                ? maxProgress > 0
+                  ? (item.progress / maxProgress) * 100
+                  : 0
+                : 0;
+
               return (
-                <div key={day} className="flex flex-col items-center gap-1 flex-1">
+                <div key={item.day} className="flex flex-col items-center gap-1 flex-1">
                   <div className="w-full max-w-[32px] bg-muted rounded-lg overflow-hidden h-20 flex items-end">
-                    <div
-                      className={`w-full rounded-lg transition-all ${
-                        weeklyHeights[i] > 0
-                          ? isToday
-                            ? "gradient-hero"
-                            : "gradient-sky"
-                          : ""
-                      }`}
-                      style={{ height: `${weeklyHeights[i]}%` }}
-                    />
+                    {hasProgress && (
+                      <div
+                        className={`w-full rounded-lg transition-all ${isToday ? "gradient-hero" : "gradient-sky"}`}
+                        style={{ height: `${heightPercent}%` }}
+                      />
+                    )}
                   </div>
+                  <span className="text-[9px] font-bold text-foreground">{hasProgress ? `${item.progress} XP` : ""}</span>
                   <span
                     className={`text-[10px] font-bold ${
                       isToday ? "text-flamingo" : "text-muted-foreground"
                     }`}
                   >
-                    {day}
+                    {item.day}
                   </span>
                 </div>
               );

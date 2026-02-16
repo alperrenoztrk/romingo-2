@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { lessonsData } from "../data/lessons";
 import { X, Heart, Check, ArrowRight } from "lucide-react";
@@ -7,6 +7,7 @@ import FillBlankEx from "../components/exercises/FillBlankEx";
 import TranslationEx from "../components/exercises/TranslationEx";
 import MatchingEx from "../components/exercises/MatchingEx";
 import LessonComplete from "../components/LessonComplete";
+import { addTodayProgress } from "../lib/weeklyProgress";
 
 export default function LessonPage() {
   const { id } = useParams<{ id: string }>();
@@ -19,6 +20,7 @@ export default function LessonPage() {
   const [answered, setAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const progressSavedRef = useRef(false);
 
   const handleAnswer = useCallback((correct: boolean) => {
     setAnswered(true);
@@ -33,6 +35,10 @@ export default function LessonPage() {
   const handleNext = useCallback(() => {
     if (!lesson) return;
     if (currentIndex + 1 >= lesson.exercises.length || hearts <= 0) {
+      if (!progressSavedRef.current && hearts > 0) {
+        addTodayProgress(lesson.xpReward);
+        progressSavedRef.current = true;
+      }
       setCompleted(true);
     } else {
       setCurrentIndex((i) => i + 1);
