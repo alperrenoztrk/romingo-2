@@ -29,11 +29,18 @@ describe("ProfilePage", () => {
     );
 
     expect(screen.getByText("İlk Seri")).toBeInTheDocument();
+    expect(screen.getByText("İlk Adım")).toBeInTheDocument();
+    expect(screen.getByText("Haftalık Ritim")).toBeInTheDocument();
     expect(screen.getByText("Kitap Kurdu")).toBeInTheDocument();
+    expect(screen.getByText("Ders Maratoncusu")).toBeInTheDocument();
     expect(screen.getByText("Yıldız Toplayıcı")).toBeInTheDocument();
+    expect(screen.getByText("Süpernova")).toBeInTheDocument();
+    expect(screen.getByText("Tasarrufçu")).toBeInTheDocument();
+    expect(screen.getByText("Podyumcu")).toBeInTheDocument();
 
     expect(screen.queryByText("Lig Şampiyonu")).not.toBeInTheDocument();
     expect(screen.queryByText("Elmas Avcısı")).not.toBeInTheDocument();
     expect(screen.queryByText("Flamingo Dostu")).not.toBeInTheDocument();
+    expect(screen.queryByText("Bilgi Ustası")).not.toBeInTheDocument();
   });
 });
