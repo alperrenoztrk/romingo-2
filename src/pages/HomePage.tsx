@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import StatsBar from "../components/StatsBar";
-import XPProgress from "../components/XPProgress";
 import { BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal } from "lucide-react";
 import { getCurrentWeekProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
@@ -13,9 +11,7 @@ import {
   getTodayXpProgress,
 } from "../lib/dailyGoals";
 import {
-  getEconomySnapshot,
   learningEconomyUpdatedEvent,
-  syncStreak,
 } from "@/lib/learningEconomy";
 import { getAdaptivePracticePlan, getExerciseTypeLabel } from "@/lib/adaptivePractice";
 
@@ -37,9 +33,6 @@ const GOAL_DEFINITIONS = [
   },
 ] as const;
 
-const TOTAL_XP = 1450;
-const XP_PER_LEVEL = 1000;
-
 function getGoalCompletionRatio(current: number, target: number) {
   if (target <= 0) {
     return 1;
@@ -56,7 +49,6 @@ export default function HomePage() {
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
-  const [economy, setEconomy] = useState(() => getEconomySnapshot());
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
     xp: getTodayXpProgress(),
@@ -64,11 +56,8 @@ export default function HomePage() {
   });
 
   useEffect(() => {
-    syncStreak();
-
     const syncProgress = () => {
       setWeeklyProgress(getCurrentWeekProgress());
-      setEconomy(getEconomySnapshot());
       setTodayMetrics({
         lessons: getCompletedLessonsCountForDate(),
         xp: getTodayXpProgress(),
@@ -152,13 +141,8 @@ export default function HomePage() {
     [dailyGoalTargets.correctAnswers, dailyGoalTargets.lessons, dailyGoalTargets.xp, weeklyProgress],
   );
 
-  const currentLevel = Math.floor(TOTAL_XP / XP_PER_LEVEL) + 1;
-  const currentLevelXp = TOTAL_XP % XP_PER_LEVEL;
-
   return (
     <div className="pb-20">
-      <StatsBar streak={economy.streakCount} xp={TOTAL_XP} hearts={economy.hearts} />
-
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}
         <div className="flex items-center gap-4">
@@ -166,11 +150,6 @@ export default function HomePage() {
           <div>
             <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
           </div>
-        </div>
-
-        {/* XP Progress */}
-        <div className="bg-card rounded-2xl p-4 shadow-card">
-          <XPProgress current={currentLevelXp} total={XP_PER_LEVEL} level={currentLevel} />
         </div>
 
         {/* Daily Goals */}
