@@ -62,9 +62,6 @@ export default function HomePage() {
           <div className="text-5xl animate-float">🦩</div>
           <div>
             <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
-            <p className="text-muted-foreground font-semibold text-sm">
-              Bugün de harika bir gün öğrenmek için!
-            </p>
           </div>
         </div>
 
