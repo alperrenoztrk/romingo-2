@@ -23,4 +23,15 @@ describe("HomePage", () => {
 
     getHoursSpy.mockRestore();
   });
+
+  it("shows a level that matches the total XP", () => {
+    render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText("SEVİYE 2")).toBeInTheDocument();
+    expect(screen.getByText("450/1000 XP")).toBeInTheDocument();
+  });
 });
