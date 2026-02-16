@@ -26,10 +26,10 @@ const dictionaryROtoTR: Record<string, string> = Object.fromEntries(
   Object.entries(dictionaryTRtoRO).map(([tr, ro]) => [ro, tr]),
 );
 
-const normalize = (value: string) =>
+const normalize = (value: string, locale: string) =>
   value
     .trim()
-    .toLocaleLowerCase("tr-TR")
+    .toLocaleLowerCase(locale)
     .replace(/[?.!,]/g, "")
     .replace(/\s+/g, " ");
 
@@ -38,7 +38,8 @@ export default function TranslationPage() {
   const [input, setInput] = useState("");
 
   const translation = useMemo(() => {
-    const normalized = normalize(input);
+    const locale = direction === "tr-ro" ? "tr-TR" : "ro-RO";
+    const normalized = normalize(input, locale);
     if (!normalized) return "";
 
     const sourceDictionary = direction === "tr-ro" ? dictionaryTRtoRO : dictionaryROtoTR;
