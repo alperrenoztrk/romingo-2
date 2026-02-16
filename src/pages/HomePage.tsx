@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
@@ -32,6 +33,22 @@ export default function HomePage() {
   const navigate = useNavigate();
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
+  const [weeklyHeights, setWeeklyHeights] = useState([60, 80, 45, 90, 70, 30, 0]);
+  const [updatedAt, setUpdatedAt] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWeeklyHeights((prev) => {
+        const todayIndex = (new Date().getDay() + 6) % 7;
+        const next = [...prev];
+        next[todayIndex] = Math.min(100, Number((next[todayIndex] + Math.random() * 2.5).toFixed(1)));
+        return next;
+      });
+      setUpdatedAt(new Date());
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="pb-20">
@@ -118,24 +135,28 @@ export default function HomePage() {
         <div className="bg-card rounded-2xl p-4 shadow-card">
           <div className="flex items-center gap-3 mb-3">
             <TrendingUp className="w-5 h-5 text-flamingo" />
-            <h2 className="font-extrabold text-foreground">Haftalık İlerleme</h2>
+            <div>
+              <h2 className="font-extrabold text-foreground">Haftalık İlerleme</h2>
+              <p className="text-[10px] text-muted-foreground font-semibold">
+                Canlı • {updatedAt.toLocaleTimeString("tr-TR")}
+              </p>
+            </div>
           </div>
           <div className="flex items-end justify-between gap-1">
             {["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"].map((day, i) => {
-              const heights = [60, 80, 45, 90, 70, 30, 0];
-              const isToday = i === new Date().getDay() - 1;
+              const isToday = i === (new Date().getDay() + 6) % 7;
               return (
                 <div key={day} className="flex flex-col items-center gap-1 flex-1">
                   <div className="w-full max-w-[32px] bg-muted rounded-lg overflow-hidden h-20 flex items-end">
                     <div
                       className={`w-full rounded-lg transition-all ${
-                        heights[i] > 0
+                        weeklyHeights[i] > 0
                           ? isToday
                             ? "gradient-hero"
                             : "gradient-sky"
                           : ""
                       }`}
-                      style={{ height: `${heights[i]}%` }}
+                      style={{ height: `${weeklyHeights[i]}%` }}
                     />
                   </div>
                   <span
