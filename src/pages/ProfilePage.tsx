@@ -1,6 +1,7 @@
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
 import { Flame, BookOpen, Star, Award, Settings, LogOut } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const achievements = [
   { icon: "🔥", name: "İlk Seri", desc: "3 gün üst üste çalış", unlocked: true },
@@ -78,10 +79,13 @@ export default function ProfilePage() {
 
         {/* Actions */}
         <div className="space-y-2">
-          <button className="w-full bg-card rounded-2xl p-4 shadow-card flex items-center gap-3 hover:bg-muted transition-colors">
+          <Link
+            to="/settings"
+            className="w-full bg-card rounded-2xl p-4 shadow-card flex items-center gap-3 hover:bg-muted transition-colors"
+          >
             <Settings className="w-5 h-5 text-muted-foreground" />
             <span className="font-bold text-foreground text-sm">Ayarlar</span>
-          </button>
+          </Link>
           <button className="w-full bg-card rounded-2xl p-4 shadow-card flex items-center gap-3 hover:bg-muted transition-colors">
             <LogOut className="w-5 h-5 text-destructive" />
             <span className="font-bold text-destructive text-sm">Çıkış Yap</span>
