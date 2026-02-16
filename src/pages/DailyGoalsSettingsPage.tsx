@@ -61,7 +61,6 @@ export default function DailyGoalsSettingsPage() {
           </Link>
           <div>
             <h1 className="text-2xl font-black text-foreground">Günlük Hedefleri Ayarla</h1>
-            <p className="text-sm font-semibold text-muted-foreground mt-1">Her gün tamamlamak istediğin hedef sayılarını güncelle.</p>
           </div>
         </div>
 
