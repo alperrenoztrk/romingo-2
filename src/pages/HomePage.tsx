@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { type PointerEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
@@ -61,6 +61,12 @@ export default function HomePage() {
     lessons: getCompletedLessonsCountForDate(),
     xp: getTodayXpProgress(),
     correctAnswers: getTodayCorrectAnswers(),
+  });
+  const [flamingoRotation, setFlamingoRotation] = useState(0);
+  const flamingoDragState = useRef({
+    isDragging: false,
+    lastX: 0,
+    moved: false,
   });
 
   useEffect(() => {
@@ -155,6 +161,41 @@ export default function HomePage() {
   const currentLevel = Math.floor(TOTAL_XP / XP_PER_LEVEL) + 1;
   const currentLevelXp = TOTAL_XP % XP_PER_LEVEL;
 
+  const handleFlamingoPointerDown = (event: PointerEvent<HTMLButtonElement>) => {
+    flamingoDragState.current = {
+      isDragging: true,
+      lastX: event.clientX,
+      moved: false,
+    };
+  };
+
+  const handleFlamingoPointerMove = (event: PointerEvent<HTMLButtonElement>) => {
+    if (!flamingoDragState.current.isDragging) {
+      return;
+    }
+
+    const deltaX = event.clientX - flamingoDragState.current.lastX;
+    if (Math.abs(deltaX) > 0) {
+      flamingoDragState.current.moved = true;
+    }
+
+    flamingoDragState.current.lastX = event.clientX;
+    setFlamingoRotation((prev) => prev + deltaX * 0.9);
+  };
+
+  const handleFlamingoPointerUp = () => {
+    flamingoDragState.current.isDragging = false;
+  };
+
+  const handleFlamingoClick = () => {
+    if (flamingoDragState.current.moved) {
+      flamingoDragState.current.moved = false;
+      return;
+    }
+
+    setFlamingoRotation((prev) => prev + 360);
+  };
+
   return (
     <div className="pb-20">
       <StatsBar streak={economy.streakCount} xp={TOTAL_XP} hearts={economy.hearts} />
@@ -162,7 +203,20 @@ export default function HomePage() {
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}
         <div className="flex items-center gap-4">
-          <div className="text-5xl animate-float">🦩</div>
+          <button
+            type="button"
+            aria-label="Flamingoyu döndür"
+            onClick={handleFlamingoClick}
+            onPointerDown={handleFlamingoPointerDown}
+            onPointerMove={handleFlamingoPointerMove}
+            onPointerUp={handleFlamingoPointerUp}
+            onPointerCancel={handleFlamingoPointerUp}
+            onPointerLeave={handleFlamingoPointerUp}
+            className="text-5xl animate-float touch-none select-none"
+            style={{ transform: `rotate(${flamingoRotation}deg)` }}
+          >
+            🦩
+          </button>
           <div>
             <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
           </div>
