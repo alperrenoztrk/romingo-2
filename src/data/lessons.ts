@@ -1379,3 +1379,174 @@ export const lessonsData: Record<string, LessonData> = {
     ],
   },
 };
+
+const level2To6SupplementalExercises: Record<string, Exercise[]> = {
+  "4": [
+    {
+      type: "translation",
+      sentence: "Elbise kırmızı",
+      direction: "tr-ro",
+      correctAnswer: "Rochia este roșie",
+      acceptedAnswers: ["Rochia este roșie", "rochia este roșie"],
+      hint: "Rochie = elbise, roșie = kırmızı",
+    },
+  ],
+  "5": [
+    {
+      type: "multiple_choice",
+      question: '"Mănânc un măr" cümlesinin Türkçesi hangisidir?',
+      options: ["Bir elma yiyorum", "Bir armut yiyorum", "Ekmek alıyorum", "Su içiyorum"],
+      correctIndex: 0,
+      hint: "măr = elma",
+    },
+  ],
+  "6": [
+    {
+      type: "fill_blank",
+      sentence: "Kafede bir ___ sipariş ettim.",
+      correctAnswer: "kahve",
+      options: ["kahve", "çorba", "salata", "pilav"],
+      hint: "İçecek bağlamına dikkat et.",
+    },
+  ],
+  "7": [
+    {
+      type: "translation",
+      sentence: "Annem evde",
+      direction: "tr-ro",
+      correctAnswer: "Mama este acasă",
+      acceptedAnswers: ["Mama este acasă", "mama este acasă"],
+      hint: "acasă = evde",
+    },
+  ],
+  "8": [
+    {
+      type: "multiple_choice",
+      question: '"Pisică" hangi hayvandır?',
+      options: ["Kedi", "Köpek", "Kuş", "Balık"],
+      correctIndex: 0,
+      hint: "Romence pisică = kedi",
+    },
+  ],
+  "9": [
+    {
+      type: "fill_blank",
+      sentence: "Doktor hastanede ___ .",
+      correctAnswer: "çalışır",
+      options: ["çalışır", "uyur", "yüzer", "koşar"],
+      hint: "Meslek + iş yeri kalıbı",
+    },
+  ],
+  "10": [
+    {
+      type: "translation",
+      sentence: "Yarın cuma",
+      direction: "tr-ro",
+      correctAnswer: "Mâine este vineri",
+      acceptedAnswers: ["Mâine este vineri", "mâine este vineri"],
+      hint: "mâine = yarın",
+    },
+  ],
+  "11": [
+    {
+      type: "multiple_choice",
+      question: '"Kış" Romence hangisidir?',
+      options: ["Primăvară", "Vară", "Toamnă", "Iarnă"],
+      correctIndex: 3,
+      hint: "iarnă = kış",
+    },
+  ],
+  "12": [
+    {
+      type: "fill_blank",
+      sentence: "Bugün hava çok ___ .",
+      correctAnswer: "rüzgarlı",
+      options: ["rüzgarlı", "sessiz", "karanlık", "kapalı"],
+      hint: "Hava durumu sıfatı seç.",
+    },
+  ],
+  "13": [
+    {
+      type: "translation",
+      sentence: "Kasada ödeme yapacağım",
+      direction: "tr-ro",
+      correctAnswer: "Voi plăti la casă",
+      acceptedAnswers: ["Voi plăti la casă", "voi plăti la casă"],
+      hint: "la casă = kasada",
+    },
+  ],
+  "14": [
+    {
+      type: "multiple_choice",
+      question: '"Tren istasyonu" Romence ne?',
+      options: ["Stație de autobuz", "Gară", "Aeroport", "Metrou"],
+      correctIndex: 1,
+      hint: "gară = tren istasyonu",
+    },
+  ],
+  "15": [
+    {
+      type: "fill_blank",
+      sentence: "Misafirler ___ oturuyor.",
+      correctAnswer: "salonda",
+      options: ["salonda", "balkonda", "garajda", "çatıda"],
+      hint: "Ev odaları kelimeleri",
+    },
+  ],
+  "16": [
+    {
+      type: "translation",
+      sentence: "Ders saat üçte başlıyor",
+      direction: "tr-ro",
+      correctAnswer: "Cursul începe la ora trei",
+      acceptedAnswers: ["Cursul începe la ora trei", "cursul începe la ora trei"],
+      hint: "la ora ... = saat ...'te",
+    },
+  ],
+  "17": [
+    {
+      type: "multiple_choice",
+      question: '"A scrie" fiilinin Türkçesi hangisi?',
+      options: ["Yazmak", "Koşmak", "Beklemek", "Temizlemek"],
+      correctIndex: 0,
+      hint: "scrie = yazmak",
+    },
+  ],
+  "18": [
+    {
+      type: "fill_blank",
+      sentence: "Akşamları genelde erken ___ .",
+      correctAnswer: "uyurum",
+      options: ["uyurum", "koşarım", "çizerim", "dinlerim"],
+      hint: "Günlük rutin fiilleri",
+    },
+  ],
+  "19": [
+    {
+      type: "translation",
+      sentence: "Garson, menü alabilir miyim?",
+      direction: "tr-ro",
+      correctAnswer: "Chelner, pot primi meniul?",
+      acceptedAnswers: ["Chelner, pot primi meniul?", "chelner, pot primi meniul?"],
+      hint: "pot primi ... = ... alabilir miyim",
+    },
+  ],
+  "20": [
+    {
+      type: "multiple_choice",
+      question: '"Köşeden sola dön" ifadesinin Romencesi hangisi?',
+      options: [
+        "Mergi drept până la semafor",
+        "La colț, fă la stânga",
+        "Întoarce-te la dreapta acum",
+        "Treci pe lângă farmacie",
+      ],
+      correctIndex: 1,
+      hint: "la colț = köşede/köşeden",
+    },
+  ],
+};
+
+for (const [lessonId, extraExercises] of Object.entries(level2To6SupplementalExercises)) {
+  lessonsData[lessonId]?.exercises.push(...extraExercises);
+}
