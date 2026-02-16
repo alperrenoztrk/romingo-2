@@ -2,6 +2,7 @@ import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
 import { Flame, BookOpen, Star, Award, Settings, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getStoredProfileSettings } from "@/lib/account";
 
 type ProfilePageProps = {
   isGuest?: boolean;
@@ -99,6 +100,10 @@ const stats = [
 ];
 
 export default function ProfilePage({ isGuest = false, onLogout }: ProfilePageProps) {
+  const profileSettings = getStoredProfileSettings();
+  const profileName = profileSettings.fullName.trim() || "Alperren";
+  const avatar = profileSettings.avatar.trim() || "🦩";
+
   return (
     <div className="pb-20">
       <StatsBar streak={learnerStats.streakDays} xp={1450} hearts={5} />
@@ -107,9 +112,9 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
         {/* Avatar & Name */}
         <div className="text-center">
           <div className="w-24 h-24 mx-auto gradient-hero rounded-full flex items-center justify-center text-5xl mb-3 shadow-elevated">
-            🦩
+            {avatar}
           </div>
-          <h1 className="text-xl font-black text-foreground">{isGuest ? "Misafir" : "Alperren"}</h1>
+          <h1 className="text-xl font-black text-foreground">{isGuest ? "Misafir" : profileName}</h1>
           <p className="text-muted-foreground text-sm font-semibold">Şubat 2026'dan beri öğreniyor</p>
         </div>
 
