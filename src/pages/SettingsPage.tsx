@@ -1,12 +1,28 @@
 import StatsBar from "../components/StatsBar";
 import { ChevronRight, Globe, Bell, Moon, Shield, UserCircle } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { applyDarkMode, getStoredPreferences, savePreferences } from "@/lib/preferences";
 
 export default function SettingsPage() {
-  const [notifications, setNotifications] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
-  const [dailyReminder, setDailyReminder] = useState(true);
+  const { toast } = useToast();
+  const [preferences, setPreferences] = useState(getStoredPreferences);
+
+  useEffect(() => {
+    savePreferences(preferences);
+    applyDarkMode(preferences.darkMode);
+  }, [preferences]);
+
+  const handleSwitchChange = (key: keyof typeof preferences, value: boolean) => {
+    setPreferences((prev) => ({ ...prev, [key]: value }));
+
+    if (key === "darkMode") {
+      toast({
+        title: value ? "Karanlık mod açık" : "Karanlık mod kapalı",
+      });
+    }
+  };
 
   return (
     <div className="pb-20">
@@ -57,7 +73,10 @@ export default function SettingsPage() {
                 <div className="text-xs font-semibold text-muted-foreground">Ders ve seri bildirimlerini al</div>
               </div>
             </div>
-            <Switch checked={notifications} onCheckedChange={setNotifications} />
+            <Switch
+              checked={preferences.notifications}
+              onCheckedChange={(value) => handleSwitchChange("notifications", value)}
+            />
           </div>
 
           <div className="flex items-center justify-between rounded-xl bg-muted/40 p-3">
@@ -68,7 +87,10 @@ export default function SettingsPage() {
                 <div className="text-xs font-semibold text-muted-foreground">Gece çalışmaları için daha yumuşak tema</div>
               </div>
             </div>
-            <Switch checked={darkMode} onCheckedChange={setDarkMode} />
+            <Switch
+              checked={preferences.darkMode}
+              onCheckedChange={(value) => handleSwitchChange("darkMode", value)}
+            />
           </div>
 
           <div className="flex items-center justify-between rounded-xl bg-muted/40 p-3">
@@ -79,7 +101,10 @@ export default function SettingsPage() {
                 <div className="text-xs font-semibold text-muted-foreground">Her gün aynı saatte öğrenme hatırlatıcısı</div>
               </div>
             </div>
-            <Switch checked={dailyReminder} onCheckedChange={setDailyReminder} />
+            <Switch
+              checked={preferences.dailyReminder}
+              onCheckedChange={(value) => handleSwitchChange("dailyReminder", value)}
+            />
           </div>
         </section>
 
