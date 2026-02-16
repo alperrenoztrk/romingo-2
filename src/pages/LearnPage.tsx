@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import { Lock, Star, CheckCircle } from "lucide-react";
 
@@ -33,17 +34,22 @@ const levelColors = [
 ];
 
 function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
+  const navigate = useNavigate();
   const isCompleted = lesson.status === "completed";
   const isCurrent = lesson.status === "current";
   const isLocked = lesson.status === "locked";
 
-  // Zigzag offset
   const offset = index % 2 === 0 ? -30 : 30;
+
+  const handleClick = () => {
+    if (!isLocked) navigate(`/lesson/${lesson.id}`);
+  };
 
   return (
     <div className="flex flex-col items-center" style={{ transform: `translateX(${offset}px)` }}>
       <button
         disabled={isLocked}
+        onClick={handleClick}
         className={`relative w-[72px] h-[72px] rounded-full flex items-center justify-center text-3xl transition-all
           ${isCompleted ? "bg-success shadow-button-success active:translate-y-1 active:shadow-none" : ""}
           ${isCurrent ? "bg-flamingo shadow-button-primary animate-pulse-glow active:translate-y-1 active:shadow-none" : ""}
