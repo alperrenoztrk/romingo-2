@@ -18,10 +18,18 @@ export default function DailyGoalsSettingsPage() {
   const [targets, setTargets] = useState(getDailyGoalTargets);
 
   const handleTargetChange = (key: keyof typeof targets, value: string) => {
+    if (value.trim() === "") {
+      setTargets((prev) => ({
+        ...prev,
+        [key]: 0,
+      }));
+      return;
+    }
+
     const parsedValue = Number(value);
     setTargets((prev) => ({
       ...prev,
-      [key]: Number.isFinite(parsedValue) && parsedValue >= 1 ? Math.floor(parsedValue) : 1,
+      [key]: Number.isFinite(parsedValue) && parsedValue >= 0 ? Math.floor(parsedValue) : 0,
     }));
   };
 
@@ -62,7 +70,7 @@ export default function DailyGoalsSettingsPage() {
             <label className="text-sm font-bold text-foreground">Ders Tamamla</label>
             <Input
               type="number"
-              min={1}
+              min={0}
               value={targets.lessons}
               onChange={(event) => handleTargetChange("lessons", event.target.value)}
             />
@@ -72,7 +80,7 @@ export default function DailyGoalsSettingsPage() {
             <label className="text-sm font-bold text-foreground">XP Kazan</label>
             <Input
               type="number"
-              min={1}
+              min={0}
               value={targets.xp}
               onChange={(event) => handleTargetChange("xp", event.target.value)}
             />
@@ -82,7 +90,7 @@ export default function DailyGoalsSettingsPage() {
             <label className="text-sm font-bold text-foreground">Doğru Cevap Ver</label>
             <Input
               type="number"
-              min={1}
+              min={0}
               value={targets.correctAnswers}
               onChange={(event) => handleTargetChange("correctAnswers", event.target.value)}
             />

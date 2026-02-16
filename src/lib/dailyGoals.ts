@@ -36,7 +36,7 @@ function toDateKey(date: Date) {
 }
 
 function sanitizeTarget(value: unknown, fallback: number) {
-  return typeof value === "number" && Number.isFinite(value) && value >= 1 ? Math.floor(value) : fallback;
+  return typeof value === "number" && Number.isFinite(value) && value >= 0 ? Math.floor(value) : fallback;
 }
 
 function isMetricKey(value: unknown): value is DailyGoalMetricKey {
