@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import { Lock, Star, CheckCircle } from "lucide-react";
+import { lessonsData } from "../data/lessons";
 
 interface Lesson {
   id: string;
@@ -40,6 +41,44 @@ const levelColors = [
   "gradient-hero",
   "gradient-gold",
 ];
+
+interface TutorialWord {
+  tr: string;
+  ro: string;
+}
+
+function getTutorialWords(lessonId: string): TutorialWord[] {
+  const lesson = lessonsData[lessonId];
+  if (!lesson) {
+    return [];
+  }
+
+  const wordMap = new Map<string, TutorialWord>();
+
+  lesson.exercises.forEach((exercise) => {
+    if (exercise.type === "matching") {
+      exercise.pairs.forEach((pair) => {
+        const tr = pair.left.trim();
+        const ro = pair.right.trim();
+        if (tr && ro) {
+          wordMap.set(`${tr}-${ro}`.toLocaleLowerCase("tr-TR"), { tr, ro });
+        }
+      });
+    }
+
+    if (exercise.type === "translation") {
+      const isTrToRo = exercise.direction === "tr-ro";
+      const tr = (isTrToRo ? exercise.sentence : exercise.correctAnswer).trim();
+      const ro = (isTrToRo ? exercise.correctAnswer : exercise.sentence).trim();
+
+      if (tr && ro) {
+        wordMap.set(`${tr}-${ro}`.toLocaleLowerCase("tr-TR"), { tr, ro });
+      }
+    }
+  });
+
+  return Array.from(wordMap.values()).slice(0, 6);
+}
 
 function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
   const navigate = useNavigate();
@@ -108,6 +147,9 @@ function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
 }
 
 export default function LearnPage() {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const tutorialView = searchParams.get("view") === "tutorial";
   const levels = [...new Set(lessons.map((l) => l.level))];
 
   return (
@@ -116,42 +158,95 @@ export default function LearnPage() {
 
       <div className="px-4 py-6 max-w-lg mx-auto">
         <h1 className="text-xl font-black text-foreground text-center mb-2">
-          🦩 Türkçe Öğren
+          {tutorialView ? "🦩 Pratik Tutorial" : "🦩 Türkçe Öğren"}
         </h1>
         <p className="text-center text-muted-foreground text-sm font-semibold mb-8">
-          A1 Seviye • Başlangıç
+          {tutorialView
+            ? "Her ders için temel kelimeler ve kısa ipuçları"
+            : "A1 Seviye • Başlangıç"}
         </p>
 
-        {levels.map((level) => {
-          const levelLessons = lessons.filter((l) => l.level === level);
-          return (
-            <div key={level} className="mb-8">
-              <div
-                className={`${levelColors[(level - 1) % levelColors.length]} rounded-2xl px-4 py-2 mb-6 mx-auto w-fit`}
-              >
-                <span className="text-primary-foreground font-extrabold text-sm">
-                  Seviye {level}
-                </span>
-              </div>
+        {tutorialView && (
+          <div className="space-y-4">
+            {lessons.map((lesson) => {
+              const tutorialWords = getTutorialWords(lesson.id);
 
-              <div className="flex flex-col items-center gap-6">
-                {levelLessons.map((lesson, i) => (
-                  <LessonNode
-                    key={lesson.id}
-                    lesson={lesson}
-                    index={lessons.indexOf(lesson)}
-                  />
-                ))}
-              </div>
+              return (
+                <div key={lesson.id} className="bg-card rounded-2xl p-4 shadow-card">
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <div>
+                      <h2 className="font-extrabold text-foreground">
+                        {lesson.emoji} {lesson.title}
+                      </h2>
+                      <p className="text-xs text-muted-foreground font-semibold mt-1">
+                        {lessonsData[lesson.id]?.description ?? "Bu ders için kelime pratiği"}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => navigate(`/lesson/${lesson.id}`)}
+                      className="gradient-sky shadow-button-sky rounded-xl px-3 py-2 text-xs font-extrabold text-primary-foreground active:translate-y-1 active:shadow-none transition-all"
+                    >
+                      Derse Git
+                    </button>
+                  </div>
 
-              {level < levels.length && (
-                <div className="flex justify-center my-4">
-                  <div className="w-0.5 h-8 bg-border" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {tutorialWords.length > 0 ? (
+                      tutorialWords.map((word) => (
+                        <div
+                          key={`${lesson.id}-${word.tr}-${word.ro}`}
+                          className="rounded-xl bg-muted/60 p-3"
+                        >
+                          <p className="text-sm font-bold text-foreground">{word.tr}</p>
+                          <p className="text-xs font-semibold text-muted-foreground">{word.ro}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-sm font-semibold text-muted-foreground">
+                        Kelime listesi yakında eklenecek.
+                      </p>
+                    )}
+                  </div>
                 </div>
-              )}
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        )}
+
+        {!tutorialView && (
+          <>
+            {levels.map((level) => {
+              const levelLessons = lessons.filter((l) => l.level === level);
+              return (
+                <div key={level} className="mb-8">
+                  <div
+                    className={`${levelColors[(level - 1) % levelColors.length]} rounded-2xl px-4 py-2 mb-6 mx-auto w-fit`}
+                  >
+                    <span className="text-primary-foreground font-extrabold text-sm">
+                      Seviye {level}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col items-center gap-6">
+                    {levelLessons.map((lesson) => (
+                      <LessonNode
+                        key={lesson.id}
+                        lesson={lesson}
+                        index={lessons.indexOf(lesson)}
+                      />
+                    ))}
+                  </div>
+
+                  {level < levels.length && (
+                    <div className="flex justify-center my-4">
+                      <div className="w-0.5 h-8 bg-border" />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );
