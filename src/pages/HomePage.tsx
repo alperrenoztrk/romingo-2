@@ -19,7 +19,7 @@ const quickActions = [
     desc: "Zayıf alanlarını güçlendir",
     gradient: "gradient-sky",
     shadow: "shadow-button-sky",
-    to: "/learn",
+    to: "/learn?view=tutorial",
   },
 ];
 
