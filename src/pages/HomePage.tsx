@@ -1,6 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
-import { BookOpen, Target, Star, TrendingUp } from "lucide-react";
+import { BookOpen, Languages, Target, Star, TrendingUp } from "lucide-react";
 
 const quickActions = [
   {
@@ -9,6 +10,7 @@ const quickActions = [
     desc: "Kaldığın yerden devam et",
     gradient: "gradient-success",
     shadow: "shadow-button-success",
+    to: "/learn",
   },
   {
     icon: Target,
@@ -16,6 +18,7 @@ const quickActions = [
     desc: "Zayıf alanlarını güçlendir",
     gradient: "gradient-sky",
     shadow: "shadow-button-sky",
+    to: "/learn",
   },
 ];
 
@@ -26,6 +29,7 @@ const dailyGoals = [
 ];
 
 export default function HomePage() {
+  const navigate = useNavigate();
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
 
@@ -85,6 +89,7 @@ export default function HomePage() {
           {quickActions.map((action, i) => (
             <button
               key={i}
+              onClick={() => navigate(action.to)}
               className={`${action.gradient} ${action.shadow} rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all`}
             >
               <action.icon className="w-8 h-8 text-primary-foreground mb-2" />
@@ -97,6 +102,17 @@ export default function HomePage() {
             </button>
           ))}
         </div>
+
+        <button
+          onClick={() => navigate("/translate")}
+          className="gradient-hero shadow-button-primary rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full"
+        >
+          <Languages className="w-8 h-8 text-primary-foreground mb-2" />
+          <div className="text-primary-foreground font-extrabold text-sm">Çeviri</div>
+          <div className="text-primary-foreground/80 text-xs font-semibold">
+            Türkçe ↔ Romence anında çeviri yap
+          </div>
+        </button>
 
         {/* Streak Card */}
         <div className="bg-card rounded-2xl p-4 shadow-card">

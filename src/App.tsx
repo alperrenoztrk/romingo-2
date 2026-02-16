@@ -11,6 +11,7 @@ import LeaguePage from "./pages/LeaguePage";
 import ProfilePage from "./pages/ProfilePage";
 import LessonPage from "./pages/LessonPage";
 import NotFound from "./pages/NotFound";
+import TranslationPage from "./pages/TranslationPage";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ function AppContent() {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/league" element={<LeaguePage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/translate" element={<TranslationPage />} />
         <Route path="/lesson/:id" element={<LessonPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
