@@ -12,6 +12,7 @@ import ProfilePage from "./pages/ProfilePage";
 import LessonPage from "./pages/LessonPage";
 import NotFound from "./pages/NotFound";
 import TranslationPage from "./pages/TranslationPage";
+import SettingsPage from "./pages/SettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ function AppContent() {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/league" element={<LeaguePage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/settings" element={<SettingsPage />} />
         <Route path="/translate" element={<TranslationPage />} />
         <Route path="/lesson/:id" element={<LessonPage />} />
         <Route path="*" element={<NotFound />} />
