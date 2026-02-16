@@ -7,6 +7,13 @@ export interface LessonProgressEntry {
 
 export type LessonProgressMap = Record<string, LessonProgressEntry>;
 
+function toDateKey(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function isLocalStorageAvailable() {
   return typeof window !== "undefined" && typeof window.localStorage !== "undefined";
 }
@@ -57,4 +64,22 @@ export function isLessonUnlocked(lessonId: string, orderedLessonIds: string[], p
 
   const previousLessonId = orderedLessonIds[lessonIndex - 1];
   return Boolean(progress[previousLessonId]);
+}
+
+export function getCompletedLessonsCountForDate(date = new Date()) {
+  const targetDateKey = toDateKey(date);
+  const progress = getLessonProgress();
+
+  return Object.values(progress).filter((entry) => {
+    if (!entry?.completedAt) {
+      return false;
+    }
+
+    const completedAt = new Date(entry.completedAt);
+    if (Number.isNaN(completedAt.getTime())) {
+      return false;
+    }
+
+    return toDateKey(completedAt) === targetDateKey;
+  }).length;
 }

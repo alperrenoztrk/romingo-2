@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
-import { BookOpen, Languages, Target, Star, TrendingUp } from "lucide-react";
+import { BookOpen, Languages, Target, Star, TrendingUp, Minus, Plus } from "lucide-react";
 import { getCurrentWeekProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
+import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
+import { getDailyGoalTargets, getTodayCorrectAnswers, getTodayXpProgress, saveDailyGoalTargets } from "../lib/dailyGoals";
 
 const quickActions = [
   {
@@ -25,12 +27,6 @@ const quickActions = [
   },
 ];
 
-const dailyGoals = [
-  { label: "1 Ders Tamamla", done: true },
-  { label: "10 Kelime Öğren", done: true },
-  { label: "5 Dakika Pratik", done: false },
-];
-
 export default function HomePage() {
   const navigate = useNavigate();
   const hour = new Date().getHours();
@@ -39,22 +35,70 @@ export default function HomePage() {
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
+  const [dailyGoalTargets, setDailyGoalTargets] = useState(getDailyGoalTargets());
+  const [todayMetrics, setTodayMetrics] = useState({
+    lessons: getCompletedLessonsCountForDate(),
+    xp: getTodayXpProgress(),
+    correctAnswers: getTodayCorrectAnswers(),
+  });
 
   useEffect(() => {
     const syncProgress = () => {
       setWeeklyProgress(getCurrentWeekProgress());
+      setDailyGoalTargets(getDailyGoalTargets());
+      setTodayMetrics({
+        lessons: getCompletedLessonsCountForDate(),
+        xp: getTodayXpProgress(),
+        correctAnswers: getTodayCorrectAnswers(),
+      });
     };
 
     const interval = setInterval(syncProgress, 1000);
     window.addEventListener("storage", syncProgress);
+    window.addEventListener("romingo:daily-goals-updated", syncProgress);
 
     return () => {
       clearInterval(interval);
       window.removeEventListener("storage", syncProgress);
+      window.removeEventListener("romingo:daily-goals-updated", syncProgress);
     };
   }, []);
 
   const maxProgress = Math.max(...weeklyProgress.map((item) => item.progress), 0);
+
+  const dailyGoals = useMemo(
+    () => [
+      {
+        key: "lessons" as const,
+        label: "Ders Tamamla",
+        target: dailyGoalTargets.lessons,
+        current: todayMetrics.lessons,
+      },
+      {
+        key: "xp" as const,
+        label: "XP Kazan",
+        target: dailyGoalTargets.xp,
+        current: todayMetrics.xp,
+      },
+      {
+        key: "correctAnswers" as const,
+        label: "Doğru Cevap Ver",
+        target: dailyGoalTargets.correctAnswers,
+        current: todayMetrics.correctAnswers,
+      },
+    ],
+    [dailyGoalTargets, todayMetrics],
+  );
+
+  const updateGoalTarget = (goalKey: "lessons" | "xp" | "correctAnswers", delta: number) => {
+    const nextTargets = {
+      ...dailyGoalTargets,
+      [goalKey]: Math.max(1, dailyGoalTargets[goalKey] + delta),
+    };
+
+    setDailyGoalTargets(nextTargets);
+    saveDailyGoalTargets(nextTargets);
+  };
 
   return (
     <div className="pb-20">
@@ -80,27 +124,56 @@ export default function HomePage() {
             <Star className="w-5 h-5 text-gold" fill="hsl(var(--gold))" />
             Günlük Hedefler
           </h2>
-          <div className="space-y-2">
-            {dailyGoals.map((goal, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div
-                  className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                    goal.done
-                      ? "bg-success text-accent-foreground"
-                      : "bg-muted text-muted-foreground"
-                  }`}
-                >
-                  {goal.done ? "✓" : ""}
+          <div className="space-y-3">
+            {dailyGoals.map((goal) => {
+              const done = goal.current >= goal.target;
+
+              return (
+                <div key={goal.key} className="flex items-center gap-3 justify-between">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div
+                      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                        done
+                          ? "bg-success text-accent-foreground"
+                          : "bg-muted text-muted-foreground"
+                      }`}
+                    >
+                      {done ? "✓" : ""}
+                    </div>
+                    <div className="min-w-0">
+                      <span
+                        className={`font-semibold text-sm ${
+                          done ? "text-foreground line-through opacity-60" : "text-foreground"
+                        }`}
+                      >
+                        {goal.label}
+                      </span>
+                      <p className="text-xs text-muted-foreground font-semibold">
+                        {goal.current}/{goal.target}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      aria-label={`${goal.label} hedefini azalt`}
+                      onClick={() => updateGoalTarget(goal.key, -1)}
+                      className="w-7 h-7 rounded-full bg-muted text-muted-foreground flex items-center justify-center active:translate-y-0.5 transition-all"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label={`${goal.label} hedefini artır`}
+                      onClick={() => updateGoalTarget(goal.key, 1)}
+                      className="w-7 h-7 rounded-full bg-muted text-muted-foreground flex items-center justify-center active:translate-y-0.5 transition-all"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
-                <span
-                  className={`font-semibold text-sm ${
-                    goal.done ? "text-foreground line-through opacity-60" : "text-foreground"
-                  }`}
-                >
-                  {goal.label}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 

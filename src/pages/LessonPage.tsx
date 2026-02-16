@@ -10,6 +10,7 @@ import LessonComplete from "../components/LessonComplete";
 import { addTodayProgress } from "../lib/weeklyProgress";
 import { orderedLessonIds } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked, saveLessonCompletion } from "../lib/lessonProgress";
+import { addTodayCorrectAnswer } from "../lib/dailyGoals";
 
 export default function LessonPage() {
   const { id } = useParams<{ id: string }>();
@@ -32,6 +33,7 @@ export default function LessonPage() {
     setIsCorrect(correct);
     if (correct) {
       setCorrectCount((c) => c + 1);
+      addTodayCorrectAnswer();
     } else {
       setHearts((h) => Math.max(0, h - 1));
     }
