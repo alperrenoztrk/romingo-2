@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { applyDarkMode, getStoredPreferences } from "@/lib/preferences";
 import BottomNav from "./components/BottomNav";
 import HomePage from "./pages/HomePage";
 import LearnPage from "./pages/LearnPage";
@@ -32,6 +33,9 @@ function AppContent() {
     if (storedMode === "authenticated" || storedMode === "logged_out" || storedMode === "guest") {
       setSessionMode(storedMode);
     }
+
+    const { darkMode } = getStoredPreferences();
+    applyDarkMode(darkMode);
   }, []);
 
   const handleLogout = () => {
