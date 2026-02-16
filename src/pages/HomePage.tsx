@@ -53,6 +53,14 @@ const quickActions = [
 const TOTAL_XP = 1450;
 const XP_PER_LEVEL = 1000;
 
+function getGoalCompletionRatio(current: number, target: number) {
+  if (target <= 0) {
+    return 1;
+  }
+
+  return Math.min(current / target, 1);
+}
+
 export default function HomePage() {
   const navigate = useNavigate();
   const hour = new Date().getHours();
@@ -110,9 +118,9 @@ export default function HomePage() {
         const correctAnswers = getCorrectAnswersForDate(date);
 
         const completionRatio =
-          (Math.min(lessons / dailyGoalTargets.lessons, 1) +
-            Math.min(xp / dailyGoalTargets.xp, 1) +
-            Math.min(correctAnswers / dailyGoalTargets.correctAnswers, 1)) /
+          (getGoalCompletionRatio(lessons, dailyGoalTargets.lessons) +
+            getGoalCompletionRatio(xp, dailyGoalTargets.xp) +
+            getGoalCompletionRatio(correctAnswers, dailyGoalTargets.correctAnswers)) /
           3;
 
         return {
