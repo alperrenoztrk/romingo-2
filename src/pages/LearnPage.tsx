@@ -169,9 +169,7 @@ export default function LearnPage() {
           {tutorialView ? "🦩 Alıştırma" : "🦩 Romence Öğren"}
         </h1>
         <p className="text-center text-muted-foreground text-sm font-semibold mb-8">
-          {tutorialView
-            ? "Her ders için temel kelimeler ve kısa ipuçları"
-            : "A1 Seviye • Başlangıç"}
+          {tutorialView ? "" : "A1 Seviye • Başlangıç"}
         </p>
 
         {tutorialView && (
@@ -208,14 +206,6 @@ export default function LearnPage() {
                         >
                           <div className="flex items-center justify-between gap-2">
                             <p className="text-sm font-bold text-foreground">{word.tr}</p>
-                            <button
-                              type="button"
-                              aria-label={`${word.tr} cümlesini dinle`}
-                              onClick={() => speakText(word.tr, "tr-TR")}
-                              className="p-1.5 rounded-lg bg-card text-muted-foreground hover:text-foreground hover:bg-background transition-colors"
-                            >
-                              <Volume2 className="w-4 h-4" />
-                            </button>
                           </div>
                           <div className="mt-1 flex items-center justify-between gap-2">
                             <p className="text-xs font-semibold text-muted-foreground">{word.ro}</p>
