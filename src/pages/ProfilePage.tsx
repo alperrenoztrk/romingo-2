@@ -1,200 +1,108 @@
+import { useMemo, useState } from "react";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
-import { Flame, BookOpen, Star, Award, Settings, LogOut } from "lucide-react";
+import { Flame, BookOpen, Star, Award, Settings, LogOut, Trophy, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getStoredProfileSettings } from "@/lib/account";
+import { getProfileProgressStory } from "@/lib/profileProgress";
 
 type ProfilePageProps = {
   isGuest?: boolean;
   onLogout?: () => void;
 };
 
-type LearnerStats = {
-  streakDays: number;
-  lessonsCompleted: number;
-  starsEarned: number;
-  gemsCollected: number;
-  bestLeagueRank: number;
-};
+type TierLevel = "bronze" | "silver" | "gold";
 
-type AchievementDefinition = {
+type AchievementTrack = {
+  id: string;
   icon: string;
   name: string;
   desc: string;
-  target: number;
-  getCurrent: (stats: LearnerStats) => number;
+  metricValue: number;
+  targets: Record<TierLevel, number>;
 };
 
-const learnerStats: LearnerStats = {
-  streakDays: 12,
-  lessonsCompleted: 24,
-  starsEarned: 67,
-  gemsCollected: 720,
-  bestLeagueRank: 2,
+const ACHIEVEMENT_CLAIMS_KEY = "romingo.achievementClaims.v1";
+
+const TIER_ORDER: TierLevel[] = ["bronze", "silver", "gold"];
+const TIER_LABELS: Record<TierLevel, string> = {
+  bronze: "Bronz",
+  silver: "Gümüş",
+  gold: "Altın",
 };
 
-const achievementDefinitions: AchievementDefinition[] = [
-  {
-    icon: "🌱",
-    name: "İlk Adım",
-    desc: "İlk dersi tamamla",
-    target: 1,
-    getCurrent: (stats) => stats.lessonsCompleted,
-  },
-  {
-    icon: "🔥",
-    name: "İlk Seri",
-    desc: "3 gün üst üste çalış",
-    target: 3,
-    getCurrent: (stats) => stats.streakDays,
-  },
-  {
-    icon: "📅",
-    name: "Haftalık Ritim",
-    desc: "7 gün seri yap",
-    target: 7,
-    getCurrent: (stats) => stats.streakDays,
-  },
-  {
-    icon: "⚡",
-    name: "Enerji Patlaması",
-    desc: "14 gün seri yap",
-    target: 14,
-    getCurrent: (stats) => stats.streakDays,
-  },
-  {
-    icon: "📚",
-    name: "Ders Maratoncusu",
-    desc: "20 ders tamamla",
-    target: 20,
-    getCurrent: (stats) => stats.lessonsCompleted,
-  },
-  {
-    icon: "🧠",
-    name: "Bilgi Ustası",
-    desc: "50 ders tamamla",
-    target: 50,
-    getCurrent: (stats) => stats.lessonsCompleted,
-  },
-  {
-    icon: "📚",
-    name: "Kitap Kurdu",
-    desc: "10 ders tamamla",
-    target: 10,
-    getCurrent: (stats) => stats.lessonsCompleted,
-  },
-  {
-    icon: "✨",
-    name: "Parlayan Başlangıç",
-    desc: "30 yıldız kazan",
-    target: 30,
-    getCurrent: (stats) => stats.starsEarned,
-  },
-  {
-    icon: "🌟",
-    name: "Süpernova",
-    desc: "60 yıldız kazan",
-    target: 60,
-    getCurrent: (stats) => stats.starsEarned,
-  },
-  {
-    icon: "⭐",
-    name: "Yıldız Toplayıcı",
-    desc: "15 yıldız kazan",
-    target: 15,
-    getCurrent: (stats) => stats.starsEarned,
-  },
-  {
-    icon: "💰",
-    name: "Tasarrufçu",
-    desc: "500 elmas biriktir",
-    target: 500,
-    getCurrent: (stats) => stats.gemsCollected,
-  },
-  {
-    icon: "🏆",
-    name: "Lig Şampiyonu",
-    desc: "Bir ligde 1. ol",
-    target: 1,
-    getCurrent: (stats) => (stats.bestLeagueRank === 1 ? 1 : 0),
-  },
-  {
-    icon: "🥈",
-    name: "Podyumcu",
-    desc: "Ligde ilk 3'e gir",
-    target: 1,
-    getCurrent: (stats) => (stats.bestLeagueRank <= 3 ? 1 : 0),
-  },
-  {
-    icon: "🚀",
-    name: "Hızlı Yükseliş",
-    desc: "Ligde ilk 5'e gir",
-    target: 1,
-    getCurrent: (stats) => (stats.bestLeagueRank <= 5 ? 1 : 0),
-  },
-  {
-    icon: "💎",
-    name: "Elmas Avcısı",
-    desc: "1000 elmas biriktir",
-    target: 1000,
-    getCurrent: (stats) => stats.gemsCollected,
-  },
-  {
-    icon: "🎯",
-    name: "Keskin Nişancı",
-    desc: "25 yıldız kazan",
-    target: 25,
-    getCurrent: (stats) => stats.starsEarned,
-  },
-  {
-    icon: "🎓",
-    name: "Akademi Mezunu",
-    desc: "40 ders tamamla",
-    target: 40,
-    getCurrent: (stats) => stats.lessonsCompleted,
-  },
-  {
-    icon: "🦩",
-    name: "Flamingo Dostu",
-    desc: "30 gün seri yap",
-    target: 30,
-    getCurrent: (stats) => stats.streakDays,
-  },
-];
+function getClaimedState() {
+  const raw = localStorage.getItem(ACHIEVEMENT_CLAIMS_KEY);
+  if (!raw) {
+    return {} as Record<string, TierLevel[]>;
+  }
 
-const achievements = achievementDefinitions.map((achievement) => {
-  const current = achievement.getCurrent(learnerStats);
-  const unlocked = current >= achievement.target;
-
-  return {
-    ...achievement,
-    current,
-    unlocked,
-    progressLabel: unlocked ? "Tamamlandı" : `${Math.min(current, achievement.target)}/${achievement.target}`,
-  };
-});
-
-const unlockedAchievements = achievements.filter((achievement) => achievement.unlocked);
-const unlockedAchievementsCount = unlockedAchievements.length;
-
-const stats = [
-  { icon: Flame, label: "Gün Serisi", value: learnerStats.streakDays.toString(), color: "text-gold" },
-  { icon: BookOpen, label: "Ders", value: learnerStats.lessonsCompleted.toString(), color: "text-sky-brand" },
-  { icon: Star, label: "Yıldız", value: learnerStats.starsEarned.toString(), color: "text-gold" },
-  { icon: Award, label: "Rozet", value: unlockedAchievementsCount.toString(), color: "text-flamingo" },
-];
+  try {
+    const parsed = JSON.parse(raw) as Record<string, TierLevel[]>;
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {} as Record<string, TierLevel[]>;
+  }
+}
 
 export default function ProfilePage({ isGuest = false, onLogout }: ProfilePageProps) {
   const profileSettings = getStoredProfileSettings();
   const profileName = profileSettings.fullName.trim() || "Alperren";
   const avatar = profileSettings.avatar.trim() || "🦩";
+  const story = useMemo(() => getProfileProgressStory(), []);
+  const [claimed, setClaimed] = useState<Record<string, TierLevel[]>>(() => getClaimedState());
+
+  const achievementTracks: AchievementTrack[] = [
+    {
+      id: "streak",
+      icon: "🔥",
+      name: "Seri Ustası",
+      desc: "En iyi serini büyüt",
+      metricValue: story.bestStreak,
+      targets: { bronze: 3, silver: 7, gold: 14 },
+    },
+    {
+      id: "xp",
+      icon: "⚡",
+      name: "XP Toplayıcı",
+      desc: "Bu hafta XP kazan",
+      metricValue: story.thisWeekXp,
+      targets: { bronze: 300, silver: 700, gold: 1200 },
+    },
+    {
+      id: "units",
+      icon: "📚",
+      name: "Ünite Fatihi",
+      desc: "Üniteleri bitir",
+      metricValue: story.completedUnits,
+      targets: { bronze: 1, silver: 3, gold: 5 },
+    },
+  ];
+
+  const totalClaimedTiers = Object.values(claimed).reduce((sum, tiers) => sum + tiers.length, 0);
+
+  const stats = [
+    { icon: Flame, label: "En iyi seri", value: story.bestStreak.toString(), color: "text-gold" },
+    { icon: BookOpen, label: "Ders", value: story.completedLessons.toString(), color: "text-sky-brand" },
+    { icon: Star, label: "Bu hafta XP", value: story.thisWeekXp.toString(), color: "text-gold" },
+    { icon: Award, label: "Claim", value: totalClaimedTiers.toString(), color: "text-flamingo" },
+  ];
+
+  const claimTier = (trackId: string, tier: TierLevel) => {
+    const next = {
+      ...claimed,
+      [trackId]: Array.from(new Set([...(claimed[trackId] ?? []), tier])),
+    };
+
+    setClaimed(next);
+    localStorage.setItem(ACHIEVEMENT_CLAIMS_KEY, JSON.stringify(next));
+  };
 
   return (
     <div className="pb-20">
-      <StatsBar streak={learnerStats.streakDays} xp={1450} hearts={5} />
+      <StatsBar streak={story.bestStreak} xp={story.thisWeekXp} hearts={5} />
 
       <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
-        {/* Avatar & Name */}
         <div className="text-center">
           <div className="w-24 h-24 mx-auto gradient-hero rounded-full flex items-center justify-center text-5xl mb-3 shadow-elevated">
             {avatar}
@@ -203,7 +111,6 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
           <p className="text-muted-foreground text-sm font-semibold">Şubat 2026'dan beri öğreniyor</p>
         </div>
 
-        {/* Stats Grid */}
         <div className="grid grid-cols-4 gap-2">
           {stats.map((stat, i) => (
             <div key={i} className="bg-card rounded-2xl p-3 text-center shadow-card">
@@ -214,34 +121,92 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
           ))}
         </div>
 
-        {/* XP Progress */}
         <div className="bg-card rounded-2xl p-4 shadow-card">
-          <XPProgress current={450} total={1000} level={5} />
+          <XPProgress current={Math.min(story.thisWeekXp, 1200)} total={1200} level={5} />
         </div>
 
-        {/* Achievements */}
         <div className="bg-card rounded-2xl p-4 shadow-card">
-          <h2 className="font-extrabold text-foreground mb-4 flex items-center gap-2">
-            <Award className="w-5 h-5 text-flamingo" />
-            Rozetler
+          <h2 className="font-extrabold text-foreground mb-3 flex items-center gap-2">
+            <Trophy className="w-5 h-5 text-gold" />
+            İlerleme Hikâyen
           </h2>
-          {unlockedAchievements.length > 0 ? (
-            <div className="grid grid-cols-3 gap-3">
-              {unlockedAchievements.map((ach, i) => (
-                <div key={i} className="text-center p-3 rounded-xl transition-all bg-gold-light">
-                  <div className="text-2xl mb-1">{ach.icon}</div>
-                  <div className="text-[10px] font-bold text-foreground">{ach.name}</div>
-                  <div className="text-[9px] text-muted-foreground mt-0.5">{ach.desc}</div>
-                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">{ach.progressLabel}</div>
-                </div>
-              ))}
+          <div className="grid grid-cols-3 gap-2 mb-3 text-center">
+            <div className="rounded-xl bg-muted/40 p-2">
+              <p className="text-[10px] text-muted-foreground font-semibold">En iyi seri</p>
+              <p className="text-sm font-black text-foreground">{story.bestStreak} gün</p>
             </div>
-          ) : (
-            <p className="text-sm text-muted-foreground font-semibold">Henüz kazanılmış rozet yok.</p>
-          )}
+            <div className="rounded-xl bg-muted/40 p-2">
+              <p className="text-[10px] text-muted-foreground font-semibold">Bu hafta XP</p>
+              <p className="text-sm font-black text-foreground">{story.thisWeekXp}</p>
+            </div>
+            <div className="rounded-xl bg-muted/40 p-2">
+              <p className="text-[10px] text-muted-foreground font-semibold">Tamamlanan ünite</p>
+              <p className="text-sm font-black text-foreground">{story.completedUnits}</p>
+            </div>
+          </div>
+          <div className="space-y-1">
+            {story.xpSeries.map((day) => (
+              <div key={day.dateKey} className="flex items-center gap-2">
+                <span className="text-[10px] font-bold text-muted-foreground w-16">{day.dateKey.slice(5)}</span>
+                <div className="h-2 rounded-full bg-sky-brand/20 flex-1 overflow-hidden">
+                  <div className="h-full bg-sky-brand" style={{ width: `${Math.min(100, (day.xp / 220) * 100)}%` }} />
+                </div>
+                <span className="text-[10px] font-bold text-foreground w-10 text-right">{day.xp}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Actions */}
+        <div className="bg-card rounded-2xl p-4 shadow-card space-y-3">
+          <h2 className="font-extrabold text-foreground flex items-center gap-2">
+            <Award className="w-5 h-5 text-flamingo" />
+            Kademeli Başarımlar
+          </h2>
+
+          {achievementTracks.map((track) => (
+            <div key={track.id} className="rounded-xl border border-border p-3">
+              <div className="flex items-center justify-between mb-2">
+                <div>
+                  <p className="text-sm font-black text-foreground">
+                    {track.icon} {track.name}
+                  </p>
+                  <p className="text-[11px] font-semibold text-muted-foreground">{track.desc}</p>
+                </div>
+                <p className="text-xs font-black text-sky-brand">İlerleme: {track.metricValue}</p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-2">
+                {TIER_ORDER.map((tier) => {
+                  const unlocked = track.metricValue >= track.targets[tier];
+                  const isClaimed = (claimed[track.id] ?? []).includes(tier);
+
+                  return (
+                    <div key={tier} className={`rounded-lg p-2 text-center ${unlocked ? "bg-gold-light" : "bg-muted/40"}`}>
+                      <p className="text-[10px] font-black text-foreground">{TIER_LABELS[tier]}</p>
+                      <p className="text-[10px] text-muted-foreground">{track.targets[tier]}</p>
+                      {isClaimed ? (
+                        <p className="text-[10px] font-bold text-emerald-600 inline-flex items-center gap-1">
+                          <CheckCircle2 className="w-3 h-3" /> Claimed
+                        </p>
+                      ) : unlocked ? (
+                        <button
+                          type="button"
+                          className="text-[10px] font-black text-flamingo"
+                          onClick={() => claimTier(track.id, tier)}
+                        >
+                          Claim
+                        </button>
+                      ) : (
+                        <p className="text-[10px] font-bold text-muted-foreground">Kilitli</p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div className="space-y-2">
           <Link
             to="/settings"
