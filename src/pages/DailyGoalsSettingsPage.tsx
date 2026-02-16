@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import { getDailyGoalTargets, saveDailyGoalTargets } from "@/lib/dailyGoals";
 
 const DEFAULT_TARGETS = {
@@ -31,6 +31,20 @@ export default function DailyGoalsSettingsPage() {
       ...prev,
       [key]: Number.isFinite(parsedValue) && parsedValue >= 0 ? Math.floor(parsedValue) : 0,
     }));
+  };
+
+  const handleZeroReplaceOnType = (key: keyof typeof targets, event: KeyboardEvent<HTMLInputElement>) => {
+    if (targets[key] !== 0) {
+      return;
+    }
+
+    if (/^[0-9]$/.test(event.key)) {
+      event.preventDefault();
+      setTargets((prev) => ({
+        ...prev,
+        [key]: Number(event.key),
+      }));
+    }
   };
 
   const handleSave = () => {
@@ -73,6 +87,7 @@ export default function DailyGoalsSettingsPage() {
               min={0}
               value={targets.lessons}
               onChange={(event) => handleTargetChange("lessons", event.target.value)}
+              onKeyDown={(event) => handleZeroReplaceOnType("lessons", event)}
             />
           </div>
 
@@ -83,6 +98,7 @@ export default function DailyGoalsSettingsPage() {
               min={0}
               value={targets.xp}
               onChange={(event) => handleTargetChange("xp", event.target.value)}
+              onKeyDown={(event) => handleZeroReplaceOnType("xp", event)}
             />
           </div>
 
@@ -93,6 +109,7 @@ export default function DailyGoalsSettingsPage() {
               min={0}
               value={targets.correctAnswers}
               onChange={(event) => handleTargetChange("correctAnswers", event.target.value)}
+              onKeyDown={(event) => handleZeroReplaceOnType("correctAnswers", event)}
             />
           </div>
 
