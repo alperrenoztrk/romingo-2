@@ -50,6 +50,9 @@ const quickActions = [
   },
 ];
 
+const TOTAL_XP = 1450;
+const XP_PER_LEVEL = 1000;
+
 export default function HomePage() {
   const navigate = useNavigate();
   const hour = new Date().getHours();
@@ -120,9 +123,12 @@ export default function HomePage() {
     [dailyGoalTargets.correctAnswers, dailyGoalTargets.lessons, dailyGoalTargets.xp, weeklyProgress],
   );
 
+  const currentLevel = Math.floor(TOTAL_XP / XP_PER_LEVEL) + 1;
+  const currentLevelXp = TOTAL_XP % XP_PER_LEVEL;
+
   return (
     <div className="pb-20">
-      <StatsBar streak={12} xp={1450} hearts={5} />
+      <StatsBar streak={12} xp={TOTAL_XP} hearts={5} />
 
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}
@@ -135,7 +141,7 @@ export default function HomePage() {
 
         {/* XP Progress */}
         <div className="bg-card rounded-2xl p-4 shadow-card">
-          <XPProgress current={450} total={1000} level={5} />
+          <XPProgress current={currentLevelXp} total={XP_PER_LEVEL} level={currentLevel} />
         </div>
 
         {/* Daily Goals */}
