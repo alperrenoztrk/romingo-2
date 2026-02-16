@@ -35,12 +35,10 @@ export default function HomePage() {
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
-  const [updatedAt, setUpdatedAt] = useState(new Date());
 
   useEffect(() => {
     const syncProgress = () => {
       setWeeklyProgress(getCurrentWeekProgress());
-      setUpdatedAt(new Date());
     };
 
     const interval = setInterval(syncProgress, 1000);
@@ -141,9 +139,6 @@ export default function HomePage() {
             <TrendingUp className="w-5 h-5 text-flamingo" />
             <div>
               <h2 className="font-extrabold text-foreground">Haftalık İlerleme</h2>
-              <p className="text-[10px] text-muted-foreground font-semibold">
-                Canlı • {updatedAt.toLocaleTimeString("tr-TR")}
-              </p>
             </div>
           </div>
           <div className="flex items-end justify-between gap-1">
