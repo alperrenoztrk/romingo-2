@@ -7,27 +7,27 @@ import { getCurrentWeekProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
 import {
-  DailyGoalMetricKey,
-  getDailyGoalSlots,
   getTodayCorrectAnswers,
   getTodayXpProgress,
-  saveDailyGoalSlots,
 } from "../lib/dailyGoals";
 
-const GOAL_DEFINITIONS: Record<DailyGoalMetricKey, { label: string; target: number }> = {
-  lessons: {
+const GOAL_DEFINITIONS = [
+  {
+    metricKey: "lessons",
     label: "Ders Tamamla",
     target: 1,
   },
-  xp: {
+  {
+    metricKey: "xp",
     label: "XP Kazan",
     target: 120,
   },
-  correctAnswers: {
+  {
+    metricKey: "correctAnswers",
     label: "Doğru Cevap Ver",
     target: 10,
   },
-};
+] as const;
 
 const quickActions = [
   {
@@ -56,7 +56,6 @@ export default function HomePage() {
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
-  const [dailyGoalSlots, setDailyGoalSlots] = useState(getDailyGoalSlots());
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
     xp: getTodayXpProgress(),
@@ -66,7 +65,6 @@ export default function HomePage() {
   useEffect(() => {
     const syncProgress = () => {
       setWeeklyProgress(getCurrentWeekProgress());
-      setDailyGoalSlots(getDailyGoalSlots());
       setTodayMetrics({
         lessons: getCompletedLessonsCountForDate(),
         xp: getTodayXpProgress(),
@@ -89,22 +87,14 @@ export default function HomePage() {
 
   const dailyGoals = useMemo(
     () =>
-      dailyGoalSlots.map((metricKey, index) => ({
-        id: `${metricKey}-${index}`,
-        metricKey,
-        label: GOAL_DEFINITIONS[metricKey].label,
-        target: GOAL_DEFINITIONS[metricKey].target,
-        current: todayMetrics[metricKey],
+      GOAL_DEFINITIONS.map((goal) => ({
+        id: goal.metricKey,
+        label: goal.label,
+        target: goal.target,
+        current: todayMetrics[goal.metricKey],
       })),
-    [dailyGoalSlots, todayMetrics],
+    [todayMetrics],
   );
-
-  const updateGoalMetric = (index: number, metricKey: DailyGoalMetricKey) => {
-    const nextSlots = [...dailyGoalSlots] as typeof dailyGoalSlots;
-    nextSlots[index] = metricKey;
-    setDailyGoalSlots(nextSlots);
-    saveDailyGoalSlots(nextSlots);
-  };
 
   return (
     <div className="pb-20">
@@ -131,7 +121,7 @@ export default function HomePage() {
             Günlük Hedefler
           </h2>
           <div className="space-y-3">
-            {dailyGoals.map((goal, index) => {
+            {dailyGoals.map((goal) => {
               const done = goal.current >= goal.target;
 
               return (
@@ -159,22 +149,6 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
-                  <label className="sr-only" htmlFor={`daily-goal-${goal.id}`}>
-                    Hedef türünü seç
-                  </label>
-                  <select
-                    id={`daily-goal-${goal.id}`}
-                    aria-label="Hedef türünü seç"
-                    value={goal.metricKey}
-                    onChange={(event) => updateGoalMetric(index, event.target.value as DailyGoalMetricKey)}
-                    className="h-8 rounded-lg border border-border bg-muted px-2 text-xs font-semibold text-foreground"
-                  >
-                    {Object.entries(GOAL_DEFINITIONS).map(([key, config]) => (
-                      <option key={key} value={key}>
-                        {config.label}
-                      </option>
-                    ))}
-                  </select>
                 </div>
               );
             })}
