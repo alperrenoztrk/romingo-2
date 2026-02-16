@@ -4,6 +4,7 @@ import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
 import { BookOpen, Languages, Target, Star, TrendingUp } from "lucide-react";
 import { getCurrentWeekProgress } from "../lib/weeklyProgress";
+import { getStoredProfileSettings } from "../lib/account";
 
 const quickActions = [
   {
@@ -33,7 +34,10 @@ const dailyGoals = [
 export default function HomePage() {
   const navigate = useNavigate();
   const hour = new Date().getHours();
-  const greeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
+  const baseGreeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
+  const profileSettings = getStoredProfileSettings();
+  const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
+  const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
 
   useEffect(() => {
