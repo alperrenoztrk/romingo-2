@@ -11,7 +11,7 @@ export interface MultipleChoiceExercise {
 export interface TranslationExercise {
   type: "translation";
   sentence: string;
-  direction: "tr-en" | "en-tr";
+  direction: "tr-ro" | "ro-tr";
   correctAnswer: string;
   acceptedAnswers: string[];
   hint?: string;
@@ -64,7 +64,7 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Merhaba" ne demek?',
-        options: ["Goodbye", "Hello", "Thank you", "Please"],
+        options: ["La revedere", "Bună", "Mulțumesc", "Te rog"],
         correctIndex: 1,
       },
       {
@@ -75,24 +75,24 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "Good morning",
-        direction: "en-tr",
+        sentence: "Bună dimineața",
+        direction: "ro-tr",
         correctAnswer: "Günaydın",
         acceptedAnswers: ["Günaydın", "günaydın"],
       },
       {
         type: "multiple_choice",
         question: '"Hoşça kal" ne demek?',
-        options: ["Hello", "Good night", "Goodbye", "See you"],
+        options: ["Bună", "Noapte bună", "La revedere", "Ne vedem"],
         correctIndex: 2,
       },
       {
         type: "matching",
         pairs: [
-          { left: "Merhaba", right: "Hello" },
-          { left: "Günaydın", right: "Good morning" },
-          { left: "İyi akşamlar", right: "Good evening" },
-          { left: "İyi geceler", right: "Good night" },
+          { left: "Merhaba", right: "Bună" },
+          { left: "Günaydın", right: "Bună dimineața" },
+          { left: "İyi akşamlar", right: "Bună seara" },
+          { left: "İyi geceler", right: "Noapte bună" },
         ],
       },
       {
@@ -104,9 +104,9 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "İyi akşamlar",
-        direction: "tr-en",
-        correctAnswer: "Good evening",
-        acceptedAnswers: ["Good evening", "good evening"],
+        direction: "tr-ro",
+        correctAnswer: "Bună seara",
+        acceptedAnswers: ["Bună seara", "bună seara"],
       },
       {
         type: "multiple_choice",
@@ -126,7 +126,7 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Benim adım Ali" ne demek?',
-        options: ["I am fine", "My name is Ali", "I like Ali", "Ali is here"],
+        options: ["Sunt bine", "Numele meu este Ali", "Ali'yi severim", "Ali burada"],
         correctIndex: 1,
       },
       {
@@ -137,8 +137,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "What is your name?",
-        direction: "en-tr",
+        sentence: "Cum te cheamă?",
+        direction: "ro-tr",
         correctAnswer: "Adın ne?",
         acceptedAnswers: ["Adın ne?", "Adın ne", "Senin adın ne?", "İsmin ne?"],
       },
@@ -151,10 +151,10 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "matching",
         pairs: [
-          { left: "Adın ne?", right: "What's your name?" },
-          { left: "Memnun oldum", right: "Nice to meet you" },
-          { left: "Nerelisin?", right: "Where are you from?" },
-          { left: "Ben Türküm", right: "I am Turkish" },
+          { left: "Adın ne?", right: "Cum te cheamă?" },
+          { left: "Memnun oldum", right: "Încântat(ă) de cunoștință" },
+          { left: "Nerelisin?", right: "De unde ești?" },
+          { left: "Ben Türküm", right: "Sunt turc/turcă" },
         ],
       },
       {
@@ -166,9 +166,9 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "Ben İstanbul'dan geliyorum",
-        direction: "tr-en",
-        correctAnswer: "I am from Istanbul",
-        acceptedAnswers: ["I am from Istanbul", "I come from Istanbul", "I'm from Istanbul"],
+        direction: "tr-ro",
+        correctAnswer: "Sunt din Istanbul",
+        acceptedAnswers: ["Sunt din Istanbul", "Vin din Istanbul", "Sunt din Istanbul"],
       },
       {
         type: "multiple_choice",
@@ -208,8 +208,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "twelve",
-        direction: "en-tr",
+        sentence: "doisprezece",
+        direction: "ro-tr",
         correctAnswer: "on iki",
         acceptedAnswers: ["on iki", "On iki", "oniki"],
       },
@@ -237,9 +237,9 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "on yedi",
-        direction: "tr-en",
-        correctAnswer: "seventeen",
-        acceptedAnswers: ["seventeen", "Seventeen", "17"],
+        direction: "tr-ro",
+        correctAnswer: "șaptesprezece",
+        acceptedAnswers: ["șaptesprezece", "Șaptesprezece", "17"],
       },
     ],
   },
@@ -259,10 +259,10 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "matching",
         pairs: [
-          { left: "Kırmızı", right: "Red" },
-          { left: "Mavi", right: "Blue" },
-          { left: "Yeşil", right: "Green" },
-          { left: "Sarı", right: "Yellow" },
+          { left: "Kırmızı", right: "Roșu" },
+          { left: "Mavi", right: "Albastru" },
+          { left: "Yeşil", right: "Verde" },
+          { left: "Sarı", right: "Galben" },
         ],
       },
       {
@@ -273,15 +273,15 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "White",
-        direction: "en-tr",
+        sentence: "Alb",
+        direction: "ro-tr",
         correctAnswer: "Beyaz",
         acceptedAnswers: ["Beyaz", "beyaz"],
       },
       {
         type: "multiple_choice",
-        question: '🟡 "Sarı" İngilizce ne?',
-        options: ["Orange", "Yellow", "Gold", "Brown"],
+        question: '🟡 "Sarı" Romence ne?',
+        options: ["Portocaliu", "Galben", "Auriu", "Maro"],
         correctIndex: 1,
       },
       {
@@ -293,18 +293,18 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "matching",
         pairs: [
-          { left: "Siyah", right: "Black" },
-          { left: "Beyaz", right: "White" },
-          { left: "Turuncu", right: "Orange" },
-          { left: "Mor", right: "Purple" },
+          { left: "Siyah", right: "Negru" },
+          { left: "Beyaz", right: "Alb" },
+          { left: "Turuncu", right: "Portocaliu" },
+          { left: "Mor", right: "Mov" },
         ],
       },
       {
         type: "translation",
         sentence: "Pembe",
-        direction: "tr-en",
-        correctAnswer: "Pink",
-        acceptedAnswers: ["Pink", "pink"],
+        direction: "tr-ro",
+        correctAnswer: "Roz",
+        acceptedAnswers: ["Roz", "roz"],
       },
     ],
   },
@@ -318,16 +318,16 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Ekmek" ne demek?',
-        options: ["Water", "Bread", "Cheese", "Milk"],
+        options: ["Apă", "Pâine", "Brânză", "Lapte"],
         correctIndex: 1,
       },
       {
         type: "matching",
         pairs: [
-          { left: "Ekmek", right: "Bread" },
-          { left: "Peynir", right: "Cheese" },
-          { left: "Elma", right: "Apple" },
-          { left: "Tavuk", right: "Chicken" },
+          { left: "Ekmek", right: "Pâine" },
+          { left: "Peynir", right: "Brânză" },
+          { left: "Elma", right: "Măr" },
+          { left: "Tavuk", right: "Pui" },
         ],
       },
       {
@@ -338,15 +338,15 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "I eat rice",
-        direction: "en-tr",
+        sentence: "Mănânc orez",
+        direction: "ro-tr",
         correctAnswer: "Pilav yerim",
         acceptedAnswers: ["Pilav yerim", "Ben pilav yerim", "pilav yerim"],
       },
       {
         type: "multiple_choice",
         question: '"Çorba" ne demek?',
-        options: ["Salad", "Soup", "Dessert", "Meat"],
+        options: ["Salată", "Supă", "Desert", "Carne"],
         correctIndex: 1,
       },
       {
@@ -358,18 +358,18 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "matching",
         pairs: [
-          { left: "Çorba", right: "Soup" },
-          { left: "Pilav", right: "Rice" },
-          { left: "Salata", right: "Salad" },
-          { left: "Bal", right: "Honey" },
+          { left: "Çorba", right: "Supă" },
+          { left: "Pilav", right: "Orez" },
+          { left: "Salata", right: "Salată" },
+          { left: "Bal", right: "Miere" },
         ],
       },
       {
         type: "translation",
         sentence: "Peynir",
-        direction: "tr-en",
-        correctAnswer: "Cheese",
-        acceptedAnswers: ["Cheese", "cheese"],
+        direction: "tr-ro",
+        correctAnswer: "Brânză",
+        acceptedAnswers: ["Brânză", "brânză"],
       },
     ],
   },
@@ -383,16 +383,16 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Su" ne demek?',
-        options: ["Tea", "Coffee", "Water", "Juice"],
+        options: ["Ceai", "Cafea", "Apă", "Suc"],
         correctIndex: 2,
       },
       {
         type: "matching",
         pairs: [
-          { left: "Su", right: "Water" },
-          { left: "Çay", right: "Tea" },
-          { left: "Kahve", right: "Coffee" },
-          { left: "Süt", right: "Milk" },
+          { left: "Su", right: "Apă" },
+          { left: "Çay", right: "Ceai" },
+          { left: "Kahve", right: "Cafea" },
+          { left: "Süt", right: "Lapte" },
         ],
       },
       {
@@ -403,8 +403,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "I drink coffee",
-        direction: "en-tr",
+        sentence: "Beau cafea",
+        direction: "ro-tr",
         correctAnswer: "Kahve içerim",
         acceptedAnswers: ["Kahve içerim", "Ben kahve içerim", "kahve içerim"],
       },
@@ -423,9 +423,9 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "Meyve suyu",
-        direction: "tr-en",
-        correctAnswer: "Fruit juice",
-        acceptedAnswers: ["Fruit juice", "fruit juice", "Juice", "juice"],
+        direction: "tr-ro",
+        correctAnswer: "Suc de fructe",
+        acceptedAnswers: ["Suc de fructe", "suc de fructe", "Suc", "suc"],
       },
       {
         type: "multiple_choice",
@@ -445,16 +445,16 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Anne" ne demek?',
-        options: ["Father", "Mother", "Sister", "Brother"],
+        options: ["Tată", "Mamă", "Soră", "Frate"],
         correctIndex: 1,
       },
       {
         type: "matching",
         pairs: [
-          { left: "Anne", right: "Mother" },
-          { left: "Baba", right: "Father" },
-          { left: "Kardeş", right: "Sibling" },
-          { left: "Dede", right: "Grandfather" },
+          { left: "Anne", right: "Mamă" },
+          { left: "Baba", right: "Tată" },
+          { left: "Kardeş", right: "Frate/Soră" },
+          { left: "Dede", right: "Bunic" },
         ],
       },
       {
@@ -465,8 +465,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "My father",
-        direction: "en-tr",
+        sentence: "Tatăl meu",
+        direction: "ro-tr",
         correctAnswer: "Babam",
         acceptedAnswers: ["Babam", "babam", "Benim babam"],
       },
@@ -486,8 +486,8 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "matching",
         pairs: [
-          { left: "Abla", right: "Elder sister" },
-          { left: "Ağabey", right: "Elder brother" },
+          { left: "Abla", right: "Soră mai mare" },
+          { left: "Ağabey", right: "Frate mai mare" },
           { left: "Teyze", right: "Aunt (maternal)" },
           { left: "Amca", right: "Uncle (paternal)" },
         ],
@@ -495,9 +495,9 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "Kardeşim",
-        direction: "tr-en",
-        correctAnswer: "My sibling",
-        acceptedAnswers: ["My sibling", "My brother", "My sister", "my sibling"],
+        direction: "tr-ro",
+        correctAnswer: "Fratele/Sora mea",
+        acceptedAnswers: ["Fratele/Sora mea", "Fratele meu", "Sora mea", "fratele/sora mea"],
       },
     ],
   },
@@ -511,16 +511,16 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Kedi" ne demek?',
-        options: ["Dog", "Cat", "Bird", "Fish"],
+        options: ["Câine", "Pisică", "Pasăre", "Pește"],
         correctIndex: 1,
       },
       {
         type: "matching",
         pairs: [
-          { left: "Kedi", right: "Cat" },
-          { left: "Köpek", right: "Dog" },
-          { left: "Kuş", right: "Bird" },
-          { left: "Balık", right: "Fish" },
+          { left: "Kedi", right: "Pisică" },
+          { left: "Köpek", right: "Câine" },
+          { left: "Kuş", right: "Pasăre" },
+          { left: "Balık", right: "Pește" },
         ],
       },
       {
@@ -532,8 +532,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "Horse",
-        direction: "en-tr",
+        sentence: "Cal",
+        direction: "ro-tr",
         correctAnswer: "At",
         acceptedAnswers: ["At", "at"],
       },
@@ -552,17 +552,17 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "Kaplumbağa",
-        direction: "tr-en",
-        correctAnswer: "Turtle",
-        acceptedAnswers: ["Turtle", "turtle", "Tortoise", "tortoise"],
+        direction: "tr-ro",
+        correctAnswer: "Broască țestoasă",
+        acceptedAnswers: ["Broască țestoasă", "broască țestoasă", "Țestoasă", "țestoasă"],
       },
       {
         type: "matching",
         pairs: [
-          { left: "At", right: "Horse" },
-          { left: "İnek", right: "Cow" },
-          { left: "Tavuk", right: "Chicken" },
-          { left: "Koyun", right: "Sheep" },
+          { left: "At", right: "Cal" },
+          { left: "İnek", right: "Vacă" },
+          { left: "Tavuk", right: "Pui" },
+          { left: "Koyun", right: "Oaie" },
         ],
       },
     ],
@@ -577,16 +577,16 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Doktor" ne demek?',
-        options: ["Teacher", "Doctor", "Engineer", "Lawyer"],
+        options: ["Profesor", "Medic", "Inginer", "Avocat"],
         correctIndex: 1,
       },
       {
         type: "matching",
         pairs: [
-          { left: "Doktor", right: "Doctor" },
-          { left: "Öğretmen", right: "Teacher" },
-          { left: "Mühendis", right: "Engineer" },
-          { left: "Avukat", right: "Lawyer" },
+          { left: "Doktor", right: "Medic" },
+          { left: "Öğretmen", right: "Profesor" },
+          { left: "Mühendis", right: "Inginer" },
+          { left: "Avukat", right: "Avocat" },
         ],
       },
       {
@@ -597,8 +597,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "I am a student",
-        direction: "en-tr",
+        sentence: "Sunt student",
+        direction: "ro-tr",
         correctAnswer: "Ben bir öğrenciyim",
         acceptedAnswers: ["Ben bir öğrenciyim", "Öğrenciyim", "Ben öğrenciyim"],
       },
@@ -617,17 +617,17 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "Hemşire",
-        direction: "tr-en",
-        correctAnswer: "Nurse",
-        acceptedAnswers: ["Nurse", "nurse"],
+        direction: "tr-ro",
+        correctAnswer: "Asistent(ă) medical(ă)",
+        acceptedAnswers: ["Asistent(ă) medical(ă)", "asistent(ă) medical(ă)"],
       },
       {
         type: "matching",
         pairs: [
-          { left: "Aşçı", right: "Chef" },
+          { left: "Aşçı", right: "Bucătar" },
           { left: "Pilot", right: "Pilot" },
-          { left: "Şoför", right: "Driver" },
-          { left: "Hemşire", right: "Nurse" },
+          { left: "Şoför", right: "Șofer" },
+          { left: "Hemşire", right: "Asistent(ă) medical(ă)" },
         ],
       },
     ],
@@ -648,10 +648,10 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "matching",
         pairs: [
-          { left: "Pazartesi", right: "Monday" },
-          { left: "Çarşamba", right: "Wednesday" },
-          { left: "Cuma", right: "Friday" },
-          { left: "Pazar", right: "Sunday" },
+          { left: "Pazartesi", right: "Luni" },
+          { left: "Çarşamba", right: "Miercuri" },
+          { left: "Cuma", right: "Vineri" },
+          { left: "Pazar", right: "Duminică" },
         ],
       },
       {
@@ -662,8 +662,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "Thursday",
-        direction: "en-tr",
+        sentence: "Joi",
+        direction: "ro-tr",
         correctAnswer: "Perşembe",
         acceptedAnswers: ["Perşembe", "perşembe"],
       },
@@ -682,17 +682,17 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "Salı",
-        direction: "tr-en",
-        correctAnswer: "Tuesday",
-        acceptedAnswers: ["Tuesday", "tuesday"],
+        direction: "tr-ro",
+        correctAnswer: "Marți",
+        acceptedAnswers: ["Marți", "marți"],
       },
       {
         type: "matching",
         pairs: [
-          { left: "Salı", right: "Tuesday" },
-          { left: "Perşembe", right: "Thursday" },
-          { left: "Cumartesi", right: "Saturday" },
-          { left: "Pazartesi", right: "Monday" },
+          { left: "Salı", right: "Marți" },
+          { left: "Perşembe", right: "Joi" },
+          { left: "Cumartesi", right: "Sâmbătă" },
+          { left: "Pazartesi", right: "Luni" },
         ],
       },
     ],
@@ -707,16 +707,16 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"İlkbahar" ne demek?',
-        options: ["Summer", "Autumn", "Spring", "Winter"],
+        options: ["Vară", "Toamnă", "Primăvară", "Iarnă"],
         correctIndex: 2,
       },
       {
         type: "matching",
         pairs: [
-          { left: "İlkbahar", right: "Spring" },
-          { left: "Yaz", right: "Summer" },
-          { left: "Sonbahar", right: "Autumn" },
-          { left: "Kış", right: "Winter" },
+          { left: "İlkbahar", right: "Primăvară" },
+          { left: "Yaz", right: "Vară" },
+          { left: "Sonbahar", right: "Toamnă" },
+          { left: "Kış", right: "Iarnă" },
         ],
       },
       {
@@ -727,8 +727,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "Summer",
-        direction: "en-tr",
+        sentence: "Vară",
+        direction: "ro-tr",
         correctAnswer: "Yaz",
         acceptedAnswers: ["Yaz", "yaz"],
       },
@@ -747,9 +747,9 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "Sonbahar",
-        direction: "tr-en",
-        correctAnswer: "Autumn",
-        acceptedAnswers: ["Autumn", "autumn", "Fall", "fall"],
+        direction: "tr-ro",
+        correctAnswer: "Toamnă",
+        acceptedAnswers: ["Toamnă", "toamnă"],
       },
       {
         type: "multiple_choice",
@@ -769,16 +769,16 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Güneşli" ne demek?',
-        options: ["Rainy", "Cloudy", "Sunny", "Windy"],
+        options: ["Ploios", "Noros", "Însorit", "Vântos"],
         correctIndex: 2,
       },
       {
         type: "matching",
         pairs: [
-          { left: "Güneşli", right: "Sunny" },
-          { left: "Yağmurlu", right: "Rainy" },
-          { left: "Bulutlu", right: "Cloudy" },
-          { left: "Karlı", right: "Snowy" },
+          { left: "Güneşli", right: "Însorit" },
+          { left: "Yağmurlu", right: "Ploios" },
+          { left: "Bulutlu", right: "Noros" },
+          { left: "Karlı", right: "Cu zăpadă" },
         ],
       },
       {
@@ -789,15 +789,15 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "It is raining",
-        direction: "en-tr",
+        sentence: "Plouă",
+        direction: "ro-tr",
         correctAnswer: "Yağmur yağıyor",
         acceptedAnswers: ["Yağmur yağıyor", "yağmur yağıyor"],
       },
       {
         type: "multiple_choice",
         question: '"Rüzgarlı" ne demek?',
-        options: ["Foggy", "Windy", "Hot", "Cold"],
+        options: ["Cețos", "Vântos", "Cald", "Rece"],
         correctIndex: 1,
       },
       {
@@ -809,17 +809,17 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "translation",
         sentence: "Soğuk",
-        direction: "tr-en",
-        correctAnswer: "Cold",
-        acceptedAnswers: ["Cold", "cold"],
+        direction: "tr-ro",
+        correctAnswer: "Rece",
+        acceptedAnswers: ["Rece", "rece"],
       },
       {
         type: "matching",
         pairs: [
-          { left: "Sıcak", right: "Hot" },
-          { left: "Soğuk", right: "Cold" },
-          { left: "Rüzgarlı", right: "Windy" },
-          { left: "Sisli", right: "Foggy" },
+          { left: "Sıcak", right: "Cald" },
+          { left: "Soğuk", right: "Rece" },
+          { left: "Rüzgarlı", right: "Vântos" },
+          { left: "Sisli", right: "Cețos" },
         ],
       },
     ],

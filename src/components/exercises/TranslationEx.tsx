@@ -19,7 +19,7 @@ export default function TranslationEx({ exercise, onAnswer, answered }: Props) {
     onAnswer(isCorrect);
   };
 
-  const dirLabel = exercise.direction === "en-tr" ? "İngilizce → Türkçe" : "Türkçe → İngilizce";
+  const dirLabel = exercise.direction === "ro-tr" ? "Romence → Türkçe" : "Türkçe → Romence";
 
   return (
     <div>
