@@ -162,7 +162,7 @@ export default function HomePage() {
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}
         <div className="flex items-center gap-4">
-          <div className="text-5xl animate-float">🦩</div>
+          <div className="text-5xl">🦩</div>
           <div>
             <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
           </div>
