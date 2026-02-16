@@ -4,7 +4,7 @@ import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
 import { BookOpen, Languages, Target, Star, TrendingUp } from "lucide-react";
 import { getCurrentWeekProgress } from "../lib/weeklyProgress";
-import { getStoredProfileSettings } from "../lib/account";
+import { PROFILE_SETTINGS_UPDATED_EVENT, getStoredProfileSettings } from "../lib/account";
 
 const quickActions = [
   {
@@ -35,22 +35,30 @@ export default function HomePage() {
   const navigate = useNavigate();
   const hour = new Date().getHours();
   const baseGreeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
-  const profileSettings = getStoredProfileSettings();
+  const [profileSettings, setProfileSettings] = useState(getStoredProfileSettings);
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
 
   useEffect(() => {
+    const syncProfileSettings = () => {
+      setProfileSettings(getStoredProfileSettings());
+    };
+
     const syncProgress = () => {
       setWeeklyProgress(getCurrentWeekProgress());
     };
 
     const interval = setInterval(syncProgress, 1000);
     window.addEventListener("storage", syncProgress);
+    window.addEventListener("storage", syncProfileSettings);
+    window.addEventListener(PROFILE_SETTINGS_UPDATED_EVENT, syncProfileSettings);
 
     return () => {
       clearInterval(interval);
       window.removeEventListener("storage", syncProgress);
+      window.removeEventListener("storage", syncProfileSettings);
+      window.removeEventListener(PROFILE_SETTINGS_UPDATED_EVENT, syncProfileSettings);
     };
   }, []);
 
@@ -63,7 +71,7 @@ export default function HomePage() {
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}
         <div className="flex items-center gap-4">
-          <div className="text-5xl animate-float">🦩</div>
+          <div className="text-5xl animate-float">{profileSettings.avatar || "🦩"}</div>
           <div>
             <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
           </div>

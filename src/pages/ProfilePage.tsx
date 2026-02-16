@@ -2,6 +2,8 @@ import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
 import { Flame, BookOpen, Star, Award, Settings, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { PROFILE_SETTINGS_UPDATED_EVENT, getStoredProfileSettings } from "@/lib/account";
 
 type ProfilePageProps = {
   isGuest?: boolean;
@@ -99,6 +101,22 @@ const stats = [
 ];
 
 export default function ProfilePage({ isGuest = false, onLogout }: ProfilePageProps) {
+  const [profileSettings, setProfileSettings] = useState(getStoredProfileSettings);
+
+  useEffect(() => {
+    const syncProfileSettings = () => {
+      setProfileSettings(getStoredProfileSettings());
+    };
+
+    window.addEventListener("storage", syncProfileSettings);
+    window.addEventListener(PROFILE_SETTINGS_UPDATED_EVENT, syncProfileSettings);
+
+    return () => {
+      window.removeEventListener("storage", syncProfileSettings);
+      window.removeEventListener(PROFILE_SETTINGS_UPDATED_EVENT, syncProfileSettings);
+    };
+  }, []);
+
   return (
     <div className="pb-20">
       <StatsBar streak={learnerStats.streakDays} xp={1450} hearts={5} />
@@ -107,9 +125,9 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
         {/* Avatar & Name */}
         <div className="text-center">
           <div className="w-24 h-24 mx-auto gradient-hero rounded-full flex items-center justify-center text-5xl mb-3 shadow-elevated">
-            🦩
+            {profileSettings.avatar || "🦩"}
           </div>
-          <h1 className="text-xl font-black text-foreground">{isGuest ? "Misafir" : "Alperren"}</h1>
+          <h1 className="text-xl font-black text-foreground">{isGuest ? "Misafir" : profileSettings.fullName}</h1>
           <p className="text-muted-foreground text-sm font-semibold">Şubat 2026'dan beri öğreniyor</p>
         </div>
 

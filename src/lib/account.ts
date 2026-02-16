@@ -12,6 +12,7 @@ export interface SecuritySettings {
 
 export const PROFILE_SETTINGS_KEY = "romingo_profile_settings";
 export const SECURITY_SETTINGS_KEY = "romingo_security_settings";
+export const PROFILE_SETTINGS_UPDATED_EVENT = "romingo:profile-settings-updated";
 
 export const DEFAULT_PROFILE_SETTINGS: ProfileSettings = {
   fullName: "Alperren",
@@ -44,6 +45,9 @@ export function getStoredProfileSettings(): ProfileSettings {
 
 export function saveProfileSettings(settings: ProfileSettings) {
   localStorage.setItem(PROFILE_SETTINGS_KEY, JSON.stringify(settings));
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event(PROFILE_SETTINGS_UPDATED_EVENT));
+  }
 }
 
 export function getStoredSecuritySettings(): SecuritySettings {
