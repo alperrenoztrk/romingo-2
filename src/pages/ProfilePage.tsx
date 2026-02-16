@@ -90,7 +90,8 @@ const achievements = achievementDefinitions.map((achievement) => {
   };
 });
 
-const unlockedAchievementsCount = achievements.filter((achievement) => achievement.unlocked).length;
+const unlockedAchievements = achievements.filter((achievement) => achievement.unlocked);
+const unlockedAchievementsCount = unlockedAchievements.length;
 
 const stats = [
   { icon: Flame, label: "Gün Serisi", value: learnerStats.streakDays.toString(), color: "text-gold" },
@@ -140,21 +141,20 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
             <Award className="w-5 h-5 text-flamingo" />
             Rozetler
           </h2>
-          <div className="grid grid-cols-3 gap-3">
-            {achievements.map((ach, i) => (
-              <div
-                key={i}
-                className={`text-center p-3 rounded-xl transition-all ${
-                  ach.unlocked ? "bg-gold-light" : "bg-muted opacity-50"
-                }`}
-              >
-                <div className={`text-2xl mb-1 ${!ach.unlocked ? "grayscale" : ""}`}>{ach.icon}</div>
-                <div className="text-[10px] font-bold text-foreground">{ach.name}</div>
-                <div className="text-[9px] text-muted-foreground mt-0.5">{ach.desc}</div>
-                <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">{ach.progressLabel}</div>
-              </div>
-            ))}
-          </div>
+          {unlockedAchievements.length > 0 ? (
+            <div className="grid grid-cols-3 gap-3">
+              {unlockedAchievements.map((ach, i) => (
+                <div key={i} className="text-center p-3 rounded-xl transition-all bg-gold-light">
+                  <div className="text-2xl mb-1">{ach.icon}</div>
+                  <div className="text-[10px] font-bold text-foreground">{ach.name}</div>
+                  <div className="text-[9px] text-muted-foreground mt-0.5">{ach.desc}</div>
+                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">{ach.progressLabel}</div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground font-semibold">Henüz kazanılmış rozet yok.</p>
+          )}
         </div>
 
         {/* Actions */}
