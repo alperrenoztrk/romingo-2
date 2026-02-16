@@ -3,26 +3,100 @@ import XPProgress from "../components/XPProgress";
 import { Flame, BookOpen, Star, Award, Settings, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const achievements = [
-  { icon: "🔥", name: "İlk Seri", desc: "3 gün üst üste çalış", unlocked: true },
-  { icon: "📚", name: "Kitap Kurdu", desc: "10 ders tamamla", unlocked: true },
-  { icon: "⭐", name: "Yıldız Toplayıcı", desc: "15 yıldız kazan", unlocked: true },
-  { icon: "🏆", name: "Lig Şampiyonu", desc: "Bir ligde 1. ol", unlocked: false },
-  { icon: "💎", name: "Elmas Avcısı", desc: "1000 elmas biriktir", unlocked: false },
-  { icon: "🦩", name: "Flamingo Dostu", desc: "30 gün seri yap", unlocked: false },
+type LearnerStats = {
+  streakDays: number;
+  lessonsCompleted: number;
+  starsEarned: number;
+  gemsCollected: number;
+  bestLeagueRank: number;
+};
+
+type AchievementDefinition = {
+  icon: string;
+  name: string;
+  desc: string;
+  target: number;
+  getCurrent: (stats: LearnerStats) => number;
+};
+
+const learnerStats: LearnerStats = {
+  streakDays: 12,
+  lessonsCompleted: 24,
+  starsEarned: 67,
+  gemsCollected: 720,
+  bestLeagueRank: 2,
+};
+
+const achievementDefinitions: AchievementDefinition[] = [
+  {
+    icon: "🔥",
+    name: "İlk Seri",
+    desc: "3 gün üst üste çalış",
+    target: 3,
+    getCurrent: (stats) => stats.streakDays,
+  },
+  {
+    icon: "📚",
+    name: "Kitap Kurdu",
+    desc: "10 ders tamamla",
+    target: 10,
+    getCurrent: (stats) => stats.lessonsCompleted,
+  },
+  {
+    icon: "⭐",
+    name: "Yıldız Toplayıcı",
+    desc: "15 yıldız kazan",
+    target: 15,
+    getCurrent: (stats) => stats.starsEarned,
+  },
+  {
+    icon: "🏆",
+    name: "Lig Şampiyonu",
+    desc: "Bir ligde 1. ol",
+    target: 1,
+    getCurrent: (stats) => (stats.bestLeagueRank === 1 ? 1 : 0),
+  },
+  {
+    icon: "💎",
+    name: "Elmas Avcısı",
+    desc: "1000 elmas biriktir",
+    target: 1000,
+    getCurrent: (stats) => stats.gemsCollected,
+  },
+  {
+    icon: "🦩",
+    name: "Flamingo Dostu",
+    desc: "30 gün seri yap",
+    target: 30,
+    getCurrent: (stats) => stats.streakDays,
+  },
 ];
 
+const achievements = achievementDefinitions.map((achievement) => {
+  const current = achievement.getCurrent(learnerStats);
+  const unlocked = current >= achievement.target;
+
+  return {
+    ...achievement,
+    current,
+    unlocked,
+    progressLabel: unlocked ? "Tamamlandı" : `${Math.min(current, achievement.target)}/${achievement.target}`,
+  };
+});
+
+const unlockedAchievementsCount = achievements.filter((achievement) => achievement.unlocked).length;
+
 const stats = [
-  { icon: Flame, label: "Gün Serisi", value: "12", color: "text-gold" },
-  { icon: BookOpen, label: "Ders", value: "24", color: "text-sky-brand" },
-  { icon: Star, label: "Yıldız", value: "67", color: "text-gold" },
-  { icon: Award, label: "Rozet", value: "3", color: "text-flamingo" },
+  { icon: Flame, label: "Gün Serisi", value: learnerStats.streakDays.toString(), color: "text-gold" },
+  { icon: BookOpen, label: "Ders", value: learnerStats.lessonsCompleted.toString(), color: "text-sky-brand" },
+  { icon: Star, label: "Yıldız", value: learnerStats.starsEarned.toString(), color: "text-gold" },
+  { icon: Award, label: "Rozet", value: unlockedAchievementsCount.toString(), color: "text-flamingo" },
 ];
 
 export default function ProfilePage() {
   return (
     <div className="pb-20">
-      <StatsBar streak={12} xp={1450} hearts={5} />
+      <StatsBar streak={learnerStats.streakDays} xp={1450} hearts={5} />
 
       <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
         {/* Avatar & Name */}
@@ -31,9 +105,7 @@ export default function ProfilePage() {
             🦩
           </div>
           <h1 className="text-xl font-black text-foreground">Alperren</h1>
-          <p className="text-muted-foreground text-sm font-semibold">
-            Şubat 2026'dan beri öğreniyor
-          </p>
+          <p className="text-muted-foreground text-sm font-semibold">Şubat 2026'dan beri öğreniyor</p>
         </div>
 
         {/* Stats Grid */}
@@ -63,15 +135,13 @@ export default function ProfilePage() {
               <div
                 key={i}
                 className={`text-center p-3 rounded-xl transition-all ${
-                  ach.unlocked
-                    ? "bg-gold-light"
-                    : "bg-muted opacity-50"
+                  ach.unlocked ? "bg-gold-light" : "bg-muted opacity-50"
                 }`}
               >
-                <div className={`text-2xl mb-1 ${!ach.unlocked ? "grayscale" : ""}`}>
-                  {ach.icon}
-                </div>
+                <div className={`text-2xl mb-1 ${!ach.unlocked ? "grayscale" : ""}`}>{ach.icon}</div>
                 <div className="text-[10px] font-bold text-foreground">{ach.name}</div>
+                <div className="text-[9px] text-muted-foreground mt-0.5">{ach.desc}</div>
+                <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">{ach.progressLabel}</div>
               </div>
             ))}
           </div>
