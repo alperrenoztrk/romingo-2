@@ -58,7 +58,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "1",
     title: "Selamlaşma",
     emoji: "👋",
-    description: "Duolingo tarzında selamlaşma kalıplarını adım adım öğren",
+    description: "",
     xpReward: 15,
     exercises: [
       {
@@ -120,7 +120,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "2",
     title: "Tanışma",
     emoji: "🤝",
-    description: "Kendini tanıt, soru sor ve anlamlı mini diyaloglar kur",
+    description: "",
     xpReward: 15,
     exercises: [
       {
@@ -182,7 +182,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "3",
     title: "Sayılar",
     emoji: "🔢",
-    description: "1'den 20'ye kadar sayıları öğren",
+    description: "",
     xpReward: 15,
     exercises: [
       {
@@ -247,7 +247,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "4",
     title: "Renkler",
     emoji: "🎨",
-    description: "Temel renkleri bağlam içinde öğren, kıyafet ve nesneleri tarif et",
+    description: "",
     xpReward: 20,
     exercises: [
       {
@@ -312,7 +312,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "5",
     title: "Yiyecekler",
     emoji: "🍎",
-    description: "Günlük sofrada kullanılan yiyecek kelimelerini öğren ve cümlede kullan",
+    description: "",
     xpReward: 20,
     exercises: [
       {
@@ -377,7 +377,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "6",
     title: "İçecekler",
     emoji: "☕",
-    description: "Sık kullanılan içecek adlarını öğren, sipariş ve tercih cümleleri kur",
+    description: "",
     xpReward: 20,
     exercises: [
       {
@@ -439,7 +439,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "7",
     title: "Aile",
     emoji: "👨‍👩‍👧",
-    description: "Aile bireylerini doğru eşleştir, sahiplik ifadeleriyle cümle kur",
+    description: "",
     xpReward: 25,
     exercises: [
       {
@@ -505,7 +505,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "8",
     title: "Hayvanlar",
     emoji: "🦩",
-    description: "Evcil ve vahşi hayvan adlarını öğrenip kısa betimlemeler yap",
+    description: "",
     xpReward: 25,
     exercises: [
       {
@@ -571,7 +571,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "9",
     title: "Meslekler",
     emoji: "👩‍⚕️",
-    description: "Yaygın meslek adlarını öğren, kim ne iş yapıyor sorularını cevapla",
+    description: "",
     xpReward: 25,
     exercises: [
       {
@@ -636,7 +636,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "10",
     title: "Günler",
     emoji: "📅",
-    description: "Haftanın günlerini ezberle, plan ve randevu cümlelerinde kullan",
+    description: "",
     xpReward: 20,
     exercises: [
       {
@@ -701,7 +701,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "11",
     title: "Mevsimler",
     emoji: "🌸",
-    description: "Mevsimleri günlük hayat bağlamında öğren ve aylarla ilişkilendir",
+    description: "",
     xpReward: 20,
     exercises: [
       {
@@ -763,7 +763,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "12",
     title: "Hava Durumu",
     emoji: "🌤️",
-    description: "Hava durumu ifadeleriyle günlük plan kurmayı öğren",
+    description: "",
     xpReward: 20,
     exercises: [
       {
@@ -828,7 +828,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "13",
     title: "Alışveriş",
     emoji: "🛍️",
-    description: "Alışverişte temel kalıpları hem Türkçe hem Romence öğren",
+    description: "",
     xpReward: 25,
     exercises: [
       {
@@ -898,7 +898,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "14",
     title: "Ulaşım",
     emoji: "🚌",
-    description: "Şehir içi ulaşım kelimelerini iki dilde pratik et",
+    description: "",
     xpReward: 25,
     exercises: [
       {
@@ -968,7 +968,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "15",
     title: "Ev ve Odalar",
     emoji: "🏠",
-    description: "Evdeki odaları ve eşyaları Türkçe-Romence birlikte öğren",
+    description: "",
     xpReward: 25,
     exercises: [
       {
@@ -1041,7 +1041,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "16",
     title: "Zaman İfadeleri",
     emoji: "⏰",
-    description: "Saat, tarih ve sıklık kalıplarını günlük diyaloglarda kullan",
+    description: "",
     xpReward: 30,
     exercises: [
       {
@@ -1111,7 +1111,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "17",
     title: "Temel Fiiller",
     emoji: "🏃",
-    description: "Günlük hayatta en sık kullanılan fiilleri kalıplarla öğren",
+    description: "",
     xpReward: 30,
     exercises: [
       {
