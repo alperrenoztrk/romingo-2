@@ -1,10 +1,11 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
-import { Lock, Star, CheckCircle, Volume2 } from "lucide-react";
+import { Lock, Star, CheckCircle, Volume2, Target } from "lucide-react";
 import { lessonsData } from "../data/lessons";
 import { lessonCatalog } from "../data/lessonCatalog";
-import { getLessonProgress, isLessonUnlocked } from "../lib/lessonProgress";
+import { getLessonProgress, isLessonUnlocked, getCompletedLessonsCountForDate } from "../lib/lessonProgress";
+import { getDailyGoalTargets, getTodayCorrectAnswers, getTodayXpProgress } from "../lib/dailyGoals";
 
 interface Lesson {
   id: string;
@@ -26,6 +27,12 @@ interface TutorialWord {
   tr: string;
   ro: string;
 }
+
+const DAILY_GOAL_LABELS = {
+  lessons: "Ders",
+  xp: "XP",
+  correctAnswers: "Doğru",
+} as const;
 
 function getTutorialWords(lessonId: string): TutorialWord[] {
   const lesson = lessonsData[lessonId];
@@ -94,7 +101,6 @@ function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
             <CheckCircle className="w-5 h-5 text-success" fill="hsl(var(--success-light))" />
           </div>
         )}
-
       </button>
 
       <span
@@ -125,6 +131,53 @@ export default function LearnPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const tutorialView = searchParams.get("view") === "tutorial";
+
+  const [todayMetrics, setTodayMetrics] = useState({
+    lessons: getCompletedLessonsCountForDate(),
+    xp: getTodayXpProgress(),
+    correctAnswers: getTodayCorrectAnswers(),
+  });
+
+  useEffect(() => {
+    const syncDailyGoalMetrics = () => {
+      setTodayMetrics({
+        lessons: getCompletedLessonsCountForDate(),
+        xp: getTodayXpProgress(),
+        correctAnswers: getTodayCorrectAnswers(),
+      });
+    };
+
+    window.addEventListener("storage", syncDailyGoalMetrics);
+    window.addEventListener("romingo:daily-goals-updated", syncDailyGoalMetrics);
+
+    return () => {
+      window.removeEventListener("storage", syncDailyGoalMetrics);
+      window.removeEventListener("romingo:daily-goals-updated", syncDailyGoalMetrics);
+    };
+  }, []);
+
+  const dailyGoalTargets = getDailyGoalTargets();
+  const dailyGoalProgress = useMemo(
+    () => [
+      {
+        key: "lessons" as const,
+        current: todayMetrics.lessons,
+        target: dailyGoalTargets.lessons,
+      },
+      {
+        key: "xp" as const,
+        current: todayMetrics.xp,
+        target: dailyGoalTargets.xp,
+      },
+      {
+        key: "correctAnswers" as const,
+        current: todayMetrics.correctAnswers,
+        target: dailyGoalTargets.correctAnswers,
+      },
+    ],
+    [dailyGoalTargets.correctAnswers, dailyGoalTargets.lessons, dailyGoalTargets.xp, todayMetrics],
+  );
+
   const lessons = useMemo<Lesson[]>(() => {
     const progress = getLessonProgress();
     const orderedLessonIds = lessonCatalog.map((lesson) => lesson.id);
@@ -168,9 +221,33 @@ export default function LearnPage() {
         <h1 className="text-xl font-black text-foreground text-center mb-2">
           {tutorialView ? "🦩 Alıştırma" : "🦩 Romence Öğren"}
         </h1>
-        <p className="text-center text-muted-foreground text-sm font-semibold mb-8">
+        <p className="text-center text-muted-foreground text-sm font-semibold mb-4">
           {tutorialView ? "" : "A1 Seviye • Başlangıç"}
         </p>
+
+        {!tutorialView && (
+          <div className="sticky top-[72px] z-20 mb-6 rounded-full border border-border bg-card/95 px-3 py-2 shadow-card backdrop-blur-sm">
+            <div className="flex items-center gap-2 overflow-x-auto">
+              <div className="inline-flex items-center gap-1 rounded-full bg-muted/70 px-2 py-1 text-[11px] font-extrabold text-foreground whitespace-nowrap">
+                <Target className="h-3.5 w-3.5 text-flamingo" />
+                Bugün tamamlandı
+              </div>
+              {dailyGoalProgress.map((goal) => {
+                const done = goal.current >= goal.target;
+                return (
+                  <div
+                    key={goal.key}
+                    className={`rounded-full px-2 py-1 text-[11px] font-extrabold whitespace-nowrap ${
+                      done ? "bg-success-light text-success" : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {DAILY_GOAL_LABELS[goal.key]} {goal.current}/{goal.target}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {tutorialView && (
           <div className="space-y-4">
@@ -193,7 +270,7 @@ export default function LearnPage() {
                       onClick={() => navigate(`/lesson/${lesson.id}`)}
                       className="gradient-sky shadow-button-sky rounded-xl px-3 py-2 text-xs font-extrabold text-primary-foreground active:translate-y-1 active:shadow-none transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      {lesson.status === "locked" ? "Kilitli" : "Derse Git"}
+                      {lesson.status === "locked" ? "Kilitli" : "Devam et"}
                     </button>
                   </div>
 

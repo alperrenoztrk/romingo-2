@@ -25,19 +25,74 @@ export default function LessonPage() {
   const [correctCount, setCorrectCount] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [streak, setStreak] = useState(0);
+  const [showMiniConfetti, setShowMiniConfetti] = useState(false);
   const [completed, setCompleted] = useState(false);
   const progressSavedRef = useRef(false);
+
+  const playFeedbackTone = useCallback((correct: boolean) => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const audioContext = new window.AudioContext();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.value = correct ? 880 : 220;
+
+    gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.12, audioContext.currentTime + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.18);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.2);
+
+    oscillator.onended = () => {
+      void audioContext.close();
+    };
+  }, []);
+
+  const triggerHapticFeedback = useCallback((correct: boolean) => {
+    if (typeof navigator === "undefined" || typeof navigator.vibrate !== "function") {
+      return;
+    }
+
+    navigator.vibrate(correct ? [18, 20, 18] : [40, 30, 40]);
+  }, []);
 
   const handleAnswer = useCallback((correct: boolean) => {
     setAnswered(true);
     setIsCorrect(correct);
+    playFeedbackTone(correct);
+    triggerHapticFeedback(correct);
+
     if (correct) {
       setCorrectCount((c) => c + 1);
+      setStreak((value) => value + 1);
+      setShowMiniConfetti(true);
       addTodayCorrectAnswer();
     } else {
+      setStreak(0);
       setHearts((h) => Math.max(0, h - 1));
     }
-  }, []);
+  }, [playFeedbackTone, triggerHapticFeedback]);
+
+  useEffect(() => {
+    if (!showMiniConfetti) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      setShowMiniConfetti(false);
+    }, 700);
+
+    return () => window.clearTimeout(timeout);
+  }, [showMiniConfetti]);
 
   const handleNext = useCallback(() => {
     if (!lesson) return;
@@ -115,7 +170,13 @@ export default function LessonPage() {
       </div>
 
       {/* Exercise Content */}
-      <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 py-6">
+      <div className="relative flex-1 flex flex-col max-w-lg mx-auto w-full px-4 py-6">
+        {showMiniConfetti && (
+          <div className="pointer-events-none absolute inset-x-0 top-20 flex justify-center">
+            <div className="animate-bounce rounded-full bg-gold/20 px-3 py-1 text-lg">🎉✨🎉</div>
+          </div>
+        )}
+
         <div className="text-xs font-bold text-muted-foreground mb-1 uppercase">
           {currentExercise.type === "multiple_choice" && "Doğru cevabı seç"}
           {currentExercise.type === "fill_blank" && "Boşluğu doldur"}
@@ -154,7 +215,7 @@ export default function LessonPage() {
                 <X className="w-6 h-6 text-flamingo" />
               )}
               <span className={`font-extrabold ${isCorrect ? "text-success" : "text-flamingo"}`}>
-                {isCorrect ? "Harika!" : "Yanlış cevap"}
+                {isCorrect ? (streak >= 2 ? "Mükemmel seri!" : "Süper!") : "Tekrar dene!"}
               </span>
             </div>
             <button
@@ -165,7 +226,7 @@ export default function LessonPage() {
                   : "bg-flamingo text-primary-foreground shadow-button-primary active:shadow-none"
               }`}
             >
-              Devam Et
+              Devam et
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
