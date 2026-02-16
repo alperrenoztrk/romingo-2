@@ -27,6 +27,7 @@ function AppContent() {
   const location = useLocation();
   const hideNav = location.pathname.startsWith("/lesson/");
   const [sessionMode, setSessionMode] = useState<SessionMode>("authenticated");
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const storedMode = localStorage.getItem(SESSION_KEY) as SessionMode | null;
@@ -36,6 +37,14 @@ function AppContent() {
 
     const { darkMode } = getStoredPreferences();
     applyDarkMode(darkMode);
+
+    const splashTimer = window.setTimeout(() => {
+      setShowSplash(false);
+    }, 1800);
+
+    return () => {
+      window.clearTimeout(splashTimer);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -47,6 +56,18 @@ function AppContent() {
     setSessionMode("guest");
     localStorage.setItem(SESSION_KEY, "guest");
   };
+
+  if (showSplash) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-pink-100 via-pink-200 to-rose-300 dark:from-slate-900 dark:via-fuchsia-950 dark:to-rose-950">
+        <div className="text-center">
+          <div className="text-8xl leading-none animate-bounce">🦩</div>
+          <h1 className="mt-4 text-4xl font-extrabold tracking-wide text-rose-700 dark:text-pink-300">Romingo</h1>
+          <p className="mt-2 text-base font-medium text-rose-800/80 dark:text-pink-200/90">Flamingo ile öğrenme başlıyor...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (sessionMode === "logged_out") {
     return <LoginPage onGuestLogin={handleGuestLogin} />;
