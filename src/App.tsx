@@ -18,6 +18,7 @@ import SettingsPage from "./pages/SettingsPage";
 import LoginPage from "./pages/LoginPage";
 import ProfileSettingsPage from "./pages/ProfileSettingsPage";
 import SecuritySettingsPage from "./pages/SecuritySettingsPage";
+import DailyGoalsSettingsPage from "./pages/DailyGoalsSettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -85,6 +86,7 @@ function AppContent() {
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/settings/profile" element={<ProfileSettingsPage />} />
         <Route path="/settings/security" element={<SecuritySettingsPage />} />
+        <Route path="/settings/daily-goals" element={<DailyGoalsSettingsPage />} />
         <Route path="/translate" element={<TranslationPage />} />
         <Route path="/lesson/:id" element={<LessonPage />} />
         <Route path="*" element={<NotFound />} />
