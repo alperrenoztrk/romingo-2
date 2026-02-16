@@ -1,4 +1,5 @@
 const LESSON_PROGRESS_KEY = "romingo.lessonProgress.v1";
+const MIN_STARS_TO_UNLOCK_NEXT_LESSON = 2;
 
 export interface LessonProgressEntry {
   stars: number;
@@ -56,5 +57,6 @@ export function isLessonUnlocked(lessonId: string, orderedLessonIds: string[], p
   }
 
   const previousLessonId = orderedLessonIds[lessonIndex - 1];
-  return Boolean(progress[previousLessonId]);
+  const previousLessonStars = progress[previousLessonId]?.stars ?? 0;
+  return previousLessonStars >= MIN_STARS_TO_UNLOCK_NEXT_LESSON;
 }
