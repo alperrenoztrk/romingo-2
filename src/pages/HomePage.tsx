@@ -7,6 +7,8 @@ import { getCurrentWeekProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
 import {
+  getCorrectAnswersForDate,
+  getDailyGoalTargets,
   getTodayCorrectAnswers,
   getTodayXpProgress,
 } from "../lib/dailyGoals";
@@ -83,17 +85,39 @@ export default function HomePage() {
     };
   }, []);
 
-  const maxProgress = Math.max(...weeklyProgress.map((item) => item.progress), 0);
+  const dailyGoalTargets = getDailyGoalTargets();
 
   const dailyGoals = useMemo(
     () =>
       GOAL_DEFINITIONS.map((goal) => ({
         id: goal.metricKey,
         label: goal.label,
-        target: goal.target,
+        target: dailyGoalTargets[goal.metricKey],
         current: todayMetrics[goal.metricKey],
       })),
-    [todayMetrics],
+    [dailyGoalTargets, todayMetrics],
+  );
+
+  const weeklyProgressPercentages = useMemo(
+    () =>
+      weeklyProgress.map((item) => {
+        const date = new Date(item.dateKey);
+        const lessons = getCompletedLessonsCountForDate(date);
+        const xp = item.progress;
+        const correctAnswers = getCorrectAnswersForDate(date);
+
+        const completionRatio =
+          (Math.min(lessons / dailyGoalTargets.lessons, 1) +
+            Math.min(xp / dailyGoalTargets.xp, 1) +
+            Math.min(correctAnswers / dailyGoalTargets.correctAnswers, 1)) /
+          3;
+
+        return {
+          ...item,
+          completionPercent: Math.round(completionRatio * 100),
+        };
+      }),
+    [dailyGoalTargets.correctAnswers, dailyGoalTargets.lessons, dailyGoalTargets.xp, weeklyProgress],
   );
 
   return (
@@ -194,14 +218,9 @@ export default function HomePage() {
             </div>
           </div>
           <div className="flex items-end justify-between gap-1">
-            {weeklyProgress.map((item, i) => {
+            {weeklyProgressPercentages.map((item, i) => {
               const isToday = i === (new Date().getDay() + 6) % 7;
-              const hasProgress = item.progress > 0;
-              const heightPercent = hasProgress
-                ? maxProgress > 0
-                  ? (item.progress / maxProgress) * 100
-                  : 0
-                : 0;
+              const hasProgress = item.completionPercent > 0;
 
               return (
                 <div key={item.day} className="flex flex-col items-center gap-1 flex-1">
@@ -209,11 +228,13 @@ export default function HomePage() {
                     {hasProgress && (
                       <div
                         className={`w-full rounded-lg transition-all ${isToday ? "gradient-hero" : "gradient-sky"}`}
-                        style={{ height: `${heightPercent}%` }}
+                        style={{ height: `${item.completionPercent}%` }}
                       />
                     )}
                   </div>
-                  <span className="text-[9px] font-bold text-foreground">{hasProgress ? `${item.progress} XP` : ""}</span>
+                  <span className="text-[9px] font-bold text-foreground">
+                    {hasProgress ? `%${item.completionPercent}` : ""}
+                  </span>
                   <span
                     className={`text-[10px] font-bold ${
                       isToday ? "text-flamingo" : "text-muted-foreground"

@@ -126,8 +126,12 @@ function getCorrectAnswersByDate(): CorrectAnswersByDate {
 }
 
 export function getTodayCorrectAnswers() {
+  return getCorrectAnswersForDate(new Date());
+}
+
+export function getCorrectAnswersForDate(date: Date) {
   const byDate = getCorrectAnswersByDate();
-  return byDate[toDateKey(new Date())] ?? 0;
+  return byDate[toDateKey(date)] ?? 0;
 }
 
 export function addTodayCorrectAnswer(amount = 1) {
