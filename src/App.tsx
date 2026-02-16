@@ -16,6 +16,8 @@ import NotFound from "./pages/NotFound";
 import TranslationPage from "./pages/TranslationPage";
 import SettingsPage from "./pages/SettingsPage";
 import LoginPage from "./pages/LoginPage";
+import ProfileSettingsPage from "./pages/ProfileSettingsPage";
+import SecuritySettingsPage from "./pages/SecuritySettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +84,8 @@ function AppContent() {
         <Route path="/league" element={<LeaguePage />} />
         <Route path="/profile" element={<ProfilePage isGuest={sessionMode === "guest"} onLogout={handleLogout} />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/settings/profile" element={<ProfileSettingsPage />} />
+        <Route path="/settings/security" element={<SecuritySettingsPage />} />
         <Route path="/translate" element={<TranslationPage />} />
         <Route path="/lesson/:id" element={<LessonPage />} />
         <Route path="*" element={<NotFound />} />
