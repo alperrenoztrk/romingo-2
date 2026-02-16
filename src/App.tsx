@@ -40,7 +40,7 @@ function AppContent() {
 
     const splashTimer = window.setTimeout(() => {
       setShowSplash(false);
-    }, 1800);
+    }, 2800);
 
     return () => {
       window.clearTimeout(splashTimer);
