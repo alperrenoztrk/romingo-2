@@ -247,7 +247,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "4",
     title: "Renkler",
     emoji: "🎨",
-    description: "Temel renkleri öğren",
+    description: "Temel renkleri bağlam içinde öğren, kıyafet ve nesneleri tarif et",
     xpReward: 20,
     exercises: [
       {
@@ -312,7 +312,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "5",
     title: "Yiyecekler",
     emoji: "🍎",
-    description: "Temel yiyecek isimlerini öğren",
+    description: "Günlük sofrada kullanılan yiyecek kelimelerini öğren ve cümlede kullan",
     xpReward: 20,
     exercises: [
       {
@@ -377,7 +377,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "6",
     title: "İçecekler",
     emoji: "☕",
-    description: "İçecek isimlerini öğren",
+    description: "Sık kullanılan içecek adlarını öğren, sipariş ve tercih cümleleri kur",
     xpReward: 20,
     exercises: [
       {
@@ -439,7 +439,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "7",
     title: "Aile",
     emoji: "👨‍👩‍👧",
-    description: "Aile bireylerini karıştırmadan öğren ve cümle içinde kullan",
+    description: "Aile bireylerini doğru eşleştir, sahiplik ifadeleriyle cümle kur",
     xpReward: 25,
     exercises: [
       {
@@ -505,7 +505,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "8",
     title: "Hayvanlar",
     emoji: "🦩",
-    description: "Hayvan isimlerini öğren",
+    description: "Evcil ve vahşi hayvan adlarını öğrenip kısa betimlemeler yap",
     xpReward: 25,
     exercises: [
       {
@@ -571,7 +571,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "9",
     title: "Meslekler",
     emoji: "👩‍⚕️",
-    description: "Meslek isimlerini öğren",
+    description: "Yaygın meslek adlarını öğren, kim ne iş yapıyor sorularını cevapla",
     xpReward: 25,
     exercises: [
       {
@@ -636,12 +636,12 @@ export const lessonsData: Record<string, LessonData> = {
     id: "10",
     title: "Günler",
     emoji: "📅",
-    description: "Haftanın günlerini öğren",
+    description: "Haftanın günlerini ezberle, plan ve randevu cümlelerinde kullan",
     xpReward: 20,
     exercises: [
       {
         type: "multiple_choice",
-        question: "Haftanın ilk günü Romence hangisidir?",
+        question: "Haftaya başlarken kullanılan gün Romence hangisidir?",
         options: ["Marți", "Luni", "Duminică", "Miercuri"],
         correctIndex: 1,
       },
@@ -656,35 +656,35 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Bugün Cuma, yarın ___.",
+        sentence: "Bugün Cuma, yarın hafta sonu başlar: ___.",
         correctAnswer: "Cumartesi",
         options: ["Perşembe", "Cumartesi", "Pazar", "Pazartesi"],
       },
       {
         type: "translation",
-        sentence: "Joi",
+        sentence: "Astăzi este joi",
         direction: "ro-tr",
-        correctAnswer: "Perşembe",
-        acceptedAnswers: ["Perşembe", "perşembe"],
+        correctAnswer: "Bugün perşembe",
+        acceptedAnswers: ["Bugün perşembe", "Bugün Perşembe", "Perşembe", "perşembe"],
       },
       {
         type: "multiple_choice",
-        question: "Hafta sonu günleri Romence hangi seçenektedir?",
+        question: "Hafta sonunu (Cumartesi-Pazar) doğru veren Romence seçenek hangisi?",
         options: ["Luni-Marți", "Vineri-Sâmbătă", "Sâmbătă-Duminică", "Joi-Vineri"],
         correctIndex: 2,
       },
       {
         type: "fill_blank",
-        sentence: "Salıdan sonra ___ gelir.",
+        sentence: "Toplantı Salı günü, ertesi gün ___ günü.",
         correctAnswer: "Çarşamba",
         options: ["Pazartesi", "Çarşamba", "Perşembe", "Cuma"],
       },
       {
         type: "translation",
-        sentence: "Salı",
+        sentence: "Randevum salı günü",
         direction: "tr-ro",
-        correctAnswer: "Marți",
-        acceptedAnswers: ["Marți", "marți"],
+        correctAnswer: "Am întâlnire marți",
+        acceptedAnswers: ["Am întâlnire marți", "am întâlnire marți"],
       },
       {
         type: "matching",
@@ -701,7 +701,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "11",
     title: "Mevsimler",
     emoji: "🌸",
-    description: "Mevsimleri ve ayları öğren",
+    description: "Mevsimleri günlük hayat bağlamında öğren ve aylarla ilişkilendir",
     xpReward: 20,
     exercises: [
       {
@@ -721,16 +721,16 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Kar ___ mevsiminde yağar.",
+        sentence: "Uludağ'da kar genelde ___ mevsiminde yağar.",
         correctAnswer: "kış",
         options: ["yaz", "ilkbahar", "sonbahar", "kış"],
       },
       {
         type: "translation",
-        sentence: "Vară",
+        sentence: "Vara mergem la mare",
         direction: "ro-tr",
-        correctAnswer: "Yaz",
-        acceptedAnswers: ["Yaz", "yaz"],
+        correctAnswer: "Yazın denize gideriz",
+        acceptedAnswers: ["Yazın denize gideriz", "Yaz", "yaz"],
       },
       {
         type: "multiple_choice",
@@ -740,20 +740,20 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Ocak ayı ___ mevsimidir.",
+        sentence: "Ocak ve şubat ayları genelde ___ mevsimidir.",
         correctAnswer: "kış",
         options: ["yaz", "kış", "ilkbahar", "sonbahar"],
       },
       {
         type: "translation",
-        sentence: "Sonbahar",
+        sentence: "Sonbaharda hava serin olur",
         direction: "tr-ro",
-        correctAnswer: "Toamnă",
-        acceptedAnswers: ["Toamnă", "toamnă"],
+        correctAnswer: "Toamna vremea este răcoroasă",
+        acceptedAnswers: ["Toamna vremea este răcoroasă", "toamna vremea este răcoroasă"],
       },
       {
         type: "multiple_choice",
-        question: "Într-un an câte anotimpuri sunt?",
+        question: "Bir yılda kaç mevsim vardır? (Într-un an câte anotimpuri sunt?)",
         options: ["2", "3", "4", "5"],
         correctIndex: 2,
       },
@@ -763,7 +763,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "12",
     title: "Hava Durumu",
     emoji: "🌤️",
-    description: "Hava durumu ifadelerini öğren",
+    description: "Hava durumu ifadeleriyle günlük plan kurmayı öğren",
     xpReward: 20,
     exercises: [
       {
@@ -789,10 +789,10 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "Plouă",
+        sentence: "Plouă afară, ia umbrela",
         direction: "ro-tr",
-        correctAnswer: "Yağmur yağıyor",
-        acceptedAnswers: ["Yağmur yağıyor", "yağmur yağıyor"],
+        correctAnswer: "Dışarıda yağmur yağıyor, şemsiyeni al",
+        acceptedAnswers: ["Dışarıda yağmur yağıyor, şemsiyeni al", "Yağmur yağıyor", "yağmur yağıyor"],
       },
       {
         type: "multiple_choice",
@@ -802,16 +802,16 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Hava ___, şemsiye al.",
+        sentence: "Dışarı çıkmadan önce hava ___, şemsiye al.",
         correctAnswer: "yağmurlu",
         options: ["güneşli", "yağmurlu", "sıcak", "güzel"],
       },
       {
         type: "translation",
-        sentence: "Soğuk",
+        sentence: "Bu sabah çok soğuk",
         direction: "tr-ro",
-        correctAnswer: "Rece",
-        acceptedAnswers: ["Rece", "rece"],
+        correctAnswer: "Este foarte rece",
+        acceptedAnswers: ["Este foarte rece", "Rece", "rece"],
       },
       {
         type: "matching",
@@ -1041,7 +1041,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "16",
     title: "Zaman İfadeleri",
     emoji: "⏰",
-    description: "Saat ve zaman kalıplarını iki dilde sorup cevapla",
+    description: "Saat, tarih ve sıklık kalıplarını günlük diyaloglarda kullan",
     xpReward: 30,
     exercises: [
       {
@@ -1067,10 +1067,10 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "translation",
-        sentence: "Ne vedem diseară",
+        sentence: "Ne vedem diseară la cafenea",
         direction: "ro-tr",
-        correctAnswer: "Bu akşam görüşürüz",
-        acceptedAnswers: ["Bu akşam görüşürüz", "Bu akşam görüşürüz."],
+        correctAnswer: "Bu akşam kafede görüşürüz",
+        acceptedAnswers: ["Bu akşam kafede görüşürüz", "Bu akşam görüşürüz", "Bu akşam görüşürüz."],
       },
       {
         type: "multiple_choice",
@@ -1085,7 +1085,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Ders ___ başlıyor, lütfen geç kalma.",
+        sentence: "Ders on dakika içinde ___, lütfen geç kalma.",
         correctAnswer: "yakında",
         options: ["yakında", "evde", "bazen", "orada"],
       },
@@ -1176,7 +1176,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "18",
     title: "Günlük Rutin",
     emoji: "🗓️",
-    description: "Sabah, öğlen ve akşam yaptıklarını iki dilde ifade et",
+    description: "Sabah, öğlen ve akşam rutinlerini iki dilde doğal biçimde ifade et",
     xpReward: 30,
     exercises: [
       {
@@ -1244,7 +1244,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "19",
     title: "Restoran",
     emoji: "🍽️",
-    description: "Sipariş verme, istek belirtme ve hesap isteme kalıplarını öğren",
+    description: "Restoranda sipariş, rica ve hesap isteme kalıplarını akıcı şekilde kullan",
     xpReward: 30,
     exercises: [
       {
@@ -1314,7 +1314,7 @@ export const lessonsData: Record<string, LessonData> = {
     id: "20",
     title: "Yönler ve Konum",
     emoji: "🧭",
-    description: "Yer tarif et, yol sor ve şehirde yön bulma ifadelerini kullan",
+    description: "Yer tarif et, yol sor ve şehir içinde yön bulma kalıplarını pekiştir",
     xpReward: 30,
     exercises: [
       {
