@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { lessonsData } from "../data/lessons";
 import { X, Heart, Check, ArrowRight } from "lucide-react";
@@ -6,11 +6,14 @@ import MultipleChoiceEx from "../components/exercises/MultipleChoiceEx";
 import FillBlankEx from "../components/exercises/FillBlankEx";
 import TranslationEx from "../components/exercises/TranslationEx";
 import MatchingEx from "../components/exercises/MatchingEx";
+import ListeningEx from "../components/exercises/ListeningEx";
 import LessonComplete from "../components/LessonComplete";
 import { addTodayProgress } from "../lib/weeklyProgress";
 import { orderedLessonIds } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked, saveLessonCompletion } from "../lib/lessonProgress";
 import { addTodayCorrectAnswer } from "../lib/dailyGoals";
+import { consumeHeart, getHeartStatus, markLessonActivity, syncHearts } from "@/lib/learningEconomy";
+import { recordAdaptiveAnswer } from "@/lib/adaptivePractice";
 
 export default function LessonPage() {
   const { id } = useParams<{ id: string }>();
@@ -21,23 +24,51 @@ export default function LessonPage() {
   const isUnlocked = isLessonUnlocked(lessonId, orderedLessonIds, lessonProgress);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [hearts, setHearts] = useState(5);
+  const [hearts, setHearts] = useState(() => getHeartStatus().hearts);
+  const [minutesToNextHeart, setMinutesToNextHeart] = useState(() => getHeartStatus().minutesToNextHeart);
   const [correctCount, setCorrectCount] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [completed, setCompleted] = useState(false);
   const progressSavedRef = useRef(false);
 
+  useEffect(() => {
+    syncHearts();
+    const sync = () => {
+      const heartStatus = getHeartStatus();
+      setHearts(heartStatus.hearts);
+      setMinutesToNextHeart(heartStatus.minutesToNextHeart);
+    };
+
+    sync();
+    const interval = window.setInterval(sync, 15000);
+    window.addEventListener("romingo:learning-economy-updated", sync);
+
+    return () => {
+      window.clearInterval(interval);
+      window.removeEventListener("romingo:learning-economy-updated", sync);
+    };
+  }, []);
+
+  const exercises = lesson?.exercises ?? [];
+  const currentExercise = useMemo(() => exercises[currentIndex], [currentIndex, exercises]);
+
   const handleAnswer = useCallback((correct: boolean) => {
+    if (!lesson || !currentExercise) return;
+
     setAnswered(true);
     setIsCorrect(correct);
+    recordAdaptiveAnswer({ lessonId: lesson.id, type: currentExercise.type, correct });
+
     if (correct) {
       setCorrectCount((c) => c + 1);
       addTodayCorrectAnswer();
     } else {
-      setHearts((h) => Math.max(0, h - 1));
+      const nextHeartState = consumeHeart();
+      setHearts(nextHeartState.hearts);
+      setMinutesToNextHeart(getHeartStatus().minutesToNextHeart);
     }
-  }, []);
+  }, [currentExercise, lesson]);
 
   const handleNext = useCallback(() => {
     if (!lesson) return;
@@ -46,6 +77,7 @@ export default function LessonPage() {
         addTodayProgress(lesson.xpReward);
         const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : 1;
         saveLessonCompletion(lesson.id, stars);
+        markLessonActivity();
         progressSavedRef.current = true;
       }
       setCompleted(true);
@@ -74,9 +106,7 @@ export default function LessonPage() {
     return null;
   }
 
-  const exercises = lesson.exercises;
   const progress = (currentIndex / exercises.length) * 100;
-  const currentExercise = exercises[currentIndex];
 
   if (completed) {
     const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : hearts > 0 ? 1 : 0;
@@ -94,7 +124,6 @@ export default function LessonPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Top Bar */}
       <div className="flex items-center gap-3 px-4 py-3 bg-card border-b border-border">
         <button
           onClick={() => navigate("/learn")}
@@ -108,19 +137,24 @@ export default function LessonPage() {
             style={{ width: `${progress}%` }}
           />
         </div>
-        <div className="flex items-center gap-1">
-          <Heart className="w-5 h-5 text-flamingo" fill="hsl(var(--flamingo))" />
-          <span className="font-extrabold text-sm text-flamingo">{hearts}</span>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            <Heart className="w-5 h-5 text-flamingo" fill="hsl(var(--flamingo))" />
+            <span className="font-extrabold text-sm text-flamingo">{hearts}</span>
+          </div>
+          {hearts < 5 && (
+            <span className="text-[10px] font-bold text-muted-foreground">+1 can {minutesToNextHeart} dk</span>
+          )}
         </div>
       </div>
 
-      {/* Exercise Content */}
       <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 py-6">
         <div className="text-xs font-bold text-muted-foreground mb-1 uppercase">
           {currentExercise.type === "multiple_choice" && "Doğru cevabı seç"}
           {currentExercise.type === "fill_blank" && "Boşluğu doldur"}
           {currentExercise.type === "translation" && "Çevir"}
           {currentExercise.type === "matching" && "Eşleştir"}
+          {currentExercise.type === "listening" && "Dinleyip seç"}
         </div>
 
         <div className="flex-1">
@@ -136,10 +170,12 @@ export default function LessonPage() {
           {currentExercise.type === "matching" && (
             <MatchingEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
           )}
+          {currentExercise.type === "listening" && (
+            <ListeningEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+          )}
         </div>
       </div>
 
-      {/* Bottom Feedback Bar */}
       {answered && (
         <div
           className={`px-4 py-4 border-t-2 ${

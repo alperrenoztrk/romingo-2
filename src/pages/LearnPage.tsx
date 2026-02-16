@@ -5,6 +5,8 @@ import { Lock, Star, CheckCircle, Volume2 } from "lucide-react";
 import { lessonsData } from "../data/lessons";
 import { lessonCatalog } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked } from "../lib/lessonProgress";
+import { getAdaptivePracticePlan, getExerciseTypeLabel } from "@/lib/adaptivePractice";
+import { getEconomySnapshot } from "@/lib/learningEconomy";
 
 interface Lesson {
   id: string;
@@ -15,12 +17,7 @@ interface Lesson {
   level: number;
 }
 
-const levelColors = [
-  "gradient-success",
-  "gradient-sky",
-  "gradient-hero",
-  "gradient-gold",
-];
+const levelColors = ["gradient-success", "gradient-sky", "gradient-hero", "gradient-gold"];
 
 interface TutorialWord {
   tr: string;
@@ -29,9 +26,7 @@ interface TutorialWord {
 
 function getTutorialWords(lessonId: string): TutorialWord[] {
   const lesson = lessonsData[lessonId];
-  if (!lesson) {
-    return [];
-  }
+  if (!lesson) return [];
 
   const wordMap = new Map<string, TutorialWord>();
 
@@ -83,25 +78,16 @@ function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
           ${isLocked ? "bg-muted cursor-not-allowed opacity-60" : ""}
         `}
       >
-        {isLocked ? (
-          <Lock className="w-6 h-6 text-muted-foreground" />
-        ) : (
-          <span>{lesson.emoji}</span>
-        )}
+        {isLocked ? <Lock className="w-6 h-6 text-muted-foreground" /> : <span>{lesson.emoji}</span>}
 
         {isCompleted && (
           <div className="absolute -top-1 -right-1 w-6 h-6 bg-card rounded-full flex items-center justify-center shadow-card">
             <CheckCircle className="w-5 h-5 text-success" fill="hsl(var(--success-light))" />
           </div>
         )}
-
       </button>
 
-      <span
-        className={`mt-3 text-xs font-bold text-center ${
-          isLocked ? "text-muted-foreground" : "text-foreground"
-        }`}
-      >
+      <span className={`mt-3 text-xs font-bold text-center ${isLocked ? "text-muted-foreground" : "text-foreground"}`}>
         {lesson.title}
       </span>
 
@@ -125,6 +111,10 @@ export default function LearnPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const tutorialView = searchParams.get("view") === "tutorial";
+  const adaptivePracticeView = searchParams.get("practice") === "adaptive";
+  const economy = getEconomySnapshot();
+  const practicePlan = getAdaptivePracticePlan();
+
   const lessons = useMemo<Lesson[]>(() => {
     const progress = getLessonProgress();
     const orderedLessonIds = lessonCatalog.map((lesson) => lesson.id);
@@ -145,12 +135,18 @@ export default function LearnPage() {
     });
   }, []);
 
+  const tutorialLessons = useMemo(() => {
+    if (!adaptivePracticeView) return lessons;
+
+    const scoreMap = new Map(practicePlan.weakLessons.map((item) => [item.lessonId, item.score]));
+
+    return [...lessons].sort((a, b) => (scoreMap.get(b.id) ?? 0) - (scoreMap.get(a.id) ?? 0));
+  }, [adaptivePracticeView, lessons, practicePlan.weakLessons]);
+
   const levels = [...new Set(lessons.map((l) => l.level))];
 
   const speakText = (text: string, lang: string) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      return;
-    }
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
 
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
@@ -162,7 +158,7 @@ export default function LearnPage() {
 
   return (
     <div className="pb-20">
-      <StatsBar streak={12} xp={1450} hearts={5} />
+      <StatsBar streak={economy.streakCount} xp={1450} hearts={economy.hearts} />
 
       <div className="px-4 py-6 max-w-lg mx-auto">
         <h1 className="text-xl font-black text-foreground text-center mb-2">
@@ -172,9 +168,23 @@ export default function LearnPage() {
           {tutorialView ? "" : "A1 Seviye • Başlangıç"}
         </p>
 
+        {tutorialView && adaptivePracticeView && (
+          <div className="mb-4 rounded-2xl bg-sky-light p-4 border border-sky/30">
+            <p className="text-sm font-extrabold text-sky-brand">Kişiselleştirilmiş pratik aktif</p>
+            <p className="mt-1 text-xs font-semibold text-muted-foreground">
+              {practicePlan.weakTypes.length > 0
+                ? `Öncelik: ${practicePlan.weakTypes
+                    .slice(0, 2)
+                    .map((item) => getExerciseTypeLabel(item.type))
+                    .join(" • ")}`
+                : "Henüz zayıf alan verisi yok. Birkaç ders çözdükçe burası otomatik güncellenir."}
+            </p>
+          </div>
+        )}
+
         {tutorialView && (
           <div className="space-y-4">
-            {lessons.map((lesson) => {
+            {tutorialLessons.map((lesson) => {
               const tutorialWords = getTutorialWords(lesson.id);
 
               return (
@@ -200,10 +210,7 @@ export default function LearnPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {tutorialWords.length > 0 ? (
                       tutorialWords.map((word) => (
-                        <div
-                          key={`${lesson.id}-${word.tr}-${word.ro}`}
-                          className="rounded-xl bg-muted/60 p-3"
-                        >
+                        <div key={`${lesson.id}-${word.tr}-${word.ro}`} className="rounded-xl bg-muted/60 p-3">
                           <div className="flex items-center justify-between gap-2">
                             <p className="text-sm font-bold text-foreground">{word.tr}</p>
                           </div>
@@ -221,9 +228,7 @@ export default function LearnPage() {
                         </div>
                       ))
                     ) : (
-                      <p className="text-sm font-semibold text-muted-foreground">
-                        Kelime listesi yakında eklenecek.
-                      </p>
+                      <p className="text-sm font-semibold text-muted-foreground">Kelime listesi yakında eklenecek.</p>
                     )}
                   </div>
                 </div>
@@ -238,21 +243,13 @@ export default function LearnPage() {
               const levelLessons = lessons.filter((l) => l.level === level);
               return (
                 <div key={level} className="mb-8">
-                  <div
-                    className={`${levelColors[(level - 1) % levelColors.length]} rounded-2xl px-4 py-2 mb-6 mx-auto w-fit`}
-                  >
-                    <span className="text-primary-foreground font-extrabold text-sm">
-                      Seviye {level}
-                    </span>
+                  <div className={`${levelColors[(level - 1) % levelColors.length]} rounded-2xl px-4 py-2 mb-6 mx-auto w-fit`}>
+                    <span className="text-primary-foreground font-extrabold text-sm">Seviye {level}</span>
                   </div>
 
                   <div className="flex flex-col items-center gap-6">
                     {levelLessons.map((lesson) => (
-                      <LessonNode
-                        key={lesson.id}
-                        lesson={lesson}
-                        index={lessons.indexOf(lesson)}
-                      />
+                      <LessonNode key={lesson.id} lesson={lesson} index={lessons.indexOf(lesson)} />
                     ))}
                   </div>
 
