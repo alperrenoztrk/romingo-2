@@ -20,4 +20,20 @@ describe("ProfilePage", () => {
     expect(screen.getByRole("heading", { name: "Ayşe Test" })).toBeInTheDocument();
     expect(screen.getByText("🐼")).toBeInTheDocument();
   });
+
+  it("shows only unlocked achievements in badges section", () => {
+    render(
+      <MemoryRouter>
+        <ProfilePage />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText("İlk Seri")).toBeInTheDocument();
+    expect(screen.getByText("Kitap Kurdu")).toBeInTheDocument();
+    expect(screen.getByText("Yıldız Toplayıcı")).toBeInTheDocument();
+
+    expect(screen.queryByText("Lig Şampiyonu")).not.toBeInTheDocument();
+    expect(screen.queryByText("Elmas Avcısı")).not.toBeInTheDocument();
+    expect(screen.queryByText("Flamingo Dostu")).not.toBeInTheDocument();
+  });
 });
