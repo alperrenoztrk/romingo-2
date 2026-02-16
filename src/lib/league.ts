@@ -206,12 +206,12 @@ export function getRankedLeaguePlayers(state = getLeagueState()): RankedLeaguePl
 }
 
 export function addLeagueXp(amount: number) {
-  if (amount <= 0) {
+  if (!Number.isFinite(amount) || amount === 0) {
     return;
   }
 
   const state = getLeagueState();
-  state.userXp += Math.floor(amount);
+  state.userXp = Math.max(0, state.userXp + Math.floor(amount));
   saveLeagueState(state);
   window.dispatchEvent(new Event("romingo:league-updated"));
 }
