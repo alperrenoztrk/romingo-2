@@ -103,6 +103,33 @@
 }
 
 @layer utilities {
+  @keyframes splash-float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes splash-loader {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(240%);
+    }
+  }
+
+  .splash-float {
+    animation: splash-float 1.8s ease-in-out infinite;
+  }
+
+  .splash-loader > div {
+    animation: splash-loader 1.3s ease-in-out infinite;
+  }
+
   .gradient-hero {
     background: var(--gradient-hero);
   }

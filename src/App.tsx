@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import TranslationPage from "./pages/TranslationPage";
 import SettingsPage from "./pages/SettingsPage";
 import LoginPage from "./pages/LoginPage";
+import SplashScreen from "./components/SplashScreen";
 
 const queryClient = new QueryClient();
 
@@ -26,12 +27,21 @@ function AppContent() {
   const location = useLocation();
   const hideNav = location.pathname.startsWith("/lesson/");
   const [sessionMode, setSessionMode] = useState<SessionMode>("authenticated");
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
 
   useEffect(() => {
     const storedMode = localStorage.getItem(SESSION_KEY) as SessionMode | null;
     if (storedMode === "authenticated" || storedMode === "logged_out" || storedMode === "guest") {
       setSessionMode(storedMode);
     }
+
+    const splashTimeout = window.setTimeout(() => {
+      setIsSplashVisible(false);
+    }, 1800);
+
+    return () => {
+      window.clearTimeout(splashTimeout);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -43,6 +53,10 @@ function AppContent() {
     setSessionMode("guest");
     localStorage.setItem(SESSION_KEY, "guest");
   };
+
+  if (isSplashVisible) {
+    return <SplashScreen />;
+  }
 
   if (sessionMode === "logged_out") {
     return <LoginPage onGuestLogin={handleGuestLogin} />;
