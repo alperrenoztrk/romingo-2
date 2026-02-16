@@ -1,9 +1,10 @@
-import { Home, BookOpen, ShoppingBag, Trophy, User } from "lucide-react";
+import { Home, BookOpen, ShoppingBag, Trophy, User, Languages } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const tabs = [
   { path: "/", icon: Home, label: "Ana Sayfa" },
   { path: "/learn", icon: BookOpen, label: "Öğren" },
+  { path: "/translate", icon: Languages, label: "Çeviri" },
   { path: "/shop", icon: ShoppingBag, label: "Mağaza" },
   { path: "/league", icon: Trophy, label: "Lig" },
   { path: "/profile", icon: User, label: "Profil" },
