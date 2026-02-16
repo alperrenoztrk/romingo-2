@@ -2,11 +2,32 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
-import { BookOpen, Languages, Target, Star, TrendingUp, Minus, Plus } from "lucide-react";
+import { BookOpen, Languages, Target, Star, TrendingUp } from "lucide-react";
 import { getCurrentWeekProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
-import { getDailyGoalTargets, getTodayCorrectAnswers, getTodayXpProgress, saveDailyGoalTargets } from "../lib/dailyGoals";
+import {
+  DailyGoalMetricKey,
+  getDailyGoalSlots,
+  getTodayCorrectAnswers,
+  getTodayXpProgress,
+  saveDailyGoalSlots,
+} from "../lib/dailyGoals";
+
+const GOAL_DEFINITIONS: Record<DailyGoalMetricKey, { label: string; target: number }> = {
+  lessons: {
+    label: "Ders Tamamla",
+    target: 1,
+  },
+  xp: {
+    label: "XP Kazan",
+    target: 120,
+  },
+  correctAnswers: {
+    label: "Doğru Cevap Ver",
+    target: 10,
+  },
+};
 
 const quickActions = [
   {
@@ -35,7 +56,7 @@ export default function HomePage() {
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
-  const [dailyGoalTargets, setDailyGoalTargets] = useState(getDailyGoalTargets());
+  const [dailyGoalSlots, setDailyGoalSlots] = useState(getDailyGoalSlots());
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
     xp: getTodayXpProgress(),
@@ -45,7 +66,7 @@ export default function HomePage() {
   useEffect(() => {
     const syncProgress = () => {
       setWeeklyProgress(getCurrentWeekProgress());
-      setDailyGoalTargets(getDailyGoalTargets());
+      setDailyGoalSlots(getDailyGoalSlots());
       setTodayMetrics({
         lessons: getCompletedLessonsCountForDate(),
         xp: getTodayXpProgress(),
@@ -67,37 +88,22 @@ export default function HomePage() {
   const maxProgress = Math.max(...weeklyProgress.map((item) => item.progress), 0);
 
   const dailyGoals = useMemo(
-    () => [
-      {
-        key: "lessons" as const,
-        label: "Ders Tamamla",
-        target: dailyGoalTargets.lessons,
-        current: todayMetrics.lessons,
-      },
-      {
-        key: "xp" as const,
-        label: "XP Kazan",
-        target: dailyGoalTargets.xp,
-        current: todayMetrics.xp,
-      },
-      {
-        key: "correctAnswers" as const,
-        label: "Doğru Cevap Ver",
-        target: dailyGoalTargets.correctAnswers,
-        current: todayMetrics.correctAnswers,
-      },
-    ],
-    [dailyGoalTargets, todayMetrics],
+    () =>
+      dailyGoalSlots.map((metricKey, index) => ({
+        id: `${metricKey}-${index}`,
+        metricKey,
+        label: GOAL_DEFINITIONS[metricKey].label,
+        target: GOAL_DEFINITIONS[metricKey].target,
+        current: todayMetrics[metricKey],
+      })),
+    [dailyGoalSlots, todayMetrics],
   );
 
-  const updateGoalTarget = (goalKey: "lessons" | "xp" | "correctAnswers", delta: number) => {
-    const nextTargets = {
-      ...dailyGoalTargets,
-      [goalKey]: Math.max(1, dailyGoalTargets[goalKey] + delta),
-    };
-
-    setDailyGoalTargets(nextTargets);
-    saveDailyGoalTargets(nextTargets);
+  const updateGoalMetric = (index: number, metricKey: DailyGoalMetricKey) => {
+    const nextSlots = [...dailyGoalSlots] as typeof dailyGoalSlots;
+    nextSlots[index] = metricKey;
+    setDailyGoalSlots(nextSlots);
+    saveDailyGoalSlots(nextSlots);
   };
 
   return (
@@ -125,11 +131,11 @@ export default function HomePage() {
             Günlük Hedefler
           </h2>
           <div className="space-y-3">
-            {dailyGoals.map((goal) => {
+            {dailyGoals.map((goal, index) => {
               const done = goal.current >= goal.target;
 
               return (
-                <div key={goal.key} className="flex items-center gap-3 justify-between">
+                <div key={goal.id} className="flex items-center gap-3 justify-between">
                   <div className="flex items-center gap-3 min-w-0">
                     <div
                       className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
@@ -153,24 +159,22 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <button
-                      type="button"
-                      aria-label={`${goal.label} hedefini azalt`}
-                      onClick={() => updateGoalTarget(goal.key, -1)}
-                      className="w-7 h-7 rounded-full bg-muted text-muted-foreground flex items-center justify-center active:translate-y-0.5 transition-all"
-                    >
-                      <Minus className="w-4 h-4" />
-                    </button>
-                    <button
-                      type="button"
-                      aria-label={`${goal.label} hedefini artır`}
-                      onClick={() => updateGoalTarget(goal.key, 1)}
-                      className="w-7 h-7 rounded-full bg-muted text-muted-foreground flex items-center justify-center active:translate-y-0.5 transition-all"
-                    >
-                      <Plus className="w-4 h-4" />
-                    </button>
-                  </div>
+                  <label className="sr-only" htmlFor={`daily-goal-${goal.id}`}>
+                    Hedef türünü seç
+                  </label>
+                  <select
+                    id={`daily-goal-${goal.id}`}
+                    aria-label="Hedef türünü seç"
+                    value={goal.metricKey}
+                    onChange={(event) => updateGoalMetric(index, event.target.value as DailyGoalMetricKey)}
+                    className="h-8 rounded-lg border border-border bg-muted px-2 text-xs font-semibold text-foreground"
+                  >
+                    {Object.entries(GOAL_DEFINITIONS).map(([key, config]) => (
+                      <option key={key} value={key}>
+                        {config.label}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               );
             })}
