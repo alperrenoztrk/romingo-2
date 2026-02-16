@@ -1,7 +1,10 @@
 import { getCurrentWeekProgress } from "./weeklyProgress";
 
 const DAILY_GOAL_TARGETS_KEY = "romingo.dailyGoalTargets.v1";
+const DAILY_GOAL_SLOTS_KEY = "romingo.dailyGoalSlots.v1";
 const CORRECT_ANSWERS_BY_DATE_KEY = "romingo.correctAnswersByDate.v1";
+
+export type DailyGoalMetricKey = "lessons" | "xp" | "correctAnswers";
 
 export interface DailyGoalTargets {
   lessons: number;
@@ -9,11 +12,15 @@ export interface DailyGoalTargets {
   correctAnswers: number;
 }
 
+export type DailyGoalSlots = [DailyGoalMetricKey, DailyGoalMetricKey, DailyGoalMetricKey];
+
 const DEFAULT_DAILY_GOAL_TARGETS: DailyGoalTargets = {
   lessons: 1,
   xp: 120,
   correctAnswers: 10,
 };
+
+const DEFAULT_DAILY_GOAL_SLOTS: DailyGoalSlots = ["lessons", "xp", "correctAnswers"];
 
 type CorrectAnswersByDate = Record<string, number>;
 
@@ -30,6 +37,41 @@ function toDateKey(date: Date) {
 
 function sanitizeTarget(value: unknown, fallback: number) {
   return typeof value === "number" && Number.isFinite(value) && value >= 1 ? Math.floor(value) : fallback;
+}
+
+function isMetricKey(value: unknown): value is DailyGoalMetricKey {
+  return value === "lessons" || value === "xp" || value === "correctAnswers";
+}
+
+export function getDailyGoalSlots(): DailyGoalSlots {
+  if (!isLocalStorageAvailable()) {
+    return DEFAULT_DAILY_GOAL_SLOTS;
+  }
+
+  const raw = window.localStorage.getItem(DAILY_GOAL_SLOTS_KEY);
+  if (!raw) {
+    return DEFAULT_DAILY_GOAL_SLOTS;
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed) || parsed.length !== 3 || !parsed.every((item) => isMetricKey(item))) {
+      return DEFAULT_DAILY_GOAL_SLOTS;
+    }
+
+    return parsed as DailyGoalSlots;
+  } catch {
+    return DEFAULT_DAILY_GOAL_SLOTS;
+  }
+}
+
+export function saveDailyGoalSlots(slots: DailyGoalSlots) {
+  if (!isLocalStorageAvailable()) {
+    return;
+  }
+
+  window.localStorage.setItem(DAILY_GOAL_SLOTS_KEY, JSON.stringify(slots));
+  window.dispatchEvent(new Event("romingo:daily-goals-updated"));
 }
 
 export function getDailyGoalTargets(): DailyGoalTargets {
