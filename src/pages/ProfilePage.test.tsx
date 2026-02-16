@@ -1,8 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import ProfilePage from "./ProfilePage";
 import { PROFILE_SETTINGS_KEY } from "@/lib/account";
+import { saveLessonCompletion } from "@/lib/lessonProgress";
+import { addTodayProgress } from "@/lib/weeklyProgress";
 
 describe("ProfilePage", () => {
   it("renders saved profile name and avatar", () => {
@@ -21,26 +23,23 @@ describe("ProfilePage", () => {
     expect(screen.getByText("🐼")).toBeInTheDocument();
   });
 
-  it("shows only unlocked achievements in badges section", () => {
+  it("shows tiered achievements and allows claim flow", () => {
+    saveLessonCompletion("1", 3);
+    saveLessonCompletion("2", 3);
+    saveLessonCompletion("3", 3);
+    addTodayProgress(350);
+
     render(
       <MemoryRouter>
         <ProfilePage />
       </MemoryRouter>,
     );
 
-    expect(screen.getByText("İlk Seri")).toBeInTheDocument();
-    expect(screen.getByText("İlk Adım")).toBeInTheDocument();
-    expect(screen.getByText("Haftalık Ritim")).toBeInTheDocument();
-    expect(screen.getByText("Kitap Kurdu")).toBeInTheDocument();
-    expect(screen.getByText("Ders Maratoncusu")).toBeInTheDocument();
-    expect(screen.getByText("Yıldız Toplayıcı")).toBeInTheDocument();
-    expect(screen.getByText("Süpernova")).toBeInTheDocument();
-    expect(screen.getByText("Tasarrufçu")).toBeInTheDocument();
-    expect(screen.getByText("Podyumcu")).toBeInTheDocument();
+    expect(screen.getByText("Kademeli Başarımlar")).toBeInTheDocument();
+    const claimButtons = screen.getAllByRole("button", { name: "Claim" });
+    expect(claimButtons.length).toBeGreaterThan(0);
 
-    expect(screen.queryByText("Lig Şampiyonu")).not.toBeInTheDocument();
-    expect(screen.queryByText("Elmas Avcısı")).not.toBeInTheDocument();
-    expect(screen.queryByText("Flamingo Dostu")).not.toBeInTheDocument();
-    expect(screen.queryByText("Bilgi Ustası")).not.toBeInTheDocument();
+    fireEvent.click(claimButtons[0]);
+    expect(screen.getByText("Claimed")).toBeInTheDocument();
   });
 });
