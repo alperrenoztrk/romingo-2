@@ -3,6 +3,11 @@ import XPProgress from "../components/XPProgress";
 import { Flame, BookOpen, Star, Award, Settings, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
 
+type ProfilePageProps = {
+  isGuest?: boolean;
+  onLogout?: () => void;
+};
+
 type LearnerStats = {
   streakDays: number;
   lessonsCompleted: number;
@@ -93,7 +98,7 @@ const stats = [
   { icon: Award, label: "Rozet", value: unlockedAchievementsCount.toString(), color: "text-flamingo" },
 ];
 
-export default function ProfilePage() {
+export default function ProfilePage({ isGuest = false, onLogout }: ProfilePageProps) {
   return (
     <div className="pb-20">
       <StatsBar streak={learnerStats.streakDays} xp={1450} hearts={5} />
@@ -104,7 +109,7 @@ export default function ProfilePage() {
           <div className="w-24 h-24 mx-auto gradient-hero rounded-full flex items-center justify-center text-5xl mb-3 shadow-elevated">
             🦩
           </div>
-          <h1 className="text-xl font-black text-foreground">Alperren</h1>
+          <h1 className="text-xl font-black text-foreground">{isGuest ? "Misafir" : "Alperren"}</h1>
           <p className="text-muted-foreground text-sm font-semibold">Şubat 2026'dan beri öğreniyor</p>
         </div>
 
@@ -156,7 +161,11 @@ export default function ProfilePage() {
             <Settings className="w-5 h-5 text-muted-foreground" />
             <span className="font-bold text-foreground text-sm">Ayarlar</span>
           </Link>
-          <button className="w-full bg-card rounded-2xl p-4 shadow-card flex items-center gap-3 hover:bg-muted transition-colors">
+          <button
+            type="button"
+            onClick={onLogout}
+            className="w-full bg-card rounded-2xl p-4 shadow-card flex items-center gap-3 hover:bg-muted transition-colors"
+          >
             <LogOut className="w-5 h-5 text-destructive" />
             <span className="font-bold text-destructive text-sm">Çıkış Yap</span>
           </button>
