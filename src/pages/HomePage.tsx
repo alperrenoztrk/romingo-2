@@ -12,6 +12,12 @@ import {
   getTodayCorrectAnswers,
   getTodayXpProgress,
 } from "../lib/dailyGoals";
+import {
+  getEconomySnapshot,
+  learningEconomyUpdatedEvent,
+  syncStreak,
+} from "@/lib/learningEconomy";
+import { getAdaptivePracticePlan, getExerciseTypeLabel } from "@/lib/adaptivePractice";
 
 const GOAL_DEFINITIONS = [
   {
@@ -30,25 +36,6 @@ const GOAL_DEFINITIONS = [
     target: 10,
   },
 ] as const;
-
-const quickActions = [
-  {
-    icon: BookOpen,
-    label: "Ders Çalış",
-    desc: "Kaldığın yerden devam et",
-    gradient: "gradient-success",
-    shadow: "shadow-button-success",
-    to: "/learn",
-  },
-  {
-    icon: Target,
-    label: "Pratik Yap",
-    desc: "Zayıf alanlarını güçlendir",
-    gradient: "gradient-sky",
-    shadow: "shadow-button-sky",
-    to: "/learn?view=tutorial",
-  },
-];
 
 const TOTAL_XP = 1450;
 const XP_PER_LEVEL = 1000;
@@ -69,6 +56,7 @@ export default function HomePage() {
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
+  const [economy, setEconomy] = useState(() => getEconomySnapshot());
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
     xp: getTodayXpProgress(),
@@ -76,8 +64,11 @@ export default function HomePage() {
   });
 
   useEffect(() => {
+    syncStreak();
+
     const syncProgress = () => {
       setWeeklyProgress(getCurrentWeekProgress());
+      setEconomy(getEconomySnapshot());
       setTodayMetrics({
         lessons: getCompletedLessonsCountForDate(),
         xp: getTodayXpProgress(),
@@ -88,13 +79,43 @@ export default function HomePage() {
     const interval = setInterval(syncProgress, 1000);
     window.addEventListener("storage", syncProgress);
     window.addEventListener("romingo:daily-goals-updated", syncProgress);
+    window.addEventListener(learningEconomyUpdatedEvent, syncProgress);
 
     return () => {
       clearInterval(interval);
       window.removeEventListener("storage", syncProgress);
       window.removeEventListener("romingo:daily-goals-updated", syncProgress);
+      window.removeEventListener(learningEconomyUpdatedEvent, syncProgress);
     };
   }, []);
+
+  const practicePlan = useMemo(() => getAdaptivePracticePlan(), [todayMetrics.correctAnswers]);
+
+  const quickActions = useMemo(() => {
+    const topWeakType = practicePlan.weakTypes[0];
+    const personalizedDescription = topWeakType
+      ? `Odak: ${getExerciseTypeLabel(topWeakType.type)}`
+      : "Zayıf alanlarını güçlendir";
+
+    return [
+      {
+        icon: BookOpen,
+        label: "Ders Çalış",
+        desc: "Kaldığın yerden devam et",
+        gradient: "gradient-success",
+        shadow: "shadow-button-success",
+        to: "/learn",
+      },
+      {
+        icon: Target,
+        label: "Pratik Yap",
+        desc: personalizedDescription,
+        gradient: "gradient-sky",
+        shadow: "shadow-button-sky",
+        to: "/learn?view=tutorial&practice=adaptive",
+      },
+    ];
+  }, [practicePlan.weakTypes]);
 
   const dailyGoalTargets = getDailyGoalTargets();
 
@@ -136,7 +157,7 @@ export default function HomePage() {
 
   return (
     <div className="pb-20">
-      <StatsBar streak={12} xp={TOTAL_XP} hearts={5} />
+      <StatsBar streak={economy.streakCount} xp={TOTAL_XP} hearts={economy.hearts} />
 
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}

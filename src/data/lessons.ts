@@ -81,6 +81,12 @@ export const lessonsData: Record<string, LessonData> = {
         acceptedAnswers: ["Günaydın", "günaydın"],
       },
       {
+        type: "listening",
+        word: "Mulțumesc",
+        options: ["Lütfen", "Teşekkürler", "Hoşça kal", "Affedersin"],
+        correctIndex: 1,
+      },
+      {
         type: "multiple_choice",
         question: '"La revedere" ifadesi hangi durumda kullanılır?',
         options: ["Tanışırken", "Vedalaşırken", "Teşekkür ederken", "Bir şey isterken"],
@@ -141,6 +147,12 @@ export const lessonsData: Record<string, LessonData> = {
         direction: "ro-tr",
         correctAnswer: "Adın ne?",
         acceptedAnswers: ["Adın ne?", "Adın ne", "Senin adın ne?", "İsmin ne?"],
+      },
+      {
+        type: "listening",
+        word: "Încântat",
+        options: ["Nerelisin?", "Memnun oldum", "Ben Türküm", "Görüşürüz"],
+        correctIndex: 1,
       },
       {
         type: "multiple_choice",
