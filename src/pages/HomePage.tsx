@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
-import { BookOpen, Languages, Target, Star, TrendingUp } from "lucide-react";
+import { BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal } from "lucide-react";
 import { getCurrentWeekProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
@@ -146,10 +146,20 @@ export default function HomePage() {
 
         {/* Daily Goals */}
         <div className="bg-card rounded-2xl p-4 shadow-card">
-          <h2 className="font-extrabold text-foreground mb-3 flex items-center gap-2">
-            <Star className="w-5 h-5 text-gold" fill="hsl(var(--gold))" />
-            Günlük Hedefler
-          </h2>
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <h2 className="font-extrabold text-foreground flex items-center gap-2">
+              <Star className="w-5 h-5 text-gold" fill="hsl(var(--gold))" />
+              Günlük Hedefler
+            </h2>
+            <button
+              type="button"
+              onClick={() => navigate("/settings/daily-goals")}
+              className="inline-flex items-center gap-1 rounded-lg border border-border bg-muted/40 px-3 py-1.5 text-xs font-extrabold text-foreground hover:bg-muted transition-colors"
+            >
+              <SlidersHorizontal className="w-3.5 h-3.5" />
+              Ayarla
+            </button>
+          </div>
           <div className="space-y-3">
             {dailyGoals.map((goal) => {
               const done = goal.current >= goal.target;
