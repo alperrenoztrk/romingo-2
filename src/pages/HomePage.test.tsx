@@ -23,4 +23,17 @@ describe("HomePage", () => {
 
     getHoursSpy.mockRestore();
   });
+  it("shows level based on total xp progress", () => {
+    localStorage.setItem("romingo.weeklyProgressByDate", JSON.stringify({ "2026-02-15": 1450 }));
+
+    render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText("SEVİYE 2")).toBeInTheDocument();
+    expect(screen.getByText("450/1000 XP")).toBeInTheDocument();
+  });
+
 });

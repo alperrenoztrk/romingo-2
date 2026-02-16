@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
 import { BookOpen, Languages, Target, Star, TrendingUp } from "lucide-react";
-import { getCurrentWeekProgress } from "../lib/weeklyProgress";
+import { getCurrentWeekProgress, getTotalXpProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
 import {
@@ -13,6 +13,7 @@ import {
   getTodayXpProgress,
   saveDailyGoalSlots,
 } from "../lib/dailyGoals";
+import { getXpProgress } from "../lib/xp";
 
 const GOAL_DEFINITIONS: Record<DailyGoalMetricKey, { label: string; target: number }> = {
   lessons: {
@@ -57,6 +58,7 @@ export default function HomePage() {
   const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
   const [dailyGoalSlots, setDailyGoalSlots] = useState(getDailyGoalSlots());
+  const [totalXp, setTotalXp] = useState(getTotalXpProgress());
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
     xp: getTodayXpProgress(),
@@ -67,6 +69,7 @@ export default function HomePage() {
     const syncProgress = () => {
       setWeeklyProgress(getCurrentWeekProgress());
       setDailyGoalSlots(getDailyGoalSlots());
+      setTotalXp(getTotalXpProgress());
       setTodayMetrics({
         lessons: getCompletedLessonsCountForDate(),
         xp: getTodayXpProgress(),
@@ -86,6 +89,8 @@ export default function HomePage() {
   }, []);
 
   const maxProgress = Math.max(...weeklyProgress.map((item) => item.progress), 0);
+
+  const xpProgress = useMemo(() => getXpProgress(totalXp), [totalXp]);
 
   const dailyGoals = useMemo(
     () =>
@@ -108,7 +113,7 @@ export default function HomePage() {
 
   return (
     <div className="pb-20">
-      <StatsBar streak={12} xp={1450} hearts={5} />
+      <StatsBar streak={12} xp={totalXp} hearts={5} />
 
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}
@@ -121,7 +126,11 @@ export default function HomePage() {
 
         {/* XP Progress */}
         <div className="bg-card rounded-2xl p-4 shadow-card">
-          <XPProgress current={450} total={1000} level={5} />
+          <XPProgress
+            current={xpProgress.currentXp}
+            total={xpProgress.xpToNextLevel}
+            level={xpProgress.level}
+          />
         </div>
 
         {/* Daily Goals */}

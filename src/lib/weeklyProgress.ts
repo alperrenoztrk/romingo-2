@@ -49,3 +49,7 @@ export function getCurrentWeekProgress(): { day: string; dateKey: string; progre
   });
 }
 
+export function getTotalXpProgress() {
+  const progressMap = getWeeklyProgressMap();
+  return Object.values(progressMap).reduce((total, value) => total + value, 0);
+}
