@@ -187,7 +187,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Beş" kaçtır?',
+        question: '"Beş" hangi Romence sayıya karşılık gelir?',
         options: ["3", "5", "7", "9"],
         correctIndex: 1,
       },
@@ -215,7 +215,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Sekiz" hangi sayıdır?',
+        question: '"Opt" Türkçe hangi sayıdır?',
         options: ["6", "7", "8", "9"],
         correctIndex: 2,
       },
@@ -429,8 +429,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Hangisi bir içecek DEĞİLDİR?",
-        options: ["Çay", "Su", "Ekmek", "Kahve"],
+        question: "Hangisi Romence bir içecek DEĞİLDİR?",
+        options: ["Ceai", "Apă", "Pâine", "Cafea"],
         correctIndex: 2,
       },
     ],
@@ -539,8 +539,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Flamingo ne tür bir hayvandır?",
-        options: ["Memeli", "Sürüngen", "Kuş", "Balık"],
+        question: "Flamingo Romence'de hangi hayvan türüne girer?",
+        options: ["Mamifer", "Reptilă", "Pasăre", "Pește"],
         correctIndex: 2,
       },
       {
@@ -604,8 +604,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Okulda çalışan kişiye ne denir?",
-        options: ["Doktor", "Şoför", "Öğretmen", "Aşçı"],
+        question: "Okulda çalışan kişiye Romence ne denir?",
+        options: ["Medic", "Șofer", "Profesor", "Bucătar"],
         correctIndex: 2,
       },
       {
@@ -641,8 +641,8 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: "Haftanın ilk günü hangisidir?",
-        options: ["Salı", "Pazartesi", "Pazar", "Çarşamba"],
+        question: "Haftanın ilk günü Romence hangisidir?",
+        options: ["Marți", "Luni", "Duminică", "Miercuri"],
         correctIndex: 1,
       },
       {
@@ -669,8 +669,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Hafta sonu hangi günlerdir?",
-        options: ["Pazartesi-Salı", "Cuma-Cumartesi", "Cumartesi-Pazar", "Perşembe-Cuma"],
+        question: "Hafta sonu günleri Romence hangi seçenektedir?",
+        options: ["Luni-Marți", "Vineri-Sâmbătă", "Sâmbătă-Duminică", "Joi-Vineri"],
         correctIndex: 2,
       },
       {
@@ -734,8 +734,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Yapraklar hangi mevsimde dökülür?",
-        options: ["İlkbahar", "Yaz", "Sonbahar", "Kış"],
+        question: "Yapraklar hangi mevsimde dökülür? (Romence seçenekleri seç)",
+        options: ["Primăvară", "Vară", "Toamnă", "Iarnă"],
         correctIndex: 2,
       },
       {
@@ -753,7 +753,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Yılda kaç mevsim vardır?",
+        question: "Într-un an câte anotimpuri sunt?",
         options: ["2", "3", "4", "5"],
         correctIndex: 2,
       },
