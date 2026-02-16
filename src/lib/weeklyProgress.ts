@@ -27,6 +27,7 @@ export function addTodayProgress(amount: number) {
   progressMap[todayKey] = current + amount;
 
   localStorage.setItem(WEEKLY_PROGRESS_KEY, JSON.stringify(progressMap));
+  window.dispatchEvent(new Event("romingo:daily-goals-updated"));
 }
 
 export function getCurrentWeekProgress(): { day: string; dateKey: string; progress: number }[] {

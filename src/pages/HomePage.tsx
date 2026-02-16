@@ -2,16 +2,18 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
-import { BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal } from "lucide-react";
 import { getCurrentWeekProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
-import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
+import { getCompletedLessonsCountForDate, getLessonProgress, isLessonUnlocked } from "../lib/lessonProgress";
 import {
   getCorrectAnswersForDate,
   getDailyGoalTargets,
   getTodayCorrectAnswers,
   getTodayXpProgress,
 } from "../lib/dailyGoals";
+import { orderedLessonIds } from "@/data/lessonCatalog";
+import { useLiveProfileStats } from "@/hooks/useLiveProfileStats";
 
 const GOAL_DEFINITIONS = [
   {
@@ -50,7 +52,6 @@ const quickActions = [
   },
 ];
 
-const TOTAL_XP = 1450;
 const XP_PER_LEVEL = 1000;
 
 function getGoalCompletionRatio(current: number, target: number) {
@@ -63,6 +64,7 @@ function getGoalCompletionRatio(current: number, target: number) {
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const profileStats = useLiveProfileStats();
   const hour = new Date().getHours();
   const baseGreeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
   const profileSettings = getStoredProfileSettings();
@@ -131,12 +133,42 @@ export default function HomePage() {
     [dailyGoalTargets.correctAnswers, dailyGoalTargets.lessons, dailyGoalTargets.xp, weeklyProgress],
   );
 
-  const currentLevel = Math.floor(TOTAL_XP / XP_PER_LEVEL) + 1;
-  const currentLevelXp = TOTAL_XP % XP_PER_LEVEL;
+  const currentLevel = Math.floor(profileStats.xp / XP_PER_LEVEL) + 1;
+  const currentLevelXp = profileStats.xp % XP_PER_LEVEL;
+
+  const nextAction = useMemo(() => {
+    const lessonProgress = getLessonProgress();
+    const nextLessonId = orderedLessonIds.find((lessonId) => !lessonProgress[lessonId]);
+
+    if (nextLessonId && isLessonUnlocked(nextLessonId, orderedLessonIds, lessonProgress)) {
+      return {
+        title: "Bugün ne yapmalıyım?",
+        description: `Sıradaki dersin hazır: ${nextLessonId}. derse devam et.`,
+        cta: "Derse başla",
+        to: `/lesson/${nextLessonId}`,
+      };
+    }
+
+    if (todayMetrics.correctAnswers < dailyGoalTargets.correctAnswers) {
+      return {
+        title: "Bugün ne yapmalıyım?",
+        description: "Doğru cevap hedefin için kısa bir tekrar yap.",
+        cta: "Pratik yap",
+        to: "/learn?view=tutorial",
+      };
+    }
+
+    return {
+      title: "Bugün ne yapmalıyım?",
+      description: "Serini korumak için mini bir ders daha çöz.",
+      cta: "Hızlı ders",
+      to: "/learn",
+    };
+  }, [dailyGoalTargets.correctAnswers, todayMetrics.correctAnswers]);
 
   return (
     <div className="pb-20">
-      <StatsBar streak={12} xp={TOTAL_XP} hearts={5} />
+      <StatsBar />
 
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}
@@ -151,6 +183,18 @@ export default function HomePage() {
         <div className="bg-card rounded-2xl p-4 shadow-card">
           <XPProgress current={currentLevelXp} total={XP_PER_LEVEL} level={currentLevel} />
         </div>
+
+        <button
+          onClick={() => navigate(nextAction.to)}
+          className="w-full gradient-success shadow-button-success rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all"
+        >
+          <p className="text-primary-foreground/80 text-xs font-bold mb-1">{nextAction.title}</p>
+          <p className="text-primary-foreground font-extrabold text-base mb-3">{nextAction.description}</p>
+          <span className="inline-flex items-center gap-1.5 text-primary-foreground text-sm font-black">
+            {nextAction.cta}
+            <ArrowRight className="w-4 h-4" />
+          </span>
+        </button>
 
         {/* Daily Goals */}
         <div className="bg-card rounded-2xl p-4 shadow-card">

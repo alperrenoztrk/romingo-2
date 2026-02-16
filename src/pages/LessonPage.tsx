@@ -11,6 +11,7 @@ import { addTodayProgress } from "../lib/weeklyProgress";
 import { orderedLessonIds } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked, saveLessonCompletion } from "../lib/lessonProgress";
 import { addTodayCorrectAnswer } from "../lib/dailyGoals";
+import { addProfileXp, getProfileHearts, spendProfileHeart } from "@/lib/liveProfile";
 
 export default function LessonPage() {
   const { id } = useParams<{ id: string }>();
@@ -21,7 +22,7 @@ export default function LessonPage() {
   const isUnlocked = isLessonUnlocked(lessonId, orderedLessonIds, lessonProgress);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [hearts, setHearts] = useState(5);
+  const [hearts, setHearts] = useState(() => getProfileHearts());
   const [correctCount, setCorrectCount] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -35,6 +36,7 @@ export default function LessonPage() {
       setCorrectCount((c) => c + 1);
       addTodayCorrectAnswer();
     } else {
+      spendProfileHeart();
       setHearts((h) => Math.max(0, h - 1));
     }
   }, []);
@@ -43,7 +45,12 @@ export default function LessonPage() {
     if (!lesson) return;
     if (currentIndex + 1 >= lesson.exercises.length || hearts <= 0) {
       if (!progressSavedRef.current && hearts > 0) {
-        addTodayProgress(lesson.xpReward);
+        const accuracy = Math.round((correctCount / lesson.exercises.length) * 100);
+        const comboBonus = accuracy >= 95 ? 20 : accuracy >= 80 ? 10 : 0;
+        const totalXpReward = lesson.xpReward + comboBonus;
+
+        addTodayProgress(totalXpReward);
+        addProfileXp(totalXpReward);
         const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : 1;
         saveLessonCompletion(lesson.id, stars);
         progressSavedRef.current = true;
@@ -54,7 +61,7 @@ export default function LessonPage() {
       setAnswered(false);
       setIsCorrect(false);
     }
-  }, [currentIndex, hearts, lesson]);
+  }, [correctCount, currentIndex, hearts, lesson]);
 
   useEffect(() => {
     if (lesson && !isUnlocked) {
