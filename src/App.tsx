@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import BottomNav from "./components/BottomNav";
 import HomePage from "./pages/HomePage";
 import LearnPage from "./pages/LearnPage";
@@ -13,12 +14,39 @@ import LessonPage from "./pages/LessonPage";
 import NotFound from "./pages/NotFound";
 import TranslationPage from "./pages/TranslationPage";
 import SettingsPage from "./pages/SettingsPage";
+import LoginPage from "./pages/LoginPage";
 
 const queryClient = new QueryClient();
+
+type SessionMode = "authenticated" | "logged_out" | "guest";
+
+const SESSION_KEY = "romingo_session_mode";
 
 function AppContent() {
   const location = useLocation();
   const hideNav = location.pathname.startsWith("/lesson/");
+  const [sessionMode, setSessionMode] = useState<SessionMode>("authenticated");
+
+  useEffect(() => {
+    const storedMode = localStorage.getItem(SESSION_KEY) as SessionMode | null;
+    if (storedMode === "authenticated" || storedMode === "logged_out" || storedMode === "guest") {
+      setSessionMode(storedMode);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    setSessionMode("logged_out");
+    localStorage.setItem(SESSION_KEY, "logged_out");
+  };
+
+  const handleGuestLogin = () => {
+    setSessionMode("guest");
+    localStorage.setItem(SESSION_KEY, "guest");
+  };
+
+  if (sessionMode === "logged_out") {
+    return <LoginPage onGuestLogin={handleGuestLogin} />;
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -27,7 +55,7 @@ function AppContent() {
         <Route path="/learn" element={<LearnPage />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/league" element={<LeaguePage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile" element={<ProfilePage isGuest={sessionMode === "guest"} onLogout={handleLogout} />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/translate" element={<TranslationPage />} />
         <Route path="/lesson/:id" element={<LessonPage />} />
