@@ -115,11 +115,6 @@ function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
           </div>
         )}
 
-        {isCurrent && (
-          <div className="absolute -bottom-2 bg-card rounded-full px-2 py-0.5 shadow-card">
-            <span className="text-[10px] font-extrabold text-flamingo">BAŞLA</span>
-          </div>
-        )}
       </button>
 
       <span
