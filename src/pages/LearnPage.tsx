@@ -24,6 +24,10 @@ const lessons: Lesson[] = [
   { id: "10", title: "Günler", emoji: "📅", status: "locked", stars: 0, level: 4 },
   { id: "11", title: "Mevsimler", emoji: "🌸", status: "locked", stars: 0, level: 4 },
   { id: "12", title: "Hava Durumu", emoji: "🌤️", status: "locked", stars: 0, level: 4 },
+  { id: "13", title: "Alışveriş", emoji: "🛍️", status: "locked", stars: 0, level: 5 },
+  { id: "14", title: "Ulaşım", emoji: "🚌", status: "locked", stars: 0, level: 5 },
+  { id: "15", title: "Ev ve Odalar", emoji: "🏠", status: "locked", stars: 0, level: 5 },
+  { id: "16", title: "Zaman İfadeleri", emoji: "⏰", status: "locked", stars: 0, level: 5 },
 ];
 
 const levelColors = [
