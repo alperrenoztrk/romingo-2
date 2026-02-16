@@ -30,6 +30,7 @@ export default function LessonPage() {
   const [answered, setAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const [feedbackSpark, setFeedbackSpark] = useState(0);
   const progressSavedRef = useRef(false);
 
   useEffect(() => {
@@ -53,14 +54,45 @@ export default function LessonPage() {
   const exercises = lesson?.exercises ?? [];
   const currentExercise = useMemo(() => exercises[currentIndex], [currentIndex, exercises]);
 
+  const playAnswerFeedback = useCallback((correct: boolean) => {
+    if (typeof window === "undefined") return;
+
+    if ("vibrate" in navigator) {
+      window.navigator.vibrate(correct ? [35] : [20, 35, 20]);
+    }
+
+    const audioContext = new window.AudioContext();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(correct ? 880 : 220, audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(correct ? 1240 : 160, audioContext.currentTime + 0.12);
+
+    gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(correct ? 0.06 : 0.045, audioContext.currentTime + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.14);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.15);
+    oscillator.onended = () => {
+      void audioContext.close();
+    };
+  }, []);
+
   const handleAnswer = useCallback((correct: boolean) => {
     if (!lesson || !currentExercise) return;
 
     setAnswered(true);
     setIsCorrect(correct);
+    playAnswerFeedback(correct);
     recordAdaptiveAnswer({ lessonId: lesson.id, type: currentExercise.type, correct });
 
     if (correct) {
+      setFeedbackSpark((prev) => prev + 1);
       setCorrectCount((c) => c + 1);
       addTodayCorrectAnswer();
     } else {
@@ -68,7 +100,7 @@ export default function LessonPage() {
       setHearts(nextHeartState.hearts);
       setMinutesToNextHeart(getHeartStatus().minutesToNextHeart);
     }
-  }, [currentExercise, lesson]);
+  }, [currentExercise, lesson, playAnswerFeedback]);
 
   const handleNext = useCallback(() => {
     if (!lesson) return;
@@ -190,8 +222,13 @@ export default function LessonPage() {
                 <X className="w-6 h-6 text-flamingo" />
               )}
               <span className={`font-extrabold ${isCorrect ? "text-success" : "text-flamingo"}`}>
-                {isCorrect ? "Harika!" : "Yanlış cevap"}
+                {isCorrect ? "Mükemmel seri!" : "Tekrar dene"}
               </span>
+              {isCorrect && (
+                <span key={feedbackSpark} className="text-lg animate-bounce" aria-hidden>
+                  ✨🎉
+                </span>
+              )}
             </div>
             <button
               onClick={handleNext}
@@ -201,7 +238,7 @@ export default function LessonPage() {
                   : "bg-flamingo text-primary-foreground shadow-button-primary active:shadow-none"
               }`}
             >
-              Devam Et
+              Devam et
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

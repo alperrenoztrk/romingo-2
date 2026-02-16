@@ -1,12 +1,14 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
-import { Lock, Star, CheckCircle, Volume2 } from "lucide-react";
+import { Lock, Star, CheckCircle, Volume2, Target } from "lucide-react";
 import { lessonsData } from "../data/lessons";
 import { lessonCatalog } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked } from "../lib/lessonProgress";
 import { getAdaptivePracticePlan, getExerciseTypeLabel } from "@/lib/adaptivePractice";
 import { getEconomySnapshot } from "@/lib/learningEconomy";
+import { getCompletedLessonsCountForDate } from "@/lib/lessonProgress";
+import { getDailyGoalTargets, getTodayCorrectAnswers, getTodayXpProgress } from "@/lib/dailyGoals";
 
 interface Lesson {
   id: string;
@@ -114,6 +116,53 @@ export default function LearnPage() {
   const adaptivePracticeView = searchParams.get("practice") === "adaptive";
   const economy = getEconomySnapshot();
   const practicePlan = getAdaptivePracticePlan();
+  const [goalSnapshot, setGoalSnapshot] = useState(() => ({
+    targets: getDailyGoalTargets(),
+    progress: {
+      lessons: getCompletedLessonsCountForDate(),
+      xp: getTodayXpProgress(),
+      correctAnswers: getTodayCorrectAnswers(),
+    },
+  }));
+
+  useEffect(() => {
+    const syncGoalSnapshot = () => {
+      setGoalSnapshot({
+        targets: getDailyGoalTargets(),
+        progress: {
+          lessons: getCompletedLessonsCountForDate(),
+          xp: getTodayXpProgress(),
+          correctAnswers: getTodayCorrectAnswers(),
+        },
+      });
+    };
+
+    const interval = window.setInterval(syncGoalSnapshot, 5000);
+    window.addEventListener("storage", syncGoalSnapshot);
+    window.addEventListener("romingo:daily-goals-updated", syncGoalSnapshot);
+
+    return () => {
+      window.clearInterval(interval);
+      window.removeEventListener("storage", syncGoalSnapshot);
+      window.removeEventListener("romingo:daily-goals-updated", syncGoalSnapshot);
+    };
+  }, []);
+
+  const goalChips = useMemo(
+    () => [
+      { id: "lessons", short: "Ders", value: goalSnapshot.progress.lessons, target: goalSnapshot.targets.lessons },
+      { id: "xp", short: "XP", value: goalSnapshot.progress.xp, target: goalSnapshot.targets.xp },
+      {
+        id: "correctAnswers",
+        short: "Doğru",
+        value: goalSnapshot.progress.correctAnswers,
+        target: goalSnapshot.targets.correctAnswers,
+      },
+    ],
+    [goalSnapshot.progress.correctAnswers, goalSnapshot.progress.lessons, goalSnapshot.progress.xp, goalSnapshot.targets.correctAnswers, goalSnapshot.targets.lessons, goalSnapshot.targets.xp],
+  );
+
+  const allGoalsDone = goalChips.every((chip) => chip.value >= chip.target);
 
   const lessons = useMemo<Lesson[]>(() => {
     const progress = getLessonProgress();
@@ -167,6 +216,32 @@ export default function LearnPage() {
         <p className="text-center text-muted-foreground text-sm font-semibold mb-8">
           {tutorialView ? "" : "A1 Seviye • Başlangıç"}
         </p>
+
+        {!tutorialView && (
+          <div className="sticky top-2 z-20 mb-5 rounded-2xl border border-border bg-background/95 p-2 shadow-card backdrop-blur">
+            <div className="flex items-center justify-between gap-2 mb-2 px-1">
+              <div className="flex items-center gap-1.5 text-xs font-extrabold text-foreground">
+                <Target className="w-3.5 h-3.5 text-flamingo" />
+                Günlük hedefler
+              </div>
+              <span className="text-[11px] font-black text-success">{allGoalsDone ? "Bugün tamamlandı" : "Devam et"}</span>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {goalChips.map((chip) => {
+                const done = chip.value >= chip.target;
+
+                return (
+                  <div key={chip.id} className={`rounded-xl px-2 py-1.5 text-center ${done ? "bg-success-light" : "bg-muted/80"}`}>
+                    <p className="text-[10px] font-extrabold uppercase tracking-wide text-muted-foreground">{chip.short}</p>
+                    <p className={`text-xs font-black ${done ? "text-success" : "text-foreground"}`}>
+                      {chip.value}/{chip.target}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {tutorialView && adaptivePracticeView && (
           <div className="mb-4 rounded-2xl bg-sky-light p-4 border border-sky/30">
