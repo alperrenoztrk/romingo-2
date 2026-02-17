@@ -53,7 +53,7 @@ function getTutorialWords(lessonId: string): TutorialWord[] {
     }
   });
 
-  return Array.from(wordMap.values()).slice(0, 6);
+  return Array.from(wordMap.values()).slice(0, 12);
 }
 
 function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
