@@ -161,8 +161,20 @@ export default function LessonPage() {
   const handleNext = useCallback(() => {
     if (!lesson) return;
     if (currentIndex + 1 >= exerciseIndexes.length || hearts <= 0) {
+      const stars = calculateStars(correctCount, exerciseIndexes.length);
+
+      // Auto-retry wrong answers if less than 2 stars
+      if (stars < 2 && wrongExerciseIndexes.length > 0 && hearts > 0) {
+        setExerciseIndexes(wrongExerciseIndexes);
+        setWrongExerciseIndexes([]);
+        setCurrentIndex(0);
+        setCorrectCount(0);
+        setAnswered(false);
+        setIsCorrect(false);
+        return;
+      }
+
       if (!progressSavedRef.current && hearts > 0) {
-        const stars = calculateStars(correctCount, exerciseIndexes.length);
         const isPerfectLesson = exerciseIndexes.length > 0 && correctCount === exerciseIndexes.length;
         const totalXpReward = lesson.xpReward + (isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0);
 
