@@ -293,9 +293,6 @@ export default function HomePage() {
                       />
                     )}
                   </div>
-                  <span className="text-[9px] font-bold text-foreground">
-                    {hasProgress ? `%${item.completionPercent}` : ""}
-                  </span>
                   <span
                     className={`text-[10px] font-bold ${
                       isToday ? "text-flamingo" : "text-muted-foreground"
