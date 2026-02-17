@@ -56,10 +56,6 @@ export default function DailyGoalsSettingsPage() {
 
     setTargets(sanitizedTargets);
     saveDailyGoalTargets(sanitizedTargets);
-    toast({
-      title: "Günlük hedefler güncellendi",
-      description: "Yeni hedeflerin anasayfada hemen gösterilecek.",
-    });
   };
 
   const handleReset = () => {
