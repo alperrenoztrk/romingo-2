@@ -35,8 +35,12 @@ function toDateKey(date: Date) {
   return `${year}-${month}-${day}`;
 }
 
-function sanitizeTarget(value: unknown, fallback: number) {
-  return typeof value === "number" && Number.isFinite(value) && value >= 0 ? Math.floor(value) : fallback;
+function sanitizeTarget(value: unknown, fallback: number, min = 0) {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return fallback;
+  }
+
+  return Math.max(min, Math.floor(value));
 }
 
 function isMetricKey(value: unknown): value is DailyGoalMetricKey {
@@ -87,7 +91,7 @@ export function getDailyGoalTargets(): DailyGoalTargets {
   try {
     const parsed = JSON.parse(raw) as Partial<DailyGoalTargets>;
     return {
-      lessons: sanitizeTarget(parsed.lessons, DEFAULT_DAILY_GOAL_TARGETS.lessons),
+      lessons: sanitizeTarget(parsed.lessons, DEFAULT_DAILY_GOAL_TARGETS.lessons, 1),
       xp: sanitizeTarget(parsed.xp, DEFAULT_DAILY_GOAL_TARGETS.xp),
       correctAnswers: sanitizeTarget(parsed.correctAnswers, DEFAULT_DAILY_GOAL_TARGETS.correctAnswers),
     };
@@ -101,7 +105,13 @@ export function saveDailyGoalTargets(targets: DailyGoalTargets) {
     return;
   }
 
-  window.localStorage.setItem(DAILY_GOAL_TARGETS_KEY, JSON.stringify(targets));
+  const sanitizedTargets: DailyGoalTargets = {
+    lessons: sanitizeTarget(targets.lessons, DEFAULT_DAILY_GOAL_TARGETS.lessons, 1),
+    xp: sanitizeTarget(targets.xp, DEFAULT_DAILY_GOAL_TARGETS.xp),
+    correctAnswers: sanitizeTarget(targets.correctAnswers, DEFAULT_DAILY_GOAL_TARGETS.correctAnswers),
+  };
+
+  window.localStorage.setItem(DAILY_GOAL_TARGETS_KEY, JSON.stringify(sanitizedTargets));
   window.dispatchEvent(new Event("romingo:daily-goals-updated"));
 }
 

@@ -27,9 +27,10 @@ export default function DailyGoalsSettingsPage() {
     }
 
     const parsedValue = Number(value);
+    const minValue = key === "lessons" ? 1 : 0;
     setTargets((prev) => ({
       ...prev,
-      [key]: Number.isFinite(parsedValue) && parsedValue >= 0 ? Math.floor(parsedValue) : 0,
+      [key]: Number.isFinite(parsedValue) ? Math.max(minValue, Math.floor(parsedValue)) : minValue,
     }));
   };
 
@@ -48,7 +49,13 @@ export default function DailyGoalsSettingsPage() {
   };
 
   const handleSave = () => {
-    saveDailyGoalTargets(targets);
+    const sanitizedTargets = {
+      ...targets,
+      lessons: Math.max(1, Math.floor(targets.lessons)),
+    };
+
+    setTargets(sanitizedTargets);
+    saveDailyGoalTargets(sanitizedTargets);
     toast({
       title: "Günlük hedefler güncellendi",
       description: "Yeni hedeflerin anasayfada hemen gösterilecek.",
@@ -83,7 +90,7 @@ export default function DailyGoalsSettingsPage() {
             <label className="text-sm font-bold text-foreground">Ders Tamamla</label>
             <Input
               type="number"
-              min={0}
+              min={1}
               value={targets.lessons}
               onChange={(event) => handleTargetChange("lessons", event.target.value)}
               onKeyDown={(event) => handleZeroReplaceOnType("lessons", event)}
