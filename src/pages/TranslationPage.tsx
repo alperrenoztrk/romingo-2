@@ -84,7 +84,7 @@ export default function TranslationPage() {
               {targetLabel} Çeviri
             </label>
             <div className="w-full min-h-24 rounded-xl border border-input bg-muted/40 px-3 py-2 text-sm font-semibold text-foreground">
-              {isTranslating ? "Google Translate ile çevriliyor..." : translation || "Çeviriyi görmek için metin gir."}
+              {isTranslating ? "Çevriliyor..." : translation || "Çeviriyi görmek için metin gir."}
             </div>
           </div>
         </div>
