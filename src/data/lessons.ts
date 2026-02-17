@@ -501,7 +501,7 @@ export const lessonsData: Record<string, LessonData> = {
         type: "fill_blank",
         sentence: "Benim ___ öğretmen.",
         correctAnswer: "annem",
-        options: ["annem", "evim", "okulm", "işim"],
+        options: ["annem", "evim", "okulum", "işim"],
       },
       {
         type: "translation",
@@ -770,7 +770,7 @@ export const lessonsData: Record<string, LessonData> = {
         sentence: "Vara mergem la mare",
         direction: "ro-tr",
         correctAnswer: "Yazın denize gideriz",
-        acceptedAnswers: ["Yazın denize gideriz", "Yaz", "yaz"],
+        acceptedAnswers: ["Yazın denize gideriz", "yazın denize gideriz"],
       },
       {
         type: "multiple_choice",
@@ -1126,8 +1126,8 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "fill_blank",
         sentence: "Ders on dakika içinde ___, lütfen geç kalma.",
-        correctAnswer: "yakında",
-        options: ["yakında", "evde", "bazen", "orada"],
+        correctAnswer: "başlıyor",
+        options: ["başlıyor", "evde", "bazen", "orada"],
       },
       {
         type: "translation",
