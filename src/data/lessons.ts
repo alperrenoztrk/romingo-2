@@ -200,16 +200,16 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Beş" hangi Romence sayıya karşılık gelir?',
-        options: ["3", "5", "7", "9"],
+        options: ["Trei", "Cinci", "Șapte", "Nouă"],
         correctIndex: 1,
       },
       {
         type: "matching",
         pairs: [
-          { left: "Bir", right: "1" },
-          { left: "Üç", right: "3" },
-          { left: "Yedi", right: "7" },
-          { left: "On", right: "10" },
+          { left: "Bir", right: "Unu" },
+          { left: "Üç", right: "Trei" },
+          { left: "Yedi", right: "Șapte" },
+          { left: "On", right: "Zece" },
         ],
       },
       {
@@ -228,7 +228,7 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "multiple_choice",
         question: '"Opt" Türkçe hangi sayıdır?',
-        options: ["6", "7", "8", "9"],
+        options: ["Altı", "Yedi", "Sekiz", "Dokuz"],
         correctIndex: 2,
       },
       {
@@ -240,10 +240,10 @@ export const lessonsData: Record<string, LessonData> = {
       {
         type: "matching",
         pairs: [
-          { left: "Dört", right: "4" },
-          { left: "Altı", right: "6" },
-          { left: "Dokuz", right: "9" },
-          { left: "Yirmi", right: "20" },
+          { left: "Dört", right: "Patru" },
+          { left: "Altı", right: "Șase" },
+          { left: "Dokuz", right: "Nouă" },
+          { left: "Yirmi", right: "Douăzeci" },
         ],
       },
       {
