@@ -49,6 +49,7 @@ export default function HomePage() {
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
+  const [flamingoRotation, setFlamingoRotation] = useState(0);
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
     xp: getTodayXpProgress(),
@@ -146,7 +147,15 @@ export default function HomePage() {
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         {/* Greeting */}
         <div className="flex items-center gap-4">
-          <div className="text-5xl">🦩</div>
+          <button
+            type="button"
+            onClick={() => setFlamingoRotation((currentRotation) => currentRotation + 360)}
+            className="text-5xl leading-none transition-transform duration-700 ease-out active:scale-95"
+            style={{ transform: `rotate(${flamingoRotation}deg)` }}
+            aria-label="Flamingoyu döndür"
+          >
+            🦩
+          </button>
           <div>
             <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
           </div>
