@@ -161,11 +161,11 @@ export default function LessonPage() {
 
   const handleNext = useCallback(() => {
     if (!lesson) return;
-    if (currentIndex + 1 >= exerciseIndexes.length || hearts <= 0) {
+    if (currentIndex + 1 >= exerciseIndexes.length) {
       const stars = calculateStars(correctCount, exerciseIndexes.length);
 
       // Auto-retry wrong answers if less than 2 stars
-      if (stars < 2 && wrongExerciseIndexes.length > 0 && hearts > 0) {
+      if (stars < 2 && wrongExerciseIndexes.length > 0) {
         setExerciseIndexes(wrongExerciseIndexes);
         setWrongExerciseIndexes([]);
         setCurrentIndex(0);
@@ -341,7 +341,7 @@ export default function LessonPage() {
                 <X className="w-6 h-6 text-flamingo" />
               )}
               <span className={`font-extrabold ${isCorrect ? "text-success" : "text-flamingo"}`}>
-                {isCorrect ? "Mükemmel seri!" : "Tekrar dene"}
+                {isCorrect ? "Mükemmel seri!" : hearts <= 0 ? "Canların tükendi" : "Tekrar dene"}
               </span>
               {isCorrect && (
                 <span key={feedbackSpark} className="text-lg animate-bounce" aria-hidden>
