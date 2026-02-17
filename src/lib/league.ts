@@ -95,17 +95,20 @@ function sanitizeState(parsed: unknown): LeagueState | null {
   const userXp = typeof maybe.userXp === "number" && Number.isFinite(maybe.userXp) ? Math.max(0, Math.floor(maybe.userXp)) : 0;
 
   const opponents = Array.isArray(maybe.opponents)
-    ? maybe.opponents.filter((player): player is LeaguePlayer => {
-      return Boolean(
-        player &&
-          typeof player === "object" &&
-          typeof player.id === "string" &&
-          typeof player.name === "string" &&
-          typeof player.avatar === "string" &&
-          typeof player.xp === "number" &&
-          Number.isFinite(player.xp),
-      );
-    }).slice(0, 9)
+    ? maybe.opponents
+      .filter((player): player is LeaguePlayer => {
+        return Boolean(
+          player &&
+            typeof player === "object" &&
+            typeof player.id === "string" &&
+            typeof player.name === "string" &&
+            typeof player.avatar === "string" &&
+            typeof player.xp === "number" &&
+            Number.isFinite(player.xp),
+        );
+      })
+      .slice(0, 9)
+      .map((player) => ({ ...player, xp: Math.max(0, Math.floor(player.xp)) }))
     : [];
 
   return {

@@ -12,4 +12,23 @@ describe("league XP", () => {
 
     expect(getLeagueState().userXp).toBe(0);
   });
+
+  it("sanitizes stored negative opponent XP to 0", () => {
+    localStorage.setItem(
+      "romingo.leagueState.v1",
+      JSON.stringify({
+        weekKey: getLeagueState().weekKey,
+        leagueIndex: 0,
+        userXp: 25,
+        opponents: [
+          { id: "opponent-1", name: "Test", avatar: "👤", xp: -120 },
+          { id: "opponent-2", name: "Test 2", avatar: "👤", xp: 80.9 },
+        ],
+      }),
+    );
+
+    const state = getLeagueState();
+    expect(state.opponents[0]?.xp).toBe(0);
+    expect(state.opponents[1]?.xp).toBe(80);
+  });
 });
