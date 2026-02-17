@@ -252,13 +252,23 @@ export default function HomePage() {
           <div className="text-primary-foreground/80 text-xs font-semibold mt-1">{nextAction.desc}</div>
         </button>
 
-        <button
-          onClick={() => navigate("/translate")}
-          className="gradient-hero shadow-button-primary rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full"
-        >
-          <Languages className="w-8 h-8 text-primary-foreground mb-2" />
-          <div className="text-primary-foreground font-extrabold text-sm">Çeviri</div>
-        </button>
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            onClick={() => navigate("/learn?view=tutorial&practice=adaptive")}
+            className="gradient-sky shadow-button-sky rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all"
+          >
+            <Target className="w-8 h-8 text-primary-foreground mb-2" />
+            <div className="text-primary-foreground font-extrabold text-sm">Pratik Yap</div>
+          </button>
+
+          <button
+            onClick={() => navigate("/translate")}
+            className="gradient-hero shadow-button-primary rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all"
+          >
+            <Languages className="w-8 h-8 text-primary-foreground mb-2" />
+            <div className="text-primary-foreground font-extrabold text-sm">Çeviri</div>
+          </button>
+        </div>
 
         {/* Streak Card */}
         <div className="bg-card rounded-2xl p-4 shadow-card">
