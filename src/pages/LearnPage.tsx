@@ -48,6 +48,35 @@ const numberTutorialWords: TutorialWord[] = [
   { tr: "Yirmi", ro: "Douăzeci" },
 ];
 
+const dayOrder = [
+  "pazartesi",
+  "salı",
+  "çarşamba",
+  "perşembe",
+  "cuma",
+  "cumartesi",
+  "pazar",
+];
+
+const dayOrderMap = new Map(dayOrder.map((day, index) => [day, index]));
+
+function getDaySortKey(text: string) {
+  const normalized = text.trim().toLocaleLowerCase("tr-TR");
+  const exactOrder = dayOrderMap.get(normalized);
+
+  if (exactOrder !== undefined) {
+    return { group: 0, order: exactOrder };
+  }
+
+  for (const [day, order] of dayOrderMap.entries()) {
+    if (normalized.includes(day)) {
+      return { group: 1, order };
+    }
+  }
+
+  return { group: 2, order: Number.MAX_SAFE_INTEGER };
+}
+
 function getTutorialWords(lessonId: string): TutorialWord[] {
   if (lessonId === "3") {
     return numberTutorialWords;
@@ -80,7 +109,28 @@ function getTutorialWords(lessonId: string): TutorialWord[] {
     }
   });
 
-  return Array.from(wordMap.values()).slice(0, 12);
+  const tutorialWords = Array.from(wordMap.values());
+
+  if (lessonId === "10") {
+    return tutorialWords
+      .sort((a, b) => {
+        const aKey = getDaySortKey(a.tr);
+        const bKey = getDaySortKey(b.tr);
+
+        if (aKey.group !== bKey.group) {
+          return aKey.group - bKey.group;
+        }
+
+        if (aKey.order !== bKey.order) {
+          return aKey.order - bKey.order;
+        }
+
+        return a.tr.localeCompare(b.tr, "tr-TR");
+      })
+      .slice(0, 12);
+  }
+
+  return tutorialWords.slice(0, 12);
 }
 
 function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
