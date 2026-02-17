@@ -235,7 +235,7 @@ export function markLessonActivity() {
 
 export function getEconomySnapshot() {
   const heart = getHeartStatus();
-  const streak = readStreakState();
+  const streak = syncStreak();
 
   return {
     hearts: heart.hearts,
