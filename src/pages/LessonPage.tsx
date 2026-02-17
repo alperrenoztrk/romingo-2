@@ -14,6 +14,7 @@ import { getLessonProgress, isLessonUnlocked, saveLessonCompletion } from "../li
 import { addTodayCorrectAnswer } from "../lib/dailyGoals";
 import { consumeHeart, getHeartStatus, markLessonActivity, syncHearts } from "@/lib/learningEconomy";
 import { recordAdaptiveAnswer } from "@/lib/adaptivePractice";
+import { addXpToProfile } from "@/lib/liveProfile";
 
 export default function LessonPage() {
   const { id } = useParams<{ id: string }>();
@@ -107,6 +108,7 @@ export default function LessonPage() {
     if (currentIndex + 1 >= lesson.exercises.length || hearts <= 0) {
       if (!progressSavedRef.current && hearts > 0) {
         addTodayProgress(lesson.xpReward);
+        addXpToProfile(lesson.xpReward);
         const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : 1;
         saveLessonCompletion(lesson.id, stars);
         markLessonActivity();

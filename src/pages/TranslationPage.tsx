@@ -54,7 +54,7 @@ export default function TranslationPage() {
 
   return (
     <div className="pb-20">
-      <StatsBar streak={12} xp={1450} hearts={5} />
+      <StatsBar />
 
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
         <div className="bg-card rounded-2xl p-4 shadow-card space-y-3">

@@ -79,34 +79,61 @@ export default function HomePage() {
   }, []);
 
   const practicePlan = useMemo(() => getAdaptivePracticePlan(), [todayMetrics.correctAnswers]);
+  const dailyGoalTargets = getDailyGoalTargets();
 
-  const quickActions = useMemo(() => {
+  const nextAction = useMemo(() => {
+    const lessonsDone = todayMetrics.lessons >= 1;
+    const xpDone = todayMetrics.xp >= dailyGoalTargets.xp;
+    const correctDone = todayMetrics.correctAnswers >= dailyGoalTargets.correctAnswers;
     const topWeakType = practicePlan.weakTypes[0];
-    const personalizedDescription = topWeakType
-      ? `Odak: ${getExerciseTypeLabel(topWeakType.type)}`
-      : "Zayıf alanlarını güçlendir";
 
-    return [
-      {
+    if (!lessonsDone) {
+      return {
         icon: BookOpen,
-        label: "Ders Çalış",
-        desc: "Kaldığın yerden devam et",
+        title: "Bugün ne yapmalıyım?",
+        label: "Sıradaki dersi tamamla",
+        desc: "Serini korumak için kaldığın yerden devam et.",
+        to: "/learn",
         gradient: "gradient-success",
         shadow: "shadow-button-success",
-        to: "/learn",
-      },
-      {
+      };
+    }
+
+    if (!correctDone && topWeakType) {
+      return {
         icon: Target,
-        label: "Pratik Yap",
-        desc: personalizedDescription,
+        title: "Bugün ne yapmalıyım?",
+        label: "Zayıf konunu tekrar et",
+        desc: `Öneri: ${getExerciseTypeLabel(topWeakType.type)} pratiği yap.`,
+        to: "/learn?view=tutorial&practice=adaptive",
         gradient: "gradient-sky",
         shadow: "shadow-button-sky",
-        to: "/learn?view=tutorial&practice=adaptive",
-      },
-    ];
-  }, [practicePlan.weakTypes]);
+      };
+    }
 
-  const dailyGoalTargets = getDailyGoalTargets();
+    if (!xpDone) {
+      return {
+        icon: Star,
+        title: "Bugün ne yapmalıyım?",
+        label: "Hedef XP'yi tamamla",
+        desc: `Kalan ${Math.max(dailyGoalTargets.xp - todayMetrics.xp, 0)} XP için kısa bir ders daha.`,
+        to: "/learn",
+        gradient: "gradient-hero",
+        shadow: "shadow-button-primary",
+      };
+    }
+
+    return {
+      icon: Target,
+      title: "Bugün ne yapmalıyım?",
+      label: "Mini tekrar turu yap",
+      desc: "Yarına hazırlanmak için 5 dakikalık pratik öneriyoruz.",
+      to: "/learn?view=tutorial&practice=adaptive",
+      gradient: "gradient-sky",
+      shadow: "shadow-button-sky",
+    };
+  }, [dailyGoalTargets.correctAnswers, dailyGoalTargets.xp, practicePlan.weakTypes, todayMetrics.correctAnswers, todayMetrics.lessons, todayMetrics.xp]);
+
 
   const dailyGoals = useMemo(
     () =>
@@ -203,24 +230,18 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="grid grid-cols-2 gap-3">
-          {quickActions.map((action, i) => (
-            <button
-              key={i}
-              onClick={() => navigate(action.to)}
-              className={`${action.gradient} ${action.shadow} rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all`}
-            >
-              <action.icon className="w-8 h-8 text-primary-foreground mb-2" />
-              <div className="text-primary-foreground font-extrabold text-sm">
-                {action.label}
-              </div>
-              <div className="text-primary-foreground/80 text-xs font-semibold">
-                {action.desc}
-              </div>
-            </button>
-          ))}
-        </div>
+        {/* Next Best Action */}
+        <button
+          onClick={() => navigate(nextAction.to)}
+          className={`${nextAction.gradient} ${nextAction.shadow} rounded-2xl p-5 text-left active:translate-y-1 active:shadow-none transition-all w-full`}
+        >
+          <div className="text-primary-foreground/80 text-xs font-extrabold uppercase tracking-wide mb-1">
+            {nextAction.title}
+          </div>
+          <nextAction.icon className="w-8 h-8 text-primary-foreground mb-2" />
+          <div className="text-primary-foreground font-extrabold text-base">{nextAction.label}</div>
+          <div className="text-primary-foreground/80 text-xs font-semibold mt-1">{nextAction.desc}</div>
+        </button>
 
         <button
           onClick={() => navigate("/translate")}

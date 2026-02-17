@@ -100,7 +100,7 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
 
   return (
     <div className="pb-20">
-      <StatsBar streak={story.bestStreak} xp={story.thisWeekXp} hearts={5} />
+      <StatsBar />
 
       <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
         <div className="text-center">
