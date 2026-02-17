@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { FillBlankExercise } from "../../data/lessons";
+import { matchesWithOneLetterTolerancePerWord } from "../../lib/answerTolerance";
 
 interface Props {
   exercise: FillBlankExercise;
@@ -9,11 +10,14 @@ interface Props {
 
 export default function FillBlankEx({ exercise, onAnswer, answered }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
+  const selectedIsCorrect =
+    selected !== null &&
+    matchesWithOneLetterTolerancePerWord(selected, exercise.correctAnswer);
 
   const handleSelect = (option: string) => {
     if (answered) return;
     setSelected(option);
-    onAnswer(option.toLowerCase() === exercise.correctAnswer.toLowerCase());
+    onAnswer(matchesWithOneLetterTolerancePerWord(option, exercise.correctAnswer));
   };
 
   // Split sentence at ___
@@ -28,7 +32,7 @@ export default function FillBlankEx({ exercise, onAnswer, answered }: Props) {
             className={`inline-block min-w-[80px] border-b-2 mx-1 px-2 py-0.5 font-extrabold text-center ${
               !selected
                 ? "border-muted-foreground text-muted-foreground"
-                : answered && selected.toLowerCase() === exercise.correctAnswer.toLowerCase()
+                : answered && selectedIsCorrect
                 ? "border-success text-success bg-success-light rounded-lg"
                 : answered
                 ? "border-flamingo text-flamingo bg-flamingo-light rounded-lg"
@@ -51,9 +55,9 @@ export default function FillBlankEx({ exercise, onAnswer, answered }: Props) {
         {exercise.options.map((option, i) => {
           let style = "bg-card border-2 border-border text-foreground hover:border-sky";
 
-          if (answered && option.toLowerCase() === exercise.correctAnswer.toLowerCase()) {
+          if (answered && option === selected && selectedIsCorrect) {
             style = "bg-success-light border-2 border-success text-success";
-          } else if (answered && option === selected && option.toLowerCase() !== exercise.correctAnswer.toLowerCase()) {
+          } else if (answered && option === selected && !selectedIsCorrect) {
             style = "bg-flamingo-light border-2 border-flamingo text-flamingo";
           } else if (!answered && option === selected) {
             style = "bg-sky-light border-2 border-sky text-sky-brand";
