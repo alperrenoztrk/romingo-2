@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import StatsBar from "../components/StatsBar";
-import { ArrowRightLeft, Languages } from "lucide-react";
+import { ArrowRightLeft, Languages, Volume2 } from "lucide-react";
 import type { TranslationDirection } from "../lib/translationDictionary";
 import { translateWithGoogle } from "../lib/googleTranslate";
 
@@ -38,6 +38,18 @@ export default function TranslationPage() {
 
   const sourceLabel = direction === "tr-ro" ? "Türkçe" : "Romence";
   const targetLabel = direction === "tr-ro" ? "Romence" : "Türkçe";
+  const targetLocale = direction === "tr-ro" ? "ro-RO" : "tr-TR";
+
+  const speakText = (text: string, lang: string) => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang;
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
+  };
 
   return (
     <div className="pb-20">
@@ -80,9 +92,21 @@ export default function TranslationPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-muted-foreground uppercase tracking-wide">
-              {targetLabel} Çeviri
-            </label>
+            <div className="flex items-center justify-between gap-2">
+              <label className="text-xs font-bold text-muted-foreground uppercase tracking-wide">
+                {targetLabel} Çeviri
+              </label>
+              <button
+                type="button"
+                onClick={() => speakText(translation, targetLocale)}
+                disabled={!translation || isTranslating}
+                aria-label="Çeviriyi sesli dinle"
+                className="inline-flex items-center gap-1 rounded-lg bg-card px-2 py-1 text-xs font-bold text-muted-foreground hover:text-foreground hover:bg-background transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Volume2 className="w-3.5 h-3.5" />
+                Dinle
+              </button>
+            </div>
             <div className="w-full min-h-24 rounded-xl border border-input bg-muted/40 px-3 py-2 text-sm font-semibold text-foreground">
               {isTranslating ? "Çevriliyor..." : translation || "Çeviriyi görmek için metin gir."}
             </div>
