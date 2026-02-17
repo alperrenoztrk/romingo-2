@@ -228,9 +228,6 @@ export default function HomePage() {
         >
           <Languages className="w-8 h-8 text-primary-foreground mb-2" />
           <div className="text-primary-foreground font-extrabold text-sm">Çeviri</div>
-          <div className="text-primary-foreground/80 text-xs font-semibold">
-            Türkçe ↔ Romence anında çeviri yap
-          </div>
         </button>
 
         {/* Streak Card */}
