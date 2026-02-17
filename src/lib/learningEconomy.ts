@@ -52,7 +52,7 @@ function readHeartState(): HeartState {
     }
 
     return {
-      hearts: Math.min(MAX_HEARTS, Math.max(0, Math.floor(parsed.hearts))),
+      hearts: Math.max(0, Math.floor(parsed.hearts)),
       lastUpdatedAt: parsed.lastUpdatedAt,
     };
   } catch {
@@ -124,6 +124,7 @@ export function syncHearts() {
     return current;
   }
 
+  // Regen only up to MAX_HEARTS; hearts above MAX stay untouched
   const nextHearts = Math.min(MAX_HEARTS, current.hearts + regenerated);
   const remainderMs = elapsedMs % intervalMs;
   const nextState: HeartState = {
@@ -137,9 +138,11 @@ export function syncHearts() {
 
 export function consumeHeart() {
   const current = syncHearts();
+  const wasAtOrAboveMax = current.hearts >= MAX_HEARTS;
+  const nextHearts = Math.max(0, current.hearts - 1);
   const nextState: HeartState = {
-    hearts: Math.max(0, current.hearts - 1),
-    lastUpdatedAt: current.hearts === MAX_HEARTS ? Date.now() : current.lastUpdatedAt,
+    hearts: nextHearts,
+    lastUpdatedAt: wasAtOrAboveMax && nextHearts < MAX_HEARTS ? Date.now() : current.lastUpdatedAt,
   };
 
   saveHeartState(nextState);
