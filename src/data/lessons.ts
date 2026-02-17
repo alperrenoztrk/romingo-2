@@ -1418,6 +1418,137 @@ export const lessonsData: Record<string, LessonData> = {
       },
     ],
   },
+  "21": {
+    id: "21",
+    title: "Duygular",
+    emoji: "😊",
+    description: "Temel duyguları ifade et ve karşındakinin nasıl hissettiğini sor",
+    xpReward: 30,
+    exercises: [
+      {
+        type: "multiple_choice",
+        question: '"Mutlu" Romence nasıl söylenir?',
+        options: ["Trist", "Fericit", "Obosit", "Furios"],
+        correctIndex: 1,
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Mutlu", right: "Fericit" },
+          { left: "Üzgün", right: "Trist" },
+          { left: "Yorgun", right: "Obosit" },
+          { left: "Heyecanlı", right: "Entuziasmat" },
+        ],
+      },
+      {
+        type: "fill_blank",
+        sentence: "Sınavdan sonra biraz ___ hissediyorum.",
+        correctAnswer: "yorgun",
+        options: ["yorgun", "uzun", "kalın", "erken"],
+      },
+      {
+        type: "translation",
+        sentence: "Sunt foarte fericit azi",
+        direction: "ro-tr",
+        correctAnswer: "Bugün çok mutluyum",
+        acceptedAnswers: ["Bugün çok mutluyum", "Çok mutluyum bugün", "bugün çok mutluyum"],
+      },
+      {
+        type: "multiple_choice",
+        question: '"Sinirliyim" ifadesinin Romence karşılığı hangisi?',
+        options: ["Sunt furios/furioasă", "Sunt liniștit", "Sunt ocupat", "Sunt acasă"],
+        correctIndex: 0,
+      },
+      {
+        type: "fill_blank",
+        sentence: "Yoğun bir günden sonra herkes biraz ___ olabilir.",
+        correctAnswer: "stresli",
+        options: ["stresli", "tatlı", "sessiz", "aç"],
+      },
+      {
+        type: "translation",
+        sentence: "Nasıl hissediyorsun?",
+        direction: "tr-ro",
+        correctAnswer: "Cum te simți?",
+        acceptedAnswers: ["Cum te simți?", "cum te simți?", "Cum te simti?", "cum te simti?"],
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Rahat", right: "Relaxat" },
+          { left: "Endişeli", right: "Îngrijorat" },
+          { left: "Sakin", right: "Calm" },
+          { left: "Korkmuş", right: "Speriat" },
+        ],
+      },
+    ],
+  },
+  "22": {
+    id: "22",
+    title: "Vücut Bölümleri",
+    emoji: "🧍",
+    description: "Vücudu tanımlamak, basit sağlık ifadeleri ve günlük kelimeler",
+    xpReward: 30,
+    exercises: [
+      {
+        type: "multiple_choice",
+        question: '"El" Romence hangisidir?',
+        options: ["Cap", "Mână", "Picior", "Ochi"],
+        correctIndex: 1,
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Baş", right: "Cap" },
+          { left: "Göz", right: "Ochi" },
+          { left: "Kulak", right: "Ureche" },
+          { left: "Ağız", right: "Gură" },
+        ],
+      },
+      {
+        type: "fill_blank",
+        sentence: "Bugün çok yürüdüm, ___ ağrıyor.",
+        correctAnswer: "ayağım",
+        options: ["ayağım", "kalemim", "çantam", "elbisem"],
+      },
+      {
+        type: "translation",
+        sentence: "Mă doare capul",
+        direction: "ro-tr",
+        correctAnswer: "Başım ağrıyor",
+        acceptedAnswers: ["Başım ağrıyor", "başım ağrıyor", "Benim başım ağrıyor"],
+      },
+      {
+        type: "multiple_choice",
+        question: '"Diz" kelimesinin Romence karşılığı hangisi?',
+        options: ["Genunchi", "Cot", "Umăr", "Spate"],
+        correctIndex: 0,
+      },
+      {
+        type: "fill_blank",
+        sentence: "Kitabı taşımaktan ___ yoruldu.",
+        correctAnswer: "kollarım",
+        options: ["kollarım", "masam", "defterim", "evim"],
+      },
+      {
+        type: "translation",
+        sentence: "Omuz",
+        direction: "tr-ro",
+        correctAnswer: "Umăr",
+        acceptedAnswers: ["Umăr", "umăr"],
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Burun", right: "Nas" },
+          { left: "Diş", right: "Dinte" },
+          { left: "Boyun", right: "Gât" },
+          { left: "Sırt", right: "Spate" },
+        ],
+      },
+    ],
+  },
+
 };
 
 const level2To6SupplementalExercises: Record<string, Exercise[]> = {
