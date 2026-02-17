@@ -211,6 +211,20 @@ export default function LessonPage() {
   }, [retryExerciseIndexes]);
 
   useEffect(() => {
+    if (!answered || !isCorrect) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      handleNext();
+    }, 700);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [answered, handleNext, isCorrect]);
+
+  useEffect(() => {
     if (lesson && !isUnlocked) {
       navigate("/learn", { replace: true });
     }
