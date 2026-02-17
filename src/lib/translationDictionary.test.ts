@@ -19,6 +19,11 @@ describe("translationDictionary", () => {
     expect(translateWithTolerance("Felicitări", "ro-tr")).toBe("Tebrikler");
     expect(translateWithTolerance("Kütüphane", "tr-ro")).toBe("Bibliotecă");
     expect(translateWithTolerance("Mult noroc", "ro-tr")).toBe("İyi şanslar");
+    expect(translateWithTolerance("Gidiyoruz", "tr-ro")).toBe("Mergem");
+    expect(translateWithTolerance("Vedeți", "ro-tr")).toBe("Görüyorsunuz");
+    expect(translateWithTolerance("Geliyoruz", "tr-ro")).toBe("Venim");
+    expect(translateWithTolerance("Rămâneți", "ro-tr")).toBe("Kalıyorsunuz");
+    expect(translateWithTolerance("Yapıyorsunuz", "tr-ro")).toBe("Faceți");
   });
 
 
@@ -27,6 +32,11 @@ describe("translationDictionary", () => {
     expect(translateWithTolerance("İyi şanslar arkadaş", "tr-ro")).toBe("Mult noroc prieten");
     expect(translateWithTolerance("Mult noroc prieten", "ro-tr")).toBe("İyi şanslar arkadaş");
     expect(translateWithTolerance("Mult noroc, prieten!", "ro-tr")).toBe("İyi şanslar, arkadaş!");
+    expect(translateWithTolerance("Ben gidiyorum", "tr-ro")).toBe("Eu merg");
+    expect(translateWithTolerance("Tu bei apă", "ro-tr")).toBe("Sen içiyorsun su");
+    expect(translateWithTolerance("Biz yapıyoruz", "tr-ro")).toBe("Noi facem");
+    expect(translateWithTolerance("Voi veniți", "ro-tr")).toBe("Siz geliyorsunuz");
+    expect(translateWithTolerance("Acıktım", "tr-ro")).toBe("Mi-e foame");
   });
 
   it("tolerates small letter mistakes", () => {
