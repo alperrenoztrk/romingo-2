@@ -5,7 +5,6 @@ import { Lock, Star, CheckCircle, Volume2, Sparkles } from "lucide-react";
 import { lessonsData } from "../data/lessons";
 import { lessonCatalog } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked } from "../lib/lessonProgress";
-import { getAdaptivePracticePlan, getExerciseTypeLabel } from "@/lib/adaptivePractice";
 import { getEconomySnapshot } from "@/lib/learningEconomy";
 
 interface Lesson {
@@ -197,9 +196,7 @@ export default function LearnPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const tutorialView = searchParams.get("view") === "tutorial";
-  const adaptivePracticeView = searchParams.get("practice") === "adaptive";
   const economy = getEconomySnapshot();
-  const practicePlan = getAdaptivePracticePlan();
 
   const lessons = useMemo<Lesson[]>(() => {
     const progress = getLessonProgress();
@@ -249,20 +246,6 @@ export default function LearnPage() {
         <p className="text-center text-muted-foreground text-sm font-semibold mb-8">
           {tutorialView ? "" : "A1 Seviye • Başlangıç"}
         </p>
-
-        {tutorialView && adaptivePracticeView && (
-          <div className="mb-4 rounded-2xl bg-sky-light p-4 border border-sky/30">
-            <p className="text-sm font-extrabold text-sky-brand">Kişiselleştirilmiş pratik aktif</p>
-            <p className="mt-1 text-xs font-semibold text-muted-foreground">
-              {practicePlan.weakTypes.length > 0
-                ? `Öncelik: ${practicePlan.weakTypes
-                    .slice(0, 2)
-                    .map((item) => getExerciseTypeLabel(item.type))
-                    .join(" • ")}`
-                : "Henüz zayıf alan verisi yok. Birkaç ders çözdükçe burası otomatik güncellenir."}
-            </p>
-          </div>
-        )}
 
         {tutorialView && (
           <div className="space-y-4">
