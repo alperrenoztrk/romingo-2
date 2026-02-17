@@ -242,9 +242,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "İki artı üç eşittir ___.",
-        correctAnswer: "beş",
-        options: ["dört", "beş", "altı", "yedi"],
+        sentence: "Doi plus trei fac ___.",
+        correctAnswer: "cinci",
+        options: ["patru", "cinci", "șase", "șapte"],
       },
       {
         type: "translation",
@@ -261,9 +261,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "On artı beş eşittir ___.",
-        correctAnswer: "on beş",
-        options: ["on iki", "on üç", "on dört", "on beş"],
+        sentence: "Zece plus cinci fac ___.",
+        correctAnswer: "cincisprezece",
+        options: ["doisprezece", "treisprezece", "paisprezece", "cincisprezece"],
       },
       {
         type: "matching",
