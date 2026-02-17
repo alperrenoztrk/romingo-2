@@ -115,6 +115,20 @@ export const lessonsData: Record<string, LessonData> = {
         acceptedAnswers: ["Noapte bună", "noapte bună"],
       },
       {
+        type: "translation",
+        sentence: "İyi günler",
+        direction: "tr-ro",
+        correctAnswer: "Bună ziua",
+        acceptedAnswers: ["Bună ziua", "bună ziua"],
+      },
+      {
+        type: "translation",
+        sentence: "Rica ederim",
+        direction: "tr-ro",
+        correctAnswer: "Cu plăcere",
+        acceptedAnswers: ["Cu plăcere", "cu plăcere"],
+      },
+      {
         type: "multiple_choice",
         question: 'Diyaloğu tamamla: "Bună! ..."',
         options: ["La revedere", "Mulțumesc", "Ce faci?", "Noapte bună"],
@@ -181,6 +195,20 @@ export const lessonsData: Record<string, LessonData> = {
         direction: "tr-ro",
         correctAnswer: "Sunt din Istanbul",
         acceptedAnswers: ["Sunt din Istanbul", "sunt din istanbul"],
+      },
+      {
+        type: "translation",
+        sentence: "Ben öğrenciyim",
+        direction: "tr-ro",
+        correctAnswer: "Sunt student(ă)",
+        acceptedAnswers: ["Sunt student", "Sunt studentă", "sunt student", "sunt studentă", "Sunt student(ă)", "sunt student(ă)"],
+      },
+      {
+        type: "translation",
+        sentence: "Yaşın kaç?",
+        direction: "tr-ro",
+        correctAnswer: "Câți ani ai?",
+        acceptedAnswers: ["Câți ani ai?", "Câți ani ai", "câți ani ai?", "câți ani ai"],
       },
       {
         type: "multiple_choice",
