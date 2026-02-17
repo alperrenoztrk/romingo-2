@@ -501,7 +501,16 @@ function hydrateFromExercise(
     const sourcePhrase = exercise.question.match(QUESTION_IN_QUOTES_REGEX)?.[1];
     const translatedPhrase = exercise.options[exercise.correctIndex];
     if (sourcePhrase && translatedPhrase) {
-      addPair(trToRo, roToTr, translatedPhrase, sourcePhrase);
+      const normalizedQuestion = exercise.question.toLocaleLowerCase("tr-TR");
+
+      if (normalizedQuestion.includes("romence")) {
+        addPair(trToRo, roToTr, sourcePhrase, translatedPhrase);
+        return;
+      }
+
+      if (normalizedQuestion.includes("türkçe")) {
+        addPair(trToRo, roToTr, translatedPhrase, sourcePhrase);
+      }
     }
   }
 }
