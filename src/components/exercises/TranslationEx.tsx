@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { TranslationExercise } from "../../data/lessons";
 import { ArrowRight, Languages } from "lucide-react";
+import { matchesWithOneLetterTolerancePerWord } from "../../lib/answerTolerance";
 
 interface Props {
   exercise: TranslationExercise;
@@ -14,7 +15,7 @@ export default function TranslationEx({ exercise, onAnswer, answered }: Props) {
   const handleSubmit = () => {
     if (answered || !input.trim()) return;
     const isCorrect = exercise.acceptedAnswers.some(
-      (a) => a.toLowerCase() === input.trim().toLowerCase()
+      (a) => matchesWithOneLetterTolerancePerWord(input.trim(), a)
     );
     onAnswer(isCorrect);
   };
@@ -43,8 +44,8 @@ export default function TranslationEx({ exercise, onAnswer, answered }: Props) {
           className={`w-full p-4 rounded-2xl border-2 font-bold text-foreground bg-card outline-none transition-all ${
             !answered
               ? "border-border focus:border-sky"
-              : exercise.acceptedAnswers.some(
-                  (a) => a.toLowerCase() === input.trim().toLowerCase()
+            : exercise.acceptedAnswers.some(
+                  (a) => matchesWithOneLetterTolerancePerWord(input.trim(), a)
                 )
               ? "border-success bg-success-light"
               : "border-flamingo bg-flamingo-light"
@@ -63,7 +64,7 @@ export default function TranslationEx({ exercise, onAnswer, answered }: Props) {
       </div>
 
       {answered && !exercise.acceptedAnswers.some(
-        (a) => a.toLowerCase() === input.trim().toLowerCase()
+        (a) => matchesWithOneLetterTolerancePerWord(input.trim(), a)
       ) && (
         <div className="mt-3 p-3 bg-card rounded-xl border border-border">
           <span className="text-xs font-bold text-muted-foreground">Doğru cevap: </span>
