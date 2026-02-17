@@ -25,7 +25,34 @@ interface TutorialWord {
   ro: string;
 }
 
+const numberTutorialWords: TutorialWord[] = [
+  { tr: "Bir", ro: "Unu" },
+  { tr: "İki", ro: "Doi" },
+  { tr: "Üç", ro: "Trei" },
+  { tr: "Dört", ro: "Patru" },
+  { tr: "Beş", ro: "Cinci" },
+  { tr: "Altı", ro: "Șase" },
+  { tr: "Yedi", ro: "Șapte" },
+  { tr: "Sekiz", ro: "Opt" },
+  { tr: "Dokuz", ro: "Nouă" },
+  { tr: "On", ro: "Zece" },
+  { tr: "On bir", ro: "Unsprezece" },
+  { tr: "On iki", ro: "Doisprezece" },
+  { tr: "On üç", ro: "Treisprezece" },
+  { tr: "On dört", ro: "Paisprezece" },
+  { tr: "On beş", ro: "Cincisprezece" },
+  { tr: "On altı", ro: "Șaisprezece" },
+  { tr: "On yedi", ro: "Șaptesprezece" },
+  { tr: "On sekiz", ro: "Optsprezece" },
+  { tr: "On dokuz", ro: "Nouăsprezece" },
+  { tr: "Yirmi", ro: "Douăzeci" },
+];
+
 function getTutorialWords(lessonId: string): TutorialWord[] {
+  if (lessonId === "3") {
+    return numberTutorialWords;
+  }
+
   const lesson = lessonsData[lessonId];
   if (!lesson) return [];
 
