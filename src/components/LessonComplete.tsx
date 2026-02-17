@@ -9,6 +9,7 @@ interface Props {
   stars: number;
   xpEarned: number;
   onContinue: () => void;
+  onRetryWrongAnswers?: () => void;
 }
 
 export default function LessonComplete({
@@ -18,6 +19,7 @@ export default function LessonComplete({
   stars,
   xpEarned,
   onContinue,
+  onRetryWrongAnswers,
 }: Props) {
   const percentage = Math.round((correctCount / totalCount) * 100);
   const comboBonus = useMemo(() => {
@@ -129,12 +131,22 @@ export default function LessonComplete({
           <p className="text-sm font-semibold text-foreground">{tomorrowGoal}</p>
         </div>
 
-        <button
-          onClick={onContinue}
-          className="w-full max-w-xs gradient-success shadow-button-success rounded-2xl py-4 font-extrabold text-accent-foreground text-lg active:translate-y-1 active:shadow-none transition-all"
-        >
-          Devam Et
-        </button>
+        <div className="w-full max-w-xs space-y-3">
+          {onRetryWrongAnswers && (
+            <button
+              onClick={onRetryWrongAnswers}
+              className="w-full rounded-2xl py-3 font-extrabold text-sm border-2 border-border bg-card text-foreground active:translate-y-0.5 transition-all"
+            >
+              Yanlışları Tekrar Dene
+            </button>
+          )}
+          <button
+            onClick={onContinue}
+            className="w-full gradient-success shadow-button-success rounded-2xl py-4 font-extrabold text-accent-foreground text-lg active:translate-y-1 active:shadow-none transition-all"
+          >
+            Devam Et
+          </button>
+        </div>
       </div>
     </div>
   );

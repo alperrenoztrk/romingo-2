@@ -32,6 +32,9 @@ export default function LessonPage() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [feedbackSpark, setFeedbackSpark] = useState(0);
+  const [exerciseIndexes, setExerciseIndexes] = useState<number[]>([]);
+  const [wrongExerciseIndexes, setWrongExerciseIndexes] = useState<number[]>([]);
+  const [retryExerciseIndexes, setRetryExerciseIndexes] = useState<number[]>([]);
   const progressSavedRef = useRef(false);
 
   useEffect(() => {
@@ -53,7 +56,27 @@ export default function LessonPage() {
   }, []);
 
   const exercises = lesson?.exercises ?? [];
-  const currentExercise = useMemo(() => exercises[currentIndex], [currentIndex, exercises]);
+
+  useEffect(() => {
+    setExerciseIndexes(exercises.map((_, index) => index));
+    setWrongExerciseIndexes([]);
+    setRetryExerciseIndexes([]);
+    setCurrentIndex(0);
+    setCorrectCount(0);
+    setAnswered(false);
+    setIsCorrect(false);
+    setCompleted(false);
+    progressSavedRef.current = false;
+  }, [lessonId, exercises]);
+
+  const currentExerciseIndex = exerciseIndexes[currentIndex];
+  const currentExercise = useMemo(() => {
+    if (typeof currentExerciseIndex !== "number") {
+      return undefined;
+    }
+
+    return exercises[currentExerciseIndex];
+  }, [currentExerciseIndex, exercises]);
 
   const playAnswerFeedback = useCallback((correct: boolean) => {
     if (typeof window === "undefined") return;
@@ -97,15 +120,24 @@ export default function LessonPage() {
       setCorrectCount((c) => c + 1);
       addTodayCorrectAnswer();
     } else {
+      if (typeof currentExerciseIndex === "number") {
+        setWrongExerciseIndexes((prev) => {
+          if (prev.includes(currentExerciseIndex)) {
+            return prev;
+          }
+
+          return [...prev, currentExerciseIndex];
+        });
+      }
       const nextHeartState = consumeHeart();
       setHearts(nextHeartState.hearts);
       setMinutesToNextHeart(getHeartStatus().minutesToNextHeart);
     }
-  }, [currentExercise, lesson, playAnswerFeedback]);
+  }, [currentExercise, currentExerciseIndex, lesson, playAnswerFeedback]);
 
   const handleNext = useCallback(() => {
     if (!lesson) return;
-    if (currentIndex + 1 >= lesson.exercises.length || hearts <= 0) {
+    if (currentIndex + 1 >= exerciseIndexes.length || hearts <= 0) {
       if (!progressSavedRef.current && hearts > 0) {
         addTodayProgress(lesson.xpReward);
         addXpToProfile(lesson.xpReward);
@@ -114,13 +146,31 @@ export default function LessonPage() {
         markLessonActivity();
         progressSavedRef.current = true;
       }
+
+      setRetryExerciseIndexes(wrongExerciseIndexes);
       setCompleted(true);
     } else {
       setCurrentIndex((i) => i + 1);
       setAnswered(false);
       setIsCorrect(false);
     }
-  }, [currentIndex, hearts, lesson]);
+  }, [currentIndex, exerciseIndexes.length, hearts, lesson, wrongExerciseIndexes]);
+
+  const handleRetryWrongAnswers = useCallback(() => {
+    if (retryExerciseIndexes.length === 0) {
+      return;
+    }
+
+    setExerciseIndexes(retryExerciseIndexes);
+    setWrongExerciseIndexes([]);
+    setRetryExerciseIndexes([]);
+    setCurrentIndex(0);
+    setCorrectCount(0);
+    setAnswered(false);
+    setIsCorrect(false);
+    setCompleted(false);
+    progressSavedRef.current = false;
+  }, [retryExerciseIndexes]);
 
   useEffect(() => {
     if (lesson && !isUnlocked) {
@@ -140,7 +190,8 @@ export default function LessonPage() {
     return null;
   }
 
-  const progress = (currentIndex / exercises.length) * 100;
+  const progressBase = exerciseIndexes.length || 1;
+  const progress = (currentIndex / progressBase) * 100;
 
   if (completed) {
     const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : hearts > 0 ? 1 : 0;
@@ -148,9 +199,10 @@ export default function LessonPage() {
       <LessonComplete
         lesson={lesson}
         correctCount={correctCount}
-        totalCount={exercises.length}
+        totalCount={exerciseIndexes.length}
         stars={stars}
         xpEarned={lesson.xpReward}
+        onRetryWrongAnswers={stars >= 1 && retryExerciseIndexes.length > 0 ? handleRetryWrongAnswers : undefined}
         onContinue={() => navigate("/learn")}
       />
     );
