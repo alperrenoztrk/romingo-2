@@ -1,52 +1,14 @@
 import { useMemo, useState } from "react";
 import StatsBar from "../components/StatsBar";
 import { ArrowRightLeft, Languages } from "lucide-react";
-
-type TranslationDirection = "tr-ro" | "ro-tr";
-
-const dictionaryTRtoRO: Record<string, string> = {
-  merhaba: "salut",
-  günaydın: "bună dimineața",
-  "iyi akşamlar": "bună seara",
-  teşekkürler: "mulțumesc",
-  lütfen: "te rog",
-  evet: "da",
-  hayır: "nu",
-  su: "apă",
-  ekmek: "pâine",
-  kitap: "carte",
-  okul: "școală",
-  nasılsın: "ce mai faci",
-  iyiyim: "sunt bine",
-  görüşürüz: "ne vedem",
-  "seni seviyorum": "te iubesc",
-};
-
-const dictionaryROtoTR: Record<string, string> = Object.fromEntries(
-  Object.entries(dictionaryTRtoRO).map(([tr, ro]) => [ro, tr]),
-);
-
-const normalize = (value: string, locale: string) =>
-  value
-    .trim()
-    .toLocaleLowerCase(locale)
-    .replace(/[?.!,]/g, "")
-    .replace(/\s+/g, " ");
+import { translateWithTolerance, type TranslationDirection } from "../lib/translationDictionary";
 
 export default function TranslationPage() {
   const [direction, setDirection] = useState<TranslationDirection>("tr-ro");
   const [input, setInput] = useState("");
 
   const translation = useMemo(() => {
-    const locale = direction === "tr-ro" ? "tr-TR" : "ro-RO";
-    const normalized = normalize(input, locale);
-    if (!normalized) return "";
-
-    const sourceDictionary = direction === "tr-ro" ? dictionaryTRtoRO : dictionaryROtoTR;
-    return (
-      sourceDictionary[normalized] ??
-      "Bu ifade sözlükte henüz yok. Yeni kelimeler eklendikçe çeviri kalitesi artacak."
-    );
+    return translateWithTolerance(input, direction);
   }, [direction, input]);
 
   const sourceLabel = direction === "tr-ro" ? "Türkçe" : "Romence";
