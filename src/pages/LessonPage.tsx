@@ -17,6 +17,7 @@ import { recordAdaptiveAnswer } from "@/lib/adaptivePractice";
 import { addXpToProfile } from "@/lib/liveProfile";
 
 const PERFECT_LESSON_BONUS_XP = 25;
+const MIN_STARS_TO_UNLOCK_NEXT_LESSON = 2;
 
 function calculateStars(correctCount: number, totalCount: number) {
   if (totalCount <= 0) {
@@ -174,15 +175,21 @@ export default function LessonPage() {
         return;
       }
 
-      if (!progressSavedRef.current && hearts > 0) {
+      if (!progressSavedRef.current) {
         const isPerfectLesson = exerciseIndexes.length > 0 && correctCount === exerciseIndexes.length;
         const totalXpReward = lesson.xpReward + (isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0);
+        const canUnlockNextLesson = stars >= MIN_STARS_TO_UNLOCK_NEXT_LESSON;
 
-        addTodayProgress(totalXpReward);
-        addXpToProfile(totalXpReward);
-        saveLessonCompletion(lesson.id, stars, isPerfectLesson);
-        markLessonActivity();
-        progressSavedRef.current = true;
+        if (hearts > 0) {
+          addTodayProgress(totalXpReward);
+          addXpToProfile(totalXpReward);
+          markLessonActivity();
+        }
+
+        if (hearts > 0 || canUnlockNextLesson) {
+          saveLessonCompletion(lesson.id, stars, isPerfectLesson);
+          progressSavedRef.current = true;
+        }
       }
 
       setRetryExerciseIndexes(wrongExerciseIndexes);
