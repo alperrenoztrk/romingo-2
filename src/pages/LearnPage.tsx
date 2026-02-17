@@ -145,12 +145,8 @@ export default function LearnPage() {
   }, []);
 
   const tutorialLessons = useMemo(() => {
-    if (!adaptivePracticeView) return lessons;
-
-    const scoreMap = new Map(practicePlan.weakLessons.map((item) => [item.lessonId, item.score]));
-
-    return [...lessons].sort((a, b) => (scoreMap.get(b.id) ?? 0) - (scoreMap.get(a.id) ?? 0));
-  }, [adaptivePracticeView, lessons, practicePlan.weakLessons]);
+    return lessons;
+  }, [lessons]);
 
   const levels = [...new Set(lessons.map((l) => l.level))];
 
