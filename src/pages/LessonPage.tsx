@@ -235,31 +235,35 @@ export default function LessonPage() {
       </div>
 
       <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 py-6">
-        <div className="text-xs font-bold text-muted-foreground mb-1 uppercase">
-          {currentExercise.type === "multiple_choice" && "Doğru cevabı seç"}
-          {currentExercise.type === "fill_blank" && "Boşluğu doldur"}
-          {currentExercise.type === "translation" && "Çevir"}
-          {currentExercise.type === "matching" && "Eşleştir"}
-          {currentExercise.type === "listening" && "Dinleyip seç"}
-        </div>
+        {currentExercise && (
+          <>
+            <div className="text-xs font-bold text-muted-foreground mb-1 uppercase">
+              {currentExercise.type === "multiple_choice" && "Doğru cevabı seç"}
+              {currentExercise.type === "fill_blank" && "Boşluğu doldur"}
+              {currentExercise.type === "translation" && "Çevir"}
+              {currentExercise.type === "matching" && "Eşleştir"}
+              {currentExercise.type === "listening" && "Dinleyip seç"}
+            </div>
 
-        <div className="flex-1">
-          {currentExercise.type === "multiple_choice" && (
-            <MultipleChoiceEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
-          )}
-          {currentExercise.type === "fill_blank" && (
-            <FillBlankEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
-          )}
-          {currentExercise.type === "translation" && (
-            <TranslationEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
-          )}
-          {currentExercise.type === "matching" && (
-            <MatchingEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
-          )}
-          {currentExercise.type === "listening" && (
-            <ListeningEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
-          )}
-        </div>
+            <div className="flex-1">
+              {currentExercise.type === "multiple_choice" && (
+                <MultipleChoiceEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+              )}
+              {currentExercise.type === "fill_blank" && (
+                <FillBlankEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+              )}
+              {currentExercise.type === "translation" && (
+                <TranslationEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+              )}
+              {currentExercise.type === "matching" && (
+                <MatchingEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+              )}
+              {currentExercise.type === "listening" && (
+                <ListeningEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+              )}
+            </div>
+          </>
+        )}
       </div>
 
       {answered && (
