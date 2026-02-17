@@ -1,14 +1,39 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import StatsBar from "../components/StatsBar";
 import { ArrowRightLeft, Languages } from "lucide-react";
-import { translateWithTolerance, type TranslationDirection } from "../lib/translationDictionary";
+import type { TranslationDirection } from "../lib/translationDictionary";
+import { translateWithGoogle } from "../lib/googleTranslate";
 
 export default function TranslationPage() {
   const [direction, setDirection] = useState<TranslationDirection>("tr-ro");
   const [input, setInput] = useState("");
+  const [translation, setTranslation] = useState("");
+  const [isTranslating, setIsTranslating] = useState(false);
 
-  const translation = useMemo(() => {
-    return translateWithTolerance(input, direction);
+  useEffect(() => {
+    const trimmedInput = input.trim();
+
+    if (!trimmedInput) {
+      setTranslation("");
+      setIsTranslating(false);
+      return;
+    }
+
+    let isCancelled = false;
+    setIsTranslating(true);
+
+    const timeoutId = window.setTimeout(async () => {
+      const translatedValue = await translateWithGoogle(trimmedInput, direction);
+      if (!isCancelled) {
+        setTranslation(translatedValue);
+        setIsTranslating(false);
+      }
+    }, 250);
+
+    return () => {
+      isCancelled = true;
+      window.clearTimeout(timeoutId);
+    };
   }, [direction, input]);
 
   const sourceLabel = direction === "tr-ro" ? "Türkçe" : "Romence";
@@ -59,7 +84,7 @@ export default function TranslationPage() {
               {targetLabel} Çeviri
             </label>
             <div className="w-full min-h-24 rounded-xl border border-input bg-muted/40 px-3 py-2 text-sm font-semibold text-foreground">
-              {translation || "Çeviriyi görmek için metin gir."}
+              {isTranslating ? "Google Translate ile çevriliyor..." : translation || "Çeviriyi görmek için metin gir."}
             </div>
           </div>
         </div>
