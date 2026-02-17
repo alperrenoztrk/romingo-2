@@ -1,9 +1,20 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import TranslationPage from "./TranslationPage";
 
 describe("TranslationPage", () => {
-  it("translates Romanian to Turkish even when Romanian input is uppercase", () => {
+  beforeEach(() => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue({
+      ok: true,
+      json: async () => [[["günaydın", "BUNĂ DIMINEAȚA", null, null, 10]]],
+    } as Response);
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("translates Romanian to Turkish even when Romanian input is uppercase", async () => {
     render(<TranslationPage />);
 
     fireEvent.click(screen.getByLabelText("Çeviri yönünü değiştir"));
@@ -11,6 +22,8 @@ describe("TranslationPage", () => {
       target: { value: "BUNĂ DIMINEAȚA" },
     });
 
-    expect(screen.getByText("günaydın")).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText("günaydın")).toBeInTheDocument();
+    });
   });
 });
