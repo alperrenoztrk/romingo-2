@@ -357,7 +357,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Ekmek" ne demek?',
+        question: '"Ekmek" Romence ne demek?',
         options: ["Apă", "Pâine", "Brânză", "Lapte"],
         correctIndex: 1,
       },
@@ -385,7 +385,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Çorba" ne demek?',
+        question: '"Çorba" Romence ne demek?',
         options: ["Salată", "Supă", "Desert", "Carne"],
         correctIndex: 1,
       },
@@ -422,7 +422,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Su" ne demek?',
+        question: '"Su" Romence ne demek?',
         options: ["Ceai", "Cafea", "Apă", "Suc"],
         correctIndex: 2,
       },
@@ -484,7 +484,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Anne" ne demek?',
+        question: '"Anne" Romence ne demek?',
         options: ["Tată", "Mamă", "Soră", "Frate"],
         correctIndex: 1,
       },
@@ -550,7 +550,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Kedi" ne demek?',
+        question: '"Kedi" Romence ne demek?',
         options: ["Câine", "Pisică", "Pasăre", "Pește"],
         correctIndex: 1,
       },
@@ -616,7 +616,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Doktor" ne demek?',
+        question: '"Doktor" Romence ne demek?',
         options: ["Profesor", "Medic", "Inginer", "Avocat"],
         correctIndex: 1,
       },
@@ -746,7 +746,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"İlkbahar" ne demek?',
+        question: '"İlkbahar" Romence ne demek?',
         options: ["Vară", "Toamnă", "Primăvară", "Iarnă"],
         correctIndex: 2,
       },
@@ -808,7 +808,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Güneşli" ne demek?',
+        question: '"Güneşli" Romence ne demek?',
         options: ["Ploios", "Noros", "Însorit", "Vântos"],
         correctIndex: 2,
       },
@@ -836,7 +836,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Rüzgarlı" ne demek?',
+        question: '"Rüzgarlı" Romence ne demek?',
         options: ["Cețos", "Vântos", "Cald", "Rece"],
         correctIndex: 1,
       },
