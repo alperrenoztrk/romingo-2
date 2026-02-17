@@ -1,12 +1,9 @@
 import { Flame, Zap, Heart } from "lucide-react";
+import { useLiveProfileStats } from "@/hooks/useLiveProfileStats";
 
-interface StatsBarProps {
-  streak: number;
-  xp: number;
-  hearts: number;
-}
+export default function StatsBar() {
+  const { streak, xp, hearts } = useLiveProfileStats();
 
-export default function StatsBar({ streak, xp, hearts }: StatsBarProps) {
   return (
     <div className="flex items-center justify-between px-4 py-3 bg-card border-b border-border">
       <div className="flex items-center gap-1.5">

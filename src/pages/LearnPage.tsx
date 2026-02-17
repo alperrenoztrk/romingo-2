@@ -207,7 +207,7 @@ export default function LearnPage() {
 
   return (
     <div className="pb-20">
-      <StatsBar streak={economy.streakCount} xp={1450} hearts={economy.hearts} />
+      <StatsBar />
 
       <div className="px-4 py-6 max-w-lg mx-auto">
         <h1 className="text-xl font-black text-foreground text-center mb-2">
