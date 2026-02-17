@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Star, Zap, Flame, Target } from "lucide-react";
+import { Star, Zap, Flame, Target, Gift } from "lucide-react";
 import type { LessonData } from "../data/lessons";
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
   totalCount: number;
   stars: number;
   xpEarned: number;
+  isPerfectLesson: boolean;
   onContinue: () => void;
   onRetryWrongAnswers?: () => void;
 }
@@ -18,6 +19,7 @@ export default function LessonComplete({
   totalCount,
   stars,
   xpEarned,
+  isPerfectLesson,
   onContinue,
   onRetryWrongAnswers,
 }: Props) {
@@ -85,6 +87,16 @@ export default function LessonComplete({
             />
           ))}
         </div>
+
+        {isPerfectLesson && (
+          <div className="mb-6 rounded-2xl border border-gold/40 bg-gold/15 px-4 py-3 max-w-xs mx-auto">
+            <div className="flex items-center justify-center gap-2 text-gold font-black text-sm mb-1">
+              <Gift className="w-4 h-4" />
+              Süper Yıldız Kazandın!
+            </div>
+            <p className="text-xs font-bold text-foreground">Tüm soruları doğru yaptın: ekstra ödül ve bonus XP aktif.</p>
+          </div>
+        )}
 
         <div className="grid grid-cols-2 gap-3 mb-3 max-w-xs mx-auto">
           <div className="bg-card rounded-2xl p-4 shadow-card text-center">

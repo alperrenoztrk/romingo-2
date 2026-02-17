@@ -16,6 +16,29 @@ import { consumeHeart, getHeartStatus, markLessonActivity, syncHearts } from "@/
 import { recordAdaptiveAnswer } from "@/lib/adaptivePractice";
 import { addXpToProfile } from "@/lib/liveProfile";
 
+const PERFECT_LESSON_BONUS_XP = 25;
+
+function calculateStars(correctCount: number, totalCount: number) {
+  if (totalCount <= 0) {
+    return 0;
+  }
+
+  const percentage = (correctCount / totalCount) * 100;
+  if (percentage >= 85) {
+    return 3;
+  }
+
+  if (percentage >= 50) {
+    return 2;
+  }
+
+  if (percentage >= 35) {
+    return 1;
+  }
+
+  return 0;
+}
+
 export default function LessonPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -139,10 +162,13 @@ export default function LessonPage() {
     if (!lesson) return;
     if (currentIndex + 1 >= exerciseIndexes.length || hearts <= 0) {
       if (!progressSavedRef.current && hearts > 0) {
-        addTodayProgress(lesson.xpReward);
-        addXpToProfile(lesson.xpReward);
-        const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : 1;
-        saveLessonCompletion(lesson.id, stars);
+        const stars = calculateStars(correctCount, exerciseIndexes.length);
+        const isPerfectLesson = exerciseIndexes.length > 0 && correctCount === exerciseIndexes.length;
+        const totalXpReward = lesson.xpReward + (isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0);
+
+        addTodayProgress(totalXpReward);
+        addXpToProfile(totalXpReward);
+        saveLessonCompletion(lesson.id, stars, isPerfectLesson);
         markLessonActivity();
         progressSavedRef.current = true;
       }
@@ -154,7 +180,7 @@ export default function LessonPage() {
       setAnswered(false);
       setIsCorrect(false);
     }
-  }, [currentIndex, exerciseIndexes.length, hearts, lesson, wrongExerciseIndexes]);
+  }, [correctCount, currentIndex, exerciseIndexes.length, hearts, lesson, wrongExerciseIndexes]);
 
   const handleRetryWrongAnswers = useCallback(() => {
     if (retryExerciseIndexes.length === 0) {
@@ -194,14 +220,16 @@ export default function LessonPage() {
   const progress = (currentIndex / progressBase) * 100;
 
   if (completed) {
-    const stars = hearts >= 4 ? 3 : hearts >= 2 ? 2 : hearts > 0 ? 1 : 0;
+    const stars = calculateStars(correctCount, exerciseIndexes.length);
+    const isPerfectLesson = exerciseIndexes.length > 0 && correctCount === exerciseIndexes.length;
     return (
       <LessonComplete
         lesson={lesson}
         correctCount={correctCount}
         totalCount={exerciseIndexes.length}
         stars={stars}
-        xpEarned={lesson.xpReward}
+        xpEarned={lesson.xpReward + (isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0)}
+        isPerfectLesson={isPerfectLesson}
         onRetryWrongAnswers={stars >= 1 && retryExerciseIndexes.length > 0 ? handleRetryWrongAnswers : undefined}
         onContinue={() => navigate("/learn")}
       />

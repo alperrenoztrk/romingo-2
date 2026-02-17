@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import StatsBar from "../components/StatsBar";
-import { Lock, Star, CheckCircle, Volume2 } from "lucide-react";
+import { Lock, Star, CheckCircle, Volume2, Sparkles } from "lucide-react";
 import { lessonsData } from "../data/lessons";
 import { lessonCatalog } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked } from "../lib/lessonProgress";
@@ -14,6 +14,7 @@ interface Lesson {
   emoji: string;
   status: "completed" | "current" | "locked";
   stars: number;
+  superStar?: boolean;
   level: number;
 }
 
@@ -56,6 +57,7 @@ function getTutorialWords(lessonId: string): TutorialWord[] {
 }
 
 function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
+  const hasSuperStar = lesson.superStar === true;
   const navigate = useNavigate();
   const isCompleted = lesson.status === "completed";
   const isCurrent = lesson.status === "current";
@@ -91,6 +93,13 @@ function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
         {lesson.title}
       </span>
 
+      {isCompleted && hasSuperStar && (
+        <div className="mt-1 flex items-center gap-1 rounded-full border border-gold/40 bg-gold/20 px-2 py-0.5">
+          <Sparkles className="w-3 h-3 text-gold" />
+          <span className="text-[10px] font-black text-gold">Süper</span>
+        </div>
+      )}
+
       {isCompleted && (
         <div className="flex gap-0.5 mt-1">
           {[1, 2, 3].map((s) => (
@@ -123,7 +132,7 @@ export default function LearnPage() {
       const completion = progress[lesson.id];
 
       if (completion) {
-        return { ...lesson, status: "completed" as const, stars: completion.stars };
+        return { ...lesson, status: "completed" as const, stars: completion.stars, superStar: completion.superStar };
       }
 
       const unlocked = isLessonUnlocked(lesson.id, orderedLessonIds, progress);

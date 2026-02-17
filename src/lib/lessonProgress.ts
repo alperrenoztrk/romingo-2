@@ -3,6 +3,7 @@ const MIN_STARS_TO_UNLOCK_NEXT_LESSON = 2;
 
 export interface LessonProgressEntry {
   stars: number;
+  superStar?: boolean;
   completedAt: string;
 }
 
@@ -37,16 +38,18 @@ export function getLessonProgress(): LessonProgressMap {
   }
 }
 
-export function saveLessonCompletion(lessonId: string, stars: number) {
+export function saveLessonCompletion(lessonId: string, stars: number, superStar = false) {
   if (!isLocalStorageAvailable()) {
     return;
   }
 
   const progress = getLessonProgress();
   const previousStars = progress[lessonId]?.stars ?? 0;
+  const previousSuperStar = progress[lessonId]?.superStar ?? false;
 
   progress[lessonId] = {
     stars: Math.max(previousStars, stars),
+    superStar: previousSuperStar || superStar,
     completedAt: new Date().toISOString(),
   };
 
