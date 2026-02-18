@@ -21,6 +21,8 @@ export default function TranslationEx({ exercise, onAnswer, answered }: Props) {
   };
 
   const dirLabel = exercise.direction === "ro-tr" ? "Romence → Türkçe" : "Türkçe → Romence";
+  const targetLangLabel = exercise.direction === "ro-tr" ? "Türkçe" : "Romence";
+  const sourceLangLabel = exercise.direction === "ro-tr" ? "Romence" : "Türkçe";
 
   return (
     <div>
@@ -30,9 +32,11 @@ export default function TranslationEx({ exercise, onAnswer, answered }: Props) {
       </div>
 
       <div className="bg-card rounded-2xl p-6 shadow-card mb-6">
+        <p className="text-xs font-bold text-muted-foreground mb-1 uppercase tracking-wide">{sourceLangLabel}</p>
         <p className="text-xl font-black text-foreground">"{exercise.sentence}"</p>
       </div>
 
+      <p className="text-xs font-bold text-muted-foreground mb-2 uppercase tracking-wide">{targetLangLabel} çevirisi</p>
       <div className="relative">
         <input
           type="text"
@@ -40,7 +44,7 @@ export default function TranslationEx({ exercise, onAnswer, answered }: Props) {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
           disabled={answered}
-          placeholder="Çevirini yaz..."
+          placeholder={`${targetLangLabel} çevirisini yaz...`}
           className={`w-full p-4 rounded-2xl border-2 font-bold text-foreground bg-card outline-none transition-all ${
             !answered
               ? "border-border focus:border-sky"
