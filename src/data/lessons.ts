@@ -307,9 +307,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Gökyüzü ___ renktedir.",
-        correctAnswer: "mavi",
-        options: ["kırmızı", "mavi", "yeşil", "beyaz"],
+        sentence: "Gökyüzü mavinin Romencesi: ___.",
+        correctAnswer: "albastru",
+        options: ["albastru", "verde", "roșu", "galben"],
       },
       {
         type: "translation",
@@ -326,9 +326,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Türk bayrağı ___ ve beyazdır.",
-        correctAnswer: "kırmızı",
-        options: ["mavi", "yeşil", "kırmızı", "turuncu"],
+        sentence: "Romencede 'kırmızı' demek için ___ denir.",
+        correctAnswer: "roșu",
+        options: ["roșu", "albastru", "verde", "negru"],
       },
       {
         type: "matching",
@@ -437,9 +437,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Türkler çok ___ içer.",
-        correctAnswer: "çay",
-        options: ["kahve", "çay", "süt", "su"],
+        sentence: "Romencede 'çay' demek için ___ denir.",
+        correctAnswer: "ceai",
+        options: ["ceai", "cafea", "lapte", "apă"],
       },
       {
         type: "translation",
@@ -456,9 +456,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Sabahları bir bardak ___ içerim.",
-        correctAnswer: "süt",
-        options: ["ayran", "süt", "çorba", "su"],
+        sentence: "Romencede 'süt' demek için ___ denir.",
+        correctAnswer: "lapte",
+        options: ["lapte", "apă", "suc", "ceai"],
       },
       {
         type: "translation",
@@ -565,10 +565,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Benim bir ___im var, adı Boncuk.",
-        correctAnswer: "kedim",
-        options: ["kedim", "evim", "arabam", "odam"],
-        hint: "Miyav diyen hayvan",
+        sentence: "Romencede 'kedi' demek için ___ denir.",
+        correctAnswer: "pisică",
+        options: ["pisică", "câine", "pasăre", "pește"],
       },
       {
         type: "translation",
@@ -585,9 +584,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Çiftlikte ___, inek ve tavuk var.",
-        correctAnswer: "at",
-        options: ["at", "balık", "balina", "yunus"],
+        sentence: "Romencede 'at' demek için ___ denir.",
+        correctAnswer: "cal",
+        options: ["cal", "câine", "pisică", "vacă"],
       },
       {
         type: "translation",
@@ -631,9 +630,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Babam hastanede çalışır, o bir ___.",
-        correctAnswer: "doktor",
-        options: ["öğretmen", "doktor", "mühendis", "şoför"],
+        sentence: "Romencede 'doktor' demek için ___ denir.",
+        correctAnswer: "medic",
+        options: ["medic", "profesor", "inginer", "avocat"],
       },
       {
         type: "translation",
@@ -650,9 +649,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Annem yemek yapar, o bir ___.",
-        correctAnswer: "aşçı",
-        options: ["avukat", "pilot", "aşçı", "hemşire"],
+        sentence: "Romencede 'aşçı' demek için ___ denir.",
+        correctAnswer: "bucătar",
+        options: ["bucătar", "medic", "profesor", "șofer"],
       },
       {
         type: "translation",
@@ -696,9 +695,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Bugün Cuma, yarın hafta sonu başlar: ___.",
-        correctAnswer: "Cumartesi",
-        options: ["Perşembe", "Cumartesi", "Pazar", "Pazartesi"],
+        sentence: "Romencede 'cuma' demek için ___ denir.",
+        correctAnswer: "vineri",
+        options: ["vineri", "joi", "sâmbătă", "luni"],
       },
       {
         type: "translation",
@@ -715,9 +714,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Toplantı Salı günü, ertesi gün ___ günü.",
-        correctAnswer: "Çarşamba",
-        options: ["Pazartesi", "Çarşamba", "Perşembe", "Cuma"],
+        sentence: "Romencede 'çarşamba' demek için ___ denir.",
+        correctAnswer: "miercuri",
+        options: ["miercuri", "marți", "joi", "vineri"],
       },
       {
         type: "translation",
@@ -761,9 +760,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Uludağ'da kar genelde ___ mevsiminde yağar.",
-        correctAnswer: "kış",
-        options: ["yaz", "ilkbahar", "sonbahar", "kış"],
+        sentence: "Romencede 'kış' demek için ___ denir.",
+        correctAnswer: "iarnă",
+        options: ["iarnă", "vară", "primăvară", "toamnă"],
       },
       {
         type: "translation",
@@ -780,9 +779,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Ocak ve şubat ayları genelde ___ mevsimidir.",
-        correctAnswer: "kış",
-        options: ["yaz", "kış", "ilkbahar", "sonbahar"],
+        sentence: "Romencede 'yaz' demek için ___ denir.",
+        correctAnswer: "vară",
+        options: ["vară", "iarnă", "toamnă", "primăvară"],
       },
       {
         type: "translation",
@@ -823,9 +822,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Bugün hava çok ___.",
-        correctAnswer: "güneşli",
-        options: ["güneşli", "araba", "okul", "kitap"],
+        sentence: "Romencede 'güneşli' demek için ___ denir.",
+        correctAnswer: "însorit",
+        options: ["însorit", "ploios", "noros", "vântos"],
       },
       {
         type: "translation",
@@ -842,9 +841,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Dışarı çıkmadan önce hava ___, şemsiye al.",
-        correctAnswer: "yağmurlu",
-        options: ["güneşli", "yağmurlu", "sıcak", "güzel"],
+        sentence: "Romencede 'yağmurlu' demek için ___ denir.",
+        correctAnswer: "ploios",
+        options: ["ploios", "însorit", "noros", "cald"],
       },
       {
         type: "translation",
@@ -1574,9 +1573,9 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "6": [
     {
       type: "fill_blank",
-      sentence: "Kafede bir ___ sipariş ettim.",
-      correctAnswer: "kahve",
-      options: ["kahve", "çorba", "salata", "pilav"],
+      sentence: "Romencede 'kahve' demek için ___ denir.",
+      correctAnswer: "cafea",
+      options: ["cafea", "ceai", "lapte", "apă"],
       hint: "İçecek bağlamına dikkat et.",
     },
   ],
@@ -1602,10 +1601,10 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "9": [
     {
       type: "fill_blank",
-      sentence: "Doktor hastanede ___ .",
-      correctAnswer: "çalışır",
-      options: ["çalışır", "uyur", "yüzer", "koşar"],
-      hint: "Meslek + iş yeri kalıbı",
+      sentence: "Romencede 'öğretmen' demek için ___ denir.",
+      correctAnswer: "profesor",
+      options: ["profesor", "medic", "avocat", "inginer"],
+      hint: "Meslek + Romence karşılığı",
     },
   ],
   "10": [
@@ -1630,10 +1629,10 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "12": [
     {
       type: "fill_blank",
-      sentence: "Bugün hava çok ___ .",
-      correctAnswer: "rüzgarlı",
-      options: ["rüzgarlı", "sessiz", "karanlık", "kapalı"],
-      hint: "Hava durumu sıfatı seç.",
+      sentence: "Romencede 'rüzgarlı' demek için ___ denir.",
+      correctAnswer: "vântos",
+      options: ["vântos", "ploios", "însorit", "noros"],
+      hint: "Hava durumu sıfatı",
     },
   ],
   "13": [
@@ -1658,9 +1657,9 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "15": [
     {
       type: "fill_blank",
-      sentence: "Misafirler ___ oturuyor.",
-      correctAnswer: "salonda",
-      options: ["salonda", "balkonda", "garajda", "çatıda"],
+      sentence: "Romencede 'banyo' demek için ___ denir.",
+      correctAnswer: "baie",
+      options: ["baie", "bucătărie", "dormitor", "balcon"],
       hint: "Ev odaları kelimeleri",
     },
   ],
@@ -1686,9 +1685,9 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "18": [
     {
       type: "fill_blank",
-      sentence: "Akşamları genelde erken ___ .",
-      correctAnswer: "uyurum",
-      options: ["uyurum", "koşarım", "çizerim", "dinlerim"],
+      sentence: "Romencede 'uyumak' demek için ___ denir.",
+      correctAnswer: "a dormi",
+      options: ["a dormi", "a mânca", "a merge", "a citi"],
       hint: "Günlük rutin fiilleri",
     },
   ],
