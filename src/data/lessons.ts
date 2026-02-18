@@ -292,8 +292,8 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '🔴 Bu renk Türkçe\'de ne?',
-        options: ["Mavi", "Yeşil", "Kırmızı", "Sarı"],
+        question: '🔴 Bu renk Romence\'de ne?',
+        options: ["Albastru", "Verde", "Roșu", "Galben"],
         correctIndex: 2,
       },
       {
@@ -512,8 +512,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Abla" kime denir?',
-        options: ["Küçük kız kardeş", "Büyük kız kardeş", "Anne", "Teyze"],
+        question: '"Soră mai mare" Türkçe ne demek?',
+        options: ["Küçük kız kardeş", "Abla", "Teyze", "Anneanne"],
         correctIndex: 1,
       },
       {
@@ -912,9 +912,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Satıcı: Buyurun. Müşteri: Teşekkürler, sadece ___ bakıyorum.",
-        correctAnswer: "bakıyorum",
-        options: ["gidiyorum", "bakıyorum", "koşuyorum", "öğreniyorum"],
+        sentence: "Romencede 'ucuz' demek için ___ denir.",
+        correctAnswer: "ieftin",
+        options: ["ieftin", "scump", "bani", "preț"],
       },
       {
         type: "translation",
