@@ -1,4 +1,4 @@
-export type ExerciseType = "multiple_choice" | "translation" | "fill_blank" | "matching" | "listening";
+export type ExerciseType = "multiple_choice" | "translation" | "fill_blank" | "matching" | "listening" | "sentence_builder";
 
 export interface MultipleChoiceExercise {
   type: "multiple_choice";
@@ -37,12 +37,22 @@ export interface ListeningExercise {
   correctIndex: number;
 }
 
+export interface SentenceBuilderExercise {
+  type: "sentence_builder";
+  prompt: string;
+  words: string[];
+  correctAnswer: string;
+  acceptedAnswers: string[];
+  hint?: string;
+}
+
 export type Exercise =
   | MultipleChoiceExercise
   | TranslationExercise
   | FillBlankExercise
   | MatchingExercise
-  | ListeningExercise;
+  | ListeningExercise
+  | SentenceBuilderExercise;
 
 export interface LessonData {
   id: string;
@@ -1544,6 +1554,51 @@ export const lessonsData: Record<string, LessonData> = {
           { left: "Boyun", right: "Gât" },
           { left: "Sırt", right: "Spate" },
         ],
+      },
+    ],
+  },
+  "23": {
+    id: "23",
+    title: "İleri Cümle Kurma",
+    emoji: "🧠",
+    description: "Karışık kelimelerle ileri seviye cümleleri doğru söz dizimiyle kur.",
+    xpReward: 35,
+    exercises: [
+      {
+        type: "sentence_builder",
+        prompt: "Aşağıdaki kelimelerle anlamı bozmadan doğal bir cümle kur.",
+        words: ["Dün", "okuduğum", "makale", "beklediğimden", "çok", "daha", "ikna", "ediciydi"],
+        correctAnswer: "Dün okuduğum makale beklediğimden çok daha ikna ediciydi",
+        acceptedAnswers: ["Dün okuduğum makale beklediğimden çok daha ikna ediciydi"],
+        hint: "Zarf + sıfat yapısına dikkat et: 'çok daha'.",
+      },
+      {
+        type: "sentence_builder",
+        prompt: "Koşul-sonuç ilişkisini doğru sırayla oluştur.",
+        words: ["Toplantı", "uzamasaydı", "raporu", "bu", "akşam", "teslim", "edebilirdim"],
+        correctAnswer: "Toplantı uzamasaydı raporu bu akşam teslim edebilirdim",
+        acceptedAnswers: ["Toplantı uzamasaydı raporu bu akşam teslim edebilirdim"],
+      },
+      {
+        type: "sentence_builder",
+        prompt: "Dolaylı anlatımı bozmadan cümleyi kur.",
+        words: ["Hocamız", "sunumun", "teorik", "çerçevesini", "yeniden", "gözden", "geçirmemizi", "önerdi"],
+        correctAnswer: "Hocamız sunumun teorik çerçevesini yeniden gözden geçirmemizi önerdi",
+        acceptedAnswers: ["Hocamız sunumun teorik çerçevesini yeniden gözden geçirmemizi önerdi"],
+      },
+      {
+        type: "sentence_builder",
+        prompt: "Resmî üsluba uygun cümleyi oluştur.",
+        words: ["Başvurunuzun", "değerlendirme", "süreci", "önümüzdeki", "hafta", "sonuçlanacaktır"],
+        correctAnswer: "Başvurunuzun değerlendirme süreci önümüzdeki hafta sonuçlanacaktır",
+        acceptedAnswers: ["Başvurunuzun değerlendirme süreci önümüzdeki hafta sonuçlanacaktır"],
+      },
+      {
+        type: "sentence_builder",
+        prompt: "Karşılaştırma içeren akademik bir cümle kur.",
+        words: ["Bu", "yaklaşımın", "önceki", "modele", "kıyasla", "daha", "tutarlı", "sonuçlar", "ürettiği", "görülüyor"],
+        correctAnswer: "Bu yaklaşımın önceki modele kıyasla daha tutarlı sonuçlar ürettiği görülüyor",
+        acceptedAnswers: ["Bu yaklaşımın önceki modele kıyasla daha tutarlı sonuçlar ürettiği görülüyor"],
       },
     ],
   },
