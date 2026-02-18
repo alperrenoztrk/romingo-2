@@ -7,6 +7,7 @@ import FillBlankEx from "../components/exercises/FillBlankEx";
 import TranslationEx from "../components/exercises/TranslationEx";
 import MatchingEx from "../components/exercises/MatchingEx";
 import ListeningEx from "../components/exercises/ListeningEx";
+import SentenceBuilderEx from "../components/exercises/SentenceBuilderEx";
 import LessonComplete from "../components/LessonComplete";
 import { addTodayProgress } from "../lib/weeklyProgress";
 import { orderedLessonIds } from "../data/lessonCatalog";
@@ -304,6 +305,7 @@ export default function LessonPage() {
               {currentExercise.type === "translation" && "Çevir"}
               {currentExercise.type === "matching" && "Eşleştir"}
               {currentExercise.type === "listening" && "Dinleyip seç"}
+              {currentExercise.type === "sentence_builder" && "Karışık kelimelerle cümleyi kur"}
             </div>
 
             <div className="flex-1">
@@ -321,6 +323,9 @@ export default function LessonPage() {
               )}
               {currentExercise.type === "listening" && (
                 <ListeningEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+              )}
+              {currentExercise.type === "sentence_builder" && (
+                <SentenceBuilderEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
               )}
             </div>
           </>
