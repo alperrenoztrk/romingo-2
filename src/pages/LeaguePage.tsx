@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import StatsBar from "../components/StatsBar";
-import { Crown, Medal, Award, ArrowUpCircle, ArrowDownCircle, MinusCircle, Shuffle } from "lucide-react";
-import { addLeagueXp, getLeagueMeta, getLeagueState, getRankedLeaguePlayers, getTimeUntilReset } from "@/lib/league";
+import { Crown, Medal, Award, ArrowUpCircle, ArrowDownCircle, MinusCircle } from "lucide-react";
+import { getLeagueMeta, getLeagueState, getRankedLeaguePlayers, getTimeUntilReset } from "@/lib/league";
 
 function getRankIcon(rank: number) {
   if (rank === 1) return <Crown className="w-5 h-5 text-gold" fill="hsl(var(--gold))" />;
@@ -64,22 +64,6 @@ export default function LeaguePage() {
           <span className="text-xs font-extrabold text-flamingo">
             {countdown.days} gün {countdown.hours} saat kaldı
           </span>
-        </div>
-
-        <div className="bg-card rounded-2xl p-3 shadow-card mb-6 flex items-center justify-between">
-          <p className="text-xs font-bold text-muted-foreground flex items-center gap-1">
-            <Shuffle className="w-4 h-4" /> Bu hafta yeni bir grupla eşleştirildin.
-          </p>
-          <button
-            type="button"
-            className="text-xs font-black text-flamingo"
-            onClick={() => {
-              addLeagueXp(75);
-              setVersion((value) => value + 1);
-            }}
-          >
-            +75 XP simüle et
-          </button>
         </div>
 
         <div className="bg-card rounded-2xl shadow-card overflow-hidden">
