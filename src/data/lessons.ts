@@ -1547,6 +1547,136 @@ export const lessonsData: Record<string, LessonData> = {
       },
     ],
   },
+  "23": {
+    id: "23",
+    title: "Seyahat ve Tatil",
+    emoji: "🧳",
+    description: "Seyahat planı yaparken ve tatilde ihtiyaç duyulan temel ifadeler",
+    xpReward: 30,
+    exercises: [
+      {
+        type: "multiple_choice",
+        question: '"Bilet" Romence hangisidir?',
+        options: ["Bagaj", "Bilet", "Pașaport", "Hotel"],
+        correctIndex: 1,
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Uçak", right: "Avion" },
+          { left: "Pasaport", right: "Pașaport" },
+          { left: "Otel", right: "Hotel" },
+          { left: "Rezervasyon", right: "Rezervare" },
+        ],
+      },
+      {
+        type: "fill_blank",
+        sentence: "Tatile çıkmadan önce ___ kontrol etmeliyim.",
+        correctAnswer: "pasaportumu",
+        options: ["pasaportumu", "kalemimi", "televizyonu", "masayı"],
+      },
+      {
+        type: "translation",
+        sentence: "Unde este hotelul?",
+        direction: "ro-tr",
+        correctAnswer: "Otel nerede?",
+        acceptedAnswers: ["Otel nerede?", "otel nerede?", "Hotel nerede?"],
+      },
+      {
+        type: "multiple_choice",
+        question: '"Check-in" için doğru Romence ifade hangisi?',
+        options: ["A face check-in", "A cumpăra", "A dormi", "A întreba"],
+        correctIndex: 0,
+      },
+      {
+        type: "fill_blank",
+        sentence: "Romencede 'tatil' demek için ___ denir.",
+        correctAnswer: "vacanță",
+        options: ["vacanță", "școală", "muncă", "piață"],
+      },
+      {
+        type: "translation",
+        sentence: "Valizim ağır",
+        direction: "tr-ro",
+        correctAnswer: "Bagajul meu este greu",
+        acceptedAnswers: ["Bagajul meu este greu", "bagajul meu este greu"],
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Plaj", right: "Plajă" },
+          { left: "Harita", right: "Hartă" },
+          { left: "Turist", right: "Turist" },
+          { left: "Müze", right: "Muzeu" },
+        ],
+      },
+    ],
+  },
+  "24": {
+    id: "24",
+    title: "Sağlık ve Eczane",
+    emoji: "💊",
+    description: "Hastalık belirtilerini anlatma ve eczanede temel konuşmalar",
+    xpReward: 30,
+    exercises: [
+      {
+        type: "multiple_choice",
+        question: '"Ateşim var" cümlesinin Romencesi hangisi?',
+        options: ["Am febră", "Am apă", "Am timp", "Am carte"],
+        correctIndex: 0,
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "İlaç", right: "Medicament" },
+          { left: "Eczane", right: "Farmacie" },
+          { left: "Ağrı", right: "Durere" },
+          { left: "Reçete", right: "Rețetă" },
+        ],
+      },
+      {
+        type: "fill_blank",
+        sentence: "Başım ağrıyor, bir ___ lazım.",
+        correctAnswer: "ilaç",
+        options: ["ilaç", "bilet", "defter", "anahtar"],
+      },
+      {
+        type: "translation",
+        sentence: "Mă doare gâtul",
+        direction: "ro-tr",
+        correctAnswer: "Boğazım ağrıyor",
+        acceptedAnswers: ["Boğazım ağrıyor", "boğazım ağrıyor"],
+      },
+      {
+        type: "multiple_choice",
+        question: '"Eczane nerede?" sorusunun Romencesi hangisi?',
+        options: ["Cât costă farmacia?", "Unde este farmacia?", "Farmacia este mare", "Am nevoie de apă"],
+        correctIndex: 1,
+      },
+      {
+        type: "fill_blank",
+        sentence: "Romencede 'öksürük' demek için ___ denir.",
+        correctAnswer: "tuse",
+        options: ["tuse", "febră", "durere", "somn"],
+      },
+      {
+        type: "translation",
+        sentence: "Doktora gitmeliyim",
+        direction: "tr-ro",
+        correctAnswer: "Trebuie să merg la doctor",
+        acceptedAnswers: ["Trebuie să merg la doctor", "trebuie să merg la doctor"],
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Soğuk algınlığı", right: "Răceală" },
+          { left: "Şurup", right: "Sirop" },
+          { left: "Tablet", right: "Pastilă" },
+          { left: "Tedavi", right: "Tratament" },
+        ],
+      },
+    ],
+  },
 
 };
 
