@@ -1,11 +1,20 @@
-<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="480" fill="#F2F2F2"/>
+<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Romingo logo</title>
+  <desc id="logoDesc">Blue yellow red geometric mark with Romingo wordmark</desc>
 
-  <polygon points="170,170 290,170 330,210 250,210" fill="#164194"/>
-  <polygon points="250,210 330,210 370,250 290,250" fill="#F8E81C"/>
-  <polygon points="290,250 370,250 370,330" fill="#EF233C"/>
+  <rect width="480" height="480" fill="#E9E9E9"/>
 
-  <text x="130" y="290" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" fill="#D90429">Romi</text>
-  <text x="253" y="290" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" fill="#0038A8">ngo</text>
-  <text x="180" y="320" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="8" fill="#1F2937">LANGUAGE SCHOOL</text>
+  <g transform="translate(0 -2)">
+    <polygon points="176,178 286,178 318,210 208,210" fill="#1E4AA3"/>
+    <polygon points="286,178 352,244 320,276 254,210" fill="#F7E21E"/>
+    <polygon points="352,244 370,262 338,294 320,276" fill="#F0444E"/>
+    <polygon points="338,294 370,326 370,392 338,360" fill="#EF233C"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="240" y="290" font-size="62" font-weight="700">
+      <tspan fill="#D90429">Romi</tspan><tspan fill="#0038A8">ngo</tspan>
+    </text>
+    <text x="240" y="322" font-size="20" letter-spacing="7" fill="#1F2937">LANGUAGE SCHOOL</text>
+  </g>
 </svg>
