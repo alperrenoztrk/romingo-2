@@ -65,7 +65,7 @@ function AppContent() {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-pink-100 via-pink-200 to-rose-300 dark:from-slate-900 dark:via-fuchsia-950 dark:to-rose-950">
         <div className="text-center">
           <img
-            src="/romingo-logo.svg"
+            src="https://www.romingoakademi.com/static/images/logo.png"
             alt="Romingo logo"
             className="mx-auto w-60 max-w-[70vw] drop-shadow-xl"
           />

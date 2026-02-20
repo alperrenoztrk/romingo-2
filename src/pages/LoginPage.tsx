@@ -9,7 +9,7 @@ export default function LoginPage({ onGuestLogin }: LoginPageProps) {
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="w-full max-w-sm bg-card rounded-2xl p-6 shadow-card text-center space-y-4">
         <img
-          src="/romingo-logo.svg"
+          src="https://www.romingoakademi.com/static/images/logo.png"
           alt="Romingo logo"
           className="mx-auto w-44 max-w-[65vw]"
         />
