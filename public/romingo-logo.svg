@@ -1,0 +1,11 @@
+<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="480" fill="#F2F2F2"/>
+
+  <polygon points="170,170 290,170 330,210 250,210" fill="#164194"/>
+  <polygon points="250,210 330,210 370,250 290,250" fill="#F8E81C"/>
+  <polygon points="290,250 370,250 370,330" fill="#EF233C"/>
+
+  <text x="130" y="290" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" fill="#D90429">Romi</text>
+  <text x="253" y="290" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" fill="#0038A8">ngo</text>
+  <text x="180" y="320" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="8" fill="#1F2937">LANGUAGE SCHOOL</text>
+</svg>

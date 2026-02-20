@@ -64,8 +64,11 @@ function AppContent() {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-pink-100 via-pink-200 to-rose-300 dark:from-slate-900 dark:via-fuchsia-950 dark:to-rose-950">
         <div className="text-center">
-          <div className="text-8xl leading-none">🦩</div>
-          <h1 className="mt-4 text-4xl font-extrabold tracking-wide text-rose-700 dark:text-pink-300">Romingo</h1>
+          <img
+            src="/romingo-logo.svg"
+            alt="Romingo logo"
+            className="mx-auto w-60 max-w-[70vw] drop-shadow-xl"
+          />
         </div>
       </div>
     );
