@@ -1,26 +1,21 @@
-<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
   <title id="logoTitle">Romingo Logo</title>
-  <desc id="logoDesc">Romingo wordmark with geometric ribbon mark</desc>
+  <desc id="logoDesc">Romingo language school logo matched to reference composition.</desc>
 
-  <defs>
-    <linearGradient id="bg" x1="240" y1="40" x2="240" y2="440" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFF5FA"/>
-      <stop offset="1" stop-color="#FCE7F3"/>
-    </linearGradient>
-  </defs>
+  <rect width="500" height="500" fill="#ECECEC"/>
 
-  <rect width="480" height="480" rx="96" fill="url(#bg)"/>
-
-  <g transform="translate(0 2)">
-    <polygon points="128,140 272,140 316,184 172,184" fill="#164194"/>
-    <polygon points="172,184 316,184 360,228 216,228" fill="#F8E81C"/>
-    <polygon points="216,228 360,228 316,272 172,272" fill="#EF233C"/>
+  <!-- Geometric ribbon mark -->
+  <g>
+    <polygon points="185,170 286,170 320,204 219,204" fill="#1D4A99"/>
+    <polygon points="286,170 343,227 311,259 254,202" fill="#F8E71C"/>
+    <polygon points="343,227 387,271 387,369 311,293" fill="#F32735"/>
   </g>
 
-  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
-    <text x="240" y="336" font-size="78" font-weight="700">
-      <tspan fill="#D90429">Romi</tspan><tspan fill="#0038A8">ngo</tspan>
+  <!-- Wordmark -->
+  <g font-family="Nunito, Poppins, Montserrat, Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="250" y="301" font-size="62" font-weight="800" letter-spacing="0.2">
+      <tspan fill="#D70C2C">Romi</tspan><tspan fill="#0A3FA0">ngo</tspan>
     </text>
-    <text x="240" y="370" font-size="19" letter-spacing="6" fill="#334155">LANGUAGE SCHOOL</text>
+    <text x="250" y="331" font-size="19" font-weight="500" letter-spacing="7.2" fill="#1F2937">LANGUAGE SCHOOL</text>
   </g>
 </svg>
