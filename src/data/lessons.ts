@@ -1677,6 +1677,209 @@ export const lessonsData: Record<string, LessonData> = {
       },
     ],
   },
+  "25": {
+    id: "25",
+    title: "Teknoloji",
+    emoji: "💻",
+    description: "Günlük teknoloji kullanımında temel kelime ve cümleleri öğren",
+    xpReward: 30,
+    exercises: [
+      {
+        type: "multiple_choice",
+        question: '"Bilgisayar" Romence ne?',
+        options: ["Telefon", "Calculator", "Tabletă", "Internet"],
+        correctIndex: 1,
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Telefon", right: "Telefon" },
+          { left: "Bilgisayar", right: "Calculator" },
+          { left: "Klavye", right: "Tastatură" },
+          { left: "Ekran", right: "Ecran" },
+        ],
+      },
+      {
+        type: "fill_blank",
+        sentence: "Toplantı için ___ şarj etmem gerekiyor.",
+        correctAnswer: "telefonumu",
+        options: ["telefonumu", "sandalyeyi", "kitabı", "pencereyi"],
+      },
+      {
+        type: "translation",
+        sentence: "Wi-Fi parola nedir?",
+        direction: "tr-ro",
+        correctAnswer: "Care este parola Wi-Fi?",
+        acceptedAnswers: ["Care este parola Wi-Fi?", "care este parola wi-fi?"],
+      },
+      {
+        type: "multiple_choice",
+        question: '"Mesaj gönder" cümlesinin Romencesi hangisi?',
+        options: ["Trimite un mesaj", "Deschide ușa", "Citește cartea", "Pornește lumina"],
+        correctIndex: 0,
+      },
+      {
+        type: "fill_blank",
+        sentence: "Romencede 'internet bağlantısı' demek için ___ denir.",
+        correctAnswer: "conexiune la internet",
+        options: ["conexiune la internet", "telefon mobil", "mesaj vocal", "adresă poștală"],
+      },
+      {
+        type: "translation",
+        sentence: "Aplicație güncelleniyor",
+        direction: "tr-ro",
+        correctAnswer: "Aplicația se actualizează",
+        acceptedAnswers: ["Aplicația se actualizează", "aplicația se actualizează"],
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Parola", right: "Parolă" },
+          { left: "Dosya", right: "Fișier" },
+          { left: "Şarj", right: "Încărcare" },
+          { left: "Kulaklık", right: "Căști" },
+        ],
+      },
+    ],
+  },
+  "26": {
+    id: "26",
+    title: "İş ve Ofis",
+    emoji: "📊",
+    description: "Ofis ortamında kullanılan temel ifadeleri pratik et",
+    xpReward: 30,
+    exercises: [
+      {
+        type: "multiple_choice",
+        question: '"Toplantı" Romence karşılığı hangisi?',
+        options: ["Ședință", "Pauză", "Cafea", "Contract"],
+        correctIndex: 0,
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Müdür", right: "Manager" },
+          { left: "Toplantı", right: "Ședință" },
+          { left: "Rapor", right: "Raport" },
+          { left: "Müşteri", right: "Client" },
+        ],
+      },
+      {
+        type: "fill_blank",
+        sentence: "Saat onda ekip ___ başlıyor.",
+        correctAnswer: "toplantısı",
+        options: ["toplantısı", "yemeği", "tatili", "oyunu"],
+      },
+      {
+        type: "translation",
+        sentence: "Am trimis raportul pe e-mail",
+        direction: "ro-tr",
+        correctAnswer: "Raporu e-posta ile gönderdim",
+        acceptedAnswers: ["Raporu e-posta ile gönderdim", "Raporu mail ile gönderdim"],
+      },
+      {
+        type: "multiple_choice",
+        question: '"Bugün ofisten çalışıyorum" cümlesinin Romencesi hangisi?',
+        options: [
+          "Astăzi lucrez de acasă",
+          "Astăzi lucrez de la birou",
+          "Astăzi merg la piață",
+          "Astăzi citesc un ziar",
+        ],
+        correctIndex: 1,
+      },
+      {
+        type: "fill_blank",
+        sentence: "Romencede 'sözleşme' demek için ___ denir.",
+        correctAnswer: "contract",
+        options: ["contract", "masă", "ușă", "drum"],
+      },
+      {
+        type: "translation",
+        sentence: "Müşteriyle saat üçte görüşmem var",
+        direction: "tr-ro",
+        correctAnswer: "Am întâlnire cu clientul la ora trei",
+        acceptedAnswers: [
+          "Am întâlnire cu clientul la ora trei",
+          "am întâlnire cu clientul la ora trei",
+        ],
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Sunum", right: "Prezentare" },
+          { left: "Ofis", right: "Birou" },
+          { left: "Mola", right: "Pauză" },
+          { left: "Takvim", right: "Calendar" },
+        ],
+      },
+    ],
+  },
+  "27": {
+    id: "27",
+    title: "Eğitim",
+    emoji: "📚",
+    description: "Sınıf içinde ve ders çalışırken kullanılan kalıpları güçlendir",
+    xpReward: 30,
+    exercises: [
+      {
+        type: "multiple_choice",
+        question: '"Ödev" Romence ne demek?',
+        options: ["Temă", "Vacanță", "Birou", "Pauză"],
+        correctIndex: 0,
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Öğrenci", right: "Elev" },
+          { left: "Öğretmen", right: "Profesor" },
+          { left: "Sınav", right: "Examen" },
+          { left: "Ders", right: "Lecție" },
+        ],
+      },
+      {
+        type: "fill_blank",
+        sentence: "Yarın matematik ___ var.",
+        correctAnswer: "sınavı",
+        options: ["sınavı", "arabası", "çantası", "kahvesi"],
+      },
+      {
+        type: "translation",
+        sentence: "Profesorul explică lecția",
+        direction: "ro-tr",
+        correctAnswer: "Öğretmen dersi açıklıyor",
+        acceptedAnswers: ["Öğretmen dersi açıklıyor", "Hoca dersi açıklıyor"],
+      },
+      {
+        type: "multiple_choice",
+        question: '"Kitabını aç" ifadesinin Romencesi hangisi?',
+        options: ["Închide caietul", "Deschide cartea", "Scrie pe tablă", "Ascultă muzică"],
+        correctIndex: 1,
+      },
+      {
+        type: "fill_blank",
+        sentence: "Romencede 'not almak' için ___ denir.",
+        correctAnswer: "a lua notițe",
+        options: ["a lua notițe", "a merge acasă", "a bea apă", "a cumpăra"],
+      },
+      {
+        type: "translation",
+        sentence: "Dersten sonra kütüphaneye gidiyorum",
+        direction: "tr-ro",
+        correctAnswer: "După lecție merg la bibliotecă",
+        acceptedAnswers: ["După lecție merg la bibliotecă", "după lecție merg la bibliotecă"],
+      },
+      {
+        type: "matching",
+        pairs: [
+          { left: "Tahta", right: "Tablă" },
+          { left: "Defter", right: "Caiet" },
+          { left: "Kütüphane", right: "Bibliotecă" },
+          { left: "Soru", right: "Întrebare" },
+        ],
+      },
+    ],
+  },
 
 };
 
