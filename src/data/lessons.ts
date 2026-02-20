@@ -1881,6 +1881,58 @@ export const lessonsData: Record<string, LessonData> = {
     ],
   },
 
+  "28": {
+    id: "28",
+    title: "Hobiler",
+    emoji: "🎯",
+    description: "Boş zaman aktiviteleri ve ilgi alanlarıyla ilgili doğal cümleler kur",
+    xpReward: 30,
+    exercises: [
+      { type: "multiple_choice", question: '"Yüzmek" fiilinin Romence karşılığı hangisi?', options: ["A alerga", "A înota", "A dansa", "A desena"], correctIndex: 1 },
+      { type: "matching", pairs: [ { left: "Kitap okumak", right: "A citi cărți" }, { left: "Müzik dinlemek", right: "A asculta muzică" }, { left: "Resim yapmak", right: "A picta" }, { left: "Koşmak", right: "A alerga" } ] },
+      { type: "fill_blank", sentence: "Hafta sonları parkta ___ çok seviyorum.", correctAnswer: "koşmayı", options: ["koşmayı", "uyumayı", "beklemeyi", "unutmayı"] },
+      { type: "translation", sentence: "Îmi place să fac fotografie", direction: "ro-tr", correctAnswer: "Fotoğraf çekmeyi seviyorum", acceptedAnswers: ["Fotoğraf çekmeyi seviyorum", "fotoğraf çekmeyi seviyorum"] },
+      { type: "multiple_choice", question: '"Boş zamanımda gitar çalıyorum" cümlesinin Romencesi hangisi?', options: ["În timpul liber citesc ziarul", "În timpul liber cânt la chitară", "În timpul liber fac curat", "În timpul liber gătesc supă"], correctIndex: 1 },
+      { type: "fill_blank", sentence: "Romencede 'hobi' demek için ___ denir.", correctAnswer: "hobby", options: ["hobby", "vacanță", "serviciu", "examen"] },
+      { type: "translation", sentence: "Satranç oynamayı öğreniyorum", direction: "tr-ro", correctAnswer: "Învăț să joc șah", acceptedAnswers: ["Învăț să joc șah", "învăț să joc șah"] },
+      { type: "matching", pairs: [ { left: "Satranç", right: "Șah" }, { left: "Bisiklet", right: "Bicicletă" }, { left: "Koleksiyon", right: "Colecție" }, { left: "Kamp", right: "Camping" } ] },
+    ],
+  },
+  "29": {
+    id: "29",
+    title: "Doğa ve Çevre",
+    emoji: "🌿",
+    description: "Doğayı tarif etme, çevreyle ilgili temel kelime ve ifadeleri öğren",
+    xpReward: 30,
+    exercises: [
+      { type: "multiple_choice", question: '"Orman" Romence hangisidir?', options: ["Râu", "Munte", "Pădure", "Lac"], correctIndex: 2 },
+      { type: "matching", pairs: [ { left: "Ağaç", right: "Copac" }, { left: "Nehir", right: "Râu" }, { left: "Dağ", right: "Munte" }, { left: "Göl", right: "Lac" } ] },
+      { type: "fill_blank", sentence: "Piknikte çöpleri mutlaka ___ atmalıyız.", correctAnswer: "geri dönüşüme", options: ["geri dönüşüme", "sokağa", "masaya", "çantaya"] },
+      { type: "translation", sentence: "Aerul este foarte curat aici", direction: "ro-tr", correctAnswer: "Burada hava çok temiz", acceptedAnswers: ["Burada hava çok temiz", "burada hava çok temiz"] },
+      { type: "multiple_choice", question: '"Su tasarrufu yapmalıyız" cümlesinin Romencesi hangisi?', options: ["Trebuie să economisim apă", "Trebuie să cumpărăm apă", "Trebuie să încălzim apa", "Trebuie să turnăm apă"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Romencede 'çevre' demek için ___ denir.", correctAnswer: "mediu", options: ["mediu", "oraș", "stradă", "piață"] },
+      { type: "translation", sentence: "Geri dönüşüm kutusu nerede?", direction: "tr-ro", correctAnswer: "Unde este coșul de reciclare?", acceptedAnswers: ["Unde este coșul de reciclare?", "unde este coșul de reciclare?"] },
+      { type: "matching", pairs: [ { left: "Çiçek", right: "Floare" }, { left: "Toprak", right: "Sol" }, { left: "Yağmur", right: "Ploaie" }, { left: "Rüzgar", right: "Vânt" } ] },
+    ],
+  },
+  "30": {
+    id: "30",
+    title: "Acil Durumlar",
+    emoji: "🚨",
+    description: "Acil durumlarda yardım isteme ve temel güvenlik ifadelerini öğren",
+    xpReward: 35,
+    exercises: [
+      { type: "multiple_choice", question: '"Yardım edin!" Romence nasıl söylenir?', options: ["Mulțumesc!", "Ajutor!", "Poftă bună!", "La revedere!"], correctIndex: 1 },
+      { type: "matching", pairs: [ { left: "Polis", right: "Poliție" }, { left: "Ambulans", right: "Ambulanță" }, { left: "İtfaiye", right: "Pompieri" }, { left: "Hastane", right: "Spital" } ] },
+      { type: "fill_blank", sentence: "Acil bir durumda önce ___ aramalıyız.", correctAnswer: "112'yi", options: ["112'yi", "arkadaşımı", "komşuyu", "restoranı"] },
+      { type: "translation", sentence: "Sunați la ambulanță, vă rog", direction: "ro-tr", correctAnswer: "Lütfen ambulans çağırın", acceptedAnswers: ["Lütfen ambulans çağırın", "lütfen ambulans çağırın"] },
+      { type: "multiple_choice", question: '"Yangın var" ifadesinin Romence karşılığı hangisi?', options: ["Este frig", "Este liniște", "Este incendiu", "Este târziu"], correctIndex: 2 },
+      { type: "fill_blank", sentence: "Romencede 'tehlike' demek için ___ denir.", correctAnswer: "pericol", options: ["pericol", "drum", "lecție", "muzică"] },
+      { type: "translation", sentence: "Adresinizi söyleyin", direction: "tr-ro", correctAnswer: "Spuneți adresa dumneavoastră", acceptedAnswers: ["Spuneți adresa dumneavoastră", "spuneți adresa dumneavoastră"] },
+      { type: "matching", pairs: [ { left: "Sakin ol", right: "Calmează-te" }, { left: "Bekle", right: "Așteaptă" }, { left: "Güvende", right: "În siguranță" }, { left: "Yaralı", right: "Rănit" } ] },
+    ],
+  },
+
 };
 
 const level2To6SupplementalExercises: Record<string, Exercise[]> = {
@@ -2046,6 +2098,101 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
       ],
       correctIndex: 1,
       hint: "la colț = köşede/köşeden",
+    },
+  ],
+
+  "21": [
+    {
+      type: "translation",
+      sentence: "Bugün biraz kaygılı hissediyorum",
+      direction: "tr-ro",
+      correctAnswer: "Astăzi mă simt puțin anxios/anxioasă",
+      acceptedAnswers: ["Astăzi mă simt puțin anxios", "Astăzi mă simt puțin anxioasă", "astăzi mă simt puțin anxios", "astăzi mă simt puțin anxioasă"],
+      hint: "mă simt = hissediyorum",
+    },
+  ],
+  "22": [
+    {
+      type: "multiple_choice",
+      question: '"Mă doare spatele" Türkçede ne demek?',
+      options: ["Sırtım ağrıyor", "Başım ağrıyor", "Kolum ağrıyor", "Karnım ağrıyor"],
+      correctIndex: 0,
+      hint: "spate = sırt",
+    },
+  ],
+  "23": [
+    {
+      type: "fill_blank",
+      sentence: "Uçuş için erken havalimanına ___ gerekir.",
+      correctAnswer: "gitmek",
+      options: ["gitmek", "uyumak", "koşmak", "beklemek"],
+      hint: "Seyahat hazırlığı fiilleri",
+    },
+  ],
+  "24": [
+    {
+      type: "translation",
+      sentence: "İlacı günde iki kez al",
+      direction: "tr-ro",
+      correctAnswer: "Ia medicamentul de două ori pe zi",
+      acceptedAnswers: ["Ia medicamentul de două ori pe zi", "ia medicamentul de două ori pe zi"],
+      hint: "de două ori pe zi = günde iki kez",
+    },
+  ],
+  "25": [
+    {
+      type: "multiple_choice",
+      question: '"Parolamı unuttum" cümlesinin Romencesi hangisi?',
+      options: ["Am uitat parola", "Am trimis parola", "Am găsit parola", "Am schimbat parola"],
+      correctIndex: 0,
+      hint: "a uita = unutmak",
+    },
+  ],
+  "26": [
+    {
+      type: "fill_blank",
+      sentence: "Toplantıdan önce sunumu ___ etmeliyim.",
+      correctAnswer: "kontrol",
+      options: ["kontrol", "tatil", "alışveriş", "sohbet"],
+      hint: "Ofis bağlamına uygun kelime",
+    },
+  ],
+  "27": [
+    {
+      type: "translation",
+      sentence: "Sınav haftasında çok çalışıyorum",
+      direction: "tr-ro",
+      correctAnswer: "În săptămâna examenelor învăț mult",
+      acceptedAnswers: ["În săptămâna examenelor învăț mult", "în săptămâna examenelor învăț mult"],
+      hint: "învăț mult = çok çalışıyorum",
+    },
+  ],
+  "28": [
+    {
+      type: "multiple_choice",
+      question: '"A picta" fiilinin Türkçesi hangisi?',
+      options: ["Resim yapmak", "Dans etmek", "Yüzmek", "Koşmak"],
+      correctIndex: 0,
+      hint: "Hobi fiilleri",
+    },
+  ],
+  "29": [
+    {
+      type: "fill_blank",
+      sentence: "Doğayı korumak için plastik kullanımını ___ gerekir.",
+      correctAnswer: "azaltmak",
+      options: ["azaltmak", "artırmak", "unutmak", "taşımak"],
+      hint: "Çevre farkındalığı ifadesi",
+    },
+  ],
+  "30": [
+    {
+      type: "translation",
+      sentence: "Lütfen sakin olun ve bekleyin",
+      direction: "tr-ro",
+      correctAnswer: "Vă rog să rămâneți calm și să așteptați",
+      acceptedAnswers: ["Vă rog să rămâneți calm și să așteptați", "vă rog să rămâneți calm și să așteptați"],
+      hint: "Acil durum yönlendirme cümlesi",
     },
   ],
 };
