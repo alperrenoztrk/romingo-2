@@ -1,11 +1,26 @@
-<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="480" fill="#F2F2F2"/>
+<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Romingo Logo</title>
+  <desc id="logoDesc">Romingo wordmark with geometric ribbon mark</desc>
 
-  <polygon points="170,170 290,170 330,210 250,210" fill="#164194"/>
-  <polygon points="250,210 330,210 370,250 290,250" fill="#F8E81C"/>
-  <polygon points="290,250 370,250 370,330" fill="#EF233C"/>
+  <defs>
+    <linearGradient id="bg" x1="240" y1="40" x2="240" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF5FA"/>
+      <stop offset="1" stop-color="#FCE7F3"/>
+    </linearGradient>
+  </defs>
 
-  <text x="130" y="290" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" fill="#D90429">Romi</text>
-  <text x="253" y="290" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" fill="#0038A8">ngo</text>
-  <text x="180" y="320" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="8" fill="#1F2937">LANGUAGE SCHOOL</text>
+  <rect width="480" height="480" rx="96" fill="url(#bg)"/>
+
+  <g transform="translate(0 2)">
+    <polygon points="128,140 272,140 316,184 172,184" fill="#164194"/>
+    <polygon points="172,184 316,184 360,228 216,228" fill="#F8E81C"/>
+    <polygon points="216,228 360,228 316,272 172,272" fill="#EF233C"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="240" y="336" font-size="78" font-weight="700">
+      <tspan fill="#D90429">Romi</tspan><tspan fill="#0038A8">ngo</tspan>
+    </text>
+    <text x="240" y="370" font-size="19" letter-spacing="6" fill="#334155">LANGUAGE SCHOOL</text>
+  </g>
 </svg>
