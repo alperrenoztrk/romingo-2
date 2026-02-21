@@ -97,8 +97,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"La revedere" ifadesi hangi durumda kullanılır?',
-        options: ["Tanışırken", "Vedalaşırken", "Teşekkür ederken", "Bir şey isterken"],
+        question: '"Görüşürüz" Romence ne demek?',
+        options: ["Bună", "La revedere", "Mulțumesc", "Te rog"],
         correctIndex: 1,
       },
       {
@@ -146,7 +146,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: 'Diyaloğu tamamla: "Bună! ..."',
+        question: '"Nasılsın?" Romence hangisi?',
         options: ["La revedere", "Mulțumesc", "Ce faci?", "Noapte bună"],
         correctIndex: 2,
       },
@@ -186,8 +186,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Încântat(ă) de cunoștință" ne zaman söylenir?',
-        options: ["Uyurken", "Tanışırken", "Sipariş verirken", "Yol sorarken"],
+        question: '"Memnun oldum" Romence nasıl söylenir?',
+        options: ["Îmi pare rău", "Încântat(ă) de cunoștință", "La revedere", "Cu plăcere"],
         correctIndex: 1,
       },
       {
@@ -228,7 +228,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: 'Diyaloğu tamamla: "Cum te cheamă?"',
+        question: '"Benim adım Elif" Romence hangisi?',
         options: ["Sunt din Turcia", "Mă cheamă Elif", "Îmi pare rău", "La revedere"],
         correctIndex: 1,
       },
@@ -466,9 +466,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Ayran" nedir?',
-        options: ["Bir meyve suyu", "Bir yoğurt içeceği", "Bir çay çeşidi", "Bir kahve çeşidi"],
-        correctIndex: 1,
+        question: '"Meyve suyu" Romence ne demek?',
+        options: ["Lapte", "Ceai", "Cafea", "Suc"],
+        correctIndex: 3,
       },
       {
         type: "fill_blank",
@@ -808,8 +808,8 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Bir yılda kaç mevsim vardır? (Într-un an câte anotimpuri sunt?)",
-        options: ["2", "3", "4", "5"],
+        question: '"Sonbahar" Romence hangisidir?',
+        options: ["Primăvară", "Vară", "Toamnă", "Iarnă"],
         correctIndex: 2,
       },
     ],
@@ -1993,10 +1993,10 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "8": [
     {
       type: "multiple_choice",
-      question: '"Pisică" hangi hayvandır?',
-      options: ["Kedi", "Köpek", "Kuş", "Balık"],
-      correctIndex: 0,
-      hint: "Romence pisică = kedi",
+      question: '"Kedi" Romence hangisidir?',
+      options: ["Câine", "Pisică", "Pasăre", "Pește"],
+      correctIndex: 1,
+      hint: "kedi = pisică",
     },
   ],
   "9": [
