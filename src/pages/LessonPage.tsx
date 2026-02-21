@@ -7,6 +7,7 @@ import FillBlankEx from "../components/exercises/FillBlankEx";
 import TranslationEx from "../components/exercises/TranslationEx";
 import MatchingEx from "../components/exercises/MatchingEx";
 import ListeningEx from "../components/exercises/ListeningEx";
+import SentenceBuilderEx from "../components/exercises/SentenceBuilderEx";
 import LessonComplete from "../components/LessonComplete";
 import { addTodayProgress } from "../lib/weeklyProgress";
 import { orderedLessonIds } from "../data/lessonCatalog";
@@ -264,7 +265,9 @@ export default function LessonPage() {
     : currentExercise.type === "multiple_choice" || currentExercise.type === "listening"
       ? currentExercise.options[currentExercise.correctIndex] ?? ""
       : currentExercise.type === "fill_blank" || currentExercise.type === "translation"
-        ? currentExercise.correctAnswer
+      ? currentExercise.correctAnswer
+      : currentExercise.type === "sentence_builder"
+        ? currentExercise.correctSentence
         : currentExercise.pairs.map((pair) => `${pair.left} = ${pair.right}`).join(" • ");
 
   const handleRevealAnswer = () => {
@@ -335,6 +338,7 @@ export default function LessonPage() {
                 {currentExercise.type === "translation" && "Çevir"}
                 {currentExercise.type === "matching" && "Eşleştir"}
                 {currentExercise.type === "listening" && "Dinleyip seç"}
+                {currentExercise.type === "sentence_builder" && "Sürükleyip cümle kur"}
               </div>
 
               <button
@@ -372,6 +376,9 @@ export default function LessonPage() {
               )}
               {currentExercise.type === "listening" && (
                 <ListeningEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+              )}
+              {currentExercise.type === "sentence_builder" && (
+                <SentenceBuilderEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
               )}
             </div>
           </>

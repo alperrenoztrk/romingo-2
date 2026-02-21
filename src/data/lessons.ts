@@ -1,4 +1,4 @@
-export type ExerciseType = "multiple_choice" | "translation" | "fill_blank" | "matching" | "listening";
+export type ExerciseType = "multiple_choice" | "translation" | "fill_blank" | "matching" | "listening" | "sentence_builder";
 
 export interface MultipleChoiceExercise {
   type: "multiple_choice";
@@ -37,12 +37,21 @@ export interface ListeningExercise {
   correctIndex: number;
 }
 
+export interface SentenceBuilderExercise {
+  type: "sentence_builder";
+  prompt: string;
+  correctSentence: string;
+  words: string[];
+  hint?: string;
+}
+
 export type Exercise =
   | MultipleChoiceExercise
   | TranslationExercise
   | FillBlankExercise
   | MatchingExercise
-  | ListeningExercise;
+  | ListeningExercise
+  | SentenceBuilderExercise;
 
 export interface LessonData {
   id: string;
@@ -120,6 +129,13 @@ export const lessonsData: Record<string, LessonData> = {
         direction: "tr-ro",
         correctAnswer: "Bună ziua",
         acceptedAnswers: ["Bună ziua", "bună ziua"],
+      },
+      {
+        type: "sentence_builder",
+        prompt: "Romence cümleyi doğru sıraya getir",
+        correctSentence: "Numele meu este Mehmet",
+        words: ["este", "Mehmet", "meu", "Numele"],
+        hint: "'Benim adım Mehmet' ifadesinin Romencesini düşün.",
       },
       {
         type: "translation",
