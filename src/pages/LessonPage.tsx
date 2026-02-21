@@ -536,7 +536,6 @@ export default function LessonPage() {
               <div className="text-xs font-bold text-muted-foreground uppercase">
                 {currentExercise.type === "fill_blank" && "Boşluğu doldur"}
                 {currentExercise.type === "translation" && "Çevir"}
-                {currentExercise.type === "matching" && "Eşleştir"}
                 {currentExercise.type === "listening" && "Dinleyip seç"}
                 {currentExercise.type === "sentence_builder" && "Sürükleyip cümle kur"}
               </div>
