@@ -13,6 +13,7 @@ const TRACKED_TYPES: ExerciseType[] = [
   "translation",
   "matching",
   "listening",
+  "sentence_builder",
 ];
 
 function readStats(): PracticeStats {
@@ -76,5 +77,6 @@ export function getExerciseTypeLabel(type: ExerciseType) {
   if (type === "fill_blank") return "Boşluk Doldurma";
   if (type === "translation") return "Çeviri";
   if (type === "matching") return "Eşleştirme";
-  return "Dinleme";
+  if (type === "listening") return "Dinleme";
+  return "Cümle Kurma";
 }
