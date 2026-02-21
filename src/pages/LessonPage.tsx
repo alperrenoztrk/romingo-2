@@ -564,7 +564,7 @@ export default function LessonPage() {
               Atla
             </button>
             <button
-              onClick={() => setShowExerciseIntro(false)}
+              onClick={() => navigate(`/learn?view=tutorial&lessonId=${lesson.id}`)}
               className="px-5 py-2 text-sm font-extrabold rounded-xl bg-success text-accent-foreground shadow-button-success active:shadow-none"
             >
               Alıştırmaya başla
