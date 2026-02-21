@@ -212,7 +212,8 @@ export default function LearnPage() {
       return;
     }
 
-    navigate(`/lesson/${lessonId}`);
+    const lessonUrl = tutorialView ? `/lesson/${lessonId}?skipIntro=1` : `/lesson/${lessonId}`;
+    navigate(lessonUrl);
   };
 
   const lessons = useMemo<Lesson[]>(() => {
