@@ -491,7 +491,7 @@ export default function LessonPage() {
               className={`mb-4 rounded-2xl border px-3 py-2 bg-gradient-to-r shadow-[0_10px_22px_-14px_rgba(0,0,0,0.7)] ${currentMascot.gradient} ${currentMascot.border}`}
               aria-live="polite"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center">
                 <div className="relative shrink-0">
                   <div className={`relative grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br ${currentMascot.orb} shadow-[inset_0_-6px_10px_rgba(0,0,0,0.2),0_8px_12px_-8px_rgba(0,0,0,0.8)] ring-2 ${currentMascot.ring}`}>
                     <span className="text-2xl drop-shadow-[0_2px_1px_rgba(0,0,0,0.35)]" role="img" aria-label={currentMascot.name}>
@@ -500,11 +500,6 @@ export default function LessonPage() {
                     <span className="pointer-events-none absolute left-1.5 top-1.5 h-2.5 w-5 rounded-full bg-white/55 blur-[1px]" aria-hidden />
                   </div>
                   <span className="pointer-events-none absolute -bottom-1 left-1/2 h-2.5 w-8 -translate-x-1/2 rounded-full bg-black/20 blur-[2px]" aria-hidden />
-                </div>
-
-                <div>
-                  <p className="text-[11px] font-black uppercase tracking-wide text-muted-foreground">{currentMascot.name}</p>
-                  <p className="text-sm font-semibold text-foreground">{currentMascot.vibe}</p>
                 </div>
               </div>
             </div>
