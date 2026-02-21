@@ -183,6 +183,7 @@ export default function LessonPage() {
   const [retryExerciseIndexes, setRetryExerciseIndexes] = useState<number[]>([]);
   const [revealedAnswerIndex, setRevealedAnswerIndex] = useState<number | null>(null);
   const [isHeartBreakAnimating, setIsHeartBreakAnimating] = useState(false);
+  const [showExerciseIntro, setShowExerciseIntro] = useState(true);
   const progressSavedRef = useRef(false);
   const lessonStartedAtRef = useRef(Date.now());
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -222,6 +223,7 @@ export default function LessonPage() {
     setCorrectStreak(0);
     setHattrickBonusXp(0);
     setCorrectFeedbackMessage(CORRECT_FEEDBACK_MESSAGES[0]);
+    setShowExerciseIntro(true);
     progressSavedRef.current = false;
     lessonStartedAtRef.current = Date.now();
   }, [lessonId, exercises]);
@@ -534,6 +536,42 @@ export default function LessonPage() {
         onRetryWrongAnswers={stars >= 1 && retryExerciseIndexes.length > 0 ? handleRetryWrongAnswers : undefined}
         onContinue={() => navigate("/learn")}
       />
+    );
+  }
+
+  if (showExerciseIntro) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center px-4 py-8">
+        <div className="w-full max-w-lg rounded-3xl border border-border bg-card p-6 shadow-xl">
+          <p className="text-xs font-black uppercase tracking-wide text-warning mb-2">Ders öncesi alıştırma</p>
+          <h1 className="text-2xl font-black text-foreground mb-2">{lesson.title}</h1>
+          <p className="text-sm font-semibold text-muted-foreground mb-6">{lesson.description}</p>
+
+          <div className="rounded-2xl border border-border bg-background/70 px-4 py-3 mb-6">
+            <p className="text-sm font-bold text-foreground">Bu derste seni ne bekliyor?</p>
+            <ul className="mt-2 space-y-1 text-xs font-semibold text-muted-foreground list-disc pl-4">
+              <li>{exerciseIndexes.length} soru</li>
+              <li>Doğru cevaplarla yıldız topla ve yeni derslerin kilidini aç</li>
+              <li>İstersen bu ekranı atlayıp direkt sorulara geçebilirsin</li>
+            </ul>
+          </div>
+
+          <div className="flex items-center justify-end gap-3">
+            <button
+              onClick={() => setShowExerciseIntro(false)}
+              className="px-4 py-2 text-sm font-extrabold rounded-xl border border-border text-muted-foreground hover:bg-muted transition-colors"
+            >
+              Atla
+            </button>
+            <button
+              onClick={() => setShowExerciseIntro(false)}
+              className="px-5 py-2 text-sm font-extrabold rounded-xl bg-success text-accent-foreground shadow-button-success active:shadow-none"
+            >
+              Alıştırmaya başla
+            </button>
+          </div>
+        </div>
+      </div>
     );
   }
 
