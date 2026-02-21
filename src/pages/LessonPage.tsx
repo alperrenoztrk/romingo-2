@@ -178,6 +178,7 @@ export default function LessonPage() {
   const [queuedRetryIndexes, setQueuedRetryIndexes] = useState<number[]>([]);
   const [retryExerciseIndexes, setRetryExerciseIndexes] = useState<number[]>([]);
   const [revealedAnswerIndex, setRevealedAnswerIndex] = useState<number | null>(null);
+  const [isHeartBreakAnimating, setIsHeartBreakAnimating] = useState(false);
   const progressSavedRef = useRef(false);
   const lessonStartedAtRef = useRef(Date.now());
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -469,6 +470,10 @@ export default function LessonPage() {
       return;
     }
 
+    if (hearts <= 0) {
+      return;
+    }
+
     if (revealedAnswerIndex === currentExerciseIndex) {
       return;
     }
@@ -477,7 +482,22 @@ export default function LessonPage() {
     setHearts(nextHeartState.hearts);
     setMinutesToNextHeart(getHeartStatus().minutesToNextHeart);
     setRevealedAnswerIndex(currentExerciseIndex);
+    setIsHeartBreakAnimating(true);
   };
+
+  useEffect(() => {
+    if (!isHeartBreakAnimating) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setIsHeartBreakAnimating(false);
+    }, 550);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [isHeartBreakAnimating]);
 
   useEffect(() => {
     if (revealedAnswerIndex === null) {
@@ -530,7 +550,19 @@ export default function LessonPage() {
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
-            <Heart className="w-5 h-5 text-flamingo" fill="hsl(var(--flamingo))" />
+            {isHeartBreakAnimating ? (
+              <span className="relative h-5 w-5" aria-hidden>
+                <span className="absolute inset-0 overflow-hidden [clip-path:inset(0_50%_0_0)]">
+                  <Heart className="h-5 w-5 text-flamingo transition-transform duration-500 -translate-x-[2px] -rotate-12" fill="hsl(var(--flamingo))" />
+                </span>
+                <span className="absolute inset-0 overflow-hidden [clip-path:inset(0_0_0_50%)]">
+                  <Heart className="h-5 w-5 text-flamingo transition-transform duration-500 translate-x-[2px] rotate-12" fill="hsl(var(--flamingo))" />
+                </span>
+                <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-background/80" />
+              </span>
+            ) : (
+              <Heart className="w-5 h-5 text-flamingo" fill="hsl(var(--flamingo))" />
+            )}
             <span className="font-extrabold text-sm text-flamingo">{hearts}</span>
           </div>
           {hearts < maxHearts && (
@@ -549,23 +581,25 @@ export default function LessonPage() {
                 {currentExercise.type === "sentence_builder" && "Sürükleyip cümle kur"}
               </div>
 
-              <button
-                onClick={handleRevealAnswer}
-                disabled={isAnswerRevealed}
-                className={`w-8 h-8 rounded-full flex items-center justify-center font-black border transition-all ${
-                  isAnswerRevealed
-                    ? "bg-success-light text-success border-success/40"
-                    : "bg-card text-warning border-warning/40 shadow-sm hover:scale-105"
-                }`}
-                aria-label="Cevabı göster (0.5 can)"
-              >
-                ?
-              </button>
+              {hearts > 0 && (
+                <button
+                  onClick={handleRevealAnswer}
+                  disabled={isAnswerRevealed}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center font-black border transition-all ${
+                    isAnswerRevealed
+                      ? "bg-success-light text-success border-success/40"
+                      : "bg-card text-warning border-warning/40 shadow-sm hover:scale-105"
+                  }`}
+                  aria-label="Cevabı göster (0.5 can)"
+                >
+                  ?
+                </button>
+              )}
             </div>
 
             {isAnswerRevealed && (
               <div className="mb-3 rounded-2xl px-3 py-2 border border-warning/40 bg-gradient-to-r from-warning/25 via-warning/10 to-transparent animate-pulse">
-                <p className="text-xs font-bold text-warning">İpucu: {revealedAnswerText} (-0.5 can)</p>
+                <p className="text-xs font-bold text-warning">İpucu: {revealedAnswerText}</p>
               </div>
             )}
 
