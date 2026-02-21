@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal } from "lucide-react";
-import { getCurrentWeekProgress } from "../lib/weeklyProgress";
+import { getCurrentWeekProgress, getRecentWeeksProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
 import {
@@ -49,6 +49,7 @@ export default function HomePage() {
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
+  const [showRecentWeeks, setShowRecentWeeks] = useState(false);
   const [flamingoRotation, setFlamingoRotation] = useState(0);
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
@@ -169,6 +170,9 @@ export default function HomePage() {
     [dailyGoalTargets.correctAnswers, dailyGoalTargets.lessons, dailyGoalTargets.xp, weeklyProgress],
   );
 
+  const recentWeeksProgress = useMemo(() => getRecentWeeksProgress(4), [weeklyProgress]);
+  const topWeekProgress = Math.max(...recentWeeksProgress.map((week) => week.totalProgress), 1);
+
   return (
     <div className="pb-20">
       <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
@@ -271,11 +275,16 @@ export default function HomePage() {
         </div>
 
         {/* Streak Card */}
-        <div className="bg-card rounded-2xl p-4 shadow-card">
+        <button
+          type="button"
+          onClick={() => setShowRecentWeeks((currentValue) => !currentValue)}
+          className="bg-card rounded-2xl p-4 shadow-card w-full text-left"
+        >
           <div className="flex items-center gap-3 mb-3">
             <TrendingUp className="w-5 h-5 text-flamingo" />
             <div>
               <h2 className="font-extrabold text-foreground">Haftalık İlerleme</h2>
+              <p className="text-xs font-semibold text-muted-foreground">Son 4 haftayı görmek için dokun</p>
             </div>
           </div>
           <div className="flex items-end justify-between gap-1">
@@ -304,7 +313,27 @@ export default function HomePage() {
               );
             })}
           </div>
-        </div>
+          {showRecentWeeks && (
+            <div className="mt-4 space-y-2 border-t border-border pt-3">
+              {recentWeeksProgress.map((week, index) => {
+                const widthPercent = Math.round((week.totalProgress / topWeekProgress) * 100);
+                const weekTitle = index === 0 ? "Bu hafta" : `${index + 1} hafta önce`;
+
+                return (
+                  <div key={week.weekLabel} className="space-y-1">
+                    <div className="flex items-center justify-between text-xs font-bold">
+                      <span className="text-foreground">{weekTitle}</span>
+                      <span className="text-muted-foreground">{week.totalProgress} XP</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-muted overflow-hidden">
+                      <div className="h-full gradient-sky rounded-full" style={{ width: `${widthPercent}%` }} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </button>
       </div>
     </div>
   );
