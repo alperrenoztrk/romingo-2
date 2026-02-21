@@ -60,6 +60,7 @@ export default function LessonPage() {
   const [feedbackSpark, setFeedbackSpark] = useState(0);
   const [exerciseIndexes, setExerciseIndexes] = useState<number[]>([]);
   const [wrongExerciseIndexes, setWrongExerciseIndexes] = useState<number[]>([]);
+  const [queuedRetryIndexes, setQueuedRetryIndexes] = useState<number[]>([]);
   const [retryExerciseIndexes, setRetryExerciseIndexes] = useState<number[]>([]);
   const [revealedAnswerIndexes, setRevealedAnswerIndexes] = useState<number[]>([]);
   const progressSavedRef = useRef(false);
@@ -88,6 +89,7 @@ export default function LessonPage() {
   useEffect(() => {
     setExerciseIndexes(exercises.map((_, index) => index));
     setWrongExerciseIndexes([]);
+    setQueuedRetryIndexes([]);
     setRetryExerciseIndexes([]);
     setRevealedAnswerIndexes([]);
     setCurrentIndex(0);
@@ -157,6 +159,15 @@ export default function LessonPage() {
 
           return [...prev, currentExerciseIndex];
         });
+
+        setQueuedRetryIndexes((prev) => {
+          if (prev.includes(currentExerciseIndex)) {
+            return prev;
+          }
+
+          setExerciseIndexes((existing) => [...existing, currentExerciseIndex]);
+          return [...prev, currentExerciseIndex];
+        });
       }
       const nextHeartState = consumeHeart();
       setHearts(nextHeartState.hearts);
@@ -168,18 +179,6 @@ export default function LessonPage() {
     if (!lesson) return;
     if (currentIndex + 1 >= exerciseIndexes.length) {
       const stars = calculateStars(correctCount, exerciseIndexes.length);
-
-      // Auto-retry wrong answers if less than 2 stars
-      if (stars < 2 && wrongExerciseIndexes.length > 0) {
-        setExerciseIndexes(wrongExerciseIndexes);
-        setWrongExerciseIndexes([]);
-        setRevealedAnswerIndexes([]);
-        setCurrentIndex(0);
-        setCorrectCount(0);
-        setAnswered(false);
-        setIsCorrect(false);
-        return;
-      }
 
       if (!progressSavedRef.current) {
         const isPerfectLesson = exerciseIndexes.length > 0 && correctCount === exerciseIndexes.length;
@@ -214,6 +213,7 @@ export default function LessonPage() {
 
     setExerciseIndexes(retryExerciseIndexes);
     setWrongExerciseIndexes([]);
+    setQueuedRetryIndexes([]);
     setRetryExerciseIndexes([]);
     setRevealedAnswerIndexes([]);
     setCurrentIndex(0);
