@@ -5,7 +5,8 @@ import { Lock, Star, CheckCircle, Volume2, Sparkles } from "lucide-react";
 import { lessonsData } from "../data/lessons";
 import { lessonCatalog } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked } from "../lib/lessonProgress";
-import { getEconomySnapshot } from "@/lib/learningEconomy";
+import { getEconomySnapshot, getHeartStatus } from "@/lib/learningEconomy";
+import { useToast } from "@/hooks/use-toast";
 
 interface Lesson {
   id: string;
@@ -132,9 +133,8 @@ function getTutorialWords(lessonId: string): TutorialWord[] {
   return tutorialWords.slice(0, 12);
 }
 
-function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
+function LessonNode({ lesson, index, onStartLesson }: { lesson: Lesson; index: number; onStartLesson: (lessonId: string) => void }) {
   const hasSuperStar = lesson.superStar === true;
-  const navigate = useNavigate();
   const isCompleted = lesson.status === "completed";
   const isCurrent = lesson.status === "current";
   const isLocked = lesson.status === "locked";
@@ -142,7 +142,7 @@ function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
   const offset = index % 2 === 0 ? -30 : 30;
 
   const handleClick = () => {
-    if (!isLocked) navigate(`/lesson/${lesson.id}`);
+    if (!isLocked) onStartLesson(lesson.id);
   };
 
   return (
@@ -194,9 +194,25 @@ function LessonNode({ lesson, index }: { lesson: Lesson; index: number }) {
 
 export default function LearnPage() {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [searchParams] = useSearchParams();
   const tutorialView = searchParams.get("view") === "tutorial";
   const economy = getEconomySnapshot();
+
+  const handleStartLesson = (lessonId: string) => {
+    const { hearts } = getHeartStatus();
+
+    if (hearts <= 0) {
+      toast({
+        variant: "destructive",
+        title: "Canların tükendi",
+        description: "Yeni derse başlamak için can yenilenmesini bekle.",
+      });
+      return;
+    }
+
+    navigate(`/lesson/${lessonId}`);
+  };
 
   const lessons = useMemo<Lesson[]>(() => {
     const progress = getLessonProgress();
@@ -265,7 +281,7 @@ export default function LearnPage() {
                     </div>
                     <button
                       disabled={lesson.status === "locked"}
-                      onClick={() => navigate(`/lesson/${lesson.id}`)}
+                      onClick={() => handleStartLesson(lesson.id)}
                       className="gradient-sky shadow-button-sky rounded-xl px-3 py-2 text-xs font-extrabold text-primary-foreground active:translate-y-1 active:shadow-none transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       {lesson.status === "locked" ? "Kilitli" : "Derse Git"}
@@ -314,7 +330,7 @@ export default function LearnPage() {
 
                   <div className="flex flex-col items-center gap-6">
                     {levelLessons.map((lesson) => (
-                      <LessonNode key={lesson.id} lesson={lesson} index={lessons.indexOf(lesson)} />
+                      <LessonNode key={lesson.id} lesson={lesson} index={lessons.indexOf(lesson)} onStartLesson={handleStartLesson} />
                     ))}
                   </div>
 
