@@ -31,8 +31,6 @@ export default function ListeningEx({ exercise, onAnswer, answered }: Props) {
 
   return (
     <div>
-      <h2 className="text-xl font-black text-foreground mb-4">Duyduğun kelimeyi seç</h2>
-
       <button
         type="button"
         onClick={playAudio}

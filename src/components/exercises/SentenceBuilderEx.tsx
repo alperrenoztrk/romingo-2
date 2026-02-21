@@ -57,11 +57,6 @@ export default function SentenceBuilderEx({ exercise, onAnswer, answered }: Prop
 
   return (
     <div>
-      <div className="bg-card rounded-2xl p-6 shadow-card mb-5">
-        <p className="text-xs font-bold text-muted-foreground mb-1 uppercase tracking-wide">Görev</p>
-        <p className="text-lg font-black text-foreground">{exercise.prompt}</p>
-      </div>
-
       {exercise.hint && <p className="text-xs font-semibold text-muted-foreground mb-3">💡 İpucu: {exercise.hint}</p>}
 
       <div
