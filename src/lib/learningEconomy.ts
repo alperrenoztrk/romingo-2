@@ -2,7 +2,7 @@ const HEART_STATE_KEY = "romingo.learningEconomy.hearts.v1";
 const STREAK_STATE_KEY = "romingo.learningEconomy.streak.v1";
 const ECONOMY_UPDATED_EVENT = "romingo:learning-economy-updated";
 
-export const MAX_HEARTS = 5;
+export const MAX_HEARTS = 10;
 const HEART_REGEN_INTERVAL_MINUTES = 30;
 
 interface HeartState {
