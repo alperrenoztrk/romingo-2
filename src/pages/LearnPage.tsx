@@ -197,6 +197,7 @@ export default function LearnPage() {
   const { toast } = useToast();
   const [searchParams] = useSearchParams();
   const tutorialView = searchParams.get("view") === "tutorial";
+  const tutorialLessonId = searchParams.get("lessonId") ?? "";
   const economy = getEconomySnapshot();
 
   const handleStartLesson = (lessonId: string) => {
@@ -235,8 +236,12 @@ export default function LearnPage() {
   }, []);
 
   const tutorialLessons = useMemo(() => {
-    return lessons;
-  }, [lessons]);
+    if (!tutorialLessonId) {
+      return lessons;
+    }
+
+    return lessons.filter((lesson) => lesson.id === tutorialLessonId);
+  }, [lessons, tutorialLessonId]);
 
   const levels = [...new Set(lessons.map((l) => l.level))];
 
