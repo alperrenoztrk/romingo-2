@@ -19,6 +19,18 @@ import { addXpToProfile } from "@/lib/liveProfile";
 
 const PERFECT_LESSON_BONUS_XP = 25;
 const MIN_STARS_TO_UNLOCK_NEXT_LESSON = 2;
+const ANSWER_FEEDBACK_PATTERN = {
+  correct: [
+    { frequency: 783.99, duration: 0.08 },
+    { frequency: 1046.5, duration: 0.12 },
+    { frequency: 1318.51, duration: 0.15 },
+  ],
+  wrong: [
+    { frequency: 392, duration: 0.09 },
+    { frequency: 329.63, duration: 0.1 },
+    { frequency: 261.63, duration: 0.14 },
+  ],
+} as const;
 
 function calculateStars(correctCount: number, totalCount: number) {
   if (totalCount <= 0) {
@@ -65,6 +77,7 @@ export default function LessonPage() {
   const [revealedAnswerIndex, setRevealedAnswerIndex] = useState<number | null>(null);
   const progressSavedRef = useRef(false);
   const lessonStartedAtRef = useRef(Date.now());
+  const audioContextRef = useRef<AudioContext | null>(null);
 
   useEffect(() => {
     syncHearts();
@@ -118,25 +131,44 @@ export default function LessonPage() {
       window.navigator.vibrate(correct ? [35] : [20, 35, 20]);
     }
 
-    const audioContext = new window.AudioContext();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
+    if (!audioContextRef.current || audioContextRef.current.state === "closed") {
+      audioContextRef.current = new window.AudioContext();
+    }
 
-    oscillator.type = "sine";
-    oscillator.frequency.setValueAtTime(correct ? 880 : 220, audioContext.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(correct ? 1240 : 160, audioContext.currentTime + 0.12);
+    const audioContext = audioContextRef.current;
+    if (audioContext.state === "suspended") {
+      void audioContext.resume();
+    }
 
-    gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(correct ? 0.06 : 0.045, audioContext.currentTime + 0.02);
-    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.14);
+    const pattern = correct ? ANSWER_FEEDBACK_PATTERN.correct : ANSWER_FEEDBACK_PATTERN.wrong;
+    let cursor = audioContext.currentTime;
 
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
+    pattern.forEach(({ frequency, duration }, index) => {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
 
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.15);
-    oscillator.onended = () => {
-      void audioContext.close();
+      oscillator.type = correct ? "triangle" : "square";
+      oscillator.frequency.setValueAtTime(frequency, cursor);
+
+      gainNode.gain.setValueAtTime(0.0001, cursor);
+      gainNode.gain.exponentialRampToValueAtTime(correct ? 0.13 : 0.1, cursor + 0.02);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, cursor + duration);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      oscillator.start(cursor);
+      oscillator.stop(cursor + duration + 0.01);
+
+      cursor += duration + (index === pattern.length - 1 ? 0 : 0.012);
+    });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (audioContextRef.current && audioContextRef.current.state !== "closed") {
+        void audioContextRef.current.close();
+      }
     };
   }, []);
 
