@@ -81,51 +81,53 @@ const lessonMascots = [
 function MascotFace({ mascotId, mascotName }: { mascotId: (typeof lessonMascots)[number]["id"]; mascotName: string }) {
   if (mascotId === "cat") {
     return (
-      <div className="relative h-12 w-12" role="img" aria-label={mascotName}>
-        <span className="absolute left-1 top-0 h-4 w-4 rotate-[-26deg] rounded-[40%_40%_8%_8%] bg-amber-200 shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]" />
-        <span className="absolute right-1 top-0 h-4 w-4 rotate-[26deg] rounded-[40%_40%_8%_8%] bg-amber-200 shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]" />
-        <div className="absolute inset-x-1 bottom-0 top-2 rounded-full bg-gradient-to-b from-amber-100 to-amber-300 shadow-[inset_0_-5px_6px_rgba(0,0,0,0.2)]" />
-        <span className="absolute left-3 top-5 h-1.5 w-1.5 rounded-full bg-slate-800" />
-        <span className="absolute right-3 top-5 h-1.5 w-1.5 rounded-full bg-slate-800" />
-        <span className="absolute left-1/2 top-7 h-1.5 w-2.5 -translate-x-1/2 rounded-full bg-rose-300" />
+      <div className="relative h-14 w-14" role="img" aria-label={mascotName}>
+        <span className="absolute left-1 top-0 h-5 w-4 rotate-[-24deg] rounded-[45%_45%_12%_12%] bg-gradient-to-b from-amber-100 to-amber-300 shadow-[inset_0_-3px_0_rgba(0,0,0,0.16)]" />
+        <span className="absolute right-1 top-0 h-5 w-4 rotate-[24deg] rounded-[45%_45%_12%_12%] bg-gradient-to-b from-amber-100 to-amber-300 shadow-[inset_0_-3px_0_rgba(0,0,0,0.16)]" />
+        <div className="absolute inset-x-1 bottom-0 top-2 rounded-full bg-gradient-to-b from-amber-50 via-amber-200 to-amber-400 shadow-[inset_0_-8px_8px_rgba(0,0,0,0.22)]" />
+        <span className="absolute left-3.5 top-5 h-2 w-2 rounded-full bg-slate-900" />
+        <span className="absolute right-3.5 top-5 h-2 w-2 rounded-full bg-slate-900" />
+        <span className="absolute left-4 top-[1.45rem] h-0.5 w-1 rounded-full bg-white/80" />
+        <span className="absolute right-4 top-[1.45rem] h-0.5 w-1 rounded-full bg-white/80" />
+        <span className="absolute left-1/2 top-8 h-1.5 w-3 -translate-x-1/2 rounded-full bg-rose-300" />
       </div>
     );
   }
 
   if (mascotId === "toucan") {
     return (
-      <div className="relative h-12 w-12" role="img" aria-label={mascotName}>
-        <div className="absolute inset-1 rounded-full bg-gradient-to-b from-sky-100 to-sky-300 shadow-[inset_0_-4px_7px_rgba(0,0,0,0.2)]" />
-        <span className="absolute left-3 top-4 h-2 w-2 rounded-full bg-white" />
-        <span className="absolute left-3.5 top-4.5 h-1 w-1 rounded-full bg-slate-900" />
-        <span className="absolute right-0 top-5 h-4 w-6 rounded-r-full rounded-l-[40%] bg-gradient-to-r from-yellow-300 via-orange-300 to-rose-400 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.25)]" />
+      <div className="relative h-14 w-14" role="img" aria-label={mascotName}>
+        <div className="absolute inset-1 rounded-full bg-gradient-to-b from-sky-50 via-sky-200 to-sky-400 shadow-[inset_0_-6px_8px_rgba(0,0,0,0.25)]" />
+        <span className="absolute left-3.5 top-[1.15rem] h-2.5 w-2.5 rounded-full bg-white" />
+        <span className="absolute left-4 top-5 h-1.5 w-1.5 rounded-full bg-slate-900" />
+        <span className="absolute right-0 top-6 h-4.5 w-7 rounded-r-full rounded-l-[42%] bg-gradient-to-r from-yellow-200 via-orange-300 to-rose-500 shadow-[inset_0_-3px_5px_rgba(0,0,0,0.3)]" />
       </div>
     );
   }
 
   if (mascotId === "panda") {
     return (
-      <div className="relative h-12 w-12" role="img" aria-label={mascotName}>
-        <span className="absolute left-1 top-1 h-4 w-4 rounded-full bg-slate-700" />
-        <span className="absolute right-1 top-1 h-4 w-4 rounded-full bg-slate-700" />
-        <div className="absolute inset-x-1 bottom-0 top-2 rounded-full bg-gradient-to-b from-white to-slate-200 shadow-[inset_0_-4px_7px_rgba(0,0,0,0.15)]" />
-        <span className="absolute left-2.5 top-4 h-3 w-2 rounded-full bg-slate-700/80" />
-        <span className="absolute right-2.5 top-4 h-3 w-2 rounded-full bg-slate-700/80" />
-        <span className="absolute left-3 top-5 h-1.5 w-1.5 rounded-full bg-white" />
-        <span className="absolute right-3 top-5 h-1.5 w-1.5 rounded-full bg-white" />
-        <span className="absolute left-1/2 top-7 h-1.5 w-2.5 -translate-x-1/2 rounded-full bg-slate-700" />
+      <div className="relative h-14 w-14" role="img" aria-label={mascotName}>
+        <span className="absolute left-1 top-1 h-5 w-5 rounded-full bg-slate-800" />
+        <span className="absolute right-1 top-1 h-5 w-5 rounded-full bg-slate-800" />
+        <div className="absolute inset-x-1 bottom-0 top-2 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-300 shadow-[inset_0_-6px_8px_rgba(0,0,0,0.2)]" />
+        <span className="absolute left-3 top-4.5 h-3.5 w-2.5 rounded-full bg-slate-700/85" />
+        <span className="absolute right-3 top-4.5 h-3.5 w-2.5 rounded-full bg-slate-700/85" />
+        <span className="absolute left-[0.95rem] top-[1.45rem] h-1.5 w-1.5 rounded-full bg-white" />
+        <span className="absolute right-[0.95rem] top-[1.45rem] h-1.5 w-1.5 rounded-full bg-white" />
+        <span className="absolute left-1/2 top-8 h-1.5 w-3 -translate-x-1/2 rounded-full bg-slate-700" />
       </div>
     );
   }
 
   return (
-    <div className="relative h-12 w-12" role="img" aria-label={mascotName}>
-      <div className="absolute inset-x-1 bottom-0 top-2 rounded-full bg-gradient-to-b from-pink-200 to-pink-400 shadow-[inset_0_-5px_7px_rgba(0,0,0,0.2)]" />
-      <span className="absolute left-2 top-4 h-2.5 w-2.5 rounded-full bg-white" />
-      <span className="absolute left-2.5 top-4.5 h-1.5 w-1.5 rounded-full bg-slate-900" />
-      <span className="absolute right-2 top-5 h-2 w-2 rounded-full bg-white" />
-      <span className="absolute right-2.5 top-5.5 h-1 w-1 rounded-full bg-slate-900" />
-      <span className="absolute right-0 top-6 h-2.5 w-5 rounded-r-full rounded-l-[45%] bg-pink-100 shadow-[inset_0_-1px_3px_rgba(0,0,0,0.2)]" />
+    <div className="relative h-14 w-14" role="img" aria-label={mascotName}>
+      <div className="absolute inset-x-1 bottom-0 top-2 rounded-full bg-gradient-to-b from-pink-100 via-pink-300 to-fuchsia-500 shadow-[inset_0_-7px_8px_rgba(0,0,0,0.24)]" />
+      <span className="absolute left-2.5 top-5 h-3 w-3 rounded-full bg-white" />
+      <span className="absolute left-3.5 top-6 h-1.5 w-1.5 rounded-full bg-slate-900" />
+      <span className="absolute right-2.5 top-6 h-2.5 w-2.5 rounded-full bg-white" />
+      <span className="absolute right-3.5 top-[1.7rem] h-1 w-1 rounded-full bg-slate-900" />
+      <span className="absolute right-0 top-7 h-3 w-6 rounded-r-full rounded-l-[45%] bg-pink-100 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.22)]" />
     </div>
   );
 }
@@ -569,19 +571,19 @@ export default function LessonPage() {
 
             {exercisePrompt && (
               <div
-                className={`mb-4 rounded-2xl border px-3 py-2 bg-gradient-to-r shadow-[0_10px_22px_-14px_rgba(0,0,0,0.7)] ${currentMascot.gradient} ${currentMascot.border}`}
+                className={`relative mb-4 rounded-2xl border px-3 pb-2 pt-7 bg-gradient-to-r shadow-[0_10px_22px_-14px_rgba(0,0,0,0.7)] ${currentMascot.gradient} ${currentMascot.border}`}
                 aria-live="polite"
               >
-                <div className="flex items-center gap-3">
+                <div className="absolute -top-6 left-3">
                   <div className="relative shrink-0">
-                    <div className={`relative grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br ${currentMascot.orb} shadow-[inset_0_-6px_10px_rgba(0,0,0,0.2),0_8px_12px_-8px_rgba(0,0,0,0.8)] ring-2 ${currentMascot.ring}`}>
+                    <div className={`relative grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br ${currentMascot.orb} shadow-[inset_0_-8px_12px_rgba(0,0,0,0.24),0_10px_16px_-8px_rgba(0,0,0,0.85)] ring-2 ${currentMascot.ring}`}>
                       <MascotFace mascotId={currentMascot.id} mascotName={currentMascot.name} />
-                      <span className="pointer-events-none absolute left-1.5 top-1.5 h-2.5 w-5 rounded-full bg-white/55 blur-[1px]" aria-hidden />
+                      <span className="pointer-events-none absolute left-2 top-2 h-3 w-6 rounded-full bg-white/60 blur-[1px]" aria-hidden />
                     </div>
-                    <span className="pointer-events-none absolute -bottom-1 left-1/2 h-2.5 w-8 -translate-x-1/2 rounded-full bg-black/20 blur-[2px]" aria-hidden />
+                    <span className="pointer-events-none absolute -bottom-1.5 left-1/2 h-3 w-10 -translate-x-1/2 rounded-full bg-black/25 blur-[2px]" aria-hidden />
                   </div>
-                  <p className="text-lg font-black text-foreground">{exercisePrompt}</p>
                 </div>
+                <p className="pl-[4.6rem] text-lg font-black text-foreground">{exercisePrompt}</p>
               </div>
             )}
 
