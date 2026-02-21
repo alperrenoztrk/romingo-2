@@ -50,6 +50,7 @@ export default function LessonPage() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hearts, setHearts] = useState(() => getHeartStatus().hearts);
+  const [maxHearts, setMaxHearts] = useState(() => getHeartStatus().maxHearts);
   const [minutesToNextHeart, setMinutesToNextHeart] = useState(() => getHeartStatus().minutesToNextHeart);
   const [correctCount, setCorrectCount] = useState(0);
   const [answered, setAnswered] = useState(false);
@@ -66,6 +67,7 @@ export default function LessonPage() {
     const sync = () => {
       const heartStatus = getHeartStatus();
       setHearts(heartStatus.hearts);
+      setMaxHearts(heartStatus.maxHearts);
       setMinutesToNextHeart(heartStatus.minutesToNextHeart);
     };
 
@@ -289,7 +291,7 @@ export default function LessonPage() {
             <Heart className="w-5 h-5 text-flamingo" fill="hsl(var(--flamingo))" />
             <span className="font-extrabold text-sm text-flamingo">{hearts}</span>
           </div>
-          {hearts < 5 && (
+          {hearts < maxHearts && (
             <span className="text-[10px] font-bold text-muted-foreground">+1 can {minutesToNextHeart} dk</span>
           )}
         </div>

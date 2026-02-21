@@ -34,7 +34,7 @@ const shopItems: ShopItem[] = [
     id: "heart-refill",
     icon: <Heart className="w-8 h-8 text-flamingo" fill="hsl(var(--flamingo))" />,
     name: "Can Doldur",
-    desc: "Canlarını 5'e tamamla",
+    desc: "Canlarını 10'a tamamla",
     price: 350,
     currency: "gem",
   },
