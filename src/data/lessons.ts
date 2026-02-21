@@ -2123,10 +2123,10 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "23": [
     {
       type: "fill_blank",
-      sentence: "Uçuş için erken havalimanına ___ gerekir.",
-      correctAnswer: "gitmek",
-      options: ["gitmek", "uyumak", "koşmak", "beklemek"],
-      hint: "Seyahat hazırlığı fiilleri",
+      sentence: "Romencede 'gitmek' demek için ___ denir.",
+      correctAnswer: "a merge",
+      options: ["a merge", "a dormi", "a aștepta", "a cânta"],
+      hint: "Seyahat ve yön fiilleri",
     },
   ],
   "24": [
@@ -2151,10 +2151,10 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "26": [
     {
       type: "fill_blank",
-      sentence: "Toplantıdan önce sunumu ___ etmeliyim.",
-      correctAnswer: "kontrol",
-      options: ["kontrol", "tatil", "alışveriş", "sohbet"],
-      hint: "Ofis bağlamına uygun kelime",
+      sentence: "Romencede 'kontrol etmek' demek için ___ denir.",
+      correctAnswer: "a verifica",
+      options: ["a verifica", "a semna", "a trimite", "a șterge"],
+      hint: "Ofis ve iş fiilleri",
     },
   ],
   "27": [
@@ -2179,10 +2179,10 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "29": [
     {
       type: "fill_blank",
-      sentence: "Doğayı korumak için plastik kullanımını ___ gerekir.",
-      correctAnswer: "azaltmak",
-      options: ["azaltmak", "artırmak", "unutmak", "taşımak"],
-      hint: "Çevre farkındalığı ifadesi",
+      sentence: "Romencede 'azaltmak' demek için ___ denir.",
+      correctAnswer: "a reduce",
+      options: ["a reduce", "a crește", "a uita", "a arunca"],
+      hint: "Çevre bağlamında kullanılan temel fiiller",
     },
   ],
   "30": [
