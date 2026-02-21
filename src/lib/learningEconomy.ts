@@ -10,6 +10,10 @@ interface HeartState {
   lastUpdatedAt: number;
 }
 
+function roundHearts(value: number) {
+  return Math.round(value * 2) / 2;
+}
+
 interface StreakState {
   streakCount: number;
   lastActiveDate: string;
@@ -52,7 +56,7 @@ function readHeartState(): HeartState {
     }
 
     return {
-      hearts: Math.max(0, Math.floor(parsed.hearts)),
+      hearts: roundHearts(Math.max(0, parsed.hearts)),
       lastUpdatedAt: parsed.lastUpdatedAt,
     };
   } catch {
@@ -137,9 +141,14 @@ export function syncHearts() {
 }
 
 export function consumeHeart() {
+  return consumeHearts(1);
+}
+
+export function consumeHearts(amount = 1) {
   const current = syncHearts();
   const wasAtOrAboveMax = current.hearts >= MAX_HEARTS;
-  const nextHearts = Math.max(0, current.hearts - 1);
+  const normalizedAmount = Math.max(0, roundHearts(amount));
+  const nextHearts = roundHearts(Math.max(0, current.hearts - normalizedAmount));
   const nextState: HeartState = {
     hearts: nextHearts,
     lastUpdatedAt: wasAtOrAboveMax && nextHearts < MAX_HEARTS ? Date.now() : current.lastUpdatedAt,
