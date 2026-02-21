@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { lessonsData } from "../data/lessons";
 import { X, Heart, Check, ArrowRight } from "lucide-react";
 import MultipleChoiceEx from "../components/exercises/MultipleChoiceEx";
@@ -160,8 +160,10 @@ function calculateStars(correctCount: number, totalCount: number) {
 export default function LessonPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const lesson = lessonsData[id || ""];
   const lessonId = id || "";
+  const shouldSkipExerciseIntro = searchParams.get("skipIntro") === "1";
   const lessonProgress = getLessonProgress();
   const isUnlocked = isLessonUnlocked(lessonId, orderedLessonIds, lessonProgress);
 
@@ -183,7 +185,7 @@ export default function LessonPage() {
   const [retryExerciseIndexes, setRetryExerciseIndexes] = useState<number[]>([]);
   const [revealedAnswerIndex, setRevealedAnswerIndex] = useState<number | null>(null);
   const [isHeartBreakAnimating, setIsHeartBreakAnimating] = useState(false);
-  const [showExerciseIntro, setShowExerciseIntro] = useState(true);
+  const [showExerciseIntro, setShowExerciseIntro] = useState(!shouldSkipExerciseIntro);
   const progressSavedRef = useRef(false);
   const lessonStartedAtRef = useRef(Date.now());
   const audioContextRef = useRef<AudioContext | null>(null);
