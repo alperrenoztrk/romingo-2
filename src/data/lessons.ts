@@ -1,4 +1,4 @@
-export type ExerciseType = "multiple_choice" | "translation" | "fill_blank" | "matching" | "listening";
+export type ExerciseType = "multiple_choice" | "translation" | "fill_blank" | "matching" | "listening" | "word_order";
 
 export interface MultipleChoiceExercise {
   type: "multiple_choice";
@@ -37,12 +37,21 @@ export interface ListeningExercise {
   correctIndex: number;
 }
 
+export interface WordOrderExercise {
+  type: "word_order";
+  prompt: string;
+  words: string[];
+  correctSentence: string;
+  hint?: string;
+}
+
 export type Exercise =
   | MultipleChoiceExercise
   | TranslationExercise
   | FillBlankExercise
   | MatchingExercise
-  | ListeningExercise;
+  | ListeningExercise
+  | WordOrderExercise;
 
 export interface LessonData {
   id: string;
@@ -113,6 +122,12 @@ export const lessonsData: Record<string, LessonData> = {
         direction: "tr-ro",
         correctAnswer: "Noapte bună",
         acceptedAnswers: ["Noapte bună", "noapte bună"],
+      },
+      {
+        type: "word_order",
+        prompt: "Aşağıdaki kelimeleri sürükleyerek cümleyi kur: Günaydın",
+        words: ["dimineața", "Bună"],
+        correctSentence: "Bună dimineața",
       },
       {
         type: "translation",

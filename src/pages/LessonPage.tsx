@@ -7,6 +7,7 @@ import FillBlankEx from "../components/exercises/FillBlankEx";
 import TranslationEx from "../components/exercises/TranslationEx";
 import MatchingEx from "../components/exercises/MatchingEx";
 import ListeningEx from "../components/exercises/ListeningEx";
+import WordOrderEx from "../components/exercises/WordOrderEx";
 import LessonComplete from "../components/LessonComplete";
 import { addTodayProgress } from "../lib/weeklyProgress";
 import { orderedLessonIds } from "../data/lessonCatalog";
@@ -306,6 +307,7 @@ export default function LessonPage() {
               {currentExercise.type === "translation" && "Çevir"}
               {currentExercise.type === "matching" && "Eşleştir"}
               {currentExercise.type === "listening" && "Dinleyip seç"}
+              {currentExercise.type === "word_order" && "Sürükle ve sırala"}
             </div>
 
             <div className="flex-1">
@@ -323,6 +325,9 @@ export default function LessonPage() {
               )}
               {currentExercise.type === "listening" && (
                 <ListeningEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+              )}
+              {currentExercise.type === "word_order" && (
+                <WordOrderEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
               )}
             </div>
           </>
