@@ -474,9 +474,7 @@ export default function LessonPage() {
                 </div>
 
                 <div>
-                  <p className="text-[11px] font-black uppercase tracking-wide text-muted-foreground">
-                    {currentMascot.name} koçu
-                  </p>
+                  <p className="text-[11px] font-black uppercase tracking-wide text-muted-foreground">{currentMascot.name}</p>
                   <p className="text-sm font-semibold text-foreground">{currentMascot.vibe}</p>
                 </div>
               </div>
