@@ -255,6 +255,14 @@ export default function LessonPage() {
       return currentExercise.prompt;
     }
 
+    if (currentExercise.type === "fill_blank") {
+      return currentExercise.sentence;
+    }
+
+    if (currentExercise.type === "translation") {
+      return currentExercise.sentence;
+    }
+
     return "";
   }, [currentExercise]);
 

@@ -388,9 +388,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Kahvaltıda ___ ve peynir yerim.",
-        correctAnswer: "ekmek",
-        options: ["su", "ekmek", "çay", "tavuk"],
+        sentence: "La micul dejun mănânc ___ și brânză.",
+        correctAnswer: "pâine",
+        options: ["apă", "pâine", "ceai", "pui"],
       },
       {
         type: "translation",
@@ -407,9 +407,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Akşam yemeğinde ___ içerim.",
-        correctAnswer: "çorba",
-        options: ["ekmek", "pilav", "çorba", "elma"],
+        sentence: "La cină mănânc ___.",
+        correctAnswer: "supă",
+        options: ["pâine", "orez", "supă", "măr"],
       },
       {
         type: "matching",
