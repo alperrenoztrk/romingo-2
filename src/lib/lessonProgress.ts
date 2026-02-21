@@ -1,6 +1,4 @@
 const LESSON_PROGRESS_KEY = "romingo.lessonProgress.v1";
-const MIN_STARS_TO_UNLOCK_NEXT_LESSON = 2;
-
 export interface LessonProgressEntry {
   stars: number;
   superStar?: boolean;
@@ -58,17 +56,11 @@ export function saveLessonCompletion(lessonId: string, stars: number, superStar 
 
 export function isLessonUnlocked(lessonId: string, orderedLessonIds: string[], progress: LessonProgressMap) {
   const lessonIndex = orderedLessonIds.indexOf(lessonId);
-  if (lessonIndex === 0) {
-    return true;
-  }
-
   if (lessonIndex < 0) {
     return false;
   }
 
-  const previousLessonId = orderedLessonIds[lessonIndex - 1];
-  const previousLessonStars = progress[previousLessonId]?.stars ?? 0;
-  return previousLessonStars >= MIN_STARS_TO_UNLOCK_NEXT_LESSON;
+  return true;
 }
 
 export function getCompletedLessonsCountForDate(date = new Date()) {
