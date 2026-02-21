@@ -62,7 +62,7 @@ export default function LessonPage() {
   const [wrongExerciseIndexes, setWrongExerciseIndexes] = useState<number[]>([]);
   const [queuedRetryIndexes, setQueuedRetryIndexes] = useState<number[]>([]);
   const [retryExerciseIndexes, setRetryExerciseIndexes] = useState<number[]>([]);
-  const [revealedAnswerIndexes, setRevealedAnswerIndexes] = useState<number[]>([]);
+  const [revealedAnswerIndex, setRevealedAnswerIndex] = useState<number | null>(null);
   const progressSavedRef = useRef(false);
   const lessonStartedAtRef = useRef(Date.now());
 
@@ -92,7 +92,7 @@ export default function LessonPage() {
     setWrongExerciseIndexes([]);
     setQueuedRetryIndexes([]);
     setRetryExerciseIndexes([]);
-    setRevealedAnswerIndexes([]);
+    setRevealedAnswerIndex(null);
     setCurrentIndex(0);
     setCorrectCount(0);
     setAnswered(false);
@@ -217,7 +217,7 @@ export default function LessonPage() {
     setWrongExerciseIndexes([]);
     setQueuedRetryIndexes([]);
     setRetryExerciseIndexes([]);
-    setRevealedAnswerIndexes([]);
+    setRevealedAnswerIndex(null);
     setCurrentIndex(0);
     setCorrectCount(0);
     setAnswered(false);
@@ -260,7 +260,7 @@ export default function LessonPage() {
 
   const progressBase = exerciseIndexes.length || 1;
   const progress = (currentIndex / progressBase) * 100;
-  const isAnswerRevealed = typeof currentExerciseIndex === "number" && revealedAnswerIndexes.includes(currentExerciseIndex);
+  const isAnswerRevealed = typeof currentExerciseIndex === "number" && revealedAnswerIndex === currentExerciseIndex;
 
   const revealedAnswerText = !currentExercise
     ? ""
@@ -277,15 +277,29 @@ export default function LessonPage() {
       return;
     }
 
-    if (revealedAnswerIndexes.includes(currentExerciseIndex)) {
+    if (revealedAnswerIndex === currentExerciseIndex) {
       return;
     }
 
     const nextHeartState = consumeHearts(0.5);
     setHearts(nextHeartState.hearts);
     setMinutesToNextHeart(getHeartStatus().minutesToNextHeart);
-    setRevealedAnswerIndexes((prev) => [...prev, currentExerciseIndex]);
+    setRevealedAnswerIndex(currentExerciseIndex);
   };
+
+  useEffect(() => {
+    if (revealedAnswerIndex === null) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setRevealedAnswerIndex(null);
+    }, 10000);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [revealedAnswerIndex]);
 
   if (completed) {
     const stars = calculateStars(correctCount, exerciseIndexes.length);
@@ -361,7 +375,7 @@ export default function LessonPage() {
 
             {isAnswerRevealed && (
               <div className="mb-3 rounded-2xl px-3 py-2 border border-warning/40 bg-gradient-to-r from-warning/25 via-warning/10 to-transparent animate-pulse">
-                <p className="text-xs font-bold text-warning">Parlak ipucu: {revealedAnswerText} (-0.5 can)</p>
+                <p className="text-xs font-bold text-warning">İpucu: {revealedAnswerText} (-0.5 can)</p>
               </div>
             )}
 
