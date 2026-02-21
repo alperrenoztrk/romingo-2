@@ -18,7 +18,14 @@ import { recordAdaptiveAnswer } from "@/lib/adaptivePractice";
 import { addXpToProfile } from "@/lib/liveProfile";
 
 const PERFECT_LESSON_BONUS_XP = 25;
+const HATTRICK_BONUS_XP = 5;
 const MIN_STARS_TO_UNLOCK_NEXT_LESSON = 2;
+const CORRECT_FEEDBACK_MESSAGES = [
+  "Mükemmel!",
+  "Harikasın!",
+  "Tebrikler!",
+  "Muhteşemsin!",
+] as const;
 const ANSWER_FEEDBACK_PATTERN = {
   correct: [
     { frequency: 783.99, duration: 0.08 },
@@ -70,6 +77,9 @@ export default function LessonPage() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [feedbackSpark, setFeedbackSpark] = useState(0);
+  const [, setCorrectStreak] = useState(0);
+  const [hattrickBonusXp, setHattrickBonusXp] = useState(0);
+  const [correctFeedbackMessage, setCorrectFeedbackMessage] = useState(CORRECT_FEEDBACK_MESSAGES[0]);
   const [exerciseIndexes, setExerciseIndexes] = useState<number[]>([]);
   const [wrongExerciseIndexes, setWrongExerciseIndexes] = useState<number[]>([]);
   const [queuedRetryIndexes, setQueuedRetryIndexes] = useState<number[]>([]);
@@ -111,6 +121,9 @@ export default function LessonPage() {
     setAnswered(false);
     setIsCorrect(false);
     setCompleted(false);
+    setCorrectStreak(0);
+    setHattrickBonusXp(0);
+    setCorrectFeedbackMessage(CORRECT_FEEDBACK_MESSAGES[0]);
     progressSavedRef.current = false;
     lessonStartedAtRef.current = Date.now();
   }, [lessonId, exercises]);
@@ -183,8 +196,21 @@ export default function LessonPage() {
     if (correct) {
       setFeedbackSpark((prev) => prev + 1);
       setCorrectCount((c) => c + 1);
+      setCorrectStreak((previousStreak) => {
+        const nextStreak = previousStreak + 1;
+        if (nextStreak % 3 === 0) {
+          setHattrickBonusXp((previousBonus) => previousBonus + HATTRICK_BONUS_XP);
+          setCorrectFeedbackMessage(`Ooo tebrikler hatrick yaptın! +${HATTRICK_BONUS_XP} XP`);
+        } else {
+          const randomIndex = Math.floor(Math.random() * CORRECT_FEEDBACK_MESSAGES.length);
+          setCorrectFeedbackMessage(CORRECT_FEEDBACK_MESSAGES[randomIndex]);
+        }
+
+        return nextStreak;
+      });
       addTodayCorrectAnswer();
     } else {
+      setCorrectStreak(0);
       if (typeof currentExerciseIndex === "number") {
         setWrongExerciseIndexes((prev) => {
           if (prev.includes(currentExerciseIndex)) {
@@ -213,10 +239,10 @@ export default function LessonPage() {
     if (!lesson) return;
     if (currentIndex + 1 >= exerciseIndexes.length) {
       const stars = calculateStars(correctCount, exerciseIndexes.length);
+      const isPerfectLesson = exerciseIndexes.length > 0 && correctCount === exerciseIndexes.length;
+      const totalXpReward = lesson.xpReward + (isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0) + hattrickBonusXp;
 
       if (!progressSavedRef.current) {
-        const isPerfectLesson = exerciseIndexes.length > 0 && correctCount === exerciseIndexes.length;
-        const totalXpReward = lesson.xpReward + (isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0);
         const canUnlockNextLesson = stars >= MIN_STARS_TO_UNLOCK_NEXT_LESSON;
 
         if (hearts > 0) {
@@ -238,7 +264,7 @@ export default function LessonPage() {
       setAnswered(false);
       setIsCorrect(false);
     }
-  }, [correctCount, currentIndex, exerciseIndexes.length, hearts, lesson, wrongExerciseIndexes]);
+  }, [correctCount, currentIndex, exerciseIndexes.length, hattrickBonusXp, hearts, lesson, wrongExerciseIndexes]);
 
   const handleRetryWrongAnswers = useCallback(() => {
     if (retryExerciseIndexes.length === 0) {
@@ -254,6 +280,9 @@ export default function LessonPage() {
     setCorrectCount(0);
     setAnswered(false);
     setIsCorrect(false);
+    setCorrectStreak(0);
+    setHattrickBonusXp(0);
+    setCorrectFeedbackMessage(CORRECT_FEEDBACK_MESSAGES[0]);
     setCompleted(false);
     progressSavedRef.current = false;
   }, [retryExerciseIndexes]);
@@ -336,6 +365,7 @@ export default function LessonPage() {
   if (completed) {
     const stars = calculateStars(correctCount, exerciseIndexes.length);
     const isPerfectLesson = exerciseIndexes.length > 0 && correctCount === exerciseIndexes.length;
+    const totalXpReward = lesson.xpReward + (isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0) + hattrickBonusXp;
     const elapsedSeconds = Math.max(1, Math.round((Date.now() - lessonStartedAtRef.current) / 1000));
     return (
       <LessonComplete
@@ -344,7 +374,7 @@ export default function LessonPage() {
         totalCount={exerciseIndexes.length}
         elapsedSeconds={elapsedSeconds}
         stars={stars}
-        xpEarned={lesson.xpReward + (isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0)}
+        xpEarned={totalXpReward}
         isPerfectLesson={isPerfectLesson}
         onRetryWrongAnswers={stars >= 1 && retryExerciseIndexes.length > 0 ? handleRetryWrongAnswers : undefined}
         onContinue={() => navigate("/learn")}
@@ -449,7 +479,7 @@ export default function LessonPage() {
                 <X className="w-6 h-6 text-flamingo" />
               )}
               <span className={`font-extrabold ${isCorrect ? "text-success" : "text-flamingo"}`}>
-                {isCorrect ? "Mükemmel seri!" : hearts <= 0 ? "Canların tükendi" : "Tekrar dene"}
+                {isCorrect ? correctFeedbackMessage : hearts <= 0 ? "Canların tükendi" : "Tekrar dene"}
               </span>
               {isCorrect && (
                 <span key={feedbackSpark} className="text-lg animate-bounce" aria-hidden>
