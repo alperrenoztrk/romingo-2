@@ -12,7 +12,7 @@ import { addTodayProgress } from "../lib/weeklyProgress";
 import { orderedLessonIds } from "../data/lessonCatalog";
 import { getLessonProgress, isLessonUnlocked, saveLessonCompletion } from "../lib/lessonProgress";
 import { addTodayCorrectAnswer } from "../lib/dailyGoals";
-import { consumeHeart, getHeartStatus, markLessonActivity, syncHearts } from "@/lib/learningEconomy";
+import { consumeHeart, consumeHearts, getHeartStatus, markLessonActivity, syncHearts } from "@/lib/learningEconomy";
 import { recordAdaptiveAnswer } from "@/lib/adaptivePractice";
 import { addXpToProfile } from "@/lib/liveProfile";
 
@@ -60,6 +60,7 @@ export default function LessonPage() {
   const [exerciseIndexes, setExerciseIndexes] = useState<number[]>([]);
   const [wrongExerciseIndexes, setWrongExerciseIndexes] = useState<number[]>([]);
   const [retryExerciseIndexes, setRetryExerciseIndexes] = useState<number[]>([]);
+  const [revealedAnswerIndexes, setRevealedAnswerIndexes] = useState<number[]>([]);
   const progressSavedRef = useRef(false);
 
   useEffect(() => {
@@ -87,6 +88,7 @@ export default function LessonPage() {
     setExerciseIndexes(exercises.map((_, index) => index));
     setWrongExerciseIndexes([]);
     setRetryExerciseIndexes([]);
+    setRevealedAnswerIndexes([]);
     setCurrentIndex(0);
     setCorrectCount(0);
     setAnswered(false);
@@ -170,6 +172,7 @@ export default function LessonPage() {
       if (stars < 2 && wrongExerciseIndexes.length > 0) {
         setExerciseIndexes(wrongExerciseIndexes);
         setWrongExerciseIndexes([]);
+        setRevealedAnswerIndexes([]);
         setCurrentIndex(0);
         setCorrectCount(0);
         setAnswered(false);
@@ -211,6 +214,7 @@ export default function LessonPage() {
     setExerciseIndexes(retryExerciseIndexes);
     setWrongExerciseIndexes([]);
     setRetryExerciseIndexes([]);
+    setRevealedAnswerIndexes([]);
     setCurrentIndex(0);
     setCorrectCount(0);
     setAnswered(false);
@@ -253,6 +257,30 @@ export default function LessonPage() {
 
   const progressBase = exerciseIndexes.length || 1;
   const progress = (currentIndex / progressBase) * 100;
+  const isAnswerRevealed = typeof currentExerciseIndex === "number" && revealedAnswerIndexes.includes(currentExerciseIndex);
+
+  const revealedAnswerText = !currentExercise
+    ? ""
+    : currentExercise.type === "multiple_choice" || currentExercise.type === "listening"
+      ? currentExercise.options[currentExercise.correctIndex] ?? ""
+      : currentExercise.type === "fill_blank" || currentExercise.type === "translation"
+        ? currentExercise.correctAnswer
+        : currentExercise.pairs.map((pair) => `${pair.left} = ${pair.right}`).join(" • ");
+
+  const handleRevealAnswer = () => {
+    if (typeof currentExerciseIndex !== "number") {
+      return;
+    }
+
+    if (revealedAnswerIndexes.includes(currentExerciseIndex)) {
+      return;
+    }
+
+    const nextHeartState = consumeHearts(0.5);
+    setHearts(nextHeartState.hearts);
+    setMinutesToNextHeart(getHeartStatus().minutesToNextHeart);
+    setRevealedAnswerIndexes((prev) => [...prev, currentExerciseIndex]);
+  };
 
   if (completed) {
     const stars = calculateStars(correctCount, exerciseIndexes.length);
@@ -300,13 +328,34 @@ export default function LessonPage() {
       <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 py-6">
         {currentExercise && (
           <>
-            <div className="text-xs font-bold text-muted-foreground mb-1 uppercase">
-              {currentExercise.type === "multiple_choice" && "Doğru cevabı seç"}
-              {currentExercise.type === "fill_blank" && "Boşluğu doldur"}
-              {currentExercise.type === "translation" && "Çevir"}
-              {currentExercise.type === "matching" && "Eşleştir"}
-              {currentExercise.type === "listening" && "Dinleyip seç"}
+            <div className="flex items-start justify-between gap-3 mb-2">
+              <div className="text-xs font-bold text-muted-foreground uppercase">
+                {currentExercise.type === "multiple_choice" && "Doğru cevabı seç"}
+                {currentExercise.type === "fill_blank" && "Boşluğu doldur"}
+                {currentExercise.type === "translation" && "Çevir"}
+                {currentExercise.type === "matching" && "Eşleştir"}
+                {currentExercise.type === "listening" && "Dinleyip seç"}
+              </div>
+
+              <button
+                onClick={handleRevealAnswer}
+                disabled={isAnswerRevealed}
+                className={`w-8 h-8 rounded-full flex items-center justify-center font-black border transition-all ${
+                  isAnswerRevealed
+                    ? "bg-success-light text-success border-success/40"
+                    : "bg-card text-warning border-warning/40 shadow-sm hover:scale-105"
+                }`}
+                aria-label="Cevabı göster (0.5 can)"
+              >
+                ?
+              </button>
             </div>
+
+            {isAnswerRevealed && (
+              <div className="mb-3 rounded-2xl px-3 py-2 border border-warning/40 bg-gradient-to-r from-warning/25 via-warning/10 to-transparent animate-pulse">
+                <p className="text-xs font-bold text-warning">Parlak ipucu: {revealedAnswerText} (-0.5 can)</p>
+              </div>
+            )}
 
             <div className="flex-1">
               {currentExercise.type === "multiple_choice" && (
