@@ -63,6 +63,7 @@ export default function LessonPage() {
   const [retryExerciseIndexes, setRetryExerciseIndexes] = useState<number[]>([]);
   const [revealedAnswerIndexes, setRevealedAnswerIndexes] = useState<number[]>([]);
   const progressSavedRef = useRef(false);
+  const lessonStartedAtRef = useRef(Date.now());
 
   useEffect(() => {
     syncHearts();
@@ -96,6 +97,7 @@ export default function LessonPage() {
     setIsCorrect(false);
     setCompleted(false);
     progressSavedRef.current = false;
+    lessonStartedAtRef.current = Date.now();
   }, [lessonId, exercises]);
 
   const currentExerciseIndex = exerciseIndexes[currentIndex];
@@ -288,11 +290,13 @@ export default function LessonPage() {
   if (completed) {
     const stars = calculateStars(correctCount, exerciseIndexes.length);
     const isPerfectLesson = exerciseIndexes.length > 0 && correctCount === exerciseIndexes.length;
+    const elapsedSeconds = Math.max(1, Math.round((Date.now() - lessonStartedAtRef.current) / 1000));
     return (
       <LessonComplete
         lesson={lesson}
         correctCount={correctCount}
         totalCount={exerciseIndexes.length}
+        elapsedSeconds={elapsedSeconds}
         stars={stars}
         xpEarned={lesson.xpReward + (isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0)}
         isPerfectLesson={isPerfectLesson}
