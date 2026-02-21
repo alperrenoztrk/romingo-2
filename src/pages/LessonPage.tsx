@@ -41,8 +41,8 @@ const ANSWER_FEEDBACK_PATTERN = {
 
 const lessonMascots = [
   {
+    id: "flamingo",
     name: "Flamingo",
-    emoji: "🦩",
     vibe: "Harika gidiyorsun! Bu turu birlikte çözelim.",
     gradient: "from-pink-500/30 via-fuchsia-400/20 to-transparent",
     border: "border-pink-300/40",
@@ -50,8 +50,8 @@ const lessonMascots = [
     ring: "ring-pink-200/70",
   },
   {
+    id: "cat",
     name: "Kedi",
-    emoji: "🐱",
     vibe: "Dikkatli ol, doğru cevaba çok yakınsın.",
     gradient: "from-amber-500/30 via-orange-300/20 to-transparent",
     border: "border-amber-300/40",
@@ -59,8 +59,8 @@ const lessonMascots = [
     ring: "ring-amber-100/80",
   },
   {
+    id: "toucan",
     name: "Tukan",
-    emoji: "🐦",
     vibe: "Sesleri dinle ve kelimeleri yakala!",
     gradient: "from-sky-500/30 via-cyan-300/20 to-transparent",
     border: "border-sky-300/40",
@@ -68,8 +68,8 @@ const lessonMascots = [
     ring: "ring-sky-100/80",
   },
   {
+    id: "panda",
     name: "Panda",
-    emoji: "🐼",
     vibe: "Sakin kal, adım adım ilerleyip başaracaksın.",
     gradient: "from-slate-500/30 via-zinc-300/20 to-transparent",
     border: "border-slate-300/40",
@@ -77,6 +77,58 @@ const lessonMascots = [
     ring: "ring-slate-100/80",
   },
 ] as const;
+
+function MascotFace({ mascotId, mascotName }: { mascotId: (typeof lessonMascots)[number]["id"]; mascotName: string }) {
+  if (mascotId === "cat") {
+    return (
+      <div className="relative h-12 w-12" role="img" aria-label={mascotName}>
+        <span className="absolute left-1 top-0 h-4 w-4 rotate-[-26deg] rounded-[40%_40%_8%_8%] bg-amber-200 shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]" />
+        <span className="absolute right-1 top-0 h-4 w-4 rotate-[26deg] rounded-[40%_40%_8%_8%] bg-amber-200 shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]" />
+        <div className="absolute inset-x-1 bottom-0 top-2 rounded-full bg-gradient-to-b from-amber-100 to-amber-300 shadow-[inset_0_-5px_6px_rgba(0,0,0,0.2)]" />
+        <span className="absolute left-3 top-5 h-1.5 w-1.5 rounded-full bg-slate-800" />
+        <span className="absolute right-3 top-5 h-1.5 w-1.5 rounded-full bg-slate-800" />
+        <span className="absolute left-1/2 top-7 h-1.5 w-2.5 -translate-x-1/2 rounded-full bg-rose-300" />
+      </div>
+    );
+  }
+
+  if (mascotId === "toucan") {
+    return (
+      <div className="relative h-12 w-12" role="img" aria-label={mascotName}>
+        <div className="absolute inset-1 rounded-full bg-gradient-to-b from-sky-100 to-sky-300 shadow-[inset_0_-4px_7px_rgba(0,0,0,0.2)]" />
+        <span className="absolute left-3 top-4 h-2 w-2 rounded-full bg-white" />
+        <span className="absolute left-3.5 top-4.5 h-1 w-1 rounded-full bg-slate-900" />
+        <span className="absolute right-0 top-5 h-4 w-6 rounded-r-full rounded-l-[40%] bg-gradient-to-r from-yellow-300 via-orange-300 to-rose-400 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.25)]" />
+      </div>
+    );
+  }
+
+  if (mascotId === "panda") {
+    return (
+      <div className="relative h-12 w-12" role="img" aria-label={mascotName}>
+        <span className="absolute left-1 top-1 h-4 w-4 rounded-full bg-slate-700" />
+        <span className="absolute right-1 top-1 h-4 w-4 rounded-full bg-slate-700" />
+        <div className="absolute inset-x-1 bottom-0 top-2 rounded-full bg-gradient-to-b from-white to-slate-200 shadow-[inset_0_-4px_7px_rgba(0,0,0,0.15)]" />
+        <span className="absolute left-2.5 top-4 h-3 w-2 rounded-full bg-slate-700/80" />
+        <span className="absolute right-2.5 top-4 h-3 w-2 rounded-full bg-slate-700/80" />
+        <span className="absolute left-3 top-5 h-1.5 w-1.5 rounded-full bg-white" />
+        <span className="absolute right-3 top-5 h-1.5 w-1.5 rounded-full bg-white" />
+        <span className="absolute left-1/2 top-7 h-1.5 w-2.5 -translate-x-1/2 rounded-full bg-slate-700" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative h-12 w-12" role="img" aria-label={mascotName}>
+      <div className="absolute inset-x-1 bottom-0 top-2 rounded-full bg-gradient-to-b from-pink-200 to-pink-400 shadow-[inset_0_-5px_7px_rgba(0,0,0,0.2)]" />
+      <span className="absolute left-2 top-4 h-2.5 w-2.5 rounded-full bg-white" />
+      <span className="absolute left-2.5 top-4.5 h-1.5 w-1.5 rounded-full bg-slate-900" />
+      <span className="absolute right-2 top-5 h-2 w-2 rounded-full bg-white" />
+      <span className="absolute right-2.5 top-5.5 h-1 w-1 rounded-full bg-slate-900" />
+      <span className="absolute right-0 top-6 h-2.5 w-5 rounded-r-full rounded-l-[45%] bg-pink-100 shadow-[inset_0_-1px_3px_rgba(0,0,0,0.2)]" />
+    </div>
+  );
+}
 
 function calculateStars(correctCount: number, totalCount: number) {
   if (totalCount <= 0) {
@@ -494,9 +546,7 @@ export default function LessonPage() {
               <div className="flex items-center">
                 <div className="relative shrink-0">
                   <div className={`relative grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br ${currentMascot.orb} shadow-[inset_0_-6px_10px_rgba(0,0,0,0.2),0_8px_12px_-8px_rgba(0,0,0,0.8)] ring-2 ${currentMascot.ring}`}>
-                    <span className="text-2xl drop-shadow-[0_2px_1px_rgba(0,0,0,0.35)]" role="img" aria-label={currentMascot.name}>
-                      {currentMascot.emoji}
-                    </span>
+                    <MascotFace mascotId={currentMascot.id} mascotName={currentMascot.name} />
                     <span className="pointer-events-none absolute left-1.5 top-1.5 h-2.5 w-5 rounded-full bg-white/55 blur-[1px]" aria-hidden />
                   </div>
                   <span className="pointer-events-none absolute -bottom-1 left-1/2 h-2.5 w-8 -translate-x-1/2 rounded-full bg-black/20 blur-[2px]" aria-hidden />
