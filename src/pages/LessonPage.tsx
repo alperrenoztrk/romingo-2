@@ -460,7 +460,6 @@ export default function LessonPage() {
           <>
             <div className="flex items-start justify-between gap-3 mb-2">
               <div className="text-xs font-bold text-muted-foreground uppercase">
-                {currentExercise.type === "multiple_choice" && "Doğru cevabı seç"}
                 {currentExercise.type === "fill_blank" && "Boşluğu doldur"}
                 {currentExercise.type === "translation" && "Çevir"}
                 {currentExercise.type === "matching" && "Eşleştir"}
