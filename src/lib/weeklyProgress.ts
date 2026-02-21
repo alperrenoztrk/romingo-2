@@ -49,3 +49,31 @@ export function getCurrentWeekProgress(): { day: string; dateKey: string; progre
   });
 }
 
+export function getRecentWeeksProgress(weekCount = 4): { weekLabel: string; totalProgress: number }[] {
+  const progressMap = getWeeklyProgressMap();
+  const today = new Date();
+  const currentWeekMonday = new Date(today);
+  const mondayOffset = (today.getDay() + 6) % 7;
+  currentWeekMonday.setDate(today.getDate() - mondayOffset);
+
+  return Array.from({ length: weekCount }, (_, weekOffset) => {
+    const weekStart = new Date(currentWeekMonday);
+    weekStart.setDate(currentWeekMonday.getDate() - weekOffset * 7);
+
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+
+    const totalProgress = Array.from({ length: 7 }, (_, dayOffset) => {
+      const date = new Date(weekStart);
+      date.setDate(weekStart.getDate() + dayOffset);
+      const dateKey = getISODateKey(date);
+      return progressMap[dateKey] ?? 0;
+    }).reduce((total, value) => total + value, 0);
+
+    const weekLabel = `${weekStart.getDate()}-${weekEnd.getDate()} ${weekStart.toLocaleDateString("tr-TR", {
+      month: "short",
+    })}`;
+
+    return { weekLabel, totalProgress };
+  });
+}
