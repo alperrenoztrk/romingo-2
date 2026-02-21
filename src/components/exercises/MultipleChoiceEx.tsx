@@ -18,8 +18,6 @@ export default function MultipleChoiceEx({ exercise, onAnswer, answered }: Props
 
   return (
     <div>
-      <h2 className="text-xl font-black text-foreground mb-6">{exercise.question}</h2>
-
       <div className="space-y-3">
         {exercise.options.map((option, i) => {
           let style = "bg-card border-2 border-border text-foreground hover:border-sky hover:bg-sky-light";

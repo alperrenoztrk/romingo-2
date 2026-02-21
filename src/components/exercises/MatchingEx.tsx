@@ -53,8 +53,6 @@ export default function MatchingEx({ exercise, onAnswer, answered }: Props) {
 
   return (
     <div>
-      <h2 className="text-lg font-black text-foreground mb-6">Eşleşenleri bul</h2>
-
       <div className="flex gap-3">
         {/* Left column */}
         <div className="flex-1 space-y-3">
