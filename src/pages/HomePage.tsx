@@ -38,14 +38,16 @@ const romanianVideoLessons = [
     id: "romania-101",
     title: "Basit Selamlaşma Diyaloğu",
     source: "Learn Romanian with Nico",
-    embedUrl: "https://www.youtube.com/embed/6FrsA3M7h5Q",
+    embedUrl: "https://www.youtube-nocookie.com/embed/6FrsA3M7h5Q?rel=0",
+    watchUrl: "https://www.youtube.com/watch?v=6FrsA3M7h5Q",
     subtitle: "Merhaba! Nasılsın? İyiyim, teşekkür ederim. Sen nasılsın?",
   },
   {
     id: "romania-cafe",
     title: "Kafede Kısa Konuşma",
     source: "Easy Romanian",
-    embedUrl: "https://www.youtube.com/embed/X4dQv8NqM5s",
+    embedUrl: "https://www.youtube-nocookie.com/embed/X4dQv8NqM5s?rel=0",
+    watchUrl: "https://www.youtube.com/watch?v=X4dQv8NqM5s",
     subtitle: "Bir kahve lütfen. Şeker ister misiniz? Hayır, teşekkürler.",
   },
 ] as const;
@@ -300,6 +302,15 @@ export default function HomePage() {
                     allowFullScreen
                   />
                 </div>
+
+                <a
+                  href={video.watchUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg border border-border px-3 py-2 text-xs font-extrabold text-foreground transition-colors hover:bg-muted"
+                >
+                  Video açılmazsa YouTube'da aç
+                </a>
 
                 <p className="rounded-lg bg-muted/60 px-3 py-2 text-xs font-semibold text-foreground">
                   Türkçe altyazı: {video.subtitle}
