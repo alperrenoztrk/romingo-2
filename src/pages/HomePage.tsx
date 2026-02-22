@@ -327,7 +327,7 @@ export default function HomePage() {
             <div className="mt-4 space-y-2 border-t border-border pt-3">
               {recentWeeksProgress.map((week, index) => {
                 const widthPercent = Math.round((week.totalProgress / topWeekProgress) * 100);
-                const weekTitle = index === 0 ? "Bu hafta" : `${index + 1} hafta önce`;
+                const weekTitle = `${index + 1} hafta önce`;
 
                 return (
                   <div key={week.weekLabel} className="space-y-1">

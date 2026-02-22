@@ -32,11 +32,11 @@ describe("HomePage", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.queryByText("Bu hafta")).not.toBeInTheDocument();
+    expect(screen.queryByText("1 hafta önce")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /Haftalık İlerleme/i }));
 
-    expect(screen.getByText("Bu hafta")).toBeInTheDocument();
+    expect(screen.getByText("1 hafta önce")).toBeInTheDocument();
     expect(screen.getByText("2 hafta önce")).toBeInTheDocument();
     expect(screen.getByText("3 hafta önce")).toBeInTheDocument();
     expect(screen.getByText("4 hafta önce")).toBeInTheDocument();
