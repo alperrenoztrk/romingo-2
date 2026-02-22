@@ -33,6 +33,23 @@ const GOAL_DEFINITIONS = [
   },
 ] as const;
 
+const romanianVideoLessons = [
+  {
+    id: "romania-101",
+    title: "Basit Selamlaşma Diyaloğu",
+    source: "Learn Romanian with Nico",
+    embedUrl: "https://www.youtube.com/embed/6FrsA3M7h5Q",
+    subtitle: "Merhaba! Nasılsın? İyiyim, teşekkür ederim. Sen nasılsın?",
+  },
+  {
+    id: "romania-cafe",
+    title: "Kafede Kısa Konuşma",
+    source: "Easy Romanian",
+    embedUrl: "https://www.youtube.com/embed/X4dQv8NqM5s",
+    subtitle: "Bir kahve lütfen. Şeker ister misiniz? Hayır, teşekkürler.",
+  },
+] as const;
+
 function getGoalCompletionRatio(current: number, target: number) {
   if (target <= 0) {
     return 1;
@@ -255,6 +272,42 @@ export default function HomePage() {
           <div className="text-primary-foreground font-extrabold text-base">{nextAction.label}</div>
           <div className="text-primary-foreground/80 text-xs font-semibold mt-1">{nextAction.desc}</div>
         </button>
+
+        <section className="space-y-3">
+          <div>
+            <h2 className="font-extrabold text-foreground text-lg">İnternetten Romence Konuşma Videoları</h2>
+            <p className="text-xs text-muted-foreground font-semibold">
+              Basit konuşma videolarını izle, alttaki Türkçe altyazıyla cümleleri tekrar et.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {romanianVideoLessons.map((video) => (
+              <article key={video.id} className="rounded-2xl bg-card p-3 shadow-card space-y-3">
+                <div>
+                  <h3 className="text-sm font-extrabold text-foreground">{video.title}</h3>
+                  <p className="text-xs font-semibold text-muted-foreground">Kaynak: {video.source}</p>
+                </div>
+
+                <div className="overflow-hidden rounded-xl border border-border">
+                  <iframe
+                    className="aspect-video w-full"
+                    src={video.embedUrl}
+                    title={video.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+
+                <p className="rounded-lg bg-muted/60 px-3 py-2 text-xs font-semibold text-foreground">
+                  Türkçe altyazı: {video.subtitle}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <div className="grid grid-cols-2 gap-3">
           <button
