@@ -281,7 +281,7 @@ export default function HomePage() {
           className="gradient-success shadow-button-success rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full"
         >
           <Video className="w-8 h-8 text-primary-foreground mb-2" />
-          <div className="text-primary-foreground font-extrabold text-sm">Videolar</div>
+          <div className="text-primary-foreground font-extrabold text-sm">Kısa Konuşma Videoları</div>
         </button>
 
         {/* Streak Card */}

@@ -37,7 +37,7 @@ export default function VideosPage() {
 
         <section className="space-y-3">
           <div>
-            <h1 className="font-extrabold text-foreground text-lg">İnternetten Romence Konuşma Videoları</h1>
+            <h1 className="font-extrabold text-foreground text-lg">Kısa Konuşma Videoları</h1>
             <p className="text-xs text-muted-foreground font-semibold">
               Basit konuşma videolarını izle, alttaki Türkçe altyazıyla cümleleri tekrar et.
             </p>
