@@ -41,4 +41,14 @@ describe("HomePage", () => {
     expect(screen.getByText("3 hafta önce")).toBeInTheDocument();
     expect(screen.getByText("4 hafta önce")).toBeInTheDocument();
   });
+  it("shows Kahoot quiz button on homepage", () => {
+    render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole("button", { name: /Kahoot Quiz/i })).toBeInTheDocument();
+  });
+
 });

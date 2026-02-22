@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal, Video } from "lucide-react";
+import { BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal, Video, Trophy } from "lucide-react";
 import { getCurrentWeekProgress, getRecentWeeksProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
@@ -276,13 +276,24 @@ export default function HomePage() {
           </button>
         </div>
 
-        <button
-          onClick={() => navigate("/videos")}
-          className="gradient-success shadow-button-success rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full"
-        >
-          <Video className="w-8 h-8 text-primary-foreground mb-2" />
-          <div className="text-primary-foreground font-extrabold text-sm">Kısa Konuşma Videoları</div>
-        </button>
+        <div className="grid grid-cols-1 gap-3">
+          <button
+            onClick={() => navigate("/kahoot")}
+            className="rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full gradient-hero shadow-button-primary"
+          >
+            <Trophy className="w-8 h-8 text-primary-foreground mb-2" />
+            <div className="text-primary-foreground font-extrabold text-sm">Kahoot Quiz</div>
+            <div className="text-primary-foreground/80 text-xs font-semibold mt-1">Canlı yarışma gibi hızlı quiz turu</div>
+          </button>
+
+          <button
+            onClick={() => navigate("/videos")}
+            className="gradient-success shadow-button-success rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full"
+          >
+            <Video className="w-8 h-8 text-primary-foreground mb-2" />
+            <div className="text-primary-foreground font-extrabold text-sm">Kısa Konuşma Videoları</div>
+          </button>
+        </div>
 
         {/* Streak Card */}
         <button
