@@ -168,10 +168,6 @@ export default function GrammarPage() {
               <BookOpenText className="h-7 w-7 text-flamingo" />
               <h1 className="text-2xl font-black text-foreground">Romence Dil Bilgisi Rehberi · Kitap Formatı</h1>
             </div>
-            <p className="text-sm font-medium text-muted-foreground leading-relaxed">
-              Bu sayfa, Romence dil bilgisini bölüm bölüm öğrenebilmen için "mini ders kitabı" düzeninde hazırlandı.
-              Her bölümde konu özeti ve örnek cümleler bulunur.
-            </p>
           </header>
 
           <div className="space-y-5">
