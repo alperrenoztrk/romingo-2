@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { applyDarkMode, getStoredPreferences } from "@/lib/preferences";
+import { supabase } from "@/integrations/supabase/client";
 import BottomNav from "./components/BottomNav";
 import HomePage from "./pages/HomePage";
 import LearnPage from "./pages/LearnPage";
@@ -32,17 +33,48 @@ const SESSION_KEY = "romingo_session_mode";
 function AppContent() {
   const location = useLocation();
   const hideNav = location.pathname.startsWith("/lesson/");
-  const [sessionMode, setSessionMode] = useState<SessionMode>("authenticated");
+  const [sessionMode, setSessionMode] = useState<SessionMode>("logged_out");
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const storedMode = localStorage.getItem(SESSION_KEY) as SessionMode | null;
-    if (storedMode === "authenticated" || storedMode === "logged_out" || storedMode === "guest") {
-      setSessionMode(storedMode);
-    }
+    const isGuestSession = storedMode === "guest";
 
     const { darkMode } = getStoredPreferences();
     applyDarkMode(darkMode);
+
+    const syncSupabaseSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (session) {
+        setSessionMode("authenticated");
+        localStorage.setItem(SESSION_KEY, "authenticated");
+        return;
+      }
+
+      if (isGuestSession) {
+        setSessionMode("guest");
+        return;
+      }
+
+      setSessionMode("logged_out");
+      localStorage.setItem(SESSION_KEY, "logged_out");
+    };
+
+    void syncSupabaseSession();
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        setSessionMode("authenticated");
+        localStorage.setItem(SESSION_KEY, "authenticated");
+        return;
+      }
+
+      setSessionMode("logged_out");
+      localStorage.setItem(SESSION_KEY, "logged_out");
+    });
 
     const splashTimer = window.setTimeout(() => {
       setShowSplash(false);
@@ -50,10 +82,12 @@ function AppContent() {
 
     return () => {
       window.clearTimeout(splashTimer);
+      authListener.subscription.unsubscribe();
     };
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setSessionMode("logged_out");
     localStorage.setItem(SESSION_KEY, "logged_out");
   };
