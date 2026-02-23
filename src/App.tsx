@@ -21,6 +21,7 @@ import SecuritySettingsPage from "./pages/SecuritySettingsPage";
 import DailyGoalsSettingsPage from "./pages/DailyGoalsSettingsPage";
 import VideosPage from "./pages/VideosPage";
 import KahootPage from "./pages/KahootPage";
+import GrammarPage from "./pages/GrammarPage";
 
 const queryClient = new QueryClient();
 
@@ -95,6 +96,7 @@ function AppContent() {
         <Route path="/translate" element={<TranslationPage />} />
         <Route path="/videos" element={<VideosPage />} />
         <Route path="/kahoot" element={<KahootPage />} />
+        <Route path="/grammar" element={<GrammarPage />} />
         <Route path="/lesson/:id" element={<LessonPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
