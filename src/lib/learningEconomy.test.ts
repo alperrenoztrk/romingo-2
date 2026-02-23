@@ -32,6 +32,12 @@ describe("learning economy live snapshot", () => {
     expect(saved.lastActiveDate).toBe(isoDateWithOffset(0));
   });
 
+  it("starts streak from zero when there is no saved streak state", () => {
+    const snapshot = getEconomySnapshot();
+
+    expect(snapshot.streakCount).toBe(0);
+  });
+
   it("resets streak when multiple days are missed and no shield exists", () => {
     localStorage.setItem(
       STREAK_STATE_KEY,
