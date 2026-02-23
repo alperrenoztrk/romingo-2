@@ -4,7 +4,6 @@ import { ArrowLeft, BookOpenText, Bookmark } from "lucide-react";
 type GrammarChapter = {
   title: string;
   level: string;
-  whyItMatters: string;
   sections: {
     subtitle: string;
     explanation: string;
@@ -16,8 +15,6 @@ const grammarBook: GrammarChapter[] = [
   {
     title: "Bölüm 1 · Romence Zamanlar (Timpuri verbale)",
     level: "A1 → B2",
-    whyItMatters:
-      "Zamanlar, bir olayın ne zaman gerçekleştiğini açıkça anlatmanı sağlar. Romence konuşurken akıcılık ve doğruluk için ilk büyük adımdır.",
     sections: [
       {
         subtitle: "1.1 Şimdiki Zaman (Prezent)",
@@ -54,8 +51,6 @@ const grammarBook: GrammarChapter[] = [
   {
     title: "Bölüm 2 · Fiil Çekimleri (Conjugări)",
     level: "A1 → C1",
-    whyItMatters:
-      "Romence'de özne çoğu zaman fiilin şeklinden anlaşılır. Bu yüzden çekim hatası iletişimi direkt etkiler.",
     sections: [
       {
         subtitle: "2.1 Temel Şahıslar ve Çekim Mantığı",
@@ -82,8 +77,6 @@ const grammarBook: GrammarChapter[] = [
   {
     title: "Bölüm 3 · İsimler, Cinsiyet ve Artikeller",
     level: "A1 → B2",
-    whyItMatters:
-      "Romence'de isimler yalnızca kelime değildir; cinsiyet, sayı ve artikelle birlikte bir sistem oluşturur.",
     sections: [
       {
         subtitle: "3.1 Cinsiyet Sistemi (Masculin · Feminin · Neutru)",
@@ -110,8 +103,6 @@ const grammarBook: GrammarChapter[] = [
   {
     title: "Bölüm 4 · Sıfat Uyumu, Zamirler ve Bağlayıcı Yapılar",
     level: "A2 → C1",
-    whyItMatters:
-      "Cümleyi doğal ve yerel konuşmaya yakın yapan kısım bu bölümdür: uyum, referans ve bağlama.",
     sections: [
       {
         subtitle: "4.1 Sıfat Uyumu",
@@ -176,10 +167,6 @@ export default function GrammarPage() {
                 <div className="space-y-2">
                   <h2 className="text-lg font-extrabold text-foreground">{chapter.title}</h2>
                   <p className="text-xs font-bold uppercase tracking-wide text-flamingo">Seviye: {chapter.level}</p>
-                  <p className="text-sm text-foreground/90 leading-relaxed">
-                    <span className="font-bold">Neden önemli? </span>
-                    {chapter.whyItMatters}
-                  </p>
                 </div>
 
                 <div className="space-y-4">
