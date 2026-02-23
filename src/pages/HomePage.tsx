@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, Languages, Target, Star, TrendingUp, SlidersHorizontal, Video, Trophy } from "lucide-react";
+import { BookOpen, BookOpenText, Languages, Target, Star, TrendingUp, SlidersHorizontal, Video, Trophy } from "lucide-react";
 import { getCurrentWeekProgress, getRecentWeeksProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
@@ -273,6 +273,15 @@ export default function HomePage() {
           >
             <Languages className="w-8 h-8 text-primary-foreground mb-2" />
             <div className="text-primary-foreground font-extrabold text-sm">Çeviri</div>
+          </button>
+
+          <button
+            onClick={() => navigate("/grammar")}
+            className="col-span-2 gradient-gold shadow-button-gold rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all"
+          >
+            <BookOpenText className="w-8 h-8 text-primary-foreground mb-2" />
+            <div className="text-primary-foreground font-extrabold text-sm">Grammer</div>
+            <div className="text-primary-foreground/80 text-xs font-semibold mt-1">Romence gramer konu anlatımı</div>
           </button>
         </div>
 
