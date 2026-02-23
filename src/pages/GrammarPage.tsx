@@ -1,208 +1,249 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, BookOpenText, Bookmark } from "lucide-react";
+import { ArrowLeft, BookOpenText } from "lucide-react";
 
-type GrammarChapter = {
-  title: string;
-  level: string;
-  sections: {
-    subtitle: string;
-    explanation: string;
-    examples: string[];
-  }[];
-};
+const grammarContent = `ROMENCE DİL BİLGİSİ
 
-const grammarBook: GrammarChapter[] = [
-  {
-    title: "Bölüm 1 · Alfabe, Telaffuz ve Vurgu",
-    level: "A1",
-    sections: [
-      {
-        subtitle: "1.1 Romence Alfabesi ve Türkçeden Farklı Harfler",
-        explanation:
-          "Romence Latin alfabesini kullanır. ă, â, î, ș, ț harfleri hem telaffuz hem anlam açısından kritiktir; yanlış harf kullanımı kelimeyi değiştirebilir.",
-        examples: [
-          "fată (kız) / fata (kız [belirli])",
-          "țară (ülke) / sare (tuz)",
-          "în (içinde) / in (keten)",
-        ],
-      },
-      {
-        subtitle: "1.2 Temel Okunuş Kuralları",
-        explanation:
-          "Genel olarak yazıldığı gibi okunur; ancak ce/ci ve ge/gi birleşimleri Türkçedeki 'çe/çi' ve 'ce/ci' benzeri sesler üretir. ș = ş, ț = ts sesidir.",
-        examples: [
-          "cine → çine (kim)",
-          "ger → cer benzeri sert başlangıç",
-          "șapte → şapte (yedi)",
-        ],
-      },
-      {
-        subtitle: "1.3 Vurgu ve Akıcılık",
-        explanation:
-          "Vurgu çoğunlukla sondan bir önceki hecededir; fakat ezberlenmesi gereken istisnalar vardır. Akıcı konuşma için kelime gruplarını tek nefeste tekrar etmek etkilidir.",
-        examples: [
-          "mul-ȚU-mesc (teşekkür ederim)",
-          "bu-cu-REȘ-ti (Bükreş)",
-          "Ce mai faci? → Nasılsın?",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Bölüm 2 · İsimler, Cinsiyet ve Artikeller",
-    level: "A1 → B1",
-    sections: [
-      {
-        subtitle: "2.1 Üç Cinsiyet Sistemi",
-        explanation:
-          "Romencede eril, dişil ve nötr cinsiyet vardır. Nötr isimler tekilde eril, çoğulda dişil çekimlenir; bu yapı başlangıç seviyesinde özellikle tekrar edilmelidir.",
-        examples: [
-          "un băiat / doi băieți (eril)",
-          "o floare / două flori (dişil)",
-          "un hotel / două hoteluri (nötr)",
-        ],
-      },
-      {
-        subtitle: "2.2 Belirsiz ve Belirli Artikel",
-        explanation:
-          "Belirsiz artikel kelimenin başında (un/o), belirli artikel çoğunlukla sonda (-ul, -a, -le) yer alır. Bu yapı cümlede özne ve nesneyi ayırt etmeyi kolaylaştırır.",
-        examples: [
-          "un elev → elevul",
-          "o casă → casa",
-          "niște caiete → caietele",
-        ],
-      },
-      {
-        subtitle: "2.3 Çoğul Kuralları",
-        explanation:
-          "Çoğul yapımı tek bir formülle ilerlemez; kelime sonuna göre değişir. Öğrenmeyi hızlandırmak için yeni isimler tekil+çoğul birlikte kaydedilmelidir.",
-        examples: [
-          "copil → copii",
-          "carte → cărți",
-          "oraș → orașe",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Bölüm 3 · Zamirler, Sıfatlar ve Temel Söz Dizimi",
-    level: "A2 → B2",
-    sections: [
-      {
-        subtitle: "3.1 Kişi Zamirleri ve Kullanımı",
-        explanation:
-          "Kişi zamirleri genellikle özneyi vurgulamak için kullanılır; fiil çekimi zaten kişiyi verir. Resmî hitapta polite form (dumneavoastră) çok önemlidir.",
-        examples: [
-          "eu, tu, el/ea, noi, voi, ei/ele",
-          "Dumneavoastră sunteți profesor?",
-          "Noi învățăm împreună.",
-        ],
-      },
-      {
-        subtitle: "3.2 Nesne Zamirleri (kısa biçimler)",
-        explanation:
-          "Mă, te, îl, o, ne, vă, îi, le gibi kısa zamirler fiilden önce/sonra konumlanır. Cümlenin anlamı bu küçük parçalarla ciddi biçimde değişebilir.",
-        examples: [
-          "Îl văd pe Mihai. (Onu görüyorum)",
-          "Mă aude? (Beni duyuyor mu?)",
-          "Le explic regula. (Onlara kuralı açıklıyorum)",
-        ],
-      },
-      {
-        subtitle: "3.3 Sıfat Uyumu ve Sıra",
-        explanation:
-          "Sıfatlar cinsiyet ve sayıya göre uyum sağlar. En sık model: isim + sıfat; ancak vurguda sıfat öne geçebilir.",
-        examples: [
-          "băiat inteligent / băieți inteligenți",
-          "fată frumoasă / fete frumoase",
-          "un om foarte calm",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Bölüm 4 · Fiiller ve Zamanlar",
-    level: "A1 → C1",
-    sections: [
-      {
-        subtitle: "4.1 Şimdiki Zaman (Prezent)",
-        explanation:
-          "Rutinleri, alışkanlıkları ve o an gerçekleşen eylemleri ifade eder. Temel iletişimin omurgasıdır.",
-        examples: [
-          "Eu lucrez acasă.",
-          "Tu vorbești românește foarte bine.",
-          "Ei merg la școală în fiecare zi.",
-        ],
-      },
-      {
-        subtitle: "4.2 Perfect Compus ve Imperfect",
-        explanation:
-          "Perfect compus tamamlanmış olaylar içindir; imperfect arka plan, tekrar eden geçmiş durumlar ve devam eden eylemler için kullanılır.",
-        examples: [
-          "Am terminat tema. (Ödevi bitirdim)",
-          "Când eram copil, citeam mult. (Çocukken çok okurdum)",
-          "Ieri am fost la doctor.",
-        ],
-      },
-      {
-        subtitle: "4.3 Gelecek Zaman",
-        explanation:
-          "Günlük konuşmada 'o să + fiil' yapısı çok yaygındır. Daha resmî kullanımda yardımcı fiille çekimlenen gelecek formlar görülür.",
-        examples: [
-          "O să vin mâine. (Yarın geleceğim)",
-          "Vom discuta după curs. (Dersten sonra konuşacağız)",
-          "Cred că va ninge. (Sanırım kar yağacak)",
-        ],
-      },
-      {
-        subtitle: "4.4 Koşul ve Gereklilik",
-        explanation:
-          "B1 ve sonrası seviyede istek, öneri, olasılık ve şart bildiren yapılar iletişim kalitesini büyük ölçüde yükseltir.",
-        examples: [
-          "Aș merge, dar nu am timp. (Giderdim ama vaktim yok)",
-          "Trebuie să înveți zilnic. (Her gün çalışmalısın)",
-          "Dacă plouă, rămânem acasă. (Yağmur yağarsa evde kalırız)",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Bölüm 5 · Bağlaçlar, Edatlar ve Pratik Cümle Kalıpları",
-    level: "A2 → C1",
-    sections: [
-      {
-        subtitle: "5.1 Sık Kullanılan Edatlar",
-        explanation:
-          "Edatlar isimlerle birlikte anlam kurar; yanlış edat seçimi anlamı bozar. Kalıp olarak öğrenmek daha verimlidir.",
-        examples: [
-          "la școală (okula), în oraș (şehirde), cu prietenii (arkadaşlarla)",
-          "pentru tine (senin için), fără zahăr (şekersiz)",
-          "despre film (film hakkında)",
-        ],
-      },
-      {
-        subtitle: "5.2 Cümleleri Birleştiren Bağlaçlar",
-        explanation:
-          "Karmaşık cümle kurmanın temeli doğru bağlaç kullanımıdır. Özellikle că, dacă, deoarece, deși yapıları sınav ve konuşmada çok sık çıkar.",
-        examples: [
-          "Știu că ai dreptate. (Haklı olduğunu biliyorum)",
-          "Dacă ai timp, vino. (Vaktin varsa gel)",
-          "Am venit deși eram obosit. (Yorgun olmama rağmen geldim)",
-        ],
-      },
-      {
-        subtitle: "5.3 Günlük Hayat İçin Hazır Kalıplar",
-        explanation:
-          "Hazır cümle kalıpları, kelime bilgisi sınırlı olsa bile iletişimi sürdürmeyi sağlar. Her gün 5 kalıp tekrar etmek hızlı ilerleme sağlar.",
-        examples: [
-          "Mi-ar plăcea să... (Şunu isterdim...)",
-          "Nu sunt sigur, dar... (Emin değilim ama...)",
-          "Poți să repeți, te rog? (Tekrar eder misin, lütfen?)",
-        ],
-      },
-    ],
-  },
-];
+Kapsamlı Konu Anlatımı
+
+Gramatica Limbii Române
+
+Başlangıçtan İleri Seviyeye
+
+BÖLÜM 1: Romenye ve Romence Hakkında
+
+Romence (limba română), yaklaşık 25 milyon kişi tarafından konuşulan bir Roman dilidir. Ağırlıklı olarak Romanya ve Moldova'da resmi dil statüsündedir; bunların yanı sıra İtalya, İspanya, Almanya ve diğer Avrupa ülkelerinde de büyük Romence konuşucu toplulukları bulunmaktadır.
+
+Romence, Latince'nin doğrudan bir uzantısıdır. Bu nedenle İtalyanca, İspanyolca, Fransızca ve Portekizce ile yakın akrabadır. Türkçe konuşanlar için Romence öğrenmek, aynı zamanda bu dillerin temelini de öğrenmek anlamına gelir. Romence'nin söz varlığının %70'ten fazlası Latince kökenlidir; bununla birlikte Slavca, Türkçe ve Yunanca'dan da önemli ölçüde kelime almıştır.
+
+💡 Neden Romence Öğrenmeli?
+
+• Romence, Avrupa Birliği'nin resmi dillerinden biridir ve yaklaşık 25 milyon anadil konuşucusu bulunmaktadır.
+• Romence öğrenmek, diğer Roman dillerini (İtalyanca, İspanyolca, Fransızca) çok daha hızlı öğrenmenize zemin hazırlar.
+• Tarih, edebiyat, müzik ve turizm açısından son derece zengin bir dili ve kültürü keşfetmenizi sağlar.
+• Türkçe'de yaklaşık 500-700 Romence ve Rumence kökenli alıntı kelime ve söylem bulunmakta olup bu ortak kelimeler öğrenme sürecini kolaylaştırır.
+
+1.1 Romence Alfabesi
+
+Romence, Latin alfabesini bazı özel karakterlerle birlikte kullanır. Toplam 31 harf bulunmaktadır. Bunların büyük çoğunluğu Türkçe ile aynı sesi taşırken, beş tanesi Türkçe'de bulunmayan özel harflerdir:
+
+• ă / Ă → /ə/ (şwa) → "e" ile "a" arası belirsiz ses → băiat (erkek çocuk)
+• â / Â → /ɨ/ → Türkçe'de yok; "ı" ya da "e" arasında → cânt (şarkı söylerim)
+• î / Î → /ɨ/ → â ile aynı ses; kelime başı/sonunda → înainte (önce)
+• ș / Ș → /ʃ/ → Türkçe "ş" sesi → școală (okul)
+• ț / Ț → /ts/ → Türkçe "ts" / "c" sesi → țară (ülke)
+
+⚠️ Dikkat: â ve î Farkı
+
+â ve î harfleri tamamen aynı sesi (/ɨ/) temsil eder. Aralarındaki tek fark YER'dir:
+
+• î → kelime başında veya sonunda kullanılır: în (içinde), înainte (önce)
+• â → kelime ortasında kullanılır: cânt (şarkı söylerim), român (Romen)
+
+Bu ayrım tamamen imlaya dayalıdır ve telaffuzu etkilemez.
+
+1.2 Temel Telaffuz Kuralları
+
+Romence telaffuzu düzenlidir; yani harf-ses ilişkisi tutarlıdır. Bir kez kuralları öğrendikten sonra yeni kelimeleri doğru telaffuz edebilirsiniz.
+
+• ce → /tʃe/ → ce (ne) → "çe"
+• ci → /tʃi/ → cinema → "çinema"
+• che → /ke/ → cheie (anahtar) → "keye"
+• chi → /ki/ → chiar (tam olarak) → "kiyar"
+• ge → /dʒe/ → ger (ayaz) → "cer"
+• gi → /dʒi/ → gimnastică → "cimnastikə"
+• ghe → /ge/ → ghete (botlar) → "gete"
+• ghi → /gi/ → ghid (rehber) → "gid"
+• x → /ks/ veya /gz/ (konuma göre) → taxi → "taksi"
+• h → /h/ (her zaman, sessiz değil) → hotel
+
+BÖLÜM 2: İsimler (Substantive)
+
+Romence isim sistemi, Türkçe'den kökten farklı bir yapıya sahiptir. Romence'de isimler; cinsiyet (gen), sayı (număr) ve durum (caz) bakımından çekime girer.
+
+2.1 Grammatik Cinsiyet
+
+Romence'de üç grammatik cinsiyet vardır: eril (masculin), dişil (feminin) ve nötr (neutru).
+
+🔑 Nötr Cinsiyet Nedir?
+
+Nötr isimler tekil iken eril, çoğul iken dişil kurallara uyar.
+
+• Örnek: scaun (sandalye) → tekil eril gibi; scaune → çoğul dişil gibi davranır.
+
+2.2 Sayı: Tekil ve Çoğul
+
+Genel örnekler:
+
+• fiu → fii (oğul → oğullar)
+• om → oameni (adam → adamlar)
+• fată → fete (kız → kızlar)
+• carte → cărți (kitap → kitaplar)
+• lucru → lucruri (şey → şeyler)
+• scaun → scaune (sandalye → sandalyeler)
+
+2.3 Durum Sistemi (Cazuri)
+
+Romence'de dört temel durum bulunur: Nominatif-Akuzatif, Genitif-Datif, Vokativ ve sınırlı kullanımlı Ablativ.
+
+📌 Önemli Kural: N ve Ac Aynı; G ve D Aynı
+
+Nominatif ve Akuzatif çekimleri çoğunlukla aynıdır. Genitif ve Datif de çoğu durumda aynı biçimi taşır.
+
+2.4 Belirlilik: Artikeller
+
+Romence'de belirli artikel ismin SONUNA eklenir.
+
+Örnekler:
+
+• băiat → băiatul → băiatului → băieții → băieților
+• fată → fata → fetei → fetele → fetelor
+
+Cümleler:
+
+• Cartea este pe masă. (Kitap masanın üstünde.)
+• Dau cartea fetei. (Kitabı kıza veriyorum.)
+• Aceasta este cartea fetei. (Bu, kızın kitabıdır.)
+• Un băiat și o fată se joacă. (Bir oğlan ve bir kız oynuyor.)
+
+BÖLÜM 3: Sıfatlar (Adjective)
+
+Romence'de sıfatlar, nitelendirdikleri isimle cinsiyet, sayı ve durum bakımından uyum sağlar.
+
+3.1 Sıfat Çekimi
+
+• frumos / frumoasă / frumoși / frumoase
+• mare / mari
+
+3.2 Sıfatların Konumu
+
+Sıfatlar çoğunlukla ismin arkasına gelir:
+
+• un om bun
+• o casă mare
+• o fată frumoasă
+
+3.3 Karşılaştırma
+
+• mai frumos decât
+• la fel de frumos ca
+• mai puțin frumos decât
+• cel mai frumos
+• foarte frumos
+
+BÖLÜM 4: Zamirler (Pronume)
+
+4.1 Kişi Zamirleri
+
+• eu, tu, el/ea, noi, voi, ei/ele
+• Kısa biçimler: mă, te, îl, o, ne, vă, îi, le
+• Uzun biçimler: mine, tine, el, ea, noi, voi, ei, ele
+
+4.2 Nesne Zamirinin Konumu
+
+Kısa nesne zamirleri çoğunlukla fiilden önce gelir:
+
+• Îl văd pe băiat.
+• O iubesc.
+• Îmi place muzica.
+• Îți dau cartea.
+• Nu o văd.
+
+4.3 İyelik Yapıları
+
+• cartea mea
+• fratele meu
+• prietenii tăi
+
+BÖLÜM 5: Fiiller (Verbe)
+
+Romence'de dört fiil grubu bulunur.
+
+5.1 Mastar
+
+• a cânta, a lucra
+• a vedea, a putea
+• a merge, a face
+• a veni, a dormi
+
+5.2 Prezent
+
+• eu cânt / tu cânți / el cântă / noi cântăm / voi cântați / ei cântă
+• eu merg / tu mergi / el merge / noi mergem / voi mergeți / ei merg
+
+Sık fiiller:
+
+• a fi: sunt, ești, este, suntem, sunteți, sunt
+• a avea: am, ai, are, avem, aveți, au
+• a vrea: vreau, vrei, vrea, vrem, vreți, vor
+
+5.3 Geçmiş Zamanlar
+
+• Perfect Compus: am mers, ai mers, a mers...
+• Imperfect: eram, mergeam, locuiam...
+• Mai mult ca perfect: plecase, mâncasem...
+
+5.4 Gelecek Zaman
+
+• Resmî: voi merge, vei merge...
+• Günlük: o să merg, o să mergi...
+
+5.5 Şart Kipi
+
+• aș merge, ai merge, ar merge...
+
+5.6 Emir Kipi
+
+• mergi!, mergeți!, nu merge!, nu mergeți!
+
+5.7 Subjunctiv
+
+• Vreau să merg.
+• Este important să fii punctual.
+• Trebuie să înveți.
+
+BÖLÜM 6: Zarflar (Adverbe)
+
+• Zaman: acum, ieri, azi, mâine, deja, încă
+• Yer: aici, acolo, sus, jos, aproape, departe
+• Nicelik: mult, puțin, destul, foarte, prea
+• Tarz: bine, rău, repede, încet
+• Sıklık: des, rar, uneori, adesea
+
+BÖLÜM 7: Edatlar (Prepoziții)
+
+• în, la, de, pe, cu, fără, pentru, spre, dintre, asupra
+
+Örnekler:
+
+• Merg la piață în fiecare dimineață.
+• Cartea este pe masă.
+• Vin cu autobuzul.
+• Am cumpărat ceva pentru tine.
+• Cafeaua fără zahăr, vă rog.
+
+BÖLÜM 8: Bağlaçlar (Conjuncții)
+
+• și, sau, dar, că, să, dacă, când, deși, pentru că, deci
+
+BÖLÜM 9: Sayılar (Numerale)
+
+Temeller:
+
+• 0 zero, 1 unu/una, 2 doi/două, 10 zece, 20 douăzeci
+• 30 treizeci, 40 patruzeci, 50 cincizeci, 100 o sută, 1000 o mie
+
+💡 Sayı + İsim Kuralı
+
+20 ve üzeri sayılarda "de" kullanılır:
+
+• doi băieți
+• zece fete
+• douăzeci de băieți
+• o sută de oameni
+
+BÖLÜM 10: Cümle Yapısı (Sintaxă)
+
+Romence temel söz dizimi Özne-Yüklem-Nesne (S-V-O) şeklindedir; ancak vurguya göre kelime sırası esneyebilir.`;
 
 export default function GrammarPage() {
   const navigate = useNavigate();
@@ -223,45 +264,14 @@ export default function GrammarPage() {
           <header className="space-y-3 border-b border-border pb-4">
             <div className="flex items-center gap-3">
               <BookOpenText className="h-7 w-7 text-flamingo" />
-              <h1 className="text-2xl font-black text-foreground">Romence Dil Bilgisi Rehberi · Kitap Formatı</h1>
+              <h1 className="text-2xl font-black text-foreground">ROMENCE DİL BİLGİSİ</h1>
             </div>
+            <p className="text-sm text-muted-foreground">Kapsamlı Konu Anlatımı · Gramatica Limbii Române</p>
           </header>
 
-          <div className="space-y-5">
-            {grammarBook.map((chapter) => (
-              <section key={chapter.title} className="rounded-xl border border-border p-5 bg-background/50 space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-lg font-extrabold text-foreground">{chapter.title}</h2>
-                  <p className="text-xs font-bold uppercase tracking-wide text-flamingo">Seviye: {chapter.level}</p>
-                </div>
-
-                <div className="space-y-4">
-                  {chapter.sections.map((section) => (
-                    <article key={section.subtitle} className="rounded-lg border border-border/70 bg-card p-4 space-y-3">
-                      <div className="flex items-center gap-2">
-                        <Bookmark className="h-4 w-4 text-flamingo" />
-                        <h3 className="text-sm font-extrabold text-foreground">{section.subtitle}</h3>
-                      </div>
-
-                      <p className="text-sm text-foreground/90 leading-relaxed">{section.explanation}</p>
-
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground mb-2">Örnekler</p>
-                        <ul className="space-y-1 list-disc pl-5">
-                          {section.examples.map((example) => (
-                            <li key={example} className="text-sm text-foreground/90">
-                              {example}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                    </article>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
+          <article className="rounded-xl border border-border p-5 bg-background/50">
+            <pre className="whitespace-pre-wrap break-words text-sm leading-7 text-foreground font-sans">{grammarContent}</pre>
+          </article>
         </div>
       </div>
     </div>
