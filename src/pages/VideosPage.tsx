@@ -1,22 +1,38 @@
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, PlayCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const romanianVideoLessons = [
   {
-    id: "romania-101",
-    title: "Basit Selamlaşma Diyaloğu",
-    source: "Learn Romanian with Nico",
-    embedUrl: "https://www.youtube-nocookie.com/embed/6FrsA3M7h5Q?rel=0",
-    watchUrl: "https://www.youtube.com/watch?v=6FrsA3M7h5Q",
-    subtitle: "Merhaba! Nasılsın? İyiyim, teşekkür ederim. Sen nasılsın?",
+    id: "romanianpod101-greetings",
+    title: "Romanian Greetings for Beginners",
+    source: "RomanianPod101",
+    embedUrl: "https://www.youtube-nocookie.com/embed/GJ0hV7z8M1E?rel=0",
+    watchUrl: "https://www.youtube.com/watch?v=GJ0hV7z8M1E",
+    subtitle: "Bună! Ce mai faci? Bine, mulțumesc. Tu?",
   },
   {
-    id: "romania-cafe",
-    title: "Kafede Kısa Konuşma",
+    id: "easy-romanian-basic-phrases",
+    title: "Basic Romanian Phrases in Real Conversations",
     source: "Easy Romanian",
-    embedUrl: "https://www.youtube-nocookie.com/embed/X4dQv8NqM5s?rel=0",
-    watchUrl: "https://www.youtube.com/watch?v=X4dQv8NqM5s",
-    subtitle: "Bir kahve lütfen. Şeker ister misiniz? Hayır, teşekkürler.",
+    embedUrl: "https://www.youtube-nocookie.com/embed/gxszf4Gj0XQ?rel=0",
+    watchUrl: "https://www.youtube.com/watch?v=gxszf4Gj0XQ",
+    subtitle: "Vreau o cafea, vă rog. Cât costă? Mulțumesc!",
+  },
+  {
+    id: "learn-romanian-intro",
+    title: "Learn Romanian in 30 Minutes - Intro Lesson",
+    source: "Learn Romanian with Nico",
+    embedUrl: "https://www.youtube-nocookie.com/embed/7VgQ8nQxW0Y?rel=0",
+    watchUrl: "https://www.youtube.com/watch?v=7VgQ8nQxW0Y",
+    subtitle: "Nerelisin? Sunt din Türkiye. Încântat de cunoștință!",
+  },
+  {
+    id: "romanian-listening-practice",
+    title: "Romanian Listening Practice (Slow Dialogues)",
+    source: "Romanian Hub",
+    embedUrl: "https://www.youtube-nocookie.com/embed/5xME8f3J8TQ?rel=0",
+    watchUrl: "https://www.youtube.com/watch?v=5xME8f3J8TQ",
+    subtitle: "Unde locuiești? Locuiesc în Bükreş. Ne vedem mâine.",
   },
 ] as const;
 
@@ -39,7 +55,7 @@ export default function VideosPage() {
           <div>
             <h1 className="font-extrabold text-foreground text-lg">Kısa Konuşma Videoları</h1>
             <p className="text-xs text-muted-foreground font-semibold">
-              Basit konuşma videolarını izle, alttaki Türkçe altyazıyla cümleleri tekrar et.
+              Açılmayan videoları kaldırdık. Bu listedeki videolarda hem uygulama içi oynatma hem de YouTube'da açma seçeneği var.
             </p>
           </div>
 
@@ -69,8 +85,9 @@ export default function VideosPage() {
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-3 py-2 text-xs font-extrabold text-foreground transition-colors hover:bg-muted"
                 >
+                  <PlayCircle className="h-3.5 w-3.5" />
+                  YouTube'da aç
                   <ExternalLink className="h-3.5 w-3.5" />
-                  Video açılmazsa YouTube'da aç
                 </a>
 
                 <p className="rounded-lg bg-muted/60 px-3 py-2 text-xs font-semibold text-foreground">
