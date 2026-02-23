@@ -1,11 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, BookOpenText, Languages, Target, Star, TrendingUp, SlidersHorizontal, Video, Trophy } from "lucide-react";
-import { getCurrentWeekProgress, getRecentWeeksProgress } from "../lib/weeklyProgress";
+import { BookOpen, BookOpenText, Languages, Target, Star, SlidersHorizontal, Video, Trophy } from "lucide-react";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
 import {
-  getCorrectAnswersForDate,
   getDailyGoalTargets,
   getTodayCorrectAnswers,
   getTodayXpProgress,
@@ -34,14 +32,6 @@ const GOAL_DEFINITIONS = [
 ] as const;
 
 
-function getGoalCompletionRatio(current: number, target: number) {
-  if (target <= 0) {
-    return 1;
-  }
-
-  return Math.min(current / target, 1);
-}
-
 export default function HomePage() {
   const navigate = useNavigate();
   const hour = new Date().getHours();
@@ -49,8 +39,6 @@ export default function HomePage() {
   const profileSettings = getStoredProfileSettings();
   const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
   const greeting = `${baseGreeting} ${displayName}`;
-  const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
-  const [showRecentWeeks, setShowRecentWeeks] = useState(false);
   const [flamingoRotation, setFlamingoRotation] = useState(0);
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
@@ -60,7 +48,6 @@ export default function HomePage() {
 
   useEffect(() => {
     const syncProgress = () => {
-      setWeeklyProgress(getCurrentWeekProgress());
       setTodayMetrics({
         lessons: getCompletedLessonsCountForDate(),
         xp: getTodayXpProgress(),
@@ -148,31 +135,6 @@ export default function HomePage() {
       })),
     [dailyGoalTargets, todayMetrics],
   );
-
-  const weeklyProgressPercentages = useMemo(
-    () =>
-      weeklyProgress.map((item) => {
-        const date = new Date(item.dateKey);
-        const lessons = getCompletedLessonsCountForDate(date);
-        const xp = item.progress;
-        const correctAnswers = getCorrectAnswersForDate(date);
-
-        const completionRatio =
-          (getGoalCompletionRatio(lessons, dailyGoalTargets.lessons) +
-            getGoalCompletionRatio(xp, dailyGoalTargets.xp) +
-            getGoalCompletionRatio(correctAnswers, dailyGoalTargets.correctAnswers)) /
-          3;
-
-        return {
-          ...item,
-          completionPercent: Math.round(completionRatio * 100),
-        };
-      }),
-    [dailyGoalTargets.correctAnswers, dailyGoalTargets.lessons, dailyGoalTargets.xp, weeklyProgress],
-  );
-
-  const recentWeeksProgress = useMemo(() => getRecentWeeksProgress(4), [weeklyProgress]);
-  const topWeekProgress = Math.max(...recentWeeksProgress.map((week) => week.totalProgress), 1);
 
   return (
     <div className="pb-20">
@@ -304,66 +266,6 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Streak Card */}
-        <button
-          type="button"
-          onClick={() => setShowRecentWeeks((currentValue) => !currentValue)}
-          className="bg-card rounded-2xl p-4 shadow-card w-full text-left"
-        >
-          <div className="flex items-center gap-3 mb-3">
-            <TrendingUp className="w-5 h-5 text-flamingo" />
-            <div>
-              <h2 className="font-extrabold text-foreground">Haftalık İlerleme</h2>
-              <p className="text-xs font-semibold text-muted-foreground">Son 4 haftayı görmek için dokun</p>
-            </div>
-          </div>
-          <div className="flex items-end justify-between gap-1">
-            {weeklyProgressPercentages.map((item, i) => {
-              const isToday = i === (new Date().getDay() + 6) % 7;
-              const hasProgress = item.completionPercent > 0;
-
-              return (
-                <div key={item.day} className="flex flex-col items-center gap-1 flex-1">
-                  <div className="w-full max-w-[32px] bg-muted rounded-lg overflow-hidden h-20 flex items-end">
-                    {hasProgress && (
-                      <div
-                        className={`w-full rounded-lg transition-all ${isToday ? "gradient-hero" : "gradient-sky"}`}
-                        style={{ height: `${item.completionPercent}%` }}
-                      />
-                    )}
-                  </div>
-                  <span
-                    className={`text-[10px] font-bold ${
-                      isToday ? "text-flamingo" : "text-muted-foreground"
-                    }`}
-                  >
-                    {item.day}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-          {showRecentWeeks && (
-            <div className="mt-4 space-y-2 border-t border-border pt-3">
-              {recentWeeksProgress.map((week, index) => {
-                const widthPercent = Math.round((week.totalProgress / topWeekProgress) * 100);
-                const weekTitle = `${index + 1} hafta önce`;
-
-                return (
-                  <div key={week.weekLabel} className="space-y-1">
-                    <div className="flex items-center justify-between text-xs font-bold">
-                      <span className="text-foreground">{weekTitle}</span>
-                      <span className="text-muted-foreground">{week.totalProgress} XP</span>
-                    </div>
-                    <div className="h-2 rounded-full bg-muted overflow-hidden">
-                      <div className="h-full gradient-sky rounded-full" style={{ width: `${widthPercent}%` }} />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </button>
       </div>
     </div>
   );
