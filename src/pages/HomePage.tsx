@@ -61,7 +61,7 @@ export default function HomePage() {
     if (!lessonsDone) {
       return {
         icon: BookOpen,
-        title: "Bugün ne yapmalıyım?",
+        title: "Sıradaki adım",
         label: "Sıradaki dersi tamamla",
         desc: "Serini korumak için kaldığın yerden devam et.",
         to: "/learn",
@@ -73,7 +73,7 @@ export default function HomePage() {
     if (!correctDone && topWeakType) {
       return {
         icon: Target,
-        title: "Bugün ne yapmalıyım?",
+        title: "Sıradaki adım",
         label: "Zayıf konunu tekrar et",
         desc: `Öneri: ${getExerciseTypeLabel(topWeakType.type)} pratiği yap.`,
         to: "/learn?view=tutorial&practice=adaptive",
@@ -85,7 +85,7 @@ export default function HomePage() {
     if (!xpDone) {
       return {
         icon: Star,
-        title: "Bugün ne yapmalıyım?",
+        title: "Sıradaki adım",
         label: "Hedef XP'yi tamamla",
         desc: `Kalan ${Math.max(dailyGoalTargets.xp - todayMetrics.xp, 0)} XP için kısa bir ders daha.`,
         to: "/learn",
@@ -96,7 +96,7 @@ export default function HomePage() {
 
     return {
       icon: Target,
-      title: "Bugün ne yapmalıyım?",
+      title: "Sıradaki adım",
       label: "Mini tekrar turu yap",
       desc: "Yarına hazırlanmak için 5 dakikalık pratik öneriyoruz.",
       to: "/learn?view=tutorial&practice=adaptive",
