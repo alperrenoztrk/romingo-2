@@ -515,9 +515,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Benim ___ öğretmen.",
-        correctAnswer: "annem",
-        options: ["annem", "evim", "okulum", "işim"],
+        sentence: "Mama mea este ___.",
+        correctAnswer: "profesoară",
+        options: ["profesoară", "casă", "școală", "serviciu"],
       },
       {
         type: "translation",
@@ -534,9 +534,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Annemin annesi benim ___.",
-        correctAnswer: "anneannem",
-        options: ["teyzem", "anneannem", "ablam", "annem"],
+        sentence: "Mama mamei mele este ___.",
+        correctAnswer: "bunica",
+        options: ["mătușa", "bunica", "sora", "mama"],
         hint: "Anne tarafındaki büyükanne",
       },
       {
@@ -903,9 +903,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Bu ürün çok pahalı. Daha ___ bir şey var mı?",
-        correctAnswer: "ucuz",
-        options: ["uzun", "ucuz", "sıcak", "tatlı"],
+        sentence: "Acest produs este foarte scump. Aveți ceva mai ___?",
+        correctAnswer: "ieftin",
+        options: ["lung", "ieftin", "cald", "dulce"],
       },
       {
         type: "translation",
@@ -973,9 +973,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "İşe gitmek için her sabah ___ biniyorum.",
-        correctAnswer: "otobüse",
-        options: ["otobüse", "yatağa", "markete", "kitaba"],
+        sentence: "În fiecare dimineață merg la serviciu cu ___.",
+        correctAnswer: "autobuzul",
+        options: ["autobuzul", "patul", "piața", "cartea"],
       },
       {
         type: "translation",
@@ -997,9 +997,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Havaalanına gitmek için ___ çağırdık.",
-        correctAnswer: "taksi",
-        options: ["taksi", "masa", "öğretmen", "kitap"],
+        sentence: "Am chemat un ___ ca să mergem la aeroport.",
+        correctAnswer: "taxi",
+        options: ["taxi", "masă", "profesor", "carte"],
       },
       {
         type: "translation",
@@ -1067,9 +1067,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Yemek masası ___ içinde.",
-        correctAnswer: "mutfağın",
-        options: ["mutfağın", "bahçenin", "arabanın", "sokağın"],
+        sentence: "Masa este în ___.",
+        correctAnswer: "bucătărie",
+        options: ["bucătărie", "grădină", "mașină", "stradă"],
       },
       {
         type: "translation",
@@ -1116,9 +1116,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Toplantı saat üçte ___ .",
-        correctAnswer: "başlıyor",
-        options: ["başlıyor", "gidiyor", "yatıyor", "geliyor"],
+        sentence: "Ședința ___ la ora trei.",
+        correctAnswer: "începe",
+        options: ["începe", "merge", "doarme", "vine"],
       },
       {
         type: "translation",
@@ -1140,9 +1140,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Ders on dakika içinde ___, lütfen geç kalma.",
-        correctAnswer: "başlıyor",
-        options: ["başlıyor", "evde", "bazen", "orada"],
+        sentence: "Lecția ___ în zece minute, te rog nu întârzia.",
+        correctAnswer: "începe",
+        options: ["începe", "acasă", "uneori", "acolo"],
       },
       {
         type: "translation",
@@ -1186,9 +1186,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Her sabah kahvaltıdan sonra kahve ___.",
-        correctAnswer: "içerim",
-        options: ["içerim", "koşarım", "yazarım", "uyurum"],
+        sentence: "În fiecare dimineață, după micul dejun, ___ cafea.",
+        correctAnswer: "beau",
+        options: ["beau", "alerg", "scriu", "dorm"],
       },
       {
         type: "translation",
@@ -1205,9 +1205,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Akşamları erken ___ çünkü sabah dersim var.",
-        correctAnswer: "uyurum",
-        options: ["uyurum", "yüzerim", "gülerim", "koşarım"],
+        sentence: "Seara ___ devreme pentru că dimineața am curs.",
+        correctAnswer: "dorm",
+        options: ["dorm", "înot", "râd", "alerg"],
       },
       {
         type: "translation",
@@ -1251,9 +1251,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Sabah saat yedide ___ ve hazırlanırım.",
-        correctAnswer: "uyanırım",
-        options: ["uyanırım", "uyurum", "koşarım", "yazarım"],
+        sentence: "La ora șapte dimineața ___ și mă pregătesc.",
+        correctAnswer: "mă trezesc",
+        options: ["mă trezesc", "dorm", "alerg", "scriu"],
       },
       {
         type: "translation",
@@ -1319,9 +1319,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Lütfen bir mercimek çorbası ___ .",
-        correctAnswer: "istiyorum",
-        options: ["istiyorum", "geliyorum", "gidiyorum", "alıyorum"],
+        sentence: "Vă rog, ___ o supă de linte.",
+        correctAnswer: "doresc",
+        options: ["doresc", "vin", "plec", "iau"],
       },
       {
         type: "translation",
@@ -1343,9 +1343,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Yemekten sonra bir ___ alalım.",
-        correctAnswer: "tatlı",
-        options: ["tatlı", "otobüs", "defter", "anahtar"],
+        sentence: "După masă, să luăm un ___.",
+        correctAnswer: "desert",
+        options: ["desert", "autobuz", "caiet", "cheie"],
       },
       {
         type: "translation",
@@ -1389,9 +1389,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Müze bankanın ___ .",
-        correctAnswer: "karşısında",
-        options: ["karşısında", "üstünde", "içinde", "arkasında"],
+        sentence: "Muzeul este ___ băncii.",
+        correctAnswer: "vizavi de",
+        options: ["vizavi de", "deasupra", "înăuntru", "în spatele"],
       },
       {
         type: "translation",
@@ -1408,9 +1408,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Okul parkın ___ yer alıyor.",
-        correctAnswer: "yanında",
-        options: ["yanında", "üstünde", "altında", "uzakta"],
+        sentence: "Școala este ___ parc.",
+        correctAnswer: "lângă",
+        options: ["lângă", "deasupra", "sub", "departe de"],
       },
       {
         type: "translation",
@@ -1457,9 +1457,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Sınavdan sonra biraz ___ hissediyorum.",
-        correctAnswer: "yorgun",
-        options: ["yorgun", "uzun", "kalın", "erken"],
+        sentence: "După examen mă simt puțin ___.",
+        correctAnswer: "obosit",
+        options: ["obosit", "lung", "gros", "devreme"],
       },
       {
         type: "translation",
@@ -1476,9 +1476,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Yoğun bir günden sonra herkes biraz ___ olabilir.",
-        correctAnswer: "stresli",
-        options: ["stresli", "tatlı", "sessiz", "aç"],
+        sentence: "După o zi aglomerată, oricine poate fi puțin ___.",
+        correctAnswer: "stresat",
+        options: ["stresat", "dulce", "liniștit", "flămând"],
       },
       {
         type: "translation",
@@ -1522,9 +1522,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Bugün çok yürüdüm, ___ ağrıyor.",
-        correctAnswer: "ayağım",
-        options: ["ayağım", "kalemim", "çantam", "elbisem"],
+        sentence: "Astăzi am mers mult, mă doare ___.",
+        correctAnswer: "piciorul",
+        options: ["piciorul", "pixul", "geanta", "rochia"],
       },
       {
         type: "translation",
@@ -1541,9 +1541,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Kitabı taşımaktan ___ yoruldu.",
-        correctAnswer: "kollarım",
-        options: ["kollarım", "masam", "defterim", "evim"],
+        sentence: "De la căratul cărții, mi-au obosit ___.",
+        correctAnswer: "brațele",
+        options: ["brațele", "masa", "caietul", "casa"],
       },
       {
         type: "translation",
@@ -1587,9 +1587,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Tatile çıkmadan önce ___ kontrol etmeliyim.",
-        correctAnswer: "pasaportumu",
-        options: ["pasaportumu", "kalemimi", "televizyonu", "masayı"],
+        sentence: "Înainte să plec în vacanță, trebuie să-mi verific ___.",
+        correctAnswer: "pașaportul",
+        options: ["pașaportul", "pixul", "televizorul", "masa"],
       },
       {
         type: "translation",
@@ -1652,9 +1652,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Başım ağrıyor, bir ___ lazım.",
-        correctAnswer: "ilaç",
-        options: ["ilaç", "bilet", "defter", "anahtar"],
+        sentence: "Mă doare capul, am nevoie de un ___.",
+        correctAnswer: "medicament",
+        options: ["medicament", "bilet", "caiet", "cheie"],
       },
       {
         type: "translation",
@@ -1717,9 +1717,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Toplantı için ___ şarj etmem gerekiyor.",
-        correctAnswer: "telefonumu",
-        options: ["telefonumu", "sandalyeyi", "kitabı", "pencereyi"],
+        sentence: "Pentru ședință trebuie să-mi încarc ___.",
+        correctAnswer: "telefonul",
+        options: ["telefonul", "scaunul", "cartea", "fereastra"],
       },
       {
         type: "translation",
@@ -1782,9 +1782,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Saat onda ekip ___ başlıyor.",
-        correctAnswer: "toplantısı",
-        options: ["toplantısı", "yemeği", "tatili", "oyunu"],
+        sentence: "La ora zece începe ___ echipei.",
+        correctAnswer: "ședința",
+        options: ["ședința", "masa", "vacanța", "jocul"],
       },
       {
         type: "translation",
@@ -1855,9 +1855,9 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Yarın matematik ___ var.",
-        correctAnswer: "sınavı",
-        options: ["sınavı", "arabası", "çantası", "kahvesi"],
+        sentence: "Mâine avem ___ la matematică.",
+        correctAnswer: "examen",
+        options: ["examen", "mașină", "geantă", "cafea"],
       },
       {
         type: "translation",
@@ -1906,7 +1906,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Yüzmek" fiilinin Romence karşılığı hangisi?', options: ["A alerga", "A înota", "A dansa", "A desena"], correctIndex: 1 },
       { type: "matching", pairs: [ { left: "Kitap okumak", right: "A citi cărți" }, { left: "Müzik dinlemek", right: "A asculta muzică" }, { left: "Resim yapmak", right: "A picta" }, { left: "Koşmak", right: "A alerga" } ] },
-      { type: "fill_blank", sentence: "Hafta sonları parkta ___ çok seviyorum.", correctAnswer: "koşmayı", options: ["koşmayı", "uyumayı", "beklemeyi", "unutmayı"] },
+      { type: "fill_blank", sentence: "În weekend îmi place mult să ___.", correctAnswer: "alerg", options: ["alerg", "dorm", "aștept", "uit"] },
       { type: "translation", sentence: "Îmi place să fac fotografie", direction: "ro-tr", correctAnswer: "Fotoğraf çekmeyi seviyorum", acceptedAnswers: ["Fotoğraf çekmeyi seviyorum", "fotoğraf çekmeyi seviyorum"] },
       { type: "multiple_choice", question: '"Boş zamanımda gitar çalıyorum" cümlesinin Romencesi hangisi?', options: ["În timpul liber citesc ziarul", "În timpul liber cânt la chitară", "În timpul liber fac curat", "În timpul liber gătesc supă"], correctIndex: 1 },
       { type: "fill_blank", sentence: "Romencede 'hobi' demek için ___ denir.", correctAnswer: "hobby", options: ["hobby", "vacanță", "serviciu", "examen"] },
@@ -1923,7 +1923,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Orman" Romence hangisidir?', options: ["Râu", "Munte", "Pădure", "Lac"], correctIndex: 2 },
       { type: "matching", pairs: [ { left: "Ağaç", right: "Copac" }, { left: "Nehir", right: "Râu" }, { left: "Dağ", right: "Munte" }, { left: "Göl", right: "Lac" } ] },
-      { type: "fill_blank", sentence: "Piknikte çöpleri mutlaka ___ atmalıyız.", correctAnswer: "geri dönüşüme", options: ["geri dönüşüme", "sokağa", "masaya", "çantaya"] },
+      { type: "fill_blank", sentence: "La picnic trebuie să aruncăm gunoiul la ___ .", correctAnswer: "reciclare", options: ["reciclare", "stradă", "masă", "geantă"] },
       { type: "translation", sentence: "Aerul este foarte curat aici", direction: "ro-tr", correctAnswer: "Burada hava çok temiz", acceptedAnswers: ["Burada hava çok temiz", "burada hava çok temiz"] },
       { type: "multiple_choice", question: '"Su tasarrufu yapmalıyız" cümlesinin Romencesi hangisi?', options: ["Trebuie să economisim apă", "Trebuie să cumpărăm apă", "Trebuie să încălzim apa", "Trebuie să turnăm apă"], correctIndex: 0 },
       { type: "fill_blank", sentence: "Romencede 'çevre' demek için ___ denir.", correctAnswer: "mediu", options: ["mediu", "oraș", "stradă", "piață"] },
@@ -1940,7 +1940,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Yardım edin!" Romence nasıl söylenir?', options: ["Mulțumesc!", "Ajutor!", "Poftă bună!", "La revedere!"], correctIndex: 1 },
       { type: "matching", pairs: [ { left: "Polis", right: "Poliție" }, { left: "Ambulans", right: "Ambulanță" }, { left: "İtfaiye", right: "Pompieri" }, { left: "Hastane", right: "Spital" } ] },
-      { type: "fill_blank", sentence: "Acil bir durumda önce ___ aramalıyız.", correctAnswer: "112'yi", options: ["112'yi", "arkadaşımı", "komşuyu", "restoranı"] },
+      { type: "fill_blank", sentence: "În caz de urgență, trebuie să sunăm mai întâi la ___.", correctAnswer: "112", options: ["112", "prietenul meu", "vecinul", "restaurantul"] },
       { type: "translation", sentence: "Sunați la ambulanță, vă rog", direction: "ro-tr", correctAnswer: "Lütfen ambulans çağırın", acceptedAnswers: ["Lütfen ambulans çağırın", "lütfen ambulans çağırın"] },
       { type: "multiple_choice", question: '"Yangın var" ifadesinin Romence karşılığı hangisi?', options: ["Este frig", "Este liniște", "Este incendiu", "Este târziu"], correctIndex: 2 },
       { type: "fill_blank", sentence: "Romencede 'tehlike' demek için ___ denir.", correctAnswer: "pericol", options: ["pericol", "drum", "lecție", "muzică"] },
@@ -1957,7 +1957,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Bayram" Romence hangisidir?', options: ["Muzeu", "Sărbătoare", "Piață", "Bibliotecă"], correctIndex: 1 },
       { type: "matching", pairs: [ { left: "Gelenek", right: "Tradiție" }, { left: "Düğün", right: "Nuntă" }, { left: "Misafir", right: "Oaspete" }, { left: "Festival", right: "Festival" } ] },
-      { type: "fill_blank", sentence: "Misafir gelince çay ___ adettendir.", correctAnswer: "ikram etmek", options: ["ikram etmek", "saklamak", "unutmak", "kapatmak"] },
+      { type: "fill_blank", sentence: "Când vin musafiri, este obicei să ___ ceai.", correctAnswer: "oferim", options: ["oferim", "ascundem", "uităm", "închidem"] },
       { type: "translation", sentence: "Respectăm tradițiile familiei", direction: "ro-tr", correctAnswer: "Aile geleneklerine saygı duyuyoruz", acceptedAnswers: ["Aile geleneklerine saygı duyuyoruz", "aile geleneklerine saygı duyuyoruz"] },
       { type: "multiple_choice", question: '"Müzeyi ziyaret ediyoruz" cümlesinin Romencesi hangisi?', options: ["Vizităm muzeul", "Închidem muzeul", "Curățăm muzeul", "Vindem muzeul"], correctIndex: 0 },
       { type: "fill_blank", sentence: "Romencede 'kültür' için ___ kelimesi kullanılır.", correctAnswer: "cultură", options: ["cultură", "mâncare", "meserie", "stradă"] },
@@ -1974,7 +1974,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Hesap" için doğru Romence kelime hangisi?', options: ["Cont", "Card", "Dobândă", "Bancnotă"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Kredi kartı", right: "Card de credit" }, { left: "Nakit", right: "Numerar" }, { left: "Fatura", right: "Factură" }, { left: "Banka", right: "Bancă" } ] },
-      { type: "fill_blank", sentence: "Bugün bankada yeni bir ___ açacağım.", correctAnswer: "hesap", options: ["hesap", "çanta", "defter", "bilet"] },
+      { type: "fill_blank", sentence: "Astăzi voi deschide un ___ nou la bancă.", correctAnswer: "cont", options: ["cont", "geantă", "caiet", "bilet"] },
       { type: "translation", sentence: "Vreau să schimb bani", direction: "ro-tr", correctAnswer: "Para bozdurmak istiyorum", acceptedAnswers: ["Para bozdurmak istiyorum", "para bozdurmak istiyorum"] },
       { type: "multiple_choice", question: '"Temassız ödeme" Romence nasıl söylenir?', options: ["Plată rapidă", "Plată fără contact", "Plată în numerar", "Plată de noapte"], correctIndex: 1 },
       { type: "fill_blank", sentence: "Romencede 'faiz' demek için ___ denir.", correctAnswer: "dobândă", options: ["dobândă", "prieten", "lecție", "vacanță"] },
@@ -1991,7 +1991,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Mesaj göndermek" Romence hangisidir?', options: ["A trimite un mesaj", "A deschide ușa", "A face cumpărături", "A găti"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Bağlantı", right: "Conexiune" }, { left: "Uygulama", right: "Aplicație" }, { left: "Şifre", right: "Parolă" }, { left: "Toplantı linki", right: "Link de întâlnire" } ] },
-      { type: "fill_blank", sentence: "Toplantı başlamadan önce mikrofonunu ___ unutma.", correctAnswer: "açmayı", options: ["açmayı", "silmeyi", "satmayı", "dondurmayı"] },
+      { type: "fill_blank", sentence: "Înainte să înceapă ședința, nu uita să ___ microfonul.", correctAnswer: "pornești", options: ["pornești", "ștergi", "vinzi", "îngheți"] },
       { type: "translation", sentence: "Conexiunea la internet este lentă", direction: "ro-tr", correctAnswer: "İnternet bağlantısı yavaş", acceptedAnswers: ["İnternet bağlantısı yavaş", "internet bağlantısı yavaş"] },
       { type: "multiple_choice", question: '"Görüntülü arama yapalım" cümlesinin Romencesi hangisi?', options: ["Să trimitem o scrisoare", "Să facem un apel video", "Să închidem telefonul", "Să ieșim afară"], correctIndex: 1 },
       { type: "fill_blank", sentence: "Romencede 'bildirim' için ___ kelimesi kullanılır.", correctAnswer: "notificare", options: ["notificare", "fereastră", "pagină", "hartă"] },
