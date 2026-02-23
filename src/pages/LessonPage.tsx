@@ -178,7 +178,7 @@ export default function LessonPage() {
   const [feedbackSpark, setFeedbackSpark] = useState(0);
   const [, setCorrectStreak] = useState(0);
   const [hattrickBonusXp, setHattrickBonusXp] = useState(0);
-  const [correctFeedbackMessage, setCorrectFeedbackMessage] = useState(CORRECT_FEEDBACK_MESSAGES[0]);
+  const [correctFeedbackMessage, setCorrectFeedbackMessage] = useState<string>(CORRECT_FEEDBACK_MESSAGES[0]);
   const [exerciseIndexes, setExerciseIndexes] = useState<number[]>([]);
   const [wrongExerciseIndexes, setWrongExerciseIndexes] = useState<number[]>([]);
   const [queuedRetryIndexes, setQueuedRetryIndexes] = useState<number[]>([]);
