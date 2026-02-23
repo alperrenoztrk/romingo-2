@@ -697,20 +697,27 @@ export default function LessonPage() {
             isCorrect ? "bg-success-light border-success" : "bg-flamingo-light border-flamingo"
           }`}
         >
-          <div className="max-w-lg mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              {isCorrect ? (
-                <Check className="w-6 h-6 text-success" />
-              ) : (
-                <X className="w-6 h-6 text-flamingo" />
-              )}
-              <span className={`font-extrabold ${isCorrect ? "text-success" : "text-flamingo"}`}>
-                {isCorrect ? correctFeedbackMessage : hearts <= 0 ? "Canların tükendi" : "Tekrar dene"}
-              </span>
-              {isCorrect && (
-                <span key={feedbackSpark} className="text-lg animate-bounce" aria-hidden>
-                  ✨🎉
+          <div className="max-w-lg mx-auto flex items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2">
+                {isCorrect ? (
+                  <Check className="w-6 h-6 text-success" />
+                ) : (
+                  <X className="w-6 h-6 text-flamingo" />
+                )}
+                <span className={`font-extrabold ${isCorrect ? "text-success" : "text-flamingo"}`}>
+                  {isCorrect ? correctFeedbackMessage : hearts <= 0 ? "Canların tükendi" : "Tekrar dene"}
                 </span>
+                {isCorrect && (
+                  <span key={feedbackSpark} className="text-lg animate-bounce" aria-hidden>
+                    ✨🎉
+                  </span>
+                )}
+              </div>
+              {!isCorrect && (
+                <p className="mt-1 text-sm font-bold text-foreground/80">
+                  Doğru cevap: <span className="text-foreground">{revealedAnswerText}</span>
+                </p>
               )}
             </div>
             <button
