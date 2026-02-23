@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
-import { Flame, BookOpen, Star, Award, Settings, LogOut, Trophy, CheckCircle2, TrendingUp } from "lucide-react";
+import { Flame, BookOpen, Star, Award, Settings, LogOut, Trophy, CheckCircle2, TrendingUp, SlidersHorizontal } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getStoredProfileSettings } from "@/lib/account";
 import { getProfileProgressStory } from "@/lib/profileProgress";
 import { getCurrentWeekProgress, getRecentWeeksProgress } from "@/lib/weeklyProgress";
-import { getDailyGoalTargets, getCorrectAnswersForDate } from "@/lib/dailyGoals";
+import { getDailyGoalTargets, getCorrectAnswersForDate, getTodayCorrectAnswers, getTodayXpProgress } from "@/lib/dailyGoals";
 import { getCompletedLessonsCountForDate } from "@/lib/lessonProgress";
+import { learningEconomyUpdatedEvent } from "@/lib/learningEconomy";
 
 type ProfilePageProps = {
   isGuest?: boolean;
@@ -33,6 +34,21 @@ const TIER_LABELS: Record<TierLevel, string> = {
   silver: "Gümüş",
   gold: "Altın",
 };
+
+const GOAL_DEFINITIONS = [
+  {
+    metricKey: "lessons",
+    label: "Ders Tamamla",
+  },
+  {
+    metricKey: "xp",
+    label: "XP Kazan",
+  },
+  {
+    metricKey: "correctAnswers",
+    label: "Doğru Cevap Ver",
+  },
+] as const;
 
 function getClaimedState() {
   const raw = localStorage.getItem(ACHIEVEMENT_CLAIMS_KEY);
@@ -64,6 +80,11 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
   const [claimed, setClaimed] = useState<Record<string, TierLevel[]>>(() => getClaimedState());
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
   const [showRecentWeeks, setShowRecentWeeks] = useState(false);
+  const [todayMetrics, setTodayMetrics] = useState({
+    lessons: getCompletedLessonsCountForDate(),
+    xp: getTodayXpProgress(),
+    correctAnswers: getTodayCorrectAnswers(),
+  });
 
   const achievementTracks: AchievementTrack[] = [
     {
@@ -95,16 +116,25 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
   const totalClaimedTiers = Object.values(claimed).reduce((sum, tiers) => sum + tiers.length, 0);
 
   useEffect(() => {
-    const syncWeeklyProgress = () => {
+    const syncProgress = () => {
       setWeeklyProgress(getCurrentWeekProgress());
+      setTodayMetrics({
+        lessons: getCompletedLessonsCountForDate(),
+        xp: getTodayXpProgress(),
+        correctAnswers: getTodayCorrectAnswers(),
+      });
     };
 
-    const interval = setInterval(syncWeeklyProgress, 1000);
-    window.addEventListener("storage", syncWeeklyProgress);
+    const interval = setInterval(syncProgress, 1000);
+    window.addEventListener("storage", syncProgress);
+    window.addEventListener("romingo:daily-goals-updated", syncProgress);
+    window.addEventListener(learningEconomyUpdatedEvent, syncProgress);
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener("storage", syncWeeklyProgress);
+      window.removeEventListener("storage", syncProgress);
+      window.removeEventListener("romingo:daily-goals-updated", syncProgress);
+      window.removeEventListener(learningEconomyUpdatedEvent, syncProgress);
     };
   }, []);
 
@@ -151,6 +181,17 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
     localStorage.setItem(ACHIEVEMENT_CLAIMS_KEY, JSON.stringify(next));
   };
 
+  const dailyGoals = useMemo(
+    () =>
+      GOAL_DEFINITIONS.map((goal) => ({
+        id: goal.metricKey,
+        label: goal.label,
+        target: dailyGoalTargets[goal.metricKey],
+        current: todayMetrics[goal.metricKey],
+      })),
+    [dailyGoalTargets, todayMetrics],
+  );
+
   return (
     <div className="pb-20">
       <StatsBar />
@@ -176,6 +217,55 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
 
         <div className="bg-card rounded-2xl p-4 shadow-card">
           <XPProgress current={Math.min(story.thisWeekXp, 1200)} total={1200} level={5} />
+        </div>
+
+        <div className="bg-card rounded-2xl p-4 shadow-card">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <h2 className="font-extrabold text-foreground flex items-center gap-2">
+              <Star className="w-5 h-5 text-gold" fill="hsl(var(--gold))" />
+              Günlük Hedefler
+            </h2>
+            <Link
+              to="/settings/daily-goals"
+              className="inline-flex items-center gap-1 rounded-lg border border-border bg-muted/40 px-3 py-1.5 text-xs font-extrabold text-foreground hover:bg-muted transition-colors"
+            >
+              <SlidersHorizontal className="w-3.5 h-3.5" />
+              Ayarla
+            </Link>
+          </div>
+          <div className="space-y-3">
+            {dailyGoals.map((goal) => {
+              const done = goal.current >= goal.target;
+
+              return (
+                <div key={goal.id} className="flex items-center gap-3 justify-between">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div
+                      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                        done
+                          ? "bg-success text-accent-foreground"
+                          : "bg-muted text-muted-foreground"
+                      }`}
+                    >
+                      {done ? "✓" : ""}
+                    </div>
+                    <div className="min-w-0">
+                      <span
+                        className={`font-semibold text-sm ${
+                          done ? "text-foreground line-through opacity-60" : "text-foreground"
+                        }`}
+                      >
+                        {goal.label}
+                      </span>
+                      <p className="text-xs text-muted-foreground font-semibold">
+                        {goal.current}/{goal.target}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div className="bg-card rounded-2xl p-4 shadow-card">
