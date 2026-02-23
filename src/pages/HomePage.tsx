@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, BookOpenText, Languages, Target, Star, TrendingUp, SlidersHorizontal, Video, Trophy } from "lucide-react";
+import { BookOpen, BookOpenText, Languages, Target, Star, TrendingUp, Video, Trophy } from "lucide-react";
 import { getCurrentWeekProgress, getRecentWeeksProgress } from "../lib/weeklyProgress";
 import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
@@ -14,25 +14,6 @@ import {
   learningEconomyUpdatedEvent,
 } from "@/lib/learningEconomy";
 import { getAdaptivePracticePlan, getExerciseTypeLabel } from "@/lib/adaptivePractice";
-
-const GOAL_DEFINITIONS = [
-  {
-    metricKey: "lessons",
-    label: "Ders Tamamla",
-    target: 1,
-  },
-  {
-    metricKey: "xp",
-    label: "XP Kazan",
-    target: 120,
-  },
-  {
-    metricKey: "correctAnswers",
-    label: "Doğru Cevap Ver",
-    target: 10,
-  },
-] as const;
-
 
 function getGoalCompletionRatio(current: number, target: number) {
   if (target <= 0) {
@@ -138,17 +119,6 @@ export default function HomePage() {
   }, [dailyGoalTargets.correctAnswers, dailyGoalTargets.xp, practicePlan.weakTypes, todayMetrics.correctAnswers, todayMetrics.lessons, todayMetrics.xp]);
 
 
-  const dailyGoals = useMemo(
-    () =>
-      GOAL_DEFINITIONS.map((goal) => ({
-        id: goal.metricKey,
-        label: goal.label,
-        target: dailyGoalTargets[goal.metricKey],
-        current: todayMetrics[goal.metricKey],
-      })),
-    [dailyGoalTargets, todayMetrics],
-  );
-
   const weeklyProgressPercentages = useMemo(
     () =>
       weeklyProgress.map((item) => {
@@ -190,57 +160,6 @@ export default function HomePage() {
           </button>
           <div>
             <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
-          </div>
-        </div>
-
-        {/* Daily Goals */}
-        <div className="bg-card rounded-2xl p-4 shadow-card">
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <h2 className="font-extrabold text-foreground flex items-center gap-2">
-              <Star className="w-5 h-5 text-gold" fill="hsl(var(--gold))" />
-              Günlük Hedefler
-            </h2>
-            <button
-              type="button"
-              onClick={() => navigate("/settings/daily-goals")}
-              className="inline-flex items-center gap-1 rounded-lg border border-border bg-muted/40 px-3 py-1.5 text-xs font-extrabold text-foreground hover:bg-muted transition-colors"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
-              Ayarla
-            </button>
-          </div>
-          <div className="space-y-3">
-            {dailyGoals.map((goal) => {
-              const done = goal.current >= goal.target;
-
-              return (
-                <div key={goal.id} className="flex items-center gap-3 justify-between">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div
-                      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                        done
-                          ? "bg-success text-accent-foreground"
-                          : "bg-muted text-muted-foreground"
-                      }`}
-                    >
-                      {done ? "✓" : ""}
-                    </div>
-                    <div className="min-w-0">
-                      <span
-                        className={`font-semibold text-sm ${
-                          done ? "text-foreground line-through opacity-60" : "text-foreground"
-                        }`}
-                      >
-                        {goal.label}
-                      </span>
-                      <p className="text-xs text-muted-foreground font-semibold">
-                        {goal.current}/{goal.target}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
 
