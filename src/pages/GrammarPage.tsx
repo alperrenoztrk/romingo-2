@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, BookOpenText, Bookmark, Lightbulb } from "lucide-react";
+import { ArrowLeft, BookOpenText, Bookmark } from "lucide-react";
 
 type GrammarChapter = {
   title: string;
@@ -9,7 +9,6 @@ type GrammarChapter = {
     subtitle: string;
     explanation: string;
     examples: string[];
-    tips?: string[];
   }[];
 };
 
@@ -29,10 +28,6 @@ const grammarBook: GrammarChapter[] = [
           "Ea citește o carte. → O, bir kitap okuyor.",
           "Noi locuim în București. → Biz Bükreş'te yaşıyoruz.",
         ],
-        tips: [
-          "Fiilin kökünü ve şahıs eklerini birlikte ezberle.",
-          "Her yeni fiil için en az 3 kişiyle mini cümle kur.",
-        ],
       },
       {
         subtitle: "1.2 Geçmiş Zaman (Perfect compus ve Imperfect)",
@@ -42,10 +37,6 @@ const grammarBook: GrammarChapter[] = [
           "Am mâncat deja. → Çoktan yemek yedim.",
           "Când eram mic, mergeam la bunici vara. → Küçükken yazları büyükanne-büyükbabama giderdim.",
           "Am văzut filmul ieri seară. → Filmi dün akşam izledim.",
-        ],
-        tips: [
-          "Perfect compus: yardımcı fiil (a avea) + geçmiş ortaç mantığına odaklan.",
-          "Hikâye anlatırken imperfect ve perfect compus'u birlikte kullanmayı çalış.",
         ],
       },
       {
@@ -84,9 +75,6 @@ const grammarBook: GrammarChapter[] = [
           "Düzenli: a lucra (çalışmak), a cânta (şarkı söylemek)",
           "Düzensiz: a fi (olmak), a avea (sahip olmak), a vrea (istemek)",
           "Eu sunt student. → Ben öğrenciyim.",
-        ],
-        tips: [
-          "En sık kullanılan 20 düzensiz fiil için kart sistemi oluştur.",
         ],
       },
     ],
@@ -178,11 +166,11 @@ export default function GrammarPage() {
           <header className="space-y-3 border-b border-border pb-4">
             <div className="flex items-center gap-3">
               <BookOpenText className="h-7 w-7 text-flamingo" />
-              <h1 className="text-2xl font-black text-foreground">Romence Gramer Rehberi · Kitap Formatı</h1>
+              <h1 className="text-2xl font-black text-foreground">Romence Dil Bilgisi Rehberi · Kitap Formatı</h1>
             </div>
             <p className="text-sm font-medium text-muted-foreground leading-relaxed">
-              Bu sayfa, Romence gramerini bölüm bölüm öğrenebilmen için "mini ders kitabı" düzeninde hazırlandı.
-              Her bölümde konu özeti, örnek cümleler ve çalışma ipuçları bulunur.
+              Bu sayfa, Romence dil bilgisini bölüm bölüm öğrenebilmen için "mini ders kitabı" düzeninde hazırlandı.
+              Her bölümde konu özeti ve örnek cümleler bulunur.
             </p>
           </header>
 
@@ -219,21 +207,6 @@ export default function GrammarPage() {
                         </ul>
                       </div>
 
-                      {section.tips?.length ? (
-                        <div className="rounded-md border border-flamingo/30 bg-flamingo/5 p-3">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Lightbulb className="h-4 w-4 text-flamingo" />
-                            <p className="text-xs font-bold uppercase tracking-wide text-flamingo">Çalışma İpuçları</p>
-                          </div>
-                          <ul className="space-y-1 list-disc pl-5">
-                            {section.tips.map((tip) => (
-                              <li key={tip} className="text-sm text-foreground/90">
-                                {tip}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ) : null}
                     </article>
                   ))}
                 </div>
