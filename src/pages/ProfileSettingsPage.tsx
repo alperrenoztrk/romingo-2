@@ -16,7 +16,7 @@ export default function ProfileSettingsPage() {
 
     toast({
       title: "Profil bilgileri güncellendi",
-      description: "Ad, kullanıcı adı ve avatar kaydedildi.",
+      description: "Ad soyad ve avatar kaydedildi.",
     });
   };
 
@@ -31,7 +31,7 @@ export default function ProfileSettingsPage() {
           </Link>
           <div>
             <h1 className="text-2xl font-black text-foreground">Profil Bilgileri</h1>
-            <p className="text-sm font-semibold text-muted-foreground mt-1">Ad, kullanıcı adı ve avatar bilgilerini düzenle.</p>
+            <p className="text-sm font-semibold text-muted-foreground mt-1">Ad soyad ve avatar bilgilerini düzenle.</p>
           </div>
         </div>
 
@@ -46,15 +46,6 @@ export default function ProfileSettingsPage() {
               value={profile.fullName}
               onChange={(event) => setProfile((prev) => ({ ...prev, fullName: event.target.value }))}
               placeholder="Ad Soyad"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-bold text-foreground">Kullanıcı Adı</label>
-            <Input
-              value={profile.username}
-              onChange={(event) => setProfile((prev) => ({ ...prev, username: event.target.value }))}
-              placeholder="@kullaniciadi"
             />
           </div>
 

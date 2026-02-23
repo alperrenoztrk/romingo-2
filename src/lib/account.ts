@@ -1,6 +1,5 @@
 export interface ProfileSettings {
   fullName: string;
-  username: string;
   avatar: string;
 }
 
@@ -15,7 +14,6 @@ export const SECURITY_SETTINGS_KEY = "romingo_security_settings";
 
 export const DEFAULT_PROFILE_SETTINGS: ProfileSettings = {
   fullName: "Alperren",
-  username: "@alperren",
   avatar: "🦩",
 };
 
@@ -34,7 +32,6 @@ export function getStoredProfileSettings(): ProfileSettings {
 
     return {
       fullName: parsed.fullName ?? DEFAULT_PROFILE_SETTINGS.fullName,
-      username: parsed.username ?? DEFAULT_PROFILE_SETTINGS.username,
       avatar: parsed.avatar ?? DEFAULT_PROFILE_SETTINGS.avatar,
     };
   } catch {

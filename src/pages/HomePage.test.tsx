@@ -5,10 +5,10 @@ import HomePage from "./HomePage";
 import { PROFILE_SETTINGS_KEY } from "@/lib/account";
 
 describe("HomePage", () => {
-  it("adds the username to the time-based greeting", () => {
+  it("adds the full name to the time-based greeting", () => {
     localStorage.setItem(
       PROFILE_SETTINGS_KEY,
-      JSON.stringify({ fullName: "Tester User", username: "@tester", avatar: "🦩" }),
+      JSON.stringify({ fullName: "Tester User", avatar: "🦩" }),
     );
 
     const getHoursSpy = vi.spyOn(Date.prototype, "getHours").mockReturnValue(20);
@@ -19,7 +19,7 @@ describe("HomePage", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText("İyi akşamlar tester!")).toBeInTheDocument();
+    expect(screen.getByText("İyi akşamlar Tester User")).toBeInTheDocument();
     expect(screen.queryByText(/SEVİYE/i)).not.toBeInTheDocument();
 
     getHoursSpy.mockRestore();
