@@ -2,7 +2,7 @@ import { getEconomySnapshot, learningEconomyUpdatedEvent } from "./learningEcono
 
 const TOTAL_XP_KEY = "romingo.profile.totalXp.v1";
 const PROFILE_UPDATED_EVENT = "romingo:profile-updated";
-const DEFAULT_TOTAL_XP = 1450;
+const DEFAULT_TOTAL_XP = 0;
 
 function emitProfileUpdated() {
   if (typeof window !== "undefined") {
