@@ -115,6 +115,144 @@
 }
 
 @layer utilities {
+  .heart-break {
+    position: relative;
+    width: 1.25rem;
+    height: 1.25rem;
+    filter: drop-shadow(0 0 6px hsl(var(--flamingo) / 0.25));
+  }
+
+  .heart-break__half {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    will-change: transform, opacity;
+  }
+
+  .heart-break__half--left {
+    clip-path: polygon(0 0, 56% 0, 48% 20%, 58% 38%, 45% 56%, 56% 76%, 45% 100%, 0 100%);
+    animation: heart-break-left 760ms cubic-bezier(0.18, 0.75, 0.32, 1) forwards;
+  }
+
+  .heart-break__half--right {
+    clip-path: polygon(56% 0, 100% 0, 100% 100%, 45% 100%, 56% 76%, 45% 56%, 58% 38%, 48% 20%);
+    animation: heart-break-right 760ms cubic-bezier(0.18, 0.75, 0.32, 1) forwards;
+  }
+
+  .heart-break__crack {
+    position: absolute;
+    left: 50%;
+    top: 0.1rem;
+    width: 0.18rem;
+    height: 1rem;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      180deg,
+      hsl(var(--background) / 0.98) 0%,
+      hsl(var(--background) / 0.92) 40%,
+      hsl(var(--background) / 0.75) 100%
+    );
+    clip-path: polygon(45% 0, 100% 12%, 60% 28%, 98% 44%, 35% 62%, 90% 80%, 25% 100%, 0 88%, 30% 66%, 0 44%, 40% 26%, 0 10%);
+    animation: heart-break-crack 760ms ease-out forwards;
+  }
+
+  .heart-break__shard {
+    position: absolute;
+    bottom: 0.15rem;
+    width: 0.16rem;
+    height: 0.16rem;
+    border-radius: 9999px;
+    background: hsl(var(--flamingo));
+    opacity: 0;
+  }
+
+  .heart-break__shard--left {
+    left: 0.45rem;
+    animation: heart-break-shard-left 760ms ease-out forwards;
+  }
+
+  .heart-break__shard--right {
+    right: 0.45rem;
+    animation: heart-break-shard-right 760ms ease-out forwards;
+  }
+
+  @keyframes heart-break-left {
+    0% {
+      transform: translateX(0) rotate(0deg);
+      opacity: 1;
+    }
+    35% {
+      transform: translateX(-0.06rem) rotate(-7deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-0.34rem) translateY(0.2rem) rotate(-20deg);
+      opacity: 0.88;
+    }
+  }
+
+  @keyframes heart-break-right {
+    0% {
+      transform: translateX(0) rotate(0deg);
+      opacity: 1;
+    }
+    35% {
+      transform: translateX(0.06rem) rotate(7deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0.34rem) translateY(0.2rem) rotate(20deg);
+      opacity: 0.88;
+    }
+  }
+
+  @keyframes heart-break-crack {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%) scaleY(0.25);
+    }
+    35% {
+      opacity: 1;
+      transform: translateX(-50%) scaleY(1);
+    }
+    100% {
+      opacity: 0.88;
+      transform: translateX(-50%) scaleY(1);
+    }
+  }
+
+  @keyframes heart-break-shard-left {
+    0%,
+    28% {
+      transform: translate(0, 0) scale(0.6);
+      opacity: 0;
+    }
+    55% {
+      transform: translate(-0.16rem, 0.1rem) scale(1);
+      opacity: 0.95;
+    }
+    100% {
+      transform: translate(-0.32rem, 0.38rem) scale(0.7);
+      opacity: 0;
+    }
+  }
+
+  @keyframes heart-break-shard-right {
+    0%,
+    28% {
+      transform: translate(0, 0) scale(0.6);
+      opacity: 0;
+    }
+    55% {
+      transform: translate(0.16rem, 0.1rem) scale(1);
+      opacity: 0.95;
+    }
+    100% {
+      transform: translate(0.32rem, 0.38rem) scale(0.7);
+      opacity: 0;
+    }
+  }
+
   .gradient-hero {
     background: var(--gradient-hero);
   }

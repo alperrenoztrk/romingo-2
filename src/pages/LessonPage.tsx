@@ -500,7 +500,7 @@ export default function LessonPage() {
 
     const timer = window.setTimeout(() => {
       setIsHeartBreakAnimating(false);
-    }, 550);
+    }, 760);
 
     return () => {
       window.clearTimeout(timer);
@@ -595,14 +595,16 @@ export default function LessonPage() {
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
             {isHeartBreakAnimating ? (
-              <span className="relative h-5 w-5" aria-hidden>
-                <span className="absolute inset-0 overflow-hidden [clip-path:inset(0_50%_0_0)]">
-                  <Heart className="h-5 w-5 text-flamingo transition-transform duration-500 -translate-x-[2px] -rotate-12" fill="hsl(var(--flamingo))" />
+              <span className="heart-break" aria-hidden>
+                <span className="heart-break__half heart-break__half--left">
+                  <Heart className="h-5 w-5 text-flamingo" fill="hsl(var(--flamingo))" />
                 </span>
-                <span className="absolute inset-0 overflow-hidden [clip-path:inset(0_0_0_50%)]">
-                  <Heart className="h-5 w-5 text-flamingo transition-transform duration-500 translate-x-[2px] rotate-12" fill="hsl(var(--flamingo))" />
+                <span className="heart-break__half heart-break__half--right">
+                  <Heart className="h-5 w-5 text-flamingo" fill="hsl(var(--flamingo))" />
                 </span>
-                <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-background/80" />
+                <span className="heart-break__crack" />
+                <span className="heart-break__shard heart-break__shard--left" />
+                <span className="heart-break__shard heart-break__shard--right" />
               </span>
             ) : (
               <Heart className="w-5 h-5 text-flamingo" fill="hsl(var(--flamingo))" />
