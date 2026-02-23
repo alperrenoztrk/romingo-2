@@ -239,9 +239,6 @@ export default function LessonPage() {
     return lessonMascots[mascotIndex];
   }, [currentExerciseIndex, currentIndex]);
 
-  const hasPreviousWrongAttempt =
-    typeof currentExerciseIndex === "number" && wrongExerciseIndexes.includes(currentExerciseIndex);
-
   const currentExercise = useMemo(() => {
     if (typeof currentExerciseIndex !== "number") {
       return undefined;
@@ -675,12 +672,7 @@ export default function LessonPage() {
                 <MultipleChoiceEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
               )}
               {currentExercise.type === "fill_blank" && (
-                <FillBlankEx
-                  exercise={currentExercise}
-                  onAnswer={handleAnswer}
-                  answered={answered}
-                  showHint={hasPreviousWrongAttempt}
-                />
+                <FillBlankEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
               )}
               {currentExercise.type === "translation" && (
                 <TranslationEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
@@ -692,12 +684,7 @@ export default function LessonPage() {
                 <ListeningEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
               )}
               {currentExercise.type === "sentence_builder" && (
-                <SentenceBuilderEx
-                  exercise={currentExercise}
-                  onAnswer={handleAnswer}
-                  answered={answered}
-                  showHint={hasPreviousWrongAttempt}
-                />
+                <SentenceBuilderEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
               )}
             </div>
           </>
