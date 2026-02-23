@@ -36,6 +36,9 @@ export const lessonCatalog: LessonCatalogItem[] = [
   { id: "28", title: "Hobiler", emoji: "🎯", level: 10 },
   { id: "29", title: "Doğa ve Çevre", emoji: "🌿", level: 10 },
   { id: "30", title: "Acil Durumlar", emoji: "🚨", level: 10 },
+  { id: "31", title: "Kültür ve Gelenekler", emoji: "🏛️", level: 11 },
+  { id: "32", title: "Finans ve Banka", emoji: "💳", level: 11 },
+  { id: "33", title: "Dijital İletişim", emoji: "📱", level: 11 },
 ];
 
 export const orderedLessonIds = lessonCatalog.map((lesson) => lesson.id);
