@@ -35,7 +35,7 @@ function getDefaultHeartState(): HeartState {
 
 function getDefaultStreakState(): StreakState {
   return {
-    streakCount: 12,
+    streakCount: 0,
     lastActiveDate: new Date(Date.now()).toISOString().slice(0, 10),
     shieldCount: 0,
   };
@@ -89,7 +89,7 @@ function readStreakState(): StreakState {
     }
 
     return {
-      streakCount: Math.max(1, Math.floor(parsed.streakCount)),
+      streakCount: Math.max(0, Math.floor(parsed.streakCount)),
       lastActiveDate: parsed.lastActiveDate,
       shieldCount: Math.max(0, Math.floor(parsed.shieldCount)),
     };
