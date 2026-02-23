@@ -1,4 +1,4 @@
-import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable/index";
 import { LogIn } from "lucide-react";
 import { useState } from "react";
 
@@ -12,11 +12,8 @@ export default function LoginPage({ onGuestLogin }: LoginPageProps) {
   const handleGoogleLogin = async () => {
     setIsGoogleLoading(true);
 
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/`,
-      },
+    const { error } = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: window.location.origin,
     });
 
     if (error) {
