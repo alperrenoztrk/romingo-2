@@ -13,125 +13,191 @@ type GrammarChapter = {
 
 const grammarBook: GrammarChapter[] = [
   {
-    title: "Bölüm 1 · Romence Zamanlar (Timpuri verbale)",
-    level: "A1 → B2",
+    title: "Bölüm 1 · Alfabe, Telaffuz ve Vurgu",
+    level: "A1",
     sections: [
       {
-        subtitle: "1.1 Şimdiki Zaman (Prezent)",
+        subtitle: "1.1 Romence Alfabesi ve Türkçeden Farklı Harfler",
         explanation:
-          "Günlük hayatta en sık kullanılan zamandır. Alışkanlıkları, genel doğruları ve şu anda olan eylemleri anlatır.",
+          "Romence Latin alfabesini kullanır. ă, â, î, ș, ț harfleri hem telaffuz hem anlam açısından kritiktir; yanlış harf kullanımı kelimeyi değiştirebilir.",
         examples: [
-          "Eu învăț româna în fiecare zi. → Her gün Romence öğreniyorum.",
-          "Ea citește o carte. → O, bir kitap okuyor.",
-          "Noi locuim în București. → Biz Bükreş'te yaşıyoruz.",
+          "fată (kız) / fata (kız [belirli])",
+          "țară (ülke) / sare (tuz)",
+          "în (içinde) / in (keten)",
         ],
       },
       {
-        subtitle: "1.2 Geçmiş Zaman (Perfect compus ve Imperfect)",
+        subtitle: "1.2 Temel Okunuş Kuralları",
         explanation:
-          "Perfect compus tamamlanmış eylemler için, imperfect ise geçmişteki devam eden durumlar veya alışkanlıklar için kullanılır.",
+          "Genel olarak yazıldığı gibi okunur; ancak ce/ci ve ge/gi birleşimleri Türkçedeki 'çe/çi' ve 'ce/ci' benzeri sesler üretir. ș = ş, ț = ts sesidir.",
         examples: [
-          "Am mâncat deja. → Çoktan yemek yedim.",
-          "Când eram mic, mergeam la bunici vara. → Küçükken yazları büyükanne-büyükbabama giderdim.",
-          "Am văzut filmul ieri seară. → Filmi dün akşam izledim.",
+          "cine → çine (kim)",
+          "ger → cer benzeri sert başlangıç",
+          "șapte → şapte (yedi)",
         ],
       },
       {
-        subtitle: "1.3 Gelecek Zaman (Viitor)",
+        subtitle: "1.3 Vurgu ve Akıcılık",
         explanation:
-          "Plan, niyet ve tahmin bildirmek için kullanılır. Günlük konuşmada kısa kalıplar çok yaygındır.",
+          "Vurgu çoğunlukla sondan bir önceki hecededir; fakat ezberlenmesi gereken istisnalar vardır. Akıcı konuşma için kelime gruplarını tek nefeste tekrar etmek etkilidir.",
         examples: [
-          "O să învăț diseară. → Bu akşam çalışacağım.",
-          "Vom merge mâine la piață. → Yarın pazara gideceğiz.",
-          "Cred că va ploua. → Sanırım yağmur yağacak.",
+          "mul-ȚU-mesc (teşekkür ederim)",
+          "bu-cu-REȘ-ti (Bükreş)",
+          "Ce mai faci? → Nasılsın?",
         ],
       },
     ],
   },
   {
-    title: "Bölüm 2 · Fiil Çekimleri (Conjugări)",
+    title: "Bölüm 2 · İsimler, Cinsiyet ve Artikeller",
+    level: "A1 → B1",
+    sections: [
+      {
+        subtitle: "2.1 Üç Cinsiyet Sistemi",
+        explanation:
+          "Romencede eril, dişil ve nötr cinsiyet vardır. Nötr isimler tekilde eril, çoğulda dişil çekimlenir; bu yapı başlangıç seviyesinde özellikle tekrar edilmelidir.",
+        examples: [
+          "un băiat / doi băieți (eril)",
+          "o floare / două flori (dişil)",
+          "un hotel / două hoteluri (nötr)",
+        ],
+      },
+      {
+        subtitle: "2.2 Belirsiz ve Belirli Artikel",
+        explanation:
+          "Belirsiz artikel kelimenin başında (un/o), belirli artikel çoğunlukla sonda (-ul, -a, -le) yer alır. Bu yapı cümlede özne ve nesneyi ayırt etmeyi kolaylaştırır.",
+        examples: [
+          "un elev → elevul",
+          "o casă → casa",
+          "niște caiete → caietele",
+        ],
+      },
+      {
+        subtitle: "2.3 Çoğul Kuralları",
+        explanation:
+          "Çoğul yapımı tek bir formülle ilerlemez; kelime sonuna göre değişir. Öğrenmeyi hızlandırmak için yeni isimler tekil+çoğul birlikte kaydedilmelidir.",
+        examples: [
+          "copil → copii",
+          "carte → cărți",
+          "oraș → orașe",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Bölüm 3 · Zamirler, Sıfatlar ve Temel Söz Dizimi",
+    level: "A2 → B2",
+    sections: [
+      {
+        subtitle: "3.1 Kişi Zamirleri ve Kullanımı",
+        explanation:
+          "Kişi zamirleri genellikle özneyi vurgulamak için kullanılır; fiil çekimi zaten kişiyi verir. Resmî hitapta polite form (dumneavoastră) çok önemlidir.",
+        examples: [
+          "eu, tu, el/ea, noi, voi, ei/ele",
+          "Dumneavoastră sunteți profesor?",
+          "Noi învățăm împreună.",
+        ],
+      },
+      {
+        subtitle: "3.2 Nesne Zamirleri (kısa biçimler)",
+        explanation:
+          "Mă, te, îl, o, ne, vă, îi, le gibi kısa zamirler fiilden önce/sonra konumlanır. Cümlenin anlamı bu küçük parçalarla ciddi biçimde değişebilir.",
+        examples: [
+          "Îl văd pe Mihai. (Onu görüyorum)",
+          "Mă aude? (Beni duyuyor mu?)",
+          "Le explic regula. (Onlara kuralı açıklıyorum)",
+        ],
+      },
+      {
+        subtitle: "3.3 Sıfat Uyumu ve Sıra",
+        explanation:
+          "Sıfatlar cinsiyet ve sayıya göre uyum sağlar. En sık model: isim + sıfat; ancak vurguda sıfat öne geçebilir.",
+        examples: [
+          "băiat inteligent / băieți inteligenți",
+          "fată frumoasă / fete frumoase",
+          "un om foarte calm",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Bölüm 4 · Fiiller ve Zamanlar",
     level: "A1 → C1",
     sections: [
       {
-        subtitle: "2.1 Temel Şahıslar ve Çekim Mantığı",
+        subtitle: "4.1 Şimdiki Zaman (Prezent)",
         explanation:
-          "Her fiili altı şahısla çalışmak, konuşurken düşünme süresini azaltır.",
+          "Rutinleri, alışkanlıkları ve o an gerçekleşen eylemleri ifade eder. Temel iletişimin omurgasıdır.",
         examples: [
-          "eu merg / tu mergi / el merge",
-          "noi mergem / voi mergeți / ei merg",
-          "A citi: citesc, citești, citește...",
+          "Eu lucrez acasă.",
+          "Tu vorbești românește foarte bine.",
+          "Ei merg la școală în fiecare zi.",
         ],
       },
       {
-        subtitle: "2.2 Düzenli ve Düzensiz Fiiller",
+        subtitle: "4.2 Perfect Compus ve Imperfect",
         explanation:
-          "Düzenli fiiller bir kalıp izler; düzensiz fiiller ise yüksek frekanslı oldukları için ayrı ezberlenmelidir.",
+          "Perfect compus tamamlanmış olaylar içindir; imperfect arka plan, tekrar eden geçmiş durumlar ve devam eden eylemler için kullanılır.",
         examples: [
-          "Düzenli: a lucra (çalışmak), a cânta (şarkı söylemek)",
-          "Düzensiz: a fi (olmak), a avea (sahip olmak), a vrea (istemek)",
-          "Eu sunt student. → Ben öğrenciyim.",
+          "Am terminat tema. (Ödevi bitirdim)",
+          "Când eram copil, citeam mult. (Çocukken çok okurdum)",
+          "Ieri am fost la doctor.",
+        ],
+      },
+      {
+        subtitle: "4.3 Gelecek Zaman",
+        explanation:
+          "Günlük konuşmada 'o să + fiil' yapısı çok yaygındır. Daha resmî kullanımda yardımcı fiille çekimlenen gelecek formlar görülür.",
+        examples: [
+          "O să vin mâine. (Yarın geleceğim)",
+          "Vom discuta după curs. (Dersten sonra konuşacağız)",
+          "Cred că va ninge. (Sanırım kar yağacak)",
+        ],
+      },
+      {
+        subtitle: "4.4 Koşul ve Gereklilik",
+        explanation:
+          "B1 ve sonrası seviyede istek, öneri, olasılık ve şart bildiren yapılar iletişim kalitesini büyük ölçüde yükseltir.",
+        examples: [
+          "Aș merge, dar nu am timp. (Giderdim ama vaktim yok)",
+          "Trebuie să înveți zilnic. (Her gün çalışmalısın)",
+          "Dacă plouă, rămânem acasă. (Yağmur yağarsa evde kalırız)",
         ],
       },
     ],
   },
   {
-    title: "Bölüm 3 · İsimler, Cinsiyet ve Artikeller",
-    level: "A1 → B2",
-    sections: [
-      {
-        subtitle: "3.1 Cinsiyet Sistemi (Masculin · Feminin · Neutru)",
-        explanation:
-          "Nötr isimler tekilde eril, çoğulda dişil gibi davranabilir. Bu özellik Romence'nin ayırt edici noktalarındandır.",
-        examples: [
-          "un băiat / doi băieți",
-          "o fată / două fete",
-          "un scaun / două scaune (nötr davranış)",
-        ],
-      },
-      {
-        subtitle: "3.2 Belirli - Belirsiz Artikel",
-        explanation:
-          "Belirsiz artikel kelimenin önünde, belirli artikel ise çoğunlukla kelimenin sonunda görülür.",
-        examples: [
-          "un om → omul (bir adam → adam)",
-          "o carte → cartea (bir kitap → kitap)",
-          "niște elevi → elevii (öğrenciler → öğrenciler[belirli])",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Bölüm 4 · Sıfat Uyumu, Zamirler ve Bağlayıcı Yapılar",
+    title: "Bölüm 5 · Bağlaçlar, Edatlar ve Pratik Cümle Kalıpları",
     level: "A2 → C1",
     sections: [
       {
-        subtitle: "4.1 Sıfat Uyumu",
+        subtitle: "5.1 Sık Kullanılan Edatlar",
         explanation:
-          "Sıfatlar ismin cinsiyetine ve tekil-çoğul durumuna göre değişir.",
+          "Edatlar isimlerle birlikte anlam kurar; yanlış edat seçimi anlamı bozar. Kalıp olarak öğrenmek daha verimlidir.",
         examples: [
-          "băiat bun / băieți buni",
-          "fată bună / fete bune",
-          "copil mic / copii mici",
+          "la școală (okula), în oraș (şehirde), cu prietenii (arkadaşlarla)",
+          "pentru tine (senin için), fără zahăr (şekersiz)",
+          "despre film (film hakkında)",
         ],
       },
       {
-        subtitle: "4.2 Zamirler ve Cümlede Yer",
+        subtitle: "5.2 Cümleleri Birleştiren Bağlaçlar",
         explanation:
-          "Özellikle nesne zamirleri (mă, te, îl, o, ne, vă, îi, le) cümle akışında doğru yere gelmelidir.",
+          "Karmaşık cümle kurmanın temeli doğru bağlaç kullanımıdır. Özellikle că, dacă, deoarece, deși yapıları sınav ve konuşmada çok sık çıkar.",
         examples: [
-          "Îl văd pe Andrei. → Andrei'yi görüyorum.",
-          "Mă ajută mereu. → Bana hep yardım ediyor.",
-          "Le spun adevărul. → Onlara gerçeği söylüyorum.",
+          "Știu că ai dreptate. (Haklı olduğunu biliyorum)",
+          "Dacă ai timp, vino. (Vaktin varsa gel)",
+          "Am venit deși eram obosit. (Yorgun olmama rağmen geldim)",
         ],
       },
       {
-        subtitle: "4.3 Edatlar ve Bağlaçlar",
+        subtitle: "5.3 Günlük Hayat İçin Hazır Kalıplar",
         explanation:
-          "Kısa kelimeler, uzun cümlelerin iskeletidir. Yanlış seçim anlam kaymasına yol açar.",
+          "Hazır cümle kalıpları, kelime bilgisi sınırlı olsa bile iletişimi sürdürmeyi sağlar. Her gün 5 kalıp tekrar etmek hızlı ilerleme sağlar.",
         examples: [
-          "cu (ile), fără (olmadan), pentru (için), despre (hakkında)",
-          "că (ki), dacă (eğer), fiindcă (çünkü), deși (rağmen)",
-          "Vreau să vin, dar nu pot. → Gelmek istiyorum ama gelemiyorum.",
+          "Mi-ar plăcea să... (Şunu isterdim...)",
+          "Nu sunt sigur, dar... (Emin değilim ama...)",
+          "Poți să repeți, te rog? (Tekrar eder misin, lütfen?)",
         ],
       },
     ],
