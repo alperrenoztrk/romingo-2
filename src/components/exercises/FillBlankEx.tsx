@@ -6,9 +6,10 @@ interface Props {
   exercise: FillBlankExercise;
   onAnswer: (correct: boolean) => void;
   answered: boolean;
+  showHint?: boolean;
 }
 
-export default function FillBlankEx({ exercise, onAnswer, answered }: Props) {
+export default function FillBlankEx({ exercise, onAnswer, answered, showHint = false }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
   const selectedIsCorrect =
     selected !== null &&
@@ -45,7 +46,7 @@ export default function FillBlankEx({ exercise, onAnswer, answered }: Props) {
         </p>
       </div>
 
-      {exercise.hint && (
+      {showHint && exercise.hint && (
         <p className="text-xs font-semibold text-muted-foreground mb-3">
           💡 İpucu: {exercise.hint}
         </p>

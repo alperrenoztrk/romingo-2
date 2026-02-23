@@ -6,6 +6,7 @@ interface Props {
   exercise: SentenceBuilderExercise;
   onAnswer: (correct: boolean) => void;
   answered: boolean;
+  showHint?: boolean;
 }
 
 type DragSource = "bank" | "answer";
@@ -17,7 +18,7 @@ interface DragState {
 
 const normalizeSentence = (sentence: string) => sentence.replace(/\s+/g, " ").trim();
 
-export default function SentenceBuilderEx({ exercise, onAnswer, answered }: Props) {
+export default function SentenceBuilderEx({ exercise, onAnswer, answered, showHint = false }: Props) {
   const [bankWords, setBankWords] = useState<string[]>(exercise.words);
   const [answerWords, setAnswerWords] = useState<string[]>([]);
   const [dragState, setDragState] = useState<DragState | null>(null);
@@ -57,7 +58,7 @@ export default function SentenceBuilderEx({ exercise, onAnswer, answered }: Prop
 
   return (
     <div>
-      {exercise.hint && <p className="text-xs font-semibold text-muted-foreground mb-3">💡 İpucu: {exercise.hint}</p>}
+      {showHint && exercise.hint && <p className="text-xs font-semibold text-muted-foreground mb-3">💡 İpucu: {exercise.hint}</p>}
 
       <div
         className="min-h-20 rounded-2xl border-2 border-dashed border-sky/40 bg-sky-light/30 p-3 mb-4"
