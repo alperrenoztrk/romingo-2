@@ -18,8 +18,7 @@ export default function HomePage() {
   const hour = new Date().getHours();
   const baseGreeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
   const profileSettings = getStoredProfileSettings();
-  const displayName = profileSettings.username.replace(/^@/, "").trim() || profileSettings.fullName;
-  const greeting = `${baseGreeting} ${displayName}`;
+  const greeting = `${baseGreeting} ${profileSettings.fullName}`;
   const [flamingoRotation, setFlamingoRotation] = useState(0);
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),

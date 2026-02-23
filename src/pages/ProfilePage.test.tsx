@@ -10,7 +10,7 @@ describe("ProfilePage", () => {
   it("renders saved profile name and avatar", () => {
     localStorage.setItem(
       PROFILE_SETTINGS_KEY,
-      JSON.stringify({ fullName: "Ayşe Test", username: "@ayse", avatar: "🐼" }),
+      JSON.stringify({ fullName: "Ayşe Test", avatar: "🐼" }),
     );
 
     render(
