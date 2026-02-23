@@ -107,24 +107,20 @@ export default function HomePage() {
 
   return (
     <div className="pb-20">
-      <div className="px-4 py-6 space-y-6 max-w-lg mx-auto">
-        {/* Greeting */}
-        <div className="flex items-center gap-4">
+      <div className="px-4 py-6 space-y-4 max-w-lg mx-auto">
+        <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={() => setFlamingoRotation((currentRotation) => currentRotation + 360)}
-            className="text-5xl leading-none transition-transform duration-700 ease-out active:scale-95"
+            className="text-7xl leading-none transition-transform duration-700 ease-out active:scale-95"
             style={{ transform: `rotate(${flamingoRotation}deg)` }}
             aria-label="Flamingoyu döndür"
           >
             🦩
           </button>
-          <div>
-            <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
-          </div>
+          <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
         </div>
 
-        {/* Next Best Action */}
         <button
           onClick={() => navigate(nextAction.to)}
           className={`${nextAction.gradient} ${nextAction.shadow} rounded-2xl p-5 text-left active:translate-y-1 active:shadow-none transition-all w-full`}
@@ -136,7 +132,6 @@ export default function HomePage() {
           <div className="text-primary-foreground font-extrabold text-base">{nextAction.label}</div>
           <div className="text-primary-foreground/80 text-xs font-semibold mt-1">{nextAction.desc}</div>
         </button>
-
 
         <div className="grid grid-cols-2 gap-3">
           <button
@@ -156,23 +151,11 @@ export default function HomePage() {
           </button>
 
           <button
-            onClick={() => navigate("/grammar")}
-            className="col-span-2 gradient-gold shadow-button-gold rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all"
-          >
-            <BookOpenText className="w-8 h-8 text-primary-foreground mb-2" />
-            <div className="text-primary-foreground font-extrabold text-sm">Dil Bilgisi</div>
-            <div className="text-primary-foreground/80 text-xs font-semibold mt-1">Romence dil bilgisi konu anlatımı</div>
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 gap-3">
-          <button
             onClick={() => navigate("/kahoot")}
             className="rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full gradient-hero shadow-button-primary"
           >
             <Trophy className="w-8 h-8 text-primary-foreground mb-2" />
             <div className="text-primary-foreground font-extrabold text-sm">Kahoot Quiz</div>
-            <div className="text-primary-foreground/80 text-xs font-semibold mt-1">Canlı yarışma gibi hızlı quiz turu</div>
           </button>
 
           <button
@@ -182,8 +165,16 @@ export default function HomePage() {
             <Video className="w-8 h-8 text-primary-foreground mb-2" />
             <div className="text-primary-foreground font-extrabold text-sm">Kısa Konuşma Videoları</div>
           </button>
-        </div>
 
+          <button
+            onClick={() => navigate("/grammar")}
+            className="col-span-2 gradient-gold shadow-button-gold rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all"
+          >
+            <BookOpenText className="w-8 h-8 text-primary-foreground mb-2" />
+            <div className="text-primary-foreground font-extrabold text-sm">Dil Bilgisi</div>
+            <div className="text-primary-foreground/80 text-xs font-semibold mt-1">Romence dil bilgisi konu anlatımı</div>
+          </button>
+        </div>
       </div>
     </div>
   );
