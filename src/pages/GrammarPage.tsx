@@ -1,86 +1,160 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, BookOpenText } from "lucide-react";
+import { ArrowLeft, BookOpenText, Bookmark, Lightbulb } from "lucide-react";
 
-const grammarTopics = [
+type GrammarChapter = {
+  title: string;
+  level: string;
+  whyItMatters: string;
+  sections: {
+    subtitle: string;
+    explanation: string;
+    examples: string[];
+    tips?: string[];
+  }[];
+};
+
+const grammarBook: GrammarChapter[] = [
   {
-    title: "1️⃣ Zamanlar (Timpuri verbale)",
-    items: [
-      "Fiillerin zamana göre çekimi:",
-      "Şimdiki zaman (Prezent)",
-      "Geçmiş zamanlar (Perfect compus, Imperfect, vs.)",
-      "Gelecek zaman (Viitor)",
-      "Daha ileri seviyede:",
-      "Daha önce olmuş geçmiş (Mai mult ca perfect)",
-      "Şartlı zaman (Condițional)",
-      "👉 Bu bölüm tek başına gramerin en büyük kısmıdır.",
+    title: "Bölüm 1 · Romence Zamanlar (Timpuri verbale)",
+    level: "A1 → B2",
+    whyItMatters:
+      "Zamanlar, bir olayın ne zaman gerçekleştiğini açıkça anlatmanı sağlar. Romence konuşurken akıcılık ve doğruluk için ilk büyük adımdır.",
+    sections: [
+      {
+        subtitle: "1.1 Şimdiki Zaman (Prezent)",
+        explanation:
+          "Günlük hayatta en sık kullanılan zamandır. Alışkanlıkları, genel doğruları ve şu anda olan eylemleri anlatır.",
+        examples: [
+          "Eu învăț româna în fiecare zi. → Her gün Romence öğreniyorum.",
+          "Ea citește o carte. → O, bir kitap okuyor.",
+          "Noi locuim în București. → Biz Bükreş'te yaşıyoruz.",
+        ],
+        tips: [
+          "Fiilin kökünü ve şahıs eklerini birlikte ezberle.",
+          "Her yeni fiil için en az 3 kişiyle mini cümle kur.",
+        ],
+      },
+      {
+        subtitle: "1.2 Geçmiş Zaman (Perfect compus ve Imperfect)",
+        explanation:
+          "Perfect compus tamamlanmış eylemler için, imperfect ise geçmişteki devam eden durumlar veya alışkanlıklar için kullanılır.",
+        examples: [
+          "Am mâncat deja. → Çoktan yemek yedim.",
+          "Când eram mic, mergeam la bunici vara. → Küçükken yazları büyükanne-büyükbabama giderdim.",
+          "Am văzut filmul ieri seară. → Filmi dün akşam izledim.",
+        ],
+        tips: [
+          "Perfect compus: yardımcı fiil (a avea) + geçmiş ortaç mantığına odaklan.",
+          "Hikâye anlatırken imperfect ve perfect compus'u birlikte kullanmayı çalış.",
+        ],
+      },
+      {
+        subtitle: "1.3 Gelecek Zaman (Viitor)",
+        explanation:
+          "Plan, niyet ve tahmin bildirmek için kullanılır. Günlük konuşmada kısa kalıplar çok yaygındır.",
+        examples: [
+          "O să învăț diseară. → Bu akşam çalışacağım.",
+          "Vom merge mâine la piață. → Yarın pazara gideceğiz.",
+          "Cred că va ploua. → Sanırım yağmur yağacak.",
+        ],
+      },
     ],
   },
   {
-    title: "2️⃣ Fiil Çekimleri (Conjugări)",
-    items: [
-      "Fiillerin şahıslara göre değişmesi:",
-      "eu merg",
-      "tu mergi",
-      "el/ea merge",
-      "Ayrıca:",
-      "düzenli fiiller",
-      "düzensiz fiiller",
+    title: "Bölüm 2 · Fiil Çekimleri (Conjugări)",
+    level: "A1 → C1",
+    whyItMatters:
+      "Romence'de özne çoğu zaman fiilin şeklinden anlaşılır. Bu yüzden çekim hatası iletişimi direkt etkiler.",
+    sections: [
+      {
+        subtitle: "2.1 Temel Şahıslar ve Çekim Mantığı",
+        explanation:
+          "Her fiili altı şahısla çalışmak, konuşurken düşünme süresini azaltır.",
+        examples: [
+          "eu merg / tu mergi / el merge",
+          "noi mergem / voi mergeți / ei merg",
+          "A citi: citesc, citești, citește...",
+        ],
+      },
+      {
+        subtitle: "2.2 Düzenli ve Düzensiz Fiiller",
+        explanation:
+          "Düzenli fiiller bir kalıp izler; düzensiz fiiller ise yüksek frekanslı oldukları için ayrı ezberlenmelidir.",
+        examples: [
+          "Düzenli: a lucra (çalışmak), a cânta (şarkı söylemek)",
+          "Düzensiz: a fi (olmak), a avea (sahip olmak), a vrea (istemek)",
+          "Eu sunt student. → Ben öğrenciyim.",
+        ],
+        tips: [
+          "En sık kullanılan 20 düzensiz fiil için kart sistemi oluştur.",
+        ],
+      },
     ],
   },
   {
-    title: "3️⃣ İsimler ve Cinsiyet (Substantive + Gen)",
-    items: [
-      "Romence'de kelimeler:",
-      "eril (masculin)",
-      "dişil (feminin)",
-      "nötr (neutru)",
-      "ve buna göre değişir.",
+    title: "Bölüm 3 · İsimler, Cinsiyet ve Artikeller",
+    level: "A1 → B2",
+    whyItMatters:
+      "Romence'de isimler yalnızca kelime değildir; cinsiyet, sayı ve artikelle birlikte bir sistem oluşturur.",
+    sections: [
+      {
+        subtitle: "3.1 Cinsiyet Sistemi (Masculin · Feminin · Neutru)",
+        explanation:
+          "Nötr isimler tekilde eril, çoğulda dişil gibi davranabilir. Bu özellik Romence'nin ayırt edici noktalarındandır.",
+        examples: [
+          "un băiat / doi băieți",
+          "o fată / două fete",
+          "un scaun / două scaune (nötr davranış)",
+        ],
+      },
+      {
+        subtitle: "3.2 Belirli - Belirsiz Artikel",
+        explanation:
+          "Belirsiz artikel kelimenin önünde, belirli artikel ise çoğunlukla kelimenin sonunda görülür.",
+        examples: [
+          "un om → omul (bir adam → adam)",
+          "o carte → cartea (bir kitap → kitap)",
+          "niște elevi → elevii (öğrenciler → öğrenciler[belirli])",
+        ],
+      },
     ],
   },
   {
-    title: "4️⃣ Artikeller (Articole)",
-    items: [
-      "Türkçede olmayan ama Romence'de kritik konu:",
-      "hotărât (belirli): omul",
-      "nehotărât (belirsiz): un om",
-      "Romence'de artikel kelimenin sonuna da gelebilir — bu A2'den sonra kafa karıştırmaya başlar.",
-    ],
-  },
-  {
-    title: "5️⃣ Çoğul Yapma (Plural)",
-    items: [
-      "Her kelimenin çoğulu farklı olabilir:",
-      "om → oameni",
-      "fată → fete",
-      "Ezber + kural karışımıdır.",
-    ],
-  },
-  {
-    title: "6️⃣ Sıfat Uyumu (Adjective agreement)",
-    items: [
-      "Sıfatlar isme göre değişir:",
-      "băiat bun",
-      "fată bună",
-      "Cinsiyet + sayı uyumu gerekir.",
-    ],
-  },
-  {
-    title: "7️⃣ Zamirler (Pronume)",
-    items: [
-      "ben, sen, o",
-      "bana, sana, onu",
-      "kendim, kendin vs.",
-      "Romence'de zamirlerin yeri Türkçeye göre çok farklıdır.",
-    ],
-  },
-  {
-    title: "8️⃣ Edatlar / Bağlaçlar / Küçük Yapı Taşları",
-    items: [
-      "cu (ile)",
-      "pentru (için)",
-      "că (ki)",
-      "dacă (eğer)",
-      "Bunlar cümleyi bağlayan gramer parçalarıdır.",
+    title: "Bölüm 4 · Sıfat Uyumu, Zamirler ve Bağlayıcı Yapılar",
+    level: "A2 → C1",
+    whyItMatters:
+      "Cümleyi doğal ve yerel konuşmaya yakın yapan kısım bu bölümdür: uyum, referans ve bağlama.",
+    sections: [
+      {
+        subtitle: "4.1 Sıfat Uyumu",
+        explanation:
+          "Sıfatlar ismin cinsiyetine ve tekil-çoğul durumuna göre değişir.",
+        examples: [
+          "băiat bun / băieți buni",
+          "fată bună / fete bune",
+          "copil mic / copii mici",
+        ],
+      },
+      {
+        subtitle: "4.2 Zamirler ve Cümlede Yer",
+        explanation:
+          "Özellikle nesne zamirleri (mă, te, îl, o, ne, vă, îi, le) cümle akışında doğru yere gelmelidir.",
+        examples: [
+          "Îl văd pe Andrei. → Andrei'yi görüyorum.",
+          "Mă ajută mereu. → Bana hep yardım ediyor.",
+          "Le spun adevărul. → Onlara gerçeği söylüyorum.",
+        ],
+      },
+      {
+        subtitle: "4.3 Edatlar ve Bağlaçlar",
+        explanation:
+          "Kısa kelimeler, uzun cümlelerin iskeletidir. Yanlış seçim anlam kaymasına yol açar.",
+        examples: [
+          "cu (ile), fără (olmadan), pentru (için), despre (hakkında)",
+          "că (ki), dacă (eğer), fiindcă (çünkü), deși (rağmen)",
+          "Vreau să vin, dar nu pot. → Gelmek istiyorum ama gelemiyorum.",
+        ],
+      },
     ],
   },
 ];
@@ -90,7 +164,7 @@ export default function GrammarPage() {
 
   return (
     <div className="pb-24">
-      <div className="max-w-2xl mx-auto px-4 py-6 space-y-4">
+      <div className="max-w-4xl mx-auto px-4 py-6 space-y-4">
         <button
           type="button"
           onClick={() => navigate(-1)}
@@ -100,26 +174,69 @@ export default function GrammarPage() {
           Geri
         </button>
 
-        <div className="bg-card rounded-2xl p-5 shadow-card">
-          <div className="flex items-center gap-3 mb-4">
-            <BookOpenText className="h-7 w-7 text-flamingo" />
-            <h1 className="text-2xl font-black text-foreground">Romence Grammer Konu Anlatımı</h1>
-          </div>
-          <p className="text-sm font-semibold text-muted-foreground mb-5">
-            Romence'de grameri adım adım öğrenmek için temel başlıklar aşağıda yer alıyor.
-          </p>
+        <div className="bg-card rounded-2xl p-6 shadow-card space-y-6">
+          <header className="space-y-3 border-b border-border pb-4">
+            <div className="flex items-center gap-3">
+              <BookOpenText className="h-7 w-7 text-flamingo" />
+              <h1 className="text-2xl font-black text-foreground">Romence Gramer Rehberi · Kitap Formatı</h1>
+            </div>
+            <p className="text-sm font-medium text-muted-foreground leading-relaxed">
+              Bu sayfa, Romence gramerini bölüm bölüm öğrenebilmen için "mini ders kitabı" düzeninde hazırlandı.
+              Her bölümde konu özeti, örnek cümleler ve çalışma ipuçları bulunur.
+            </p>
+          </header>
 
-          <div className="space-y-4">
-            {grammarTopics.map((topic) => (
-              <section key={topic.title} className="rounded-xl border border-border p-4 bg-background/50">
-                <h2 className="text-base font-extrabold text-foreground mb-2">{topic.title}</h2>
-                <ul className="space-y-1">
-                  {topic.items.map((item) => (
-                    <li key={item} className="text-sm font-medium text-foreground/90">
-                      {item}
-                    </li>
+          <div className="space-y-5">
+            {grammarBook.map((chapter) => (
+              <section key={chapter.title} className="rounded-xl border border-border p-5 bg-background/50 space-y-4">
+                <div className="space-y-2">
+                  <h2 className="text-lg font-extrabold text-foreground">{chapter.title}</h2>
+                  <p className="text-xs font-bold uppercase tracking-wide text-flamingo">Seviye: {chapter.level}</p>
+                  <p className="text-sm text-foreground/90 leading-relaxed">
+                    <span className="font-bold">Neden önemli? </span>
+                    {chapter.whyItMatters}
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  {chapter.sections.map((section) => (
+                    <article key={section.subtitle} className="rounded-lg border border-border/70 bg-card p-4 space-y-3">
+                      <div className="flex items-center gap-2">
+                        <Bookmark className="h-4 w-4 text-flamingo" />
+                        <h3 className="text-sm font-extrabold text-foreground">{section.subtitle}</h3>
+                      </div>
+
+                      <p className="text-sm text-foreground/90 leading-relaxed">{section.explanation}</p>
+
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground mb-2">Örnekler</p>
+                        <ul className="space-y-1 list-disc pl-5">
+                          {section.examples.map((example) => (
+                            <li key={example} className="text-sm text-foreground/90">
+                              {example}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {section.tips?.length ? (
+                        <div className="rounded-md border border-flamingo/30 bg-flamingo/5 p-3">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Lightbulb className="h-4 w-4 text-flamingo" />
+                            <p className="text-xs font-bold uppercase tracking-wide text-flamingo">Çalışma İpuçları</p>
+                          </div>
+                          <ul className="space-y-1 list-disc pl-5">
+                            {section.tips.map((tip) => (
+                              <li key={tip} className="text-sm text-foreground/90">
+                                {tip}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+                    </article>
                   ))}
-                </ul>
+                </div>
               </section>
             ))}
           </div>
