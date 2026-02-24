@@ -3,8 +3,8 @@ import StatsBar from "../components/StatsBar";
 import XPProgress from "../components/XPProgress";
 import { Flame, BookOpen, Star, Award, Settings, LogOut, Trophy, CheckCircle2, TrendingUp, SlidersHorizontal } from "lucide-react";
 import { Link } from "react-router-dom";
-import { getStoredProfileSettings } from "@/lib/account";
 import { getProfileProgressStory } from "@/lib/profileProgress";
+import { useAuthProfile } from "@/hooks/useAuthProfile";
 import { getCurrentWeekProgress, getRecentWeeksProgress } from "@/lib/weeklyProgress";
 import { getDailyGoalTargets, getCorrectAnswersForDate, getTodayCorrectAnswers, getTodayXpProgress } from "@/lib/dailyGoals";
 import { getCompletedLessonsCountForDate } from "@/lib/lessonProgress";
@@ -73,9 +73,9 @@ function getGoalCompletionRatio(current: number, target: number) {
 }
 
 export default function ProfilePage({ isGuest = false, onLogout }: ProfilePageProps) {
-  const profileSettings = getStoredProfileSettings();
-  const profileName = profileSettings.fullName.trim() || "Alperren";
-  const avatar = profileSettings.avatar.trim() || "🦩";
+  const { profile: authProfile, loading: authLoading } = useAuthProfile();
+  const profileName = authProfile?.fullName?.trim() || "Kullanıcı";
+  const avatar = authProfile?.avatarUrl || null;
   const story = useMemo(() => getProfileProgressStory(), []);
   const [claimed, setClaimed] = useState<Record<string, TierLevel[]>>(() => getClaimedState());
   const [weeklyProgress, setWeeklyProgress] = useState(getCurrentWeekProgress());
@@ -198,11 +198,22 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
 
       <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
         <div className="text-center">
-          <div className="w-24 h-24 mx-auto gradient-hero rounded-full flex items-center justify-center text-5xl mb-3 shadow-elevated">
-            {avatar}
+          <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center text-5xl mb-3 shadow-elevated overflow-hidden gradient-hero">
+            {avatar ? (
+              <img src={avatar} alt={profileName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            ) : (
+              <span>🦩</span>
+            )}
           </div>
           <h1 className="text-xl font-black text-foreground">{isGuest ? "Misafir" : profileName}</h1>
-          <p className="text-muted-foreground text-sm font-semibold">Şubat 2026'dan beri öğreniyor</p>
+          {authProfile?.email && !isGuest && (
+            <p className="text-muted-foreground text-xs font-semibold">{authProfile.email}</p>
+          )}
+          <p className="text-muted-foreground text-sm font-semibold">
+            {authProfile?.createdAt
+              ? `${new Date(authProfile.createdAt).toLocaleDateString("tr-TR", { month: "long", year: "numeric" })}'den beri öğreniyor`
+              : "Şubat 2026'dan beri öğreniyor"}
+          </p>
         </div>
 
         <div className="grid grid-cols-4 gap-2">
