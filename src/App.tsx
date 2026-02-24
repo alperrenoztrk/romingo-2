@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { applyDarkMode, getStoredPreferences } from "@/lib/preferences";
+import { setActiveProfileScope } from "@/lib/profileScope";
 import { supabase } from "@/integrations/supabase/client";
 import BottomNav from "./components/BottomNav";
 import HomePage from "./pages/HomePage";
@@ -50,16 +51,19 @@ function AppContent() {
 
       if (session) {
         setSessionMode("authenticated");
+        setActiveProfileScope(session.user.id);
         localStorage.setItem(SESSION_KEY, "authenticated");
         return;
       }
 
       if (isGuestSession) {
         setSessionMode("guest");
+        setActiveProfileScope("guest");
         return;
       }
 
       setSessionMode("logged_out");
+      setActiveProfileScope(null);
       localStorage.setItem(SESSION_KEY, "logged_out");
     };
 
@@ -68,11 +72,13 @@ function AppContent() {
     const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
         setSessionMode("authenticated");
+        setActiveProfileScope(session.user.id);
         localStorage.setItem(SESSION_KEY, "authenticated");
         return;
       }
 
       setSessionMode("logged_out");
+      setActiveProfileScope(null);
       localStorage.setItem(SESSION_KEY, "logged_out");
     });
 
@@ -89,11 +95,13 @@ function AppContent() {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setSessionMode("logged_out");
+    setActiveProfileScope(null);
     localStorage.setItem(SESSION_KEY, "logged_out");
   };
 
   const handleGuestLogin = () => {
     setSessionMode("guest");
+    setActiveProfileScope("guest");
     localStorage.setItem(SESSION_KEY, "guest");
   };
 
