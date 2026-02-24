@@ -34,7 +34,7 @@ function AppContent() {
   const location = useLocation();
   const hideNav = location.pathname.startsWith("/lesson/");
   const [sessionMode, setSessionMode] = useState<SessionMode>("logged_out");
-  const [showSplash] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const storedMode = localStorage.getItem(SESSION_KEY) as SessionMode | null;
@@ -76,7 +76,12 @@ function AppContent() {
       localStorage.setItem(SESSION_KEY, "logged_out");
     });
 
+    const splashTimer = window.setTimeout(() => {
+      setShowSplash(false);
+    }, 2800);
+
     return () => {
+      window.clearTimeout(splashTimer);
       authListener.subscription.unsubscribe();
     };
   }, []);
