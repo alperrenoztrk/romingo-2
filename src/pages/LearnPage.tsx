@@ -20,10 +20,14 @@ interface Lesson {
 
 const levelColors = ["gradient-success", "gradient-sky", "gradient-hero", "gradient-gold"];
 
-const cefrSections = ["A1", "A2"] as const;
+const cefrSections = ["A1", "A2", "B1", "B2", "C1"] as const;
 
 function getCefrLevel(level: number) {
-  return level >= 5 ? "A2" : "A1";
+  if (level >= 13) return "C1";
+  if (level >= 11) return "B2";
+  if (level >= 9) return "B1";
+  if (level >= 5) return "A2";
+  return "A1";
 }
 
 interface TutorialWord {
@@ -277,7 +281,7 @@ export default function LearnPage() {
           {tutorialView ? "🦩 Alıştırma" : "🦩 Romence Öğren"}
         </h1>
         <p className="text-center text-muted-foreground text-sm font-semibold mb-8">
-          {tutorialView ? "" : "A1 - A2 Seviye"}
+          {tutorialView ? "" : "A1 - C1 Seviye"}
         </p>
 
         {tutorialView && (
