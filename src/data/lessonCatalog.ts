@@ -45,6 +45,19 @@ export const lessonCatalog: LessonCatalogItem[] = [
   { id: "37", title: "Evrak ve Resmi İşlemler", emoji: "🗂️", level: 13 },
   { id: "38", title: "Taşınma ve Komşuluk", emoji: "📦", level: 13 },
   { id: "39", title: "İleri Seyahat Planlama", emoji: "🛫", level: 13 },
+  { id: "40", title: "Alfabe ve Telaffuz", emoji: "🔤", level: 1 },
+  { id: "41", title: "Kıyafetler", emoji: "👕", level: 2 },
+  { id: "42", title: "Evcil Hayvan Bakımı", emoji: "🐾", level: 3 },
+  { id: "43", title: "Tarih ve Saat", emoji: "🕒", level: 4 },
+  { id: "44", title: "Market Diyalogları", emoji: "🛒", level: 5 },
+  { id: "45", title: "Haftalık Plan", emoji: "🗒️", level: 6 },
+  { id: "46", title: "Hastalık Belirtileri", emoji: "🤒", level: 7 },
+  { id: "47", title: "Otel İşlemleri", emoji: "🏨", level: 8 },
+  { id: "48", title: "Toplantı İletişimi", emoji: "🧑‍💻", level: 9 },
+  { id: "49", title: "Sanat ve Edebiyat", emoji: "🎭", level: 10 },
+  { id: "50", title: "Çevrim İçi Güvenlik", emoji: "🔐", level: 11 },
+  { id: "51", title: "Kariyer Gelişimi", emoji: "📈", level: 12 },
+  { id: "52", title: "Akademik Sunum", emoji: "🎓", level: 13 },
 ];
 
 export const orderedLessonIds = lessonCatalog.map((lesson) => lesson.id);
