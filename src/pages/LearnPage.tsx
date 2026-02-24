@@ -20,6 +20,12 @@ interface Lesson {
 
 const levelColors = ["gradient-success", "gradient-sky", "gradient-hero", "gradient-gold"];
 
+const cefrSections = ["A1", "A2"] as const;
+
+function getCefrLevel(level: number) {
+  return level >= 5 ? "A2" : "A1";
+}
+
 interface TutorialWord {
   tr: string;
   ro: string;
@@ -244,7 +250,12 @@ export default function LearnPage() {
     return lessons.filter((lesson) => lesson.id === tutorialLessonId);
   }, [lessons, tutorialLessonId]);
 
-  const levels = [...new Set(lessons.map((l) => l.level))];
+  const lessonsByCefr = useMemo(() => {
+    return cefrSections.map((cefr) => ({
+      cefr,
+      lessons: lessons.filter((lesson) => getCefrLevel(lesson.level) === cefr),
+    }));
+  }, [lessons]);
 
   const speakText = (text: string, lang: string) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -266,7 +277,7 @@ export default function LearnPage() {
           {tutorialView ? "🦩 Alıştırma" : "🦩 Romence Öğren"}
         </h1>
         <p className="text-center text-muted-foreground text-sm font-semibold mb-8">
-          {tutorialView ? "" : "A1 Seviye • Başlangıç"}
+          {tutorialView ? "" : "A1 - A2 Seviye"}
         </p>
 
         {tutorialView && (
@@ -326,21 +337,24 @@ export default function LearnPage() {
 
         {!tutorialView && (
           <>
-            {levels.map((level) => {
-              const levelLessons = lessons.filter((l) => l.level === level);
+            {lessonsByCefr.map((section, sectionIndex) => {
               return (
-                <div key={level} className="mb-8">
-                  <div className={`${levelColors[(level - 1) % levelColors.length]} rounded-2xl px-4 py-2 mb-6 mx-auto w-fit`}>
-                    <span className="text-primary-foreground font-extrabold text-sm">Seviye {level}</span>
+                <div key={section.cefr} className="mb-8">
+                  <div className={`${levelColors[sectionIndex % levelColors.length]} rounded-2xl px-4 py-2 mb-6 mx-auto w-fit`}>
+                    <span className="text-primary-foreground font-extrabold text-sm">{section.cefr}</span>
                   </div>
 
-                  <div className="flex flex-col items-center gap-6">
-                    {levelLessons.map((lesson) => (
-                      <LessonNode key={lesson.id} lesson={lesson} index={lessons.indexOf(lesson)} onStartLesson={handleStartLesson} />
-                    ))}
-                  </div>
+                  {section.lessons.length > 0 ? (
+                    <div className="flex flex-col items-center gap-6">
+                      {section.lessons.map((lesson) => (
+                        <LessonNode key={lesson.id} lesson={lesson} index={lessons.indexOf(lesson)} onStartLesson={handleStartLesson} />
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-center text-sm font-semibold text-muted-foreground">Bu seviyeye ait dersler yakında eklenecek.</p>
+                  )}
 
-                  {level < levels.length && (
+                  {sectionIndex < lessonsByCefr.length - 1 && (
                     <div className="flex justify-center my-4">
                       <div className="w-0.5 h-8 bg-border" />
                     </div>
