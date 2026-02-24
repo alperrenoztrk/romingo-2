@@ -2413,6 +2413,80 @@ export const lessonsData: Record<string, LessonData> = {
       { type: "fill_blank", sentence: "Vă atașez ___ solicitat pentru evaluare.", correctAnswer: "documentul", options: ["documentul", "biletul", "fructul", "tabloul"] },
     ],
   },
+  "66": {
+    id: "66",
+    title: "Acil Serviste",
+    emoji: "🏥",
+    description: "Acil durumda semptom anlatma ve yardım isteme kalıplarını öğren",
+    xpReward: 40,
+    exercises: [
+      { type: "multiple_choice", question: '"Nefes almakta zorlanıyorum" cümlesinin Romencesi hangisi?', options: ["Pot să alerg repede", "Am dificultăți de respirație", "Mi-e sete", "Dorm foarte bine"], correctIndex: 1 },
+      { type: "translation", sentence: "Lütfen hemen bir doktor çağırın", direction: "tr-ro", correctAnswer: "Vă rog, chemați imediat un doctor", acceptedAnswers: ["Vă rog, chemați imediat un doctor", "vă rog, chemați imediat un doctor"] },
+      { type: "fill_blank", sentence: "Am nevoie de ___ medical urgent.", correctAnswer: "ajutor", options: ["ajutor", "transport", "ceai", "pauză"] },
+    ],
+  },
+  "67": {
+    id: "67",
+    title: "Tren Yolculuğu",
+    emoji: "🚆",
+    description: "Tren bileti alma, peron sorma ve yolculuk diyaloglarını geliştir",
+    xpReward: 40,
+    exercises: [
+      { type: "translation", sentence: "Bükreş'e giden bir bilet istiyorum", direction: "tr-ro", correctAnswer: "Doresc un bilet către București", acceptedAnswers: ["Doresc un bilet către București", "doresc un bilet către bucurești"] },
+      { type: "multiple_choice", question: '"Tren kaçta kalkıyor?" cümlesinin Romencesi hangisi?', options: ["La ce oră pleacă trenul?", "Unde este autobuzul?", "Când vine taxiul?", "Cât costă avionul?"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Peronul trenului este la linia ___.", correctAnswer: "trei", options: ["trei", "frig", "mare", "lung"] },
+    ],
+  },
+
+  "68": {
+    id: "68",
+    title: "Eczanede İlaç Alma",
+    emoji: "💊",
+    description: "Eczanede ilaç isteme, doz sorma ve kullanım talimatı anlama pratiği yap",
+    xpReward: 40,
+    exercises: [
+      { type: "multiple_choice", question: '"Boğaz ağrısı için bir ilaç istiyorum" cümlesinin Romencesi hangisi?', options: ["Doresc un medicament pentru durere în gât", "Doresc un bilet pentru tren", "Doresc o cameră la hotel", "Doresc un suc rece"], correctIndex: 0 },
+      { type: "translation", sentence: "Bu ilacı günde iki kez almalısınız", direction: "tr-ro", correctAnswer: "Trebuie să luați acest medicament de două ori pe zi", acceptedAnswers: ["Trebuie să luați acest medicament de două ori pe zi", "trebuie să luați acest medicament de două ori pe zi"] },
+      { type: "fill_blank", sentence: "Luați pastila după ___ .", correctAnswer: "masă", options: ["masă", "drum", "film", "tren"] },
+    ],
+  },
+  "69": {
+    id: "69",
+    title: "Kontrol Muayenesi",
+    emoji: "🩻",
+    description: "Kontrol randevusunda şikayetleri güncelleme ve doktor önerilerini anlama becerisi kazan",
+    xpReward: 40,
+    exercises: [
+      { type: "translation", sentence: "Kendimi daha iyi hissediyorum ama hâlâ öksürüyorum", direction: "tr-ro", correctAnswer: "Mă simt mai bine, dar încă tușesc", acceptedAnswers: ["Mă simt mai bine, dar încă tușesc", "mă simt mai bine, dar încă tușesc"] },
+      { type: "multiple_choice", question: '"İki hafta sonra tekrar kontrole gelin" cümlesinin Romencesi hangisi?', options: ["Reveniți la control peste două săptămâni", "Plecați imediat acasă", "Nu mai este nevoie de tratament", "Mergeți la gară acum"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Doctorul mi-a recomandat să ___ mai mult.", correctAnswer: "odihnesc", options: ["odihnesc", "alerg", "strig", "uit"] },
+    ],
+  },
+  "70": {
+    id: "70",
+    title: "Pasaport Kontrolü",
+    emoji: "🛂",
+    description: "Sınır kapısında belge sunma, soruları yanıtlama ve yönlendirmeleri anlama",
+    xpReward: 40,
+    exercises: [
+      { type: "multiple_choice", question: '"Ziyaret amacım turizm" cümlesinin Romencesi hangisi?', options: ["Scopul vizitei mele este turismul", "Scopul vizitei mele este medicina", "Scopul vizitei mele este școala", "Scopul vizitei mele este sportul"], correctIndex: 0 },
+      { type: "translation", sentence: "Burada üç gün kalacağım", direction: "tr-ro", correctAnswer: "Voi sta aici trei zile", acceptedAnswers: ["Voi sta aici trei zile", "voi sta aici trei zile"] },
+      { type: "fill_blank", sentence: "Vă rog să îmi arătați ___.", correctAnswer: "pașaportul", options: ["pașaportul", "telefonul", "meniul", "caietul"] },
+    ],
+  },
+  "71": {
+    id: "71",
+    title: "Araç Kiralama",
+    emoji: "🚗",
+    description: "Araç kiralama ofisinde rezervasyon, sigorta ve teslim detaylarını konuş",
+    xpReward: 40,
+    exercises: [
+      { type: "translation", sentence: "Üç günlüğüne otomatik bir araç kiralamak istiyorum", direction: "tr-ro", correctAnswer: "Doresc să închiriez o mașină automată pentru trei zile", acceptedAnswers: ["Doresc să închiriez o mașină automată pentru trei zile", "doresc să închiriez o mașină automată pentru trei zile"] },
+      { type: "multiple_choice", question: '"Sigorta fiyata dahil mi?" cümlesinin Romencesi hangisi?', options: ["Asigurarea este inclusă în preț?", "Benzina este albastră?", "Mașina este foarte veche?", "Trenul vine la timp?"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Trebuie să returnez mașina până la ora ___.", correctAnswer: "zece", options: ["zece", "mare", "rapid", "ușor"] },
+    ],
+  },
+
 
 };
 
