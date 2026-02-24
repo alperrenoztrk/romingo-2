@@ -1,6 +1,7 @@
 import { getEconomySnapshot, learningEconomyUpdatedEvent } from "./learningEconomy";
+import { getActiveProfileScope } from "./profileScope";
 
-const TOTAL_XP_KEY = "romingo.profile.totalXp.v1";
+const TOTAL_XP_KEY_PREFIX = "romingo.profile.totalXp.v1";
 const PROFILE_UPDATED_EVENT = "romingo:profile-updated";
 const DEFAULT_TOTAL_XP = 0;
 
@@ -8,6 +9,10 @@ function emitProfileUpdated() {
   if (typeof window !== "undefined") {
     window.dispatchEvent(new Event(PROFILE_UPDATED_EVENT));
   }
+}
+
+function getScopedTotalXpKey() {
+  return `${TOTAL_XP_KEY_PREFIX}.${getActiveProfileScope()}`;
 }
 
 function isStorageReady() {
@@ -19,7 +24,7 @@ export function getTotalXp() {
     return DEFAULT_TOTAL_XP;
   }
 
-  const raw = window.localStorage.getItem(TOTAL_XP_KEY);
+  const raw = window.localStorage.getItem(getScopedTotalXpKey());
   if (!raw) {
     return DEFAULT_TOTAL_XP;
   }
@@ -34,7 +39,7 @@ export function addXpToProfile(amount: number) {
   }
 
   const nextTotalXp = getTotalXp() + Math.floor(amount);
-  window.localStorage.setItem(TOTAL_XP_KEY, String(nextTotalXp));
+  window.localStorage.setItem(getScopedTotalXpKey(), String(nextTotalXp));
   emitProfileUpdated();
   return nextTotalXp;
 }

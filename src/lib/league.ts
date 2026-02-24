@@ -1,4 +1,7 @@
-const LEAGUE_STATE_KEY = "romingo.leagueState.v1";
+import { addXpToProfile, getTotalXp } from "./liveProfile";
+import { getActiveProfileScope } from "./profileScope";
+
+const LEAGUE_STATE_KEY_PREFIX = "romingo.leagueState.v1";
 
 const LEAGUE_TIERS = ["Bronz", "Gümüş", "Altın", "Safir", "Elmas"] as const;
 const OPPONENT_NAMES = ["Ayşe", "Mehmet", "Zeynep", "Ali", "Fatma", "Emre", "Selin", "Can", "Deniz", "Mert", "Ece", "Bora"];
@@ -120,15 +123,19 @@ function sanitizeState(parsed: unknown): LeagueState | null {
   };
 }
 
+function getScopedLeagueStateKey() {
+  return `${LEAGUE_STATE_KEY_PREFIX}.${getActiveProfileScope()}`;
+}
+
 function saveLeagueState(state: LeagueState) {
-  localStorage.setItem(LEAGUE_STATE_KEY, JSON.stringify(state));
+  localStorage.setItem(getScopedLeagueStateKey(), JSON.stringify(state));
 }
 
 function createFreshState(weekKey: string, leagueIndex = 0, lastWeekSummary?: LeagueWeekSummary): LeagueState {
   const state: LeagueState = {
     weekKey,
     leagueIndex,
-    userXp: 0,
+    userXp: getTotalXp(),
     opponents: createWeekOpponents(weekKey, leagueIndex),
     lastWeekSummary,
   };
@@ -165,7 +172,7 @@ function resolveWeekTransition(state: LeagueState, currentWeekKey: string) {
 
 export function getLeagueState() {
   const currentWeekKey = getWeekKey();
-  const raw = localStorage.getItem(LEAGUE_STATE_KEY);
+  const raw = localStorage.getItem(getScopedLeagueStateKey());
 
   if (!raw) {
     return createFreshState(currentWeekKey);
@@ -183,6 +190,12 @@ export function getLeagueState() {
 
     if (parsed.opponents.length < 9) {
       parsed.opponents = createWeekOpponents(parsed.weekKey, parsed.leagueIndex);
+      saveLeagueState(parsed);
+    }
+
+    const totalXp = getTotalXp();
+    if (parsed.userXp !== totalXp) {
+      parsed.userXp = totalXp;
       saveLeagueState(parsed);
     }
 
@@ -213,8 +226,9 @@ export function addLeagueXp(amount: number) {
     return;
   }
 
+  const nextTotalXp = addXpToProfile(amount);
   const state = getLeagueState();
-  state.userXp = Math.max(0, state.userXp + Math.floor(amount));
+  state.userXp = nextTotalXp;
   saveLeagueState(state);
   window.dispatchEvent(new Event("romingo:league-updated"));
 }
