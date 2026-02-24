@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, BookOpenText, Languages, Target, Star, Video, Trophy } from "lucide-react";
-import { getStoredProfileSettings } from "../lib/account";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
 import {
   getDailyGoalTargets,
@@ -12,13 +11,15 @@ import {
   learningEconomyUpdatedEvent,
 } from "@/lib/learningEconomy";
 import { getAdaptivePracticePlan, getExerciseTypeLabel } from "@/lib/adaptivePractice";
+import { useAuthProfile } from "@/hooks/useAuthProfile";
 
 export default function HomePage() {
   const navigate = useNavigate();
   const hour = new Date().getHours();
   const baseGreeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
-  const profileSettings = getStoredProfileSettings();
-  const greeting = `${baseGreeting} ${profileSettings.fullName}`;
+  const { profile: authProfile } = useAuthProfile();
+  const displayName = authProfile?.fullName?.trim() || "Kullanıcı";
+  const greeting = `${baseGreeting} ${displayName}`;
   const [flamingoRotation, setFlamingoRotation] = useState(0);
   const [todayMetrics, setTodayMetrics] = useState({
     lessons: getCompletedLessonsCountForDate(),
