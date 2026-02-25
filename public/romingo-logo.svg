@@ -1,21 +1,17 @@
-<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+<svg viewBox="150 150 250 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
   <title id="logoTitle">Romingo Logo</title>
-  <desc id="logoDesc">Romingo language school logo matched to reference composition.</desc>
+  <desc id="logoDesc">Romingo language school logo.</desc>
 
-  <rect width="500" height="500" fill="#ECECEC"/>
-
-  <!-- Geometric ribbon mark -->
   <g>
     <polygon points="185,170 286,170 320,204 219,204" fill="#1D4A99"/>
     <polygon points="286,170 343,227 311,259 254,202" fill="#F8E71C"/>
     <polygon points="343,227 387,271 387,369 311,293" fill="#F32735"/>
   </g>
 
-  <!-- Wordmark -->
   <g font-family="Nunito, Poppins, Montserrat, Arial, Helvetica, sans-serif" text-anchor="middle">
-    <text x="250" y="301" font-size="62" font-weight="800" letter-spacing="0.2">
+    <text x="274" y="301" font-size="62" font-weight="800" letter-spacing="0.2">
       <tspan fill="#D70C2C">Romi</tspan><tspan fill="#0A3FA0">ngo</tspan>
     </text>
-    <text x="250" y="331" font-size="19" font-weight="500" letter-spacing="7.2" fill="#1F2937">LANGUAGE SCHOOL</text>
+    <text x="274" y="331" font-size="19" font-weight="500" letter-spacing="7.2" fill="#1F2937">LANGUAGE SCHOOL</text>
   </g>
 </svg>
