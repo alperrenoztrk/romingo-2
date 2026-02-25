@@ -113,7 +113,7 @@ export default function HomePage() {
           <button
             type="button"
             onClick={() => setFlamingoRotation((currentRotation) => currentRotation + 360)}
-            className="transition-transform duration-700 ease-out active:scale-95 w-28 h-28 flex-shrink-0"
+            className="transition-transform duration-700 ease-out active:scale-95 w-36 h-36 flex-shrink-0"
             style={{ transform: `rotate(${flamingoRotation}deg)` }}
             aria-label="Flamingoyu döndür"
           >
