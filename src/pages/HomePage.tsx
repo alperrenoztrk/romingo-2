@@ -1,17 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import mascotFlamingo from "@/assets/mascot-flamingo.png";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, BookOpenText, Languages, Target, Star, Video, Trophy } from "lucide-react";
-import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
-import {
-  getDailyGoalTargets,
-  getTodayCorrectAnswers,
-  getTodayXpProgress,
-} from "../lib/dailyGoals";
-import {
-  learningEconomyUpdatedEvent,
-} from "@/lib/learningEconomy";
-import { getAdaptivePracticePlan, getExerciseTypeLabel } from "@/lib/adaptivePractice";
+import { BookOpenText, Languages, Target, Video, Trophy } from "lucide-react";
 import { useAuthProfile } from "@/hooks/useAuthProfile";
 
 export default function HomePage() {
@@ -22,90 +12,6 @@ export default function HomePage() {
   const displayName = authProfile?.fullName?.trim() || "Kullanıcı";
   const greeting = `${baseGreeting} ${displayName}`;
   const [flamingoRotation, setFlamingoRotation] = useState(0);
-  const [todayMetrics, setTodayMetrics] = useState({
-    lessons: getCompletedLessonsCountForDate(),
-    xp: getTodayXpProgress(),
-    correctAnswers: getTodayCorrectAnswers(),
-  });
-
-  useEffect(() => {
-    const syncProgress = () => {
-      setTodayMetrics({
-        lessons: getCompletedLessonsCountForDate(),
-        xp: getTodayXpProgress(),
-        correctAnswers: getTodayCorrectAnswers(),
-      });
-    };
-
-    const interval = setInterval(syncProgress, 1000);
-    window.addEventListener("storage", syncProgress);
-    window.addEventListener("romingo:daily-goals-updated", syncProgress);
-    window.addEventListener(learningEconomyUpdatedEvent, syncProgress);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener("storage", syncProgress);
-      window.removeEventListener("romingo:daily-goals-updated", syncProgress);
-      window.removeEventListener(learningEconomyUpdatedEvent, syncProgress);
-    };
-  }, []);
-
-  const practicePlan = useMemo(() => getAdaptivePracticePlan(), [todayMetrics.correctAnswers]);
-  const dailyGoalTargets = getDailyGoalTargets();
-
-  const nextAction = useMemo(() => {
-    const lessonsDone = todayMetrics.lessons >= 1;
-    const xpDone = todayMetrics.xp >= dailyGoalTargets.xp;
-    const correctDone = todayMetrics.correctAnswers >= dailyGoalTargets.correctAnswers;
-    const topWeakType = practicePlan.weakTypes[0];
-
-    if (!lessonsDone) {
-      return {
-        icon: BookOpen,
-        title: "Sıradaki adım",
-        label: "Sıradaki dersi tamamla",
-        desc: "Serini korumak için kaldığın yerden devam et.",
-        to: "/learn",
-        gradient: "gradient-success",
-        shadow: "shadow-button-success",
-      };
-    }
-
-    if (!correctDone && topWeakType) {
-      return {
-        icon: Target,
-        title: "Sıradaki adım",
-        label: "Zayıf konunu tekrar et",
-        desc: `Öneri: ${getExerciseTypeLabel(topWeakType.type)} pratiği yap.`,
-        to: "/learn?view=tutorial&practice=adaptive",
-        gradient: "gradient-sky",
-        shadow: "shadow-button-sky",
-      };
-    }
-
-    if (!xpDone) {
-      return {
-        icon: Star,
-        title: "Sıradaki adım",
-        label: "Hedef XP'yi tamamla",
-        desc: `Kalan ${Math.max(dailyGoalTargets.xp - todayMetrics.xp, 0)} XP için kısa bir ders daha.`,
-        to: "/learn",
-        gradient: "gradient-hero",
-        shadow: "shadow-button-primary",
-      };
-    }
-
-    return {
-      icon: Target,
-      title: "Sıradaki adım",
-      label: "Mini tekrar turu yap",
-      desc: "Yarına hazırlanmak için 5 dakikalık pratik öneriyoruz.",
-      to: "/learn?view=tutorial&practice=adaptive",
-      gradient: "gradient-sky",
-      shadow: "shadow-button-sky",
-    };
-  }, [dailyGoalTargets.correctAnswers, dailyGoalTargets.xp, practicePlan.weakTypes, todayMetrics.correctAnswers, todayMetrics.lessons, todayMetrics.xp]);
-
   return (
     <div className="pb-20">
       <div className="px-4 py-6 space-y-4 max-w-lg mx-auto">
@@ -121,19 +27,6 @@ export default function HomePage() {
           </button>
           <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
         </div>
-
-        <button
-          onClick={() => navigate(nextAction.to)}
-          className={`${nextAction.gradient} ${nextAction.shadow} rounded-2xl p-5 text-left active:translate-y-1 active:shadow-none transition-all w-full`}
-        >
-          <div className="text-primary-foreground/80 text-xs font-extrabold uppercase tracking-wide mb-1">
-            {nextAction.title}
-          </div>
-          <nextAction.icon className="w-8 h-8 text-primary-foreground mb-2" />
-          <div className="text-primary-foreground font-extrabold text-base">{nextAction.label}</div>
-          <div className="text-primary-foreground/80 text-xs font-semibold mt-1">{nextAction.desc}</div>
-        </button>
-
         <div className="grid grid-cols-2 gap-3">
           <button
             onClick={() => navigate("/learn?view=tutorial&practice=adaptive")}
