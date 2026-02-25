@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import mascotPanda from "@/assets/mascot-panda.png";
 import { Zap, Target, Clock3 } from "lucide-react";
 import type { LessonData } from "../data/lessons";
 
@@ -57,7 +58,7 @@ export default function LessonComplete({
   return (
     <div className="min-h-screen bg-[#0c1f2f] flex flex-col justify-center px-6 pb-8">
       <div className="w-full max-w-md mx-auto text-center animate-bounce-in">
-        <div className="text-8xl mb-4">🦉</div>
+        <img src={mascotPanda} alt="Tebrikler maskotu" className="w-32 h-32 mx-auto mb-4 object-contain drop-shadow-xl" />
 
         <h1 className="text-4xl font-black text-[#ffd338] mb-2">Mücadeleyi tamamladın!</h1>
         <p className="text-sm font-bold text-white/80 mb-8">{lesson.title} dersi başarıyla bitti.</p>

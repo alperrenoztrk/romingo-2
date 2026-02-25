@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import mascotFlamingo from "@/assets/mascot-flamingo.png";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, BookOpenText, Languages, Target, Star, Video, Trophy } from "lucide-react";
 import { getCompletedLessonsCountForDate } from "../lib/lessonProgress";
@@ -112,11 +113,11 @@ export default function HomePage() {
           <button
             type="button"
             onClick={() => setFlamingoRotation((currentRotation) => currentRotation + 360)}
-            className="text-7xl leading-none transition-transform duration-700 ease-out active:scale-95"
+            className="transition-transform duration-700 ease-out active:scale-95 w-20 h-20 flex-shrink-0"
             style={{ transform: `rotate(${flamingoRotation}deg)` }}
             aria-label="Flamingoyu döndür"
           >
-            🦩
+            <img src={mascotFlamingo} alt="Romingo maskotu" className="w-full h-full object-contain drop-shadow-lg" />
           </button>
           <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
         </div>
