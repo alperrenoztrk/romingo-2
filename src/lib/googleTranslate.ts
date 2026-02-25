@@ -1,4 +1,8 @@
 import { translateWithTolerance, type TranslationDirection } from "./translationDictionary";
+import {
+  BLOCKED_TRANSLATION_MESSAGE,
+  containsBlockedContent,
+} from "./profanityFilter";
 
 const GOOGLE_TRANSLATE_BASE_URL = "https://translate.googleapis.com/translate_a/single";
 
@@ -24,6 +28,7 @@ function parseGoogleTranslateResponse(payload: unknown) {
 export async function translateWithGoogle(input: string, direction: TranslationDirection) {
   const trimmedInput = input.trim();
   if (!trimmedInput) return "";
+  if (containsBlockedContent(trimmedInput)) return BLOCKED_TRANSLATION_MESSAGE;
 
   const { sourceLanguage, targetLanguage } = getLanguagePair(direction);
   const params = new URLSearchParams({
@@ -40,10 +45,15 @@ export async function translateWithGoogle(input: string, direction: TranslationD
 
     const payload = (await response.json()) as unknown;
     const translatedText = parseGoogleTranslateResponse(payload);
-    if (translatedText) return translatedText;
+    if (translatedText) {
+      return containsBlockedContent(translatedText) ? BLOCKED_TRANSLATION_MESSAGE : translatedText;
+    }
   } catch {
     // Local sözlük yedek olarak çalışmaya devam eder.
   }
 
-  return translateWithTolerance(trimmedInput, direction);
+  const fallbackTranslation = translateWithTolerance(trimmedInput, direction);
+  return containsBlockedContent(fallbackTranslation)
+    ? BLOCKED_TRANSLATION_MESSAGE
+    : fallbackTranslation;
 }
