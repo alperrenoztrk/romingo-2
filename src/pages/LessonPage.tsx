@@ -81,7 +81,7 @@ const lessonMascots = [
 function MascotFace({ mascotId, mascotName }: { mascotId: (typeof lessonMascots)[number]["id"]; mascotName: string }) {
   if (mascotId === "cat") {
     return (
-      <svg viewBox="0 0 64 64" className="h-14 w-14" role="img" aria-label={mascotName}>
+      <svg viewBox="0 0 64 64" className="h-20 w-20" role="img" aria-label={mascotName}>
         <path d="M14 22 L20 8 L28 20" fill="#f59e0b" />
         <path d="M50 22 L44 8 L36 20" fill="#f59e0b" />
         <ellipse cx="32" cy="35" rx="22" ry="19" fill="#fbbf24" />
@@ -97,7 +97,7 @@ function MascotFace({ mascotId, mascotName }: { mascotId: (typeof lessonMascots)
 
   if (mascotId === "toucan") {
     return (
-      <svg viewBox="0 0 64 64" className="h-14 w-14" role="img" aria-label={mascotName}>
+      <svg viewBox="0 0 64 64" className="h-20 w-20" role="img" aria-label={mascotName}>
         <ellipse cx="28" cy="34" rx="18" ry="18" fill="#38bdf8" />
         <ellipse cx="26" cy="33" rx="5" ry="6" fill="white" />
         <circle cx="26" cy="34" r="2.2" fill="#111827" />
@@ -110,7 +110,7 @@ function MascotFace({ mascotId, mascotName }: { mascotId: (typeof lessonMascots)
 
   if (mascotId === "panda") {
     return (
-      <svg viewBox="0 0 64 64" className="h-14 w-14" role="img" aria-label={mascotName}>
+      <svg viewBox="0 0 64 64" className="h-20 w-20" role="img" aria-label={mascotName}>
         <circle cx="19" cy="18" r="8" fill="#1f2937" />
         <circle cx="45" cy="18" r="8" fill="#1f2937" />
         <ellipse cx="32" cy="36" rx="22" ry="19" fill="#f8fafc" />
@@ -124,7 +124,7 @@ function MascotFace({ mascotId, mascotName }: { mascotId: (typeof lessonMascots)
   }
 
   return (
-    <svg viewBox="0 0 64 64" className="h-14 w-14" role="img" aria-label={mascotName}>
+    <svg viewBox="0 0 64 64" className="h-20 w-20" role="img" aria-label={mascotName}>
       <ellipse cx="30" cy="36" rx="16" ry="19" fill="#f472b6" />
       <path d="M28 18 C26 8, 35 6, 38 14 C39 17, 37 21, 33 24" fill="#ec4899" />
       <ellipse cx="25" cy="34" rx="3.5" ry="4.5" fill="white" />
@@ -651,19 +651,17 @@ export default function LessonPage() {
 
             {exercisePrompt && (
               <div
-                className={`relative mb-4 rounded-2xl border px-3 pb-2 pt-7 bg-gradient-to-r shadow-[0_10px_22px_-14px_rgba(0,0,0,0.7)] ${currentMascot.gradient} ${currentMascot.border}`}
+                className={`relative mb-4 rounded-2xl border px-3 pb-2 pt-8 bg-gradient-to-r shadow-[0_10px_22px_-14px_rgba(0,0,0,0.7)] ${currentMascot.gradient} ${currentMascot.border}`}
                 aria-live="polite"
               >
                 <div className="absolute -top-6 left-3">
                   <div className="relative shrink-0">
-                    <div className={`relative grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br ${currentMascot.orb} shadow-[inset_0_-8px_12px_rgba(0,0,0,0.24),0_10px_16px_-8px_rgba(0,0,0,0.85)] ring-2 ${currentMascot.ring}`}>
+                    <div className="relative grid h-20 w-20 place-items-center">
                       <MascotFace mascotId={currentMascot.id} mascotName={currentMascot.name} />
-                      <span className="pointer-events-none absolute left-2 top-2 h-3 w-6 rounded-full bg-white/60 blur-[1px]" aria-hidden />
                     </div>
-                    <span className="pointer-events-none absolute -bottom-1.5 left-1/2 h-3 w-10 -translate-x-1/2 rounded-full bg-black/25 blur-[2px]" aria-hidden />
                   </div>
                 </div>
-                <p className="pl-[4.6rem] text-lg font-black text-foreground">{exercisePrompt}</p>
+                <p className="pl-[5.6rem] text-lg font-black text-foreground">{exercisePrompt}</p>
               </div>
             )}
 
