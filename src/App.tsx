@@ -108,11 +108,11 @@ function AppContent() {
   if (showSplash) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
-        <div className="rounded-2xl bg-white p-4 text-center">
+        <div className="bg-white text-center">
           <img
             src="https://www.romingoakademi.com/static/images/logo.png"
             alt="Romingo logo"
-            className="mx-auto w-60 max-w-[70vw] drop-shadow-xl"
+            className="mx-auto w-60 max-w-[70vw]"
           />
         </div>
       </div>
