@@ -51,6 +51,9 @@ export default function MatchingEx({ exercise, onAnswer, answered }: Props) {
     return [...matched].some((m) => exercise.pairs[m].right === rightWord);
   };
 
+  const formatTurkishWord = (word: string) => word.toLocaleLowerCase("tr-TR");
+  const formatRomanianWord = (word: string) => word.toLocaleUpperCase("ro-RO");
+
   return (
     <div>
       <div className="flex gap-3">
@@ -76,7 +79,7 @@ export default function MatchingEx({ exercise, onAnswer, answered }: Props) {
                     : "bg-card border-border text-foreground hover:border-sky"
                 }`}
               >
-                {pair.left}
+                <span className="text-xs font-semibold tracking-wide">{formatTurkishWord(pair.left)}</span>
               </button>
             );
           })}
@@ -104,7 +107,7 @@ export default function MatchingEx({ exercise, onAnswer, answered }: Props) {
                     : "bg-card border-border text-foreground hover:border-sky"
                 }`}
               >
-                {word}
+                <span className="text-base font-black tracking-wide">{formatRomanianWord(word)}</span>
               </button>
             );
           })}
