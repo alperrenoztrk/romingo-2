@@ -58,7 +58,7 @@ export default function LessonComplete({
   return (
     <div className="min-h-screen bg-[#0c1f2f] flex flex-col justify-center px-6 pb-8">
       <div className="w-full max-w-md mx-auto text-center animate-bounce-in">
-        <img src={mascotPanda} alt="Tebrikler maskotu" className="w-32 h-32 mx-auto mb-4 object-contain drop-shadow-xl" />
+        <img src={mascotPanda} alt="Tebrikler maskotu" className="w-44 h-44 mx-auto mb-4 object-contain drop-shadow-2xl" />
 
         <h1 className="text-4xl font-black text-[#ffd338] mb-2">Mücadeleyi tamamladın!</h1>
         <p className="text-sm font-bold text-white/80 mb-8">{lesson.title} dersi başarıyla bitti.</p>
