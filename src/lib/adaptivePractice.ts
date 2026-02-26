@@ -13,6 +13,7 @@ const TRACKED_TYPES: ExerciseType[] = [
   "translation",
   "matching",
   "listening",
+  "listen_and_repeat",
   "sentence_builder",
 ];
 
@@ -78,5 +79,6 @@ export function getExerciseTypeLabel(type: ExerciseType) {
   if (type === "translation") return "Çeviri";
   if (type === "matching") return "Eşleştirme";
   if (type === "listening") return "Dinleme";
+  if (type === "listen_and_repeat") return "Dinleyip Sesli Okuma";
   return "Cümle Kurma";
 }

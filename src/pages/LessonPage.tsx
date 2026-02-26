@@ -8,6 +8,7 @@ import TranslationEx from "../components/exercises/TranslationEx";
 import MatchingEx from "../components/exercises/MatchingEx";
 import ListeningEx from "../components/exercises/ListeningEx";
 import SentenceBuilderEx from "../components/exercises/SentenceBuilderEx";
+import ListenAndRepeatEx from "../components/exercises/ListenAndRepeatEx";
 import LessonComplete from "../components/LessonComplete";
 import { addTodayProgress } from "../lib/weeklyProgress";
 import { orderedLessonIds } from "../data/lessonCatalog";
@@ -258,6 +259,10 @@ export default function LessonPage() {
       return "Duyduğun kelimeyi seç";
     }
 
+    if (currentExercise.type === "listen_and_repeat") {
+      return currentExercise.prompt;
+    }
+
     if (currentExercise.type === "matching") {
       return "Eşleşenleri bul";
     }
@@ -467,6 +472,8 @@ export default function LessonPage() {
     ? ""
     : currentExercise.type === "multiple_choice" || currentExercise.type === "listening"
       ? currentExercise.options[currentExercise.correctIndex] ?? ""
+      : currentExercise.type === "listen_and_repeat"
+      ? currentExercise.phrase
       : currentExercise.type === "fill_blank" || currentExercise.type === "translation"
       ? currentExercise.correctAnswer
       : currentExercise.type === "sentence_builder"
@@ -624,6 +631,7 @@ export default function LessonPage() {
               <div className="text-xs font-bold text-muted-foreground uppercase">
                 {currentExercise.type === "translation" && "Çevir"}
                 {currentExercise.type === "listening" && "Dinleyip seç"}
+                {currentExercise.type === "listen_and_repeat" && "Dinleyip sesli oku"}
                 {currentExercise.type === "sentence_builder" && "Sürükleyip cümle kur"}
               </div>
 
@@ -683,6 +691,9 @@ export default function LessonPage() {
               )}
               {currentExercise.type === "sentence_builder" && (
                 <SentenceBuilderEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
+              )}
+              {currentExercise.type === "listen_and_repeat" && (
+                <ListenAndRepeatEx exercise={currentExercise} onAnswer={handleAnswer} answered={answered} />
               )}
             </div>
           </>
