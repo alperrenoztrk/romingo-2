@@ -1,4 +1,6 @@
-export type ExerciseType = "multiple_choice" | "translation" | "fill_blank" | "matching" | "listening" | "sentence_builder";
+import { lessonCatalog } from "./lessonCatalog";
+
+export type ExerciseType = "multiple_choice" | "translation" | "fill_blank" | "matching" | "listening" | "sentence_builder" | "listen_and_repeat";
 
 export interface MultipleChoiceExercise {
   type: "multiple_choice";
@@ -45,13 +47,22 @@ export interface SentenceBuilderExercise {
   hint?: string;
 }
 
+export interface ListenAndRepeatExercise {
+  type: "listen_and_repeat";
+  prompt: string;
+  phrase: string;
+  acceptedAnswers: string[];
+  hint?: string;
+}
+
 export type Exercise =
   | MultipleChoiceExercise
   | TranslationExercise
   | FillBlankExercise
   | MatchingExercise
   | ListeningExercise
-  | SentenceBuilderExercise;
+  | SentenceBuilderExercise
+  | ListenAndRepeatExercise;
 
 export interface LessonData {
   id: string;
@@ -2754,4 +2765,58 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
 
 for (const [lessonId, extraExercises] of Object.entries(level2To6SupplementalExercises)) {
   lessonsData[lessonId]?.exercises.push(...extraExercises);
+}
+
+const normalizeForSpeechMatch = (value: string) =>
+  value
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+
+function createListenAndRepeatExercise(lessonId: string): ListenAndRepeatExercise | null {
+  const lesson = lessonsData[lessonId];
+  if (!lesson) return null;
+
+  const translationExercise = lesson.exercises.find((exercise) => exercise.type === "translation");
+  if (translationExercise) {
+    const phrase = translationExercise.direction === "tr-ro" ? translationExercise.correctAnswer : translationExercise.sentence;
+    const acceptedAnswers = Array.from(new Set([phrase, ...translationExercise.acceptedAnswers].map(normalizeForSpeechMatch)));
+    return {
+      type: "listen_and_repeat",
+      prompt: "Duyduğunu sesli tekrar et",
+      phrase,
+      acceptedAnswers,
+      hint: "Önce sesi dinle, sonra mikrofona aynı cümleyi söyle.",
+    };
+  }
+
+  const listeningExercise = lesson.exercises.find((exercise) => exercise.type === "listening");
+  if (!listeningExercise) return null;
+
+  return {
+    type: "listen_and_repeat",
+    prompt: "Duyduğunu sesli tekrar et",
+    phrase: listeningExercise.word,
+    acceptedAnswers: [normalizeForSpeechMatch(listeningExercise.word)],
+    hint: "Telaffuzu net ve yavaş söylemeyi dene.",
+  };
+}
+
+for (const catalogLesson of lessonCatalog) {
+  if (catalogLesson.level < 5) {
+    continue;
+  }
+
+  const lesson = lessonsData[catalogLesson.id];
+  if (!lesson || lesson.exercises.some((exercise) => exercise.type === "listen_and_repeat")) {
+    continue;
+  }
+
+  const listenAndRepeatExercise = createListenAndRepeatExercise(catalogLesson.id);
+  if (listenAndRepeatExercise) {
+    lesson.exercises.push(listenAndRepeatExercise);
+  }
 }
