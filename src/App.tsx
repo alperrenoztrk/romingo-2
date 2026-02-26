@@ -110,7 +110,7 @@ function AppContent() {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
         <div className="bg-white text-center">
           <img
-            src="https://www.romingoakademi.com/static/images/logo.png"
+            src="/romingo-logo.svg"
             alt="Romingo logo"
             className="mx-auto w-60 max-w-[70vw]"
           />
