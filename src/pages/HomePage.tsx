@@ -1,8 +1,8 @@
 import { useState } from "react";
-import mascotFlamingo from "@/assets/mascot-flamingo.png";
 import { useNavigate } from "react-router-dom";
 import { BookOpenText, Languages, Target, Video, Trophy } from "lucide-react";
 import { useAuthProfile } from "@/hooks/useAuthProfile";
+import MascotFace from "@/components/MascotFace";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export default function HomePage() {
             style={{ transform: `rotate(${flamingoRotation}deg)` }}
             aria-label="Flamingoyu döndür"
           >
-            <img src={mascotFlamingo} alt="Romingo maskotu" className="w-full h-full object-contain drop-shadow-lg" />
+            <MascotFace mascotId="flamingo" mascotName="Romingo maskotu" className="w-full h-full drop-shadow-lg" />
           </button>
           <h1 className="text-2xl font-black text-foreground">{greeting}!</h1>
         </div>
