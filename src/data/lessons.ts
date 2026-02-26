@@ -89,7 +89,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "A: Bună dimineața! B: ___ dimineața!",
+        sentence: "A: Günaydın! B: ___ dimineața!",
         correctAnswer: "Bună",
         options: ["La", "Mulțumesc", "Bună", "Noapte"],
       },
@@ -123,7 +123,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "A: Ce faci? B: Bine, ___!",
+        sentence: "A: Nasılsın? B: İyiyim, ___!",
         correctAnswer: "mulțumesc",
         options: ["mulțumesc", "bună", "pa", "te rog"],
       },
@@ -178,7 +178,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Numele meu ___ Zeynep.",
+        sentence: "Cümleyi Romence tamamla: Numele meu ___ Zeynep.",
         correctAnswer: "este",
         options: ["sunt", "este", "ești", "avem"],
       },
@@ -212,7 +212,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "A: De unde ești? B: ___ din Ankara.",
+        sentence: "A: Nerelisin? B: ___ din Ankara.",
         correctAnswer: "Sunt",
         options: ["Este", "Sunt", "Ești", "Avem"],
       },
@@ -269,7 +269,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Doi plus trei fac ___.",
+        sentence: "Romence işlemi tamamla: Doi plus trei fac ___.",
         correctAnswer: "cinci",
         options: ["patru", "cinci", "șase", "șapte"],
       },
@@ -288,7 +288,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Zece plus cinci fac ___.",
+        sentence: "Romence işlemi tamamla: Zece plus cinci fac ___.",
         correctAnswer: "cincisprezece",
         options: ["doisprezece", "treisprezece", "paisprezece", "cincisprezece"],
       },
@@ -399,7 +399,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "La micul dejun mănânc ___ și brânză.",
+        sentence: "Cümleyi Romence tamamla: La micul dejun mănânc ___ și brânză.",
         correctAnswer: "pâine",
         options: ["apă", "pâine", "ceai", "pui"],
       },
@@ -418,7 +418,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "La cină mănânc ___.",
+        sentence: "Cümleyi Romence tamamla: La cină mănânc ___.",
         correctAnswer: "supă",
         options: ["pâine", "orez", "supă", "măr"],
       },
@@ -526,7 +526,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Mama mea este ___.",
+        sentence: "Cümleyi Romence tamamla: Mama mea este ___.",
         correctAnswer: "profesoară",
         options: ["profesoară", "casă", "școală", "serviciu"],
       },
@@ -545,7 +545,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Mama mamei mele este ___.",
+        sentence: "Cümleyi Romence tamamla: Mama mamei mele este ___.",
         correctAnswer: "bunica",
         options: ["mătușa", "bunica", "sora", "mama"],
         hint: "Anne tarafındaki büyükanne",
@@ -914,7 +914,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Acest produs este foarte scump. Aveți ceva mai ___?",
+        sentence: "Cümleyi Romence tamamla: Acest produs este foarte scump. Aveți ceva mai ___?",
         correctAnswer: "ieftin",
         options: ["lung", "ieftin", "cald", "dulce"],
       },
@@ -984,7 +984,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "În fiecare dimineață merg la serviciu cu ___.",
+        sentence: "Cümleyi Romence tamamla: În fiecare dimineață merg la serviciu cu ___.",
         correctAnswer: "autobuzul",
         options: ["autobuzul", "patul", "piața", "cartea"],
       },
@@ -1008,7 +1008,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Am chemat un ___ ca să mergem la aeroport.",
+        sentence: "Cümleyi Romence tamamla: Am chemat un ___ ca să mergem la aeroport.",
         correctAnswer: "taxi",
         options: ["taxi", "masă", "profesor", "carte"],
       },
@@ -1078,7 +1078,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Masa este în ___.",
+        sentence: "Cümleyi Romence tamamla: Masa este în ___.",
         correctAnswer: "bucătărie",
         options: ["bucătărie", "grădină", "mașină", "stradă"],
       },
@@ -1127,7 +1127,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Ședința ___ la ora trei.",
+        sentence: "Cümleyi Romence tamamla: Ședința ___ la ora trei.",
         correctAnswer: "începe",
         options: ["începe", "merge", "doarme", "vine"],
       },
@@ -1151,7 +1151,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Lecția ___ în zece minute, te rog nu întârzia.",
+        sentence: "Cümleyi Romence tamamla: Lecția ___ în zece minute, te rog nu întârzia.",
         correctAnswer: "începe",
         options: ["începe", "acasă", "uneori", "acolo"],
       },
@@ -1197,7 +1197,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "În fiecare dimineață, după micul dejun, ___ cafea.",
+        sentence: "Cümleyi Romence tamamla: În fiecare dimineață, după micul dejun, ___ cafea.",
         correctAnswer: "beau",
         options: ["beau", "alerg", "scriu", "dorm"],
       },
@@ -1216,7 +1216,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Seara ___ devreme pentru că dimineața am curs.",
+        sentence: "Cümleyi Romence tamamla: Seara ___ devreme pentru că dimineața am curs.",
         correctAnswer: "dorm",
         options: ["dorm", "înot", "râd", "alerg"],
       },
@@ -1262,7 +1262,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "La ora șapte dimineața ___ și mă pregătesc.",
+        sentence: "Cümleyi Romence tamamla: La ora șapte dimineața ___ și mă pregătesc.",
         correctAnswer: "mă trezesc",
         options: ["mă trezesc", "dorm", "alerg", "scriu"],
       },
@@ -1330,7 +1330,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Vă rog, ___ o supă de linte.",
+        sentence: "Cümleyi Romence tamamla: Vă rog, ___ o supă de linte.",
         correctAnswer: "doresc",
         options: ["doresc", "vin", "plec", "iau"],
       },
@@ -1354,7 +1354,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "După masă, să luăm un ___.",
+        sentence: "Cümleyi Romence tamamla: După masă, să luăm un ___.",
         correctAnswer: "desert",
         options: ["desert", "autobuz", "caiet", "cheie"],
       },
@@ -1400,7 +1400,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Muzeul este ___ băncii.",
+        sentence: "Cümleyi Romence tamamla: Muzeul este ___ băncii.",
         correctAnswer: "vizavi de",
         options: ["vizavi de", "deasupra", "înăuntru", "în spatele"],
       },
@@ -1419,7 +1419,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Școala este ___ parc.",
+        sentence: "Cümleyi Romence tamamla: Școala este ___ parc.",
         correctAnswer: "lângă",
         options: ["lângă", "deasupra", "sub", "departe de"],
       },
@@ -1468,7 +1468,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "După examen mă simt puțin ___.",
+        sentence: "Cümleyi Romence tamamla: După examen mă simt puțin ___.",
         correctAnswer: "obosit",
         options: ["obosit", "lung", "gros", "devreme"],
       },
@@ -1487,7 +1487,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "După o zi aglomerată, oricine poate fi puțin ___.",
+        sentence: "Cümleyi Romence tamamla: După o zi aglomerată, oricine poate fi puțin ___.",
         correctAnswer: "stresat",
         options: ["stresat", "dulce", "liniștit", "flămând"],
       },
@@ -1533,7 +1533,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Astăzi am mers mult, mă doare ___.",
+        sentence: "Cümleyi Romence tamamla: Astăzi am mers mult, mă doare ___.",
         correctAnswer: "piciorul",
         options: ["piciorul", "pixul", "geanta", "rochia"],
       },
@@ -1552,7 +1552,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "De la căratul cărții, mi-au obosit ___.",
+        sentence: "Cümleyi Romence tamamla: De la căratul cărții, mi-au obosit ___.",
         correctAnswer: "brațele",
         options: ["brațele", "masa", "caietul", "casa"],
       },
@@ -1598,7 +1598,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Înainte să plec în vacanță, trebuie să-mi verific ___.",
+        sentence: "Cümleyi Romence tamamla: Înainte să plec în vacanță, trebuie să-mi verific ___.",
         correctAnswer: "pașaportul",
         options: ["pașaportul", "pixul", "televizorul", "masa"],
       },
@@ -1663,7 +1663,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Mă doare capul, am nevoie de un ___.",
+        sentence: "Cümleyi Romence tamamla: Mă doare capul, am nevoie de un ___.",
         correctAnswer: "medicament",
         options: ["medicament", "bilet", "caiet", "cheie"],
       },
@@ -2313,7 +2313,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "translation", sentence: "Yarın yağmur bekleniyor", direction: "tr-ro", correctAnswer: "Mâine se așteaptă ploaie", acceptedAnswers: ["Mâine se așteaptă ploaie", "mâine se așteaptă ploaie"] },
       { type: "multiple_choice", question: '"Sıcaklık düşecek" cümlesinin Romencesi hangisi?', options: ["Temperatura va crește", "Temperatura va scădea", "Temperatura rămâne", "Temperatura dispare"], correctIndex: 1 },
-      { type: "fill_blank", sentence: "Este posibil să ___ după-amiază.", correctAnswer: "ningă", options: ["ningă", "coacă", "citească", "asculte"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Este posibil să ___ după-amiază.", correctAnswer: "ningă", options: ["ningă", "coacă", "citească", "asculte"] },
     ],
   },
   "57": {
@@ -2325,7 +2325,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Bir kilo domates" Romence nasıl söylenir?', options: ["Un litru de roșii", "Un kilogram de roșii", "O cutie de roșii", "Un pahar de roșii"], correctIndex: 1 },
       { type: "translation", sentence: "Bunlar çok taze görünüyor", direction: "tr-ro", correctAnswer: "Acestea par foarte proaspete", acceptedAnswers: ["Acestea par foarte proaspete", "acestea par foarte proaspete"] },
-      { type: "fill_blank", sentence: "Cât ___ un kilogram de cartofi?", correctAnswer: "costă", options: ["costă", "merge", "scrie", "așteaptă"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Cât ___ un kilogram de cartofi?", correctAnswer: "costă", options: ["costă", "merge", "scrie", "așteaptă"] },
     ],
   },
   "58": {
@@ -2337,7 +2337,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "translation", sentence: "Cumartesi sinemaya gidelim", direction: "tr-ro", correctAnswer: "Sâmbătă să mergem la cinema", acceptedAnswers: ["Sâmbătă să mergem la cinema", "sâmbătă să mergem la cinema"] },
       { type: "multiple_choice", question: '"Pazar günü müsait misin?" cümlesinin Romencesi hangisi?', options: ["Ești ocupat luni?", "Ești liber duminică?", "Vii mâine dimineață?", "Pleci în vacanță?"], correctIndex: 1 },
-      { type: "fill_blank", sentence: "Putem să ne ___ în parc la ora cinci.", correctAnswer: "întâlnim", options: ["întâlnim", "închidem", "uităm", "plecăm"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Putem să ne ___ în parc la ora cinci.", correctAnswer: "întâlnim", options: ["întâlnim", "închidem", "uităm", "plecăm"] },
     ],
   },
   "59": {
@@ -2349,7 +2349,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Yarın için randevu almak istiyorum" cümlesinin Romencesi hangisi?', options: ["Vreau să anulez consultația", "Vreau să fac o programare pentru mâine", "Vreau să cumpăr medicamente", "Vreau să plec acasă"], correctIndex: 1 },
       { type: "translation", sentence: "Dün geceden beri ateşim var", direction: "tr-ro", correctAnswer: "Am febră de aseară", acceptedAnswers: ["Am febră de aseară", "am febră de aseară"] },
-      { type: "fill_blank", sentence: "Mă doare foarte tare ___.", correctAnswer: "gâtul", options: ["gâtul", "ceasul", "scaunul", "drumul"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Mă doare foarte tare ___.", correctAnswer: "gâtul", options: ["gâtul", "ceasul", "scaunul", "drumul"] },
     ],
   },
   "60": {
@@ -2361,7 +2361,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "translation", sentence: "Check-in nerede yapılıyor?", direction: "tr-ro", correctAnswer: "Unde se face check-in-ul?", acceptedAnswers: ["Unde se face check-in-ul?", "unde se face check-in-ul?"] },
       { type: "multiple_choice", question: '"El bagajı" için doğru Romence ifade hangisi?', options: ["Bagaj de mână", "Bagaj de cală", "Bilet de intrare", "Număr de poartă"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Zborul nostru ___ de la poarta 12.", correctAnswer: "pleacă", options: ["pleacă", "doarme", "mănâncă", "scrie"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Zborul nostru ___ de la poarta 12.", correctAnswer: "pleacă", options: ["pleacă", "doarme", "mănâncă", "scrie"] },
     ],
   },
   "61": {
@@ -2433,7 +2433,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Nefes almakta zorlanıyorum" cümlesinin Romencesi hangisi?', options: ["Pot să alerg repede", "Am dificultăți de respirație", "Mi-e sete", "Dorm foarte bine"], correctIndex: 1 },
       { type: "translation", sentence: "Lütfen hemen bir doktor çağırın", direction: "tr-ro", correctAnswer: "Vă rog, chemați imediat un doctor", acceptedAnswers: ["Vă rog, chemați imediat un doctor", "vă rog, chemați imediat un doctor"] },
-      { type: "fill_blank", sentence: "Am nevoie de ___ medical urgent.", correctAnswer: "ajutor", options: ["ajutor", "transport", "ceai", "pauză"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Am nevoie de ___ medical urgent.", correctAnswer: "ajutor", options: ["ajutor", "transport", "ceai", "pauză"] },
     ],
   },
   "67": {
@@ -2445,7 +2445,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "translation", sentence: "Bükreş'e giden bir bilet istiyorum", direction: "tr-ro", correctAnswer: "Doresc un bilet către București", acceptedAnswers: ["Doresc un bilet către București", "doresc un bilet către bucurești"] },
       { type: "multiple_choice", question: '"Tren kaçta kalkıyor?" cümlesinin Romencesi hangisi?', options: ["La ce oră pleacă trenul?", "Unde este autobuzul?", "Când vine taxiul?", "Cât costă avionul?"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Peronul trenului este la linia ___.", correctAnswer: "trei", options: ["trei", "frig", "mare", "lung"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Peronul trenului este la linia ___.", correctAnswer: "trei", options: ["trei", "frig", "mare", "lung"] },
     ],
   },
 
@@ -2458,7 +2458,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Boğaz ağrısı için bir ilaç istiyorum" cümlesinin Romencesi hangisi?', options: ["Doresc un medicament pentru durere în gât", "Doresc un bilet pentru tren", "Doresc o cameră la hotel", "Doresc un suc rece"], correctIndex: 0 },
       { type: "translation", sentence: "Bu ilacı günde iki kez almalısınız", direction: "tr-ro", correctAnswer: "Trebuie să luați acest medicament de două ori pe zi", acceptedAnswers: ["Trebuie să luați acest medicament de două ori pe zi", "trebuie să luați acest medicament de două ori pe zi"] },
-      { type: "fill_blank", sentence: "Luați pastila după ___ .", correctAnswer: "masă", options: ["masă", "drum", "film", "tren"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Luați pastila după ___ .", correctAnswer: "masă", options: ["masă", "drum", "film", "tren"] },
     ],
   },
   "69": {
@@ -2470,7 +2470,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "translation", sentence: "Kendimi daha iyi hissediyorum ama hâlâ öksürüyorum", direction: "tr-ro", correctAnswer: "Mă simt mai bine, dar încă tușesc", acceptedAnswers: ["Mă simt mai bine, dar încă tușesc", "mă simt mai bine, dar încă tușesc"] },
       { type: "multiple_choice", question: '"İki hafta sonra tekrar kontrole gelin" cümlesinin Romencesi hangisi?', options: ["Reveniți la control peste două săptămâni", "Plecați imediat acasă", "Nu mai este nevoie de tratament", "Mergeți la gară acum"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Doctorul mi-a recomandat să ___ mai mult.", correctAnswer: "odihnesc", options: ["odihnesc", "alerg", "strig", "uit"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Doctorul mi-a recomandat să ___ mai mult.", correctAnswer: "odihnesc", options: ["odihnesc", "alerg", "strig", "uit"] },
     ],
   },
   "70": {
@@ -2482,7 +2482,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "multiple_choice", question: '"Ziyaret amacım turizm" cümlesinin Romencesi hangisi?', options: ["Scopul vizitei mele este turismul", "Scopul vizitei mele este medicina", "Scopul vizitei mele este școala", "Scopul vizitei mele este sportul"], correctIndex: 0 },
       { type: "translation", sentence: "Burada üç gün kalacağım", direction: "tr-ro", correctAnswer: "Voi sta aici trei zile", acceptedAnswers: ["Voi sta aici trei zile", "voi sta aici trei zile"] },
-      { type: "fill_blank", sentence: "Vă rog să îmi arătați ___.", correctAnswer: "pașaportul", options: ["pașaportul", "telefonul", "meniul", "caietul"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Vă rog să îmi arătați ___.", correctAnswer: "pașaportul", options: ["pașaportul", "telefonul", "meniul", "caietul"] },
     ],
   },
   "71": {
@@ -2494,7 +2494,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "translation", sentence: "Üç günlüğüne otomatik bir araç kiralamak istiyorum", direction: "tr-ro", correctAnswer: "Doresc să închiriez o mașină automată pentru trei zile", acceptedAnswers: ["Doresc să închiriez o mașină automată pentru trei zile", "doresc să închiriez o mașină automată pentru trei zile"] },
       { type: "multiple_choice", question: '"Sigorta fiyata dahil mi?" cümlesinin Romencesi hangisi?', options: ["Asigurarea este inclusă în preț?", "Benzina este albastră?", "Mașina este foarte veche?", "Trenul vine la timp?"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Trebuie să returnez mașina până la ora ___.", correctAnswer: "zece", options: ["zece", "mare", "rapid", "ușor"] },
+      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Trebuie să returnez mașina până la ora ___.", correctAnswer: "zece", options: ["zece", "mare", "rapid", "ușor"] },
     ],
   },
 
