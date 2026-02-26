@@ -4,9 +4,9 @@ import mascotToucan from "@/assets/mascot-toucan.png";
 import mascotPanda from "@/assets/mascot-panda.png";
 
 const mascotImages: Record<string, string> = {
-  flamingo: mascotFlamingo,
-  cat: mascotCat,
-  toucan: mascotToucan,
+  flamingo: mascotCat,
+  cat: mascotToucan,
+  toucan: mascotFlamingo,
   panda: mascotPanda,
 };
 
