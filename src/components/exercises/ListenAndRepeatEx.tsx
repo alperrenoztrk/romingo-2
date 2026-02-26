@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Mic, Volume2 } from "lucide-react";
 import type { ListenAndRepeatExercise } from "../../data/lessons";
+import { matchesWithOneLetterTolerancePerWord } from "../../lib/answerTolerance";
 
 interface Props {
   exercise: ListenAndRepeatExercise;
@@ -36,6 +37,24 @@ function normalizeSpeech(value: string) {
     .toLowerCase();
 }
 
+export function isAcceptedSpeechAnswer(input: string, acceptedAnswers: string[]) {
+  return acceptedAnswers.some((acceptedAnswer) => {
+    if (acceptedAnswer === input) {
+      return true;
+    }
+
+    if (matchesWithOneLetterTolerancePerWord(input, acceptedAnswer)) {
+      return true;
+    }
+
+    if (input.length < 6 || acceptedAnswer.length < 6) {
+      return false;
+    }
+
+    return input.includes(acceptedAnswer) || acceptedAnswer.includes(input);
+  });
+}
+
 export default function ListenAndRepeatEx({ exercise, onAnswer, answered }: Props) {
   const [recognizedText, setRecognizedText] = useState("");
   const [isRecording, setIsRecording] = useState(false);
@@ -59,7 +78,7 @@ export default function ListenAndRepeatEx({ exercise, onAnswer, answered }: Prop
     if (answered) return;
 
     const normalizedValue = normalizeSpeech(value);
-    const isCorrect = exercise.acceptedAnswers.includes(normalizedValue);
+    const isCorrect = isAcceptedSpeechAnswer(normalizedValue, exercise.acceptedAnswers);
     onAnswer(isCorrect);
   };
 
