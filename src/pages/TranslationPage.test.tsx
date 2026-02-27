@@ -9,7 +9,7 @@ describe("TranslationPage", () => {
   beforeEach(() => {
     vi.spyOn(globalThis, "fetch").mockResolvedValue({
       ok: true,
-      json: async () => [[["günaydın", "BUNĂ DIMINEAȚA", null, null, 10]]],
+      json: async () => ({ text: ["günaydın"] }),
     } as Response);
 
     Object.defineProperty(globalThis.window, "speechSynthesis", {

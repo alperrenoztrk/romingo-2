@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import StatsBar from "../components/StatsBar";
 import { ArrowRightLeft, Languages, Volume2 } from "lucide-react";
 import type { TranslationDirection } from "../lib/translationDictionary";
-import { translateWithGoogle } from "../lib/googleTranslate";
+import { translateWithYandex } from "../lib/yandexTranslate";
 
 export default function TranslationPage() {
   const [direction, setDirection] = useState<TranslationDirection>("tr-ro");
@@ -23,7 +23,7 @@ export default function TranslationPage() {
     setIsTranslating(true);
 
     const timeoutId = window.setTimeout(async () => {
-      const translatedValue = await translateWithGoogle(trimmedInput, direction);
+      const translatedValue = await translateWithYandex(trimmedInput, direction);
       if (!isCancelled) {
         setTranslation(translatedValue);
         setIsTranslating(false);
