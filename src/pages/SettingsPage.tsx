@@ -37,7 +37,7 @@ export default function SettingsPage() {
         <section className="bg-card rounded-2xl p-4 shadow-card space-y-3">
           <h2 className="font-extrabold text-foreground">Hesap</h2>
 
-          <Link to="/settings/profile" className="w-full flex items-center justify-between p-3 rounded-xl bg-muted/40 hover:bg-muted transition-colors">
+          <Link to="/app/settings/profile" className="w-full flex items-center justify-between p-3 rounded-xl bg-muted/40 hover:bg-muted transition-colors">
             <div className="flex items-center gap-3">
               <UserCircle className="w-5 h-5 text-sky-brand" />
               <div className="text-left">
@@ -47,7 +47,7 @@ export default function SettingsPage() {
             <ChevronRight className="w-4 h-4 text-muted-foreground" />
           </Link>
 
-          <Link to="/settings/security" className="w-full flex items-center justify-between p-3 rounded-xl bg-muted/40 hover:bg-muted transition-colors">
+          <Link to="/app/settings/security" className="w-full flex items-center justify-between p-3 rounded-xl bg-muted/40 hover:bg-muted transition-colors">
             <div className="flex items-center gap-3">
               <Shield className="w-5 h-5 text-success" />
               <div className="text-left">

@@ -26,7 +26,7 @@ export default function ProfileSettingsPage() {
 
       <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
         <div className="flex items-center gap-3">
-          <Link to="/settings" className="p-2 rounded-xl bg-muted/40 hover:bg-muted transition-colors" aria-label="Ayarlar">
+          <Link to="/app/settings" className="p-2 rounded-xl bg-muted/40 hover:bg-muted transition-colors" aria-label="Ayarlar">
             <ArrowLeft className="w-4 h-4 text-muted-foreground" />
           </Link>
           <div>
