@@ -2,11 +2,11 @@ import { Home, BookOpen, ShoppingBag, Trophy, User } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const tabs = [
-  { path: "/", icon: Home, label: "Ana Sayfa" },
-  { path: "/learn", icon: BookOpen, label: "Öğren" },
-  { path: "/shop", icon: ShoppingBag, label: "Mağaza" },
-  { path: "/league", icon: Trophy, label: "Lig" },
-  { path: "/profile", icon: User, label: "Profil" },
+  { path: "/app", icon: Home, label: "Ana Sayfa" },
+  { path: "/app/learn", icon: BookOpen, label: "Öğren" },
+  { path: "/app/shop", icon: ShoppingBag, label: "Mağaza" },
+  { path: "/app/league", icon: Trophy, label: "Lig" },
+  { path: "/app/profile", icon: User, label: "Profil" },
 ];
 
 export default function BottomNav() {

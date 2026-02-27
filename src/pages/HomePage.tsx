@@ -29,7 +29,7 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-2 gap-3">
           <button
-            onClick={() => navigate("/learn?view=tutorial&practice=adaptive")}
+            onClick={() => navigate("/app/learn?view=tutorial&practice=adaptive")}
             className="gradient-sky shadow-button-sky rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all"
           >
             <Target className="w-8 h-8 text-primary-foreground mb-2" />
@@ -37,7 +37,7 @@ export default function HomePage() {
           </button>
 
           <button
-            onClick={() => navigate("/translate")}
+            onClick={() => navigate("/app/translate")}
             className="gradient-hero shadow-button-primary rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all"
           >
             <Languages className="w-8 h-8 text-primary-foreground mb-2" />
@@ -45,7 +45,7 @@ export default function HomePage() {
           </button>
 
           <button
-            onClick={() => navigate("/kahoot")}
+            onClick={() => navigate("/app/kahoot")}
             className="rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full gradient-hero shadow-button-primary"
           >
             <Trophy className="w-8 h-8 text-primary-foreground mb-2" />
@@ -53,7 +53,7 @@ export default function HomePage() {
           </button>
 
           <button
-            onClick={() => navigate("/videos")}
+            onClick={() => navigate("/app/videos")}
             className="gradient-success shadow-button-success rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full"
           >
             <Video className="w-8 h-8 text-primary-foreground mb-2" />
@@ -61,7 +61,7 @@ export default function HomePage() {
           </button>
 
           <button
-            onClick={() => navigate("/grammar")}
+            onClick={() => navigate("/app/grammar")}
             className="col-span-2 gradient-gold shadow-button-gold rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all"
           >
             <BookOpenText className="w-8 h-8 text-primary-foreground mb-2" />

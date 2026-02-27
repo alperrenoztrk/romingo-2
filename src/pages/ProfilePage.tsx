@@ -237,7 +237,7 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
               Günlük Hedefler
             </h2>
             <Link
-              to="/settings/daily-goals"
+              to="/app/settings/daily-goals"
               className="inline-flex items-center gap-1 rounded-lg border border-border bg-muted/40 px-3 py-1.5 text-xs font-extrabold text-foreground hover:bg-muted transition-colors"
             >
               <SlidersHorizontal className="w-3.5 h-3.5" />
@@ -423,7 +423,7 @@ export default function ProfilePage({ isGuest = false, onLogout }: ProfilePagePr
 
         <div className="space-y-2">
           <Link
-            to="/settings"
+            to="/app/settings"
             className="w-full bg-card rounded-2xl p-4 shadow-card flex items-center gap-3 hover:bg-muted transition-colors"
           >
             <Settings className="w-5 h-5 text-muted-foreground" />

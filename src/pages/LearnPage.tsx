@@ -222,7 +222,7 @@ export default function LearnPage() {
       return;
     }
 
-    const lessonUrl = tutorialView ? `/lesson/${lessonId}?skipIntro=1` : `/lesson/${lessonId}`;
+    const lessonUrl = tutorialView ? `/app/lesson/${lessonId}?skipIntro=1` : `/app/lesson/${lessonId}`;
     navigate(lessonUrl);
   };
 
