@@ -4,7 +4,7 @@ import {
   containsBlockedContent,
 } from "./profanityFilter";
 
-const GOOGLE_TRANSLATE_BASE_URL = "https://translate.googleapis.com/translate_a/single";
+const YANDEX_TRANSLATE_BASE_URL = "https://translate.yandex.net/api/v1/tr.json/translate";
 
 function getLanguagePair(direction: TranslationDirection) {
   return direction === "tr-ro"
@@ -12,39 +12,38 @@ function getLanguagePair(direction: TranslationDirection) {
     : { sourceLanguage: "ro", targetLanguage: "tr" };
 }
 
-function parseGoogleTranslateResponse(payload: unknown) {
-  if (!Array.isArray(payload) || !Array.isArray(payload[0])) return null;
+function parseYandexTranslateResponse(payload: unknown) {
+  if (!payload || typeof payload !== "object" || !("text" in payload)) return null;
 
-  const segments = payload[0] as unknown[];
-  const translatedText = segments
-    .map((segment) => (Array.isArray(segment) ? segment[0] : ""))
+  const { text } = payload as { text?: unknown };
+  if (!Array.isArray(text)) return null;
+
+  const translatedText = text
     .filter((value): value is string => typeof value === "string")
-    .join("")
+    .join(" ")
     .trim();
 
   return translatedText || null;
 }
 
-export async function translateWithGoogle(input: string, direction: TranslationDirection) {
+export async function translateWithYandex(input: string, direction: TranslationDirection) {
   const trimmedInput = input.trim();
   if (!trimmedInput) return "";
   if (containsBlockedContent(trimmedInput)) return BLOCKED_TRANSLATION_MESSAGE;
 
   const { sourceLanguage, targetLanguage } = getLanguagePair(direction);
   const params = new URLSearchParams({
-    client: "gtx",
-    sl: sourceLanguage,
-    tl: targetLanguage,
-    dt: "t",
-    q: trimmedInput,
+    srv: "tr-text",
+    lang: `${sourceLanguage}-${targetLanguage}`,
+    text: trimmedInput,
   });
 
   try {
-    const response = await fetch(`${GOOGLE_TRANSLATE_BASE_URL}?${params.toString()}`);
-    if (!response.ok) throw new Error(`Google Translate error: ${response.status}`);
+    const response = await fetch(`${YANDEX_TRANSLATE_BASE_URL}?${params.toString()}`);
+    if (!response.ok) throw new Error(`Yandex Translate error: ${response.status}`);
 
     const payload = (await response.json()) as unknown;
-    const translatedText = parseGoogleTranslateResponse(payload);
+    const translatedText = parseYandexTranslateResponse(payload);
     if (translatedText) {
       return containsBlockedContent(translatedText) ? BLOCKED_TRANSLATION_MESSAGE : translatedText;
     }
