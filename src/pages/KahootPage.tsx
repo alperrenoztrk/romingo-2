@@ -61,7 +61,7 @@ export default function KahootPage() {
     <div className="pb-20 px-4 py-6 max-w-lg mx-auto space-y-4">
       <div className="rounded-2xl p-6 text-center gradient-hero shadow-button-primary text-primary-foreground">
         <h1 className="text-3xl font-black">🎯 Kahoot</h1>
-        <p className="text-sm font-semibold mt-1 opacity-90">Çok oyunculu Romence bilgi yarışması</p>
+        <p className="text-sm font-semibold mt-1 opacity-90">Çok oyunculu Rumence bilgi yarışması</p>
       </div>
 
       <button

@@ -13,7 +13,7 @@ export const TEMEL_QUESTIONS: KahootQuestion[] = [
   { id: 5, question: "'Mulțumesc' ne demektir?", options: ["Lütfen", "Teşekkürler", "Özür dilerim", "Merhaba"], correctIndex: 1 },
   { id: 6, question: "'Apă' kelimesinin anlamı nedir?", options: ["Süt", "Çay", "Su", "Kahve"], correctIndex: 2 },
   { id: 7, question: "'Câine' hangi hayvanı ifade eder?", options: ["Kedi", "Köpek", "Kuş", "Balık"], correctIndex: 1 },
-  { id: 8, question: "'Unu' Romence'de hangi sayıdır?", options: ["Sıfır", "Bir", "İki", "Üç"], correctIndex: 1 },
+  { id: 8, question: "'Unu' Rumence'de hangi sayıdır?", options: ["Sıfır", "Bir", "İki", "Üç"], correctIndex: 1 },
   { id: 9, question: "'Bună ziua' ne demektir?", options: ["Günaydın", "İyi günler", "İyi geceler", "Merhaba"], correctIndex: 1 },
   { id: 10, question: "'Pisică' hangi hayvanı ifade eder?", options: ["Köpek", "Kedi", "Kuş", "Tavşan"], correctIndex: 1 },
   { id: 11, question: "'Da' kelimesinin Türkçe karşılığı nedir?", options: ["Hayır", "Belki", "Evet", "Lütfen"], correctIndex: 2 },
@@ -21,7 +21,7 @@ export const TEMEL_QUESTIONS: KahootQuestion[] = [
 ];
 
 export const ORTA_QUESTIONS: KahootQuestion[] = [
-  { id: 1, question: "'Eu învăț limba română.' cümlesinin doğru çevirisi hangisidir?", options: ["Romence öğretiyorum.", "Romence öğreniyorum.", "Romence konuşmuyorum.", "Romence çalıştım."], correctIndex: 1 },
+  { id: 1, question: "'Eu învăț limba română.' cümlesinin doğru çevirisi hangisidir?", options: ["Rumence öğretiyorum.", "Rumence öğreniyorum.", "Rumence konuşmuyorum.", "Rumence çalıştım."], correctIndex: 1 },
   { id: 2, question: "'Cum te numești?' sorusu ne anlama gelir?", options: ["Nasılsın?", "Nerelisin?", "Adın ne?", "Kaç yaşındasın?"], correctIndex: 2 },
   { id: 3, question: "'Am nevoie de ajutor.' ne demektir?", options: ["Yardıma ihtiyacım var.", "Yardım etmek istiyorum.", "Yardım istemiyorum.", "Yardımınız için teşekkürler."], correctIndex: 0 },
   { id: 4, question: "'Unde este gara?' cümlesinin anlamı nedir?", options: ["Tren ne zaman gelir?", "Gar nerede?", "Bilet ne kadar?", "Tren kalktı mı?"], correctIndex: 1 },
@@ -32,7 +32,7 @@ export const ORTA_QUESTIONS: KahootQuestion[] = [
   { id: 9, question: "'Pot să vă ajut?' ne anlama gelir?", options: ["Yardıma ihtiyacım var.", "Size yardım edebilir miyim?", "Lütfen yardım edin.", "Yardım istemiyorum."], correctIndex: 1 },
   { id: 10, question: "'Cât costă?' sorusunun anlamı nedir?", options: ["Ne kadar?", "Nereye?", "Ne zaman?", "Kim için?"], correctIndex: 0 },
   { id: 11, question: "'Mă numesc Ana.' cümlesinin çevirisi nedir?", options: ["Ana'yı tanıyorum.", "Benim adım Ana.", "Ana nerede?", "Ana gitti."], correctIndex: 1 },
-  { id: 12, question: "'Vorbesc puțin românește.' ne demektir?", options: ["Romence bilmiyorum.", "Romence çok iyi konuşurum.", "Biraz Romence konuşuyorum.", "Romence öğrenmek istiyorum."], correctIndex: 2 },
+  { id: 12, question: "'Vorbesc puțin românește.' ne demektir?", options: ["Rumence bilmiyorum.", "Rumence çok iyi konuşurum.", "Biraz Rumence konuşuyorum.", "Rumence öğrenmek istiyorum."], correctIndex: 2 },
 ];
 
 export function getQuestionsForDifficulty(difficulty: "temel" | "orta"): KahootQuestion[] {

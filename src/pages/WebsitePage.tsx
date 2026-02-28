@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { Monitor, Award, BookOpen, Users, Globe, Shield, CheckCircle, Star, Mail, Phone, Gamepad2 } from "lucide-react";
 
 const features = [
-  { icon: Award, title: "Uluslararası Akredite B1 Sertifikası", desc: "Avrupa standartlarında B1 seviye Romence sertifikası alın." },
-  { icon: Monitor, title: "Zoom ile Canlı Dersler", desc: "Uzman eğitmenlerimizle birebir veya grup halinde online Romence eğitimi." },
+  { icon: Award, title: "Uluslararası Akredite B1 Sertifikası", desc: "Avrupa standartlarında B1 seviye Rumence sertifikası alın." },
+  { icon: Monitor, title: "Zoom ile Canlı Dersler", desc: "Uzman eğitmenlerimizle birebir veya grup halinde online Rumence eğitimi." },
   { icon: BookOpen, title: "Sınırsız Eğitim Seçeneği", desc: "B1 sertifikasını alana kadar sınırsız ders hakkı ile garantili öğrenme." },
-  { icon: Users, title: "Deneyimli Eğitmenler", desc: "Romence ve Türkçe bilen uzman eğitmen kadromuz ile hızlı öğrenin." },
+  { icon: Users, title: "Deneyimli Eğitmenler", desc: "Rumence ve Türkçe bilen uzman eğitmen kadromuz ile hızlı öğrenin." },
 ];
 
 const certBenefits = [
@@ -16,10 +16,10 @@ const certBenefits = [
 ];
 
 const packages = [
-  { name: "Başlangıç Paketi", level: "A1 Seviyesi", price: "10.000", items: ["A1 Seviye Romence Eğitimi", "Zoom ile Canlı Dersler", "Ders Materyalleri Dahil", "Online Destek", "Sertifika Hazırlık"], badge: null },
-  { name: "Orta Paket", level: "A1 + A2 Seviyesi", price: "20.000", items: ["A1 + A2 Seviye Romence", "Zoom ile Canlı Dersler", "Tüm Ders Materyalleri", "Özel Ders Desteği", "İki Seviye Sertifika"], badge: "En Popüler" },
+  { name: "Başlangıç Paketi", level: "A1 Seviyesi", price: "10.000", items: ["A1 Seviye Rumence Eğitimi", "Zoom ile Canlı Dersler", "Ders Materyalleri Dahil", "Online Destek", "Sertifika Hazırlık"], badge: null },
+  { name: "Orta Paket", level: "A1 + A2 Seviyesi", price: "20.000", items: ["A1 + A2 Seviye Rumence", "Zoom ile Canlı Dersler", "Tüm Ders Materyalleri", "Özel Ders Desteği", "İki Seviye Sertifika"], badge: "En Popüler" },
   { name: "Premium Paket", level: "Sertifika Garantili", price: "24.000", items: ["Sınırsız Eğitim Hakkı", "B1 Garantili Sertifika", "Tüm Seviyeler Dahil", "Kişisel Eğitmen Desteği", "Başarıya Kadar Eğitim"], badge: "En Avantajlı" },
-  { name: "Konuşma Paketi", level: "Uzman Eğitmenlerle Pratik", price: "10.000", items: ["Zoom Üzerinden Sohbet", "İnteraktif Konuşma", "Romence Pratik", "Birebir Mentorluk", "Uzman Eğitmenler"], badge: null },
+  { name: "Konuşma Paketi", level: "Uzman Eğitmenlerle Pratik", price: "10.000", items: ["Zoom Üzerinden Sohbet", "İnteraktif Konuşma", "Rumence Pratik", "Birebir Mentorluk", "Uzman Eğitmenler"], badge: null },
 ];
 
 const testimonials = [
@@ -68,10 +68,10 @@ export default function WebsitePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <h1 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
-            Romingo Academy ile Romence'yi Keşfedin
+            Romingo Academy ile Rumence'yi Keşfedin
           </h1>
           <p className="text-white/90 text-base sm:text-lg mb-6 leading-relaxed">
-            Profesyonel ekibimiz ve uzman öğretmenlerimiz eşliğinde, interaktif ve keyifli bir ders ortamında Romence öğrenin.
+            Profesyonel ekibimiz ve uzman öğretmenlerimiz eşliğinde, interaktif ve keyifli bir ders ortamında Rumence öğrenin.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-8 text-white/80 text-sm font-semibold">
             <span className="flex items-center gap-1.5"><Monitor className="w-4 h-4" /> Uzman Eğitmenler</span>
@@ -98,7 +98,7 @@ export default function WebsitePage() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-5xl mx-auto text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-black mb-3">Neden Romingo Academy?</h2>
-          <p className="text-gray-500">Uluslararası standartlarda eğitim ve garantili sertifika ile Romence öğrenin.</p>
+          <p className="text-gray-500">Uluslararası standartlarda eğitim ve garantili sertifika ile Rumence öğrenin.</p>
         </div>
         <div className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6">
           {features.map((f) => (
@@ -138,7 +138,7 @@ export default function WebsitePage() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-5xl mx-auto text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-black mb-3">Eğitim Paketlerimiz</h2>
-          <p className="text-gray-500">Size uygun paketi seçin, Romence öğrenmeye hemen başlayın.</p>
+          <p className="text-gray-500">Size uygun paketi seçin, Rumence öğrenmeye hemen başlayın.</p>
         </div>
         <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {packages.map((pkg) => (

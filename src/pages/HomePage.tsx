@@ -66,7 +66,7 @@ export default function HomePage() {
           >
             <BookOpenText className="w-8 h-8 text-primary-foreground mb-2" />
             <div className="text-primary-foreground font-extrabold text-sm">Dil Bilgisi</div>
-            <div className="text-primary-foreground/80 text-xs font-semibold mt-1">Romence dil bilgisi konu anlatımı</div>
+            <div className="text-primary-foreground/80 text-xs font-semibold mt-1">Rumence dil bilgisi konu anlatımı</div>
           </button>
         </div>
       </div>

@@ -121,7 +121,7 @@ export default function ListenAndRepeatEx({ exercise, onAnswer, answered }: Prop
         <div className="flex items-center justify-between gap-3">
           <div>
             <p className="text-xs font-bold uppercase text-muted-foreground">Dinle ve tekrar et</p>
-            <p className="text-sm font-semibold text-foreground mt-1">Romence cümleyi dinle, sonra yüksek sesle söyle.</p>
+            <p className="text-sm font-semibold text-foreground mt-1">Rumence cümleyi dinle, sonra yüksek sesle söyle.</p>
             {exercise.hint && <p className="text-xs text-muted-foreground mt-2">{exercise.hint}</p>}
           </div>
           <div className="w-12 h-12 rounded-full bg-sky-light text-sky-brand flex items-center justify-center shrink-0">

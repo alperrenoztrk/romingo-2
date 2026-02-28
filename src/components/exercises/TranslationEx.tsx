@@ -137,7 +137,7 @@ export default function TranslationEx({ exercise, onAnswer, answered }: Props) {
               setDragState(null);
             }}
           >
-            <p className="text-[11px] font-bold text-muted-foreground mb-2 uppercase">Karışık Romence kelimeler</p>
+            <p className="text-[11px] font-bold text-muted-foreground mb-2 uppercase">Karışık Rumence kelimeler</p>
             <div className="flex flex-wrap gap-2">
               {bankWords.map((word, index) => (
                 <button

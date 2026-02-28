@@ -503,7 +503,7 @@ function hydrateFromExercise(
     if (sourcePhrase && translatedPhrase) {
       const normalizedQuestion = exercise.question.toLocaleLowerCase("tr-TR");
 
-      if (normalizedQuestion.includes("romence")) {
+      if (normalizedQuestion.includes("rumence")) {
         addPair(trToRo, roToTr, sourcePhrase, translatedPhrase);
         return;
       }

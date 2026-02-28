@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 const romanianVideoLessons = [
   {
     id: "romanianpod101-alphabet",
-    title: "Romence Alfabe ve Telaffuz",
+    title: "Rumence Alfabe ve Telaffuz",
     source: "RomanianPod101",
     embedUrl: "https://www.youtube-nocookie.com/embed/JnGCm_LOERU?rel=0",
     watchUrl: "https://www.youtube.com/watch?v=JnGCm_LOERU",
-    subtitle: "A, Ă, Â, B, C... Romence harfleri öğrenin!",
+    subtitle: "A, Ă, Â, B, C... Rumence harfleri öğrenin!",
   },
   {
     id: "romanianpod101-25-phrases",
-    title: "Romence 25 Temel Cümle",
+    title: "Rumence 25 Temel Cümle",
     source: "RomanianPod101",
     embedUrl: "https://www.youtube-nocookie.com/embed/0C3HOnuEqZ8?rel=0",
     watchUrl: "https://www.youtube.com/watch?v=0C3HOnuEqZ8",
@@ -20,7 +20,7 @@ const romanianVideoLessons = [
   },
   {
     id: "romanianpod101-conversation",
-    title: "Romence Konuşma Pratiği - Yeni Başlayanlar",
+    title: "Rumence Konuşma Pratiği - Yeni Başlayanlar",
     source: "RomanianPod101",
     embedUrl: "https://www.youtube-nocookie.com/embed/sRZ_OsacDeQ?rel=0",
     watchUrl: "https://www.youtube.com/watch?v=sRZ_OsacDeQ",
@@ -28,7 +28,7 @@ const romanianVideoLessons = [
   },
   {
     id: "romanianpod101-100-words",
-    title: "Romence En Çok Kullanılan 100 Kelime",
+    title: "Rumence En Çok Kullanılan 100 Kelime",
     source: "RomanianPod101",
     embedUrl: "https://www.youtube-nocookie.com/embed/MgGCgKOp1u8?rel=0",
     watchUrl: "https://www.youtube.com/watch?v=MgGCgKOp1u8",

@@ -108,7 +108,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Görüşürüz" Romence ne demek?',
+        question: '"Görüşürüz" Rumence ne demek?',
         options: ["Bună", "La revedere", "Mulțumesc", "Te rog"],
         correctIndex: 1,
       },
@@ -143,10 +143,10 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "sentence_builder",
-        prompt: "Romence cümleyi doğru sıraya getir",
+        prompt: "Rumence cümleyi doğru sıraya getir",
         correctSentence: "Numele meu este Mehmet",
         words: ["este", "Mehmet", "meu", "Numele"],
-        hint: "'Benim adım Mehmet' ifadesinin Romencesini düşün.",
+        hint: "'Benim adım Mehmet' ifadesinin Rumencesini düşün.",
       },
       {
         type: "translation",
@@ -157,7 +157,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Nasılsın?" Romence hangisi?',
+        question: '"Nasılsın?" Rumence hangisi?',
         options: ["La revedere", "Mulțumesc", "Ce faci?", "Noapte bună"],
         correctIndex: 2,
       },
@@ -178,7 +178,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Numele meu ___ Zeynep.",
+        sentence: "Cümleyi Rumence tamamla: Numele meu ___ Zeynep.",
         correctAnswer: "este",
         options: ["sunt", "este", "ești", "avem"],
       },
@@ -197,7 +197,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Memnun oldum" Romence nasıl söylenir?',
+        question: '"Memnun oldum" Rumence nasıl söylenir?',
         options: ["Îmi pare rău", "Încântat(ă) de cunoștință", "La revedere", "Cu plăcere"],
         correctIndex: 1,
       },
@@ -239,7 +239,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Benim adım Elif" Romence hangisi?',
+        question: '"Benim adım Elif" Rumence hangisi?',
         options: ["Sunt din Turcia", "Mă cheamă Elif", "Îmi pare rău", "La revedere"],
         correctIndex: 1,
       },
@@ -254,7 +254,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Beş" hangi Romence sayıya karşılık gelir?',
+        question: '"Beş" hangi Rumence sayıya karşılık gelir?',
         options: ["Trei", "Cinci", "Șapte", "Nouă"],
         correctIndex: 1,
       },
@@ -269,7 +269,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romence işlemi tamamla: Doi plus trei fac ___.",
+        sentence: "Rumence işlemi tamamla: Doi plus trei fac ___.",
         correctAnswer: "cinci",
         options: ["patru", "cinci", "șase", "șapte"],
       },
@@ -288,7 +288,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romence işlemi tamamla: Zece plus cinci fac ___.",
+        sentence: "Rumence işlemi tamamla: Zece plus cinci fac ___.",
         correctAnswer: "cincisprezece",
         options: ["doisprezece", "treisprezece", "paisprezece", "cincisprezece"],
       },
@@ -319,7 +319,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '🔴 Bu renk Romence\'de ne?',
+        question: '🔴 Bu renk Rumence\'de ne?',
         options: ["Albastru", "Verde", "Roșu", "Galben"],
         correctIndex: 2,
       },
@@ -334,7 +334,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Gökyüzü mavinin Romencesi: ___.",
+        sentence: "Gökyüzü mavinin Rumencesi: ___.",
         correctAnswer: "albastru",
         options: ["albastru", "verde", "roșu", "galben"],
       },
@@ -347,13 +347,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '🟡 "Sarı" Romence ne?',
+        question: '🟡 "Sarı" Rumence ne?',
         options: ["Portocaliu", "Galben", "Auriu", "Maro"],
         correctIndex: 1,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'kırmızı' demek için ___ denir.",
+        sentence: "Rumencede 'kırmızı' demek için ___ denir.",
         correctAnswer: "roșu",
         options: ["roșu", "albastru", "verde", "negru"],
       },
@@ -384,7 +384,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Ekmek" Romence ne demek?',
+        question: '"Ekmek" Rumence ne demek?',
         options: ["Apă", "Pâine", "Brânză", "Lapte"],
         correctIndex: 1,
       },
@@ -399,7 +399,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: La micul dejun mănânc ___ și brânză.",
+        sentence: "Cümleyi Rumence tamamla: La micul dejun mănânc ___ și brânză.",
         correctAnswer: "pâine",
         options: ["apă", "pâine", "ceai", "pui"],
       },
@@ -412,13 +412,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Çorba" Romence ne demek?',
+        question: '"Çorba" Rumence ne demek?',
         options: ["Salată", "Supă", "Desert", "Carne"],
         correctIndex: 1,
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: La cină mănânc ___.",
+        sentence: "Cümleyi Rumence tamamla: La cină mănânc ___.",
         correctAnswer: "supă",
         options: ["pâine", "orez", "supă", "măr"],
       },
@@ -449,7 +449,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Su" Romence ne demek?',
+        question: '"Su" Rumence ne demek?',
         options: ["Ceai", "Cafea", "Apă", "Suc"],
         correctIndex: 2,
       },
@@ -464,7 +464,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'çay' demek için ___ denir.",
+        sentence: "Rumencede 'çay' demek için ___ denir.",
         correctAnswer: "ceai",
         options: ["ceai", "cafea", "lapte", "apă"],
       },
@@ -477,13 +477,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Meyve suyu" Romence ne demek?',
+        question: '"Meyve suyu" Rumence ne demek?',
         options: ["Lapte", "Ceai", "Cafea", "Suc"],
         correctIndex: 3,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'süt' demek için ___ denir.",
+        sentence: "Rumencede 'süt' demek için ___ denir.",
         correctAnswer: "lapte",
         options: ["lapte", "apă", "suc", "ceai"],
       },
@@ -496,7 +496,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Hangisi Romence bir içecek DEĞİLDİR?",
+        question: "Hangisi Rumence bir içecek DEĞİLDİR?",
         options: ["Ceai", "Apă", "Pâine", "Cafea"],
         correctIndex: 2,
       },
@@ -511,7 +511,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Anne" Romence ne demek?',
+        question: '"Anne" Rumence ne demek?',
         options: ["Tată", "Mamă", "Soră", "Frate"],
         correctIndex: 1,
       },
@@ -526,7 +526,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Mama mea este ___.",
+        sentence: "Cümleyi Rumence tamamla: Mama mea este ___.",
         correctAnswer: "profesoară",
         options: ["profesoară", "casă", "școală", "serviciu"],
       },
@@ -545,7 +545,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Mama mamei mele este ___.",
+        sentence: "Cümleyi Rumence tamamla: Mama mamei mele este ___.",
         correctAnswer: "bunica",
         options: ["mătușa", "bunica", "sora", "mama"],
         hint: "Anne tarafındaki büyükanne",
@@ -577,7 +577,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Kedi" Romence ne demek?',
+        question: '"Kedi" Rumence ne demek?',
         options: ["Câine", "Pisică", "Pasăre", "Pește"],
         correctIndex: 1,
       },
@@ -592,7 +592,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'kedi' demek için ___ denir.",
+        sentence: "Rumencede 'kedi' demek için ___ denir.",
         correctAnswer: "pisică",
         options: ["pisică", "câine", "pasăre", "pește"],
       },
@@ -605,13 +605,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Flamingo Romence'de hangi hayvan türüne girer?",
+        question: "Flamingo Rumence'de hangi hayvan türüne girer?",
         options: ["Mamifer", "Reptilă", "Pasăre", "Pește"],
         correctIndex: 2,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'at' demek için ___ denir.",
+        sentence: "Rumencede 'at' demek için ___ denir.",
         correctAnswer: "cal",
         options: ["cal", "câine", "pisică", "vacă"],
       },
@@ -642,7 +642,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Doktor" Romence ne demek?',
+        question: '"Doktor" Rumence ne demek?',
         options: ["Profesor", "Medic", "Inginer", "Avocat"],
         correctIndex: 1,
       },
@@ -657,7 +657,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'doktor' demek için ___ denir.",
+        sentence: "Rumencede 'doktor' demek için ___ denir.",
         correctAnswer: "medic",
         options: ["medic", "profesor", "inginer", "avocat"],
       },
@@ -670,13 +670,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Okulda çalışan kişiye Romence ne denir?",
+        question: "Okulda çalışan kişiye Rumence ne denir?",
         options: ["Medic", "Șofer", "Profesor", "Bucătar"],
         correctIndex: 2,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'aşçı' demek için ___ denir.",
+        sentence: "Rumencede 'aşçı' demek için ___ denir.",
         correctAnswer: "bucătar",
         options: ["bucătar", "medic", "profesor", "șofer"],
       },
@@ -707,7 +707,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: "Haftaya başlarken kullanılan gün Romence hangisidir?",
+        question: "Haftaya başlarken kullanılan gün Rumence hangisidir?",
         options: ["Marți", "Luni", "Duminică", "Miercuri"],
         correctIndex: 1,
       },
@@ -722,7 +722,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'cuma' demek için ___ denir.",
+        sentence: "Rumencede 'cuma' demek için ___ denir.",
         correctAnswer: "vineri",
         options: ["vineri", "joi", "sâmbătă", "luni"],
       },
@@ -735,13 +735,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Hafta sonunu (Cumartesi-Pazar) doğru veren Romence seçenek hangisi?",
+        question: "Hafta sonunu (Cumartesi-Pazar) doğru veren Rumence seçenek hangisi?",
         options: ["Luni-Marți", "Vineri-Sâmbătă", "Sâmbătă-Duminică", "Joi-Vineri"],
         correctIndex: 2,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'çarşamba' demek için ___ denir.",
+        sentence: "Rumencede 'çarşamba' demek için ___ denir.",
         correctAnswer: "miercuri",
         options: ["miercuri", "marți", "joi", "vineri"],
       },
@@ -772,7 +772,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"İlkbahar" Romence ne demek?',
+        question: '"İlkbahar" Rumence ne demek?',
         options: ["Vară", "Toamnă", "Primăvară", "Iarnă"],
         correctIndex: 2,
       },
@@ -787,7 +787,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'kış' demek için ___ denir.",
+        sentence: "Rumencede 'kış' demek için ___ denir.",
         correctAnswer: "iarnă",
         options: ["iarnă", "vară", "primăvară", "toamnă"],
       },
@@ -800,13 +800,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: "Yapraklar hangi mevsimde dökülür? (Romence seçenekleri seç)",
+        question: "Yapraklar hangi mevsimde dökülür? (Rumence seçenekleri seç)",
         options: ["Primăvară", "Vară", "Toamnă", "Iarnă"],
         correctIndex: 2,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'yaz' demek için ___ denir.",
+        sentence: "Rumencede 'yaz' demek için ___ denir.",
         correctAnswer: "vară",
         options: ["vară", "iarnă", "toamnă", "primăvară"],
       },
@@ -819,7 +819,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Sonbahar" Romence hangisidir?',
+        question: '"Sonbahar" Rumence hangisidir?',
         options: ["Primăvară", "Vară", "Toamnă", "Iarnă"],
         correctIndex: 2,
       },
@@ -834,7 +834,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Güneşli" Romence ne demek?',
+        question: '"Güneşli" Rumence ne demek?',
         options: ["Ploios", "Noros", "Însorit", "Vântos"],
         correctIndex: 2,
       },
@@ -849,7 +849,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'güneşli' demek için ___ denir.",
+        sentence: "Rumencede 'güneşli' demek için ___ denir.",
         correctAnswer: "însorit",
         options: ["însorit", "ploios", "noros", "vântos"],
       },
@@ -862,13 +862,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Rüzgarlı" Romence ne demek?',
+        question: '"Rüzgarlı" Rumence ne demek?',
         options: ["Cețos", "Vântos", "Cald", "Rece"],
         correctIndex: 1,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'yağmurlu' demek için ___ denir.",
+        sentence: "Rumencede 'yağmurlu' demek için ___ denir.",
         correctAnswer: "ploios",
         options: ["ploios", "însorit", "noros", "cald"],
       },
@@ -899,7 +899,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Fiyat" Romence ne? / Cum se spune "fiyat" în română?',
+        question: '"Fiyat" Rumence ne? / Cum se spune "fiyat" în română?',
         options: ["Preț", "Reducere", "Magazin", "Bani"],
         correctIndex: 0,
       },
@@ -914,7 +914,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Acest produs este foarte scump. Aveți ceva mai ___?",
+        sentence: "Cümleyi Rumence tamamla: Acest produs este foarte scump. Aveți ceva mai ___?",
         correctAnswer: "ieftin",
         options: ["lung", "ieftin", "cald", "dulce"],
       },
@@ -927,7 +927,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Kartla ödeyebilir miyim?" Romence karşılığı hangisi?',
+        question: '"Kartla ödeyebilir miyim?" Rumence karşılığı hangisi?',
         options: [
           "Plătesc mâine",
           "Pot plăti cu cardul?",
@@ -938,7 +938,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'ucuz' demek için ___ denir.",
+        sentence: "Rumencede 'ucuz' demek için ___ denir.",
         correctAnswer: "ieftin",
         options: ["ieftin", "scump", "bani", "preț"],
       },
@@ -969,7 +969,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Otobüs" Romence ne? / Cum se spune "otobüs" în română?',
+        question: '"Otobüs" Rumence ne? / Cum se spune "otobüs" în română?',
         options: ["Tren", "Avion", "Autobuz", "Bilet"],
         correctIndex: 2,
       },
@@ -984,7 +984,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: În fiecare dimineață merg la serviciu cu ___.",
+        sentence: "Cümleyi Rumence tamamla: În fiecare dimineață merg la serviciu cu ___.",
         correctAnswer: "autobuzul",
         options: ["autobuzul", "patul", "piața", "cartea"],
       },
@@ -997,7 +997,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Tren kaçta kalkıyor?" cümlesinin Romencesi hangisi?',
+        question: '"Tren kaçta kalkıyor?" cümlesinin Rumencesi hangisi?',
         options: [
           "Unde merge trenul?",
           "Cât costă trenul?",
@@ -1008,7 +1008,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Am chemat un ___ ca să mergem la aeroport.",
+        sentence: "Cümleyi Rumence tamamla: Am chemat un ___ ca să mergem la aeroport.",
         correctAnswer: "taxi",
         options: ["taxi", "masă", "profesor", "carte"],
       },
@@ -1039,7 +1039,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Mutfak" Romence ne? / Cum se spune "mutfak" în română?',
+        question: '"Mutfak" Rumence ne? / Cum se spune "mutfak" în română?',
         options: ["Dormitor", "Bucătărie", "Baie", "Balcon"],
         correctIndex: 1,
       },
@@ -1067,7 +1067,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Pencereleri aç" cümlesinin Romence karşılığı hangisi?',
+        question: '"Pencereleri aç" cümlesinin Rumence karşılığı hangisi?',
         options: [
           "Închide ferestrele",
           "Deschide ferestrele",
@@ -1078,7 +1078,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Masa este în ___.",
+        sentence: "Cümleyi Rumence tamamla: Masa este în ___.",
         correctAnswer: "bucătărie",
         options: ["bucătărie", "grădină", "mașină", "stradă"],
       },
@@ -1112,7 +1112,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Saat kaç?" Romence nasıl sorulur?',
+        question: '"Saat kaç?" Rumence nasıl sorulur?',
         options: ["Ce faci?", "Cât costă?", "Cât e ceasul?", "Unde mergi?"],
         correctIndex: 2,
       },
@@ -1127,7 +1127,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Ședința ___ la ora trei.",
+        sentence: "Cümleyi Rumence tamamla: Ședința ___ la ora trei.",
         correctAnswer: "începe",
         options: ["începe", "merge", "doarme", "vine"],
       },
@@ -1140,7 +1140,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Her gün erken kalkarım" cümlesinin Romencesi hangisi?',
+        question: '"Her gün erken kalkarım" cümlesinin Rumencesi hangisi?',
         options: [
           "Mă culc târziu în fiecare zi",
           "Mă trezesc devreme în fiecare zi",
@@ -1151,7 +1151,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Lecția ___ în zece minute, te rog nu întârzia.",
+        sentence: "Cümleyi Rumence tamamla: Lecția ___ în zece minute, te rog nu întârzia.",
         correctAnswer: "începe",
         options: ["începe", "acasă", "uneori", "acolo"],
       },
@@ -1197,7 +1197,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: În fiecare dimineață, după micul dejun, ___ cafea.",
+        sentence: "Cümleyi Rumence tamamla: În fiecare dimineață, după micul dejun, ___ cafea.",
         correctAnswer: "beau",
         options: ["beau", "alerg", "scriu", "dorm"],
       },
@@ -1210,13 +1210,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Çalışmak" fiilinin Romencesi hangisi?',
+        question: '"Çalışmak" fiilinin Rumencesi hangisi?',
         options: ["A dormi", "A lucra", "A învăța", "A merge"],
         correctIndex: 1,
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Seara ___ devreme pentru că dimineața am curs.",
+        sentence: "Cümleyi Rumence tamamla: Seara ___ devreme pentru că dimineața am curs.",
         correctAnswer: "dorm",
         options: ["dorm", "înot", "râd", "alerg"],
       },
@@ -1247,7 +1247,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Diş fırçalamak" Romence hangisidir?',
+        question: '"Diş fırçalamak" Rumence hangisidir?',
         options: ["A face duș", "A se spăla pe dinți", "A lua micul dejun", "A ieși"],
         correctIndex: 1,
       },
@@ -1262,7 +1262,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: La ora șapte dimineața ___ și mă pregătesc.",
+        sentence: "Cümleyi Rumence tamamla: La ora șapte dimineața ___ și mă pregătesc.",
         correctAnswer: "mă trezesc",
         options: ["mă trezesc", "dorm", "alerg", "scriu"],
       },
@@ -1275,7 +1275,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Öğle yemeği yerim" cümlesinin Romencesi hangisi?',
+        question: '"Öğle yemeği yerim" cümlesinin Rumencesi hangisi?',
         options: ["Mănânc cina", "Beau apă", "Mănânc prânzul", "Citesc ziarul"],
         correctIndex: 2,
       },
@@ -1315,7 +1315,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Menü" Romence ne?',
+        question: '"Menü" Rumence ne?',
         options: ["Notă", "Meniu", "Bucătărie", "Masă"],
         correctIndex: 1,
       },
@@ -1330,7 +1330,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Vă rog, ___ o supă de linte.",
+        sentence: "Cümleyi Rumence tamamla: Vă rog, ___ o supă de linte.",
         correctAnswer: "doresc",
         options: ["doresc", "vin", "plec", "iau"],
       },
@@ -1343,7 +1343,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Hesabı alabilir miyim?" ifadesinin Romencesi hangisi?',
+        question: '"Hesabı alabilir miyim?" ifadesinin Rumencesi hangisi?',
         options: [
           "Pot vedea meniul?",
           "Pot plăti cu cardul?",
@@ -1354,7 +1354,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: După masă, să luăm un ___.",
+        sentence: "Cümleyi Rumence tamamla: După masă, să luăm un ___.",
         correctAnswer: "desert",
         options: ["desert", "autobuz", "caiet", "cheie"],
       },
@@ -1385,7 +1385,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Sağa dön" Romence hangisidir?',
+        question: '"Sağa dön" Rumence hangisidir?',
         options: ["Mergi drept", "Întoarce-te la stânga", "Întoarce-te la dreapta", "Stai aici"],
         correctIndex: 2,
       },
@@ -1400,7 +1400,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Muzeul este ___ băncii.",
+        sentence: "Cümleyi Rumence tamamla: Muzeul este ___ băncii.",
         correctAnswer: "vizavi de",
         options: ["vizavi de", "deasupra", "înăuntru", "în spatele"],
       },
@@ -1413,13 +1413,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Düz devam et" cümlesinin Romence karşılığı hangisi?',
+        question: '"Düz devam et" cümlesinin Rumence karşılığı hangisi?',
         options: ["Mergi drept", "Întoarce-te înapoi", "Oprește aici", "Urcă sus"],
         correctIndex: 0,
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Școala este ___ parc.",
+        sentence: "Cümleyi Rumence tamamla: Școala este ___ parc.",
         correctAnswer: "lângă",
         options: ["lângă", "deasupra", "sub", "departe de"],
       },
@@ -1453,7 +1453,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Mutlu" Romence nasıl söylenir?',
+        question: '"Mutlu" Rumence nasıl söylenir?',
         options: ["Trist", "Fericit", "Obosit", "Furios"],
         correctIndex: 1,
       },
@@ -1468,7 +1468,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: După examen mă simt puțin ___.",
+        sentence: "Cümleyi Rumence tamamla: După examen mă simt puțin ___.",
         correctAnswer: "obosit",
         options: ["obosit", "lung", "gros", "devreme"],
       },
@@ -1481,13 +1481,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Sinirliyim" ifadesinin Romence karşılığı hangisi?',
+        question: '"Sinirliyim" ifadesinin Rumence karşılığı hangisi?',
         options: ["Sunt furios/furioasă", "Sunt liniștit", "Sunt ocupat", "Sunt acasă"],
         correctIndex: 0,
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: După o zi aglomerată, oricine poate fi puțin ___.",
+        sentence: "Cümleyi Rumence tamamla: După o zi aglomerată, oricine poate fi puțin ___.",
         correctAnswer: "stresat",
         options: ["stresat", "dulce", "liniștit", "flămând"],
       },
@@ -1518,7 +1518,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"El" Romence hangisidir?',
+        question: '"El" Rumence hangisidir?',
         options: ["Cap", "Mână", "Picior", "Ochi"],
         correctIndex: 1,
       },
@@ -1533,7 +1533,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Astăzi am mers mult, mă doare ___.",
+        sentence: "Cümleyi Rumence tamamla: Astăzi am mers mult, mă doare ___.",
         correctAnswer: "piciorul",
         options: ["piciorul", "pixul", "geanta", "rochia"],
       },
@@ -1546,13 +1546,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Diz" kelimesinin Romence karşılığı hangisi?',
+        question: '"Diz" kelimesinin Rumence karşılığı hangisi?',
         options: ["Genunchi", "Cot", "Umăr", "Spate"],
         correctIndex: 0,
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: De la căratul cărții, mi-au obosit ___.",
+        sentence: "Cümleyi Rumence tamamla: De la căratul cărții, mi-au obosit ___.",
         correctAnswer: "brațele",
         options: ["brațele", "masa", "caietul", "casa"],
       },
@@ -1583,7 +1583,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Bilet" Romence hangisidir?',
+        question: '"Bilet" Rumence hangisidir?',
         options: ["Bagaj", "Bilet", "Pașaport", "Hotel"],
         correctIndex: 1,
       },
@@ -1598,7 +1598,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Înainte să plec în vacanță, trebuie să-mi verific ___.",
+        sentence: "Cümleyi Rumence tamamla: Înainte să plec în vacanță, trebuie să-mi verific ___.",
         correctAnswer: "pașaportul",
         options: ["pașaportul", "pixul", "televizorul", "masa"],
       },
@@ -1611,13 +1611,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Check-in" için doğru Romence ifade hangisi?',
+        question: '"Check-in" için doğru Rumence ifade hangisi?',
         options: ["A face check-in", "A cumpăra", "A dormi", "A întreba"],
         correctIndex: 0,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'tatil' demek için ___ denir.",
+        sentence: "Rumencede 'tatil' demek için ___ denir.",
         correctAnswer: "vacanță",
         options: ["vacanță", "școală", "muncă", "piață"],
       },
@@ -1648,7 +1648,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Ateşim var" cümlesinin Romencesi hangisi?',
+        question: '"Ateşim var" cümlesinin Rumencesi hangisi?',
         options: ["Am febră", "Am apă", "Am timp", "Am carte"],
         correctIndex: 0,
       },
@@ -1663,7 +1663,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Cümleyi Romence tamamla: Mă doare capul, am nevoie de un ___.",
+        sentence: "Cümleyi Rumence tamamla: Mă doare capul, am nevoie de un ___.",
         correctAnswer: "medicament",
         options: ["medicament", "bilet", "caiet", "cheie"],
       },
@@ -1676,13 +1676,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Eczane nerede?" sorusunun Romencesi hangisi?',
+        question: '"Eczane nerede?" sorusunun Rumencesi hangisi?',
         options: ["Cât costă farmacia?", "Unde este farmacia?", "Farmacia este mare", "Am nevoie de apă"],
         correctIndex: 1,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'öksürük' demek için ___ denir.",
+        sentence: "Rumencede 'öksürük' demek için ___ denir.",
         correctAnswer: "tuse",
         options: ["tuse", "febră", "durere", "somn"],
       },
@@ -1713,7 +1713,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Bilgisayar" Romence ne?',
+        question: '"Bilgisayar" Rumence ne?',
         options: ["Telefon", "Calculator", "Tabletă", "Internet"],
         correctIndex: 1,
       },
@@ -1741,13 +1741,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Mesaj gönder" cümlesinin Romencesi hangisi?',
+        question: '"Mesaj gönder" cümlesinin Rumencesi hangisi?',
         options: ["Trimite un mesaj", "Deschide ușa", "Citește cartea", "Pornește lumina"],
         correctIndex: 0,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'internet bağlantısı' demek için ___ denir.",
+        sentence: "Rumencede 'internet bağlantısı' demek için ___ denir.",
         correctAnswer: "conexiune la internet",
         options: ["conexiune la internet", "telefon mobil", "mesaj vocal", "adresă poștală"],
       },
@@ -1778,7 +1778,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Toplantı" Romence karşılığı hangisi?',
+        question: '"Toplantı" Rumence karşılığı hangisi?',
         options: ["Ședință", "Pauză", "Cafea", "Contract"],
         correctIndex: 0,
       },
@@ -1806,7 +1806,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Bugün ofisten çalışıyorum" cümlesinin Romencesi hangisi?',
+        question: '"Bugün ofisten çalışıyorum" cümlesinin Rumencesi hangisi?',
         options: [
           "Astăzi lucrez de acasă",
           "Astăzi lucrez de la birou",
@@ -1817,7 +1817,7 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'sözleşme' demek için ___ denir.",
+        sentence: "Rumencede 'sözleşme' demek için ___ denir.",
         correctAnswer: "contract",
         options: ["contract", "masă", "ușă", "drum"],
       },
@@ -1851,7 +1851,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       {
         type: "multiple_choice",
-        question: '"Ödev" Romence ne demek?',
+        question: '"Ödev" Rumence ne demek?',
         options: ["Temă", "Vacanță", "Birou", "Pauză"],
         correctIndex: 0,
       },
@@ -1879,13 +1879,13 @@ export const lessonsData: Record<string, LessonData> = {
       },
       {
         type: "multiple_choice",
-        question: '"Kitabını aç" ifadesinin Romencesi hangisi?',
+        question: '"Kitabını aç" ifadesinin Rumencesi hangisi?',
         options: ["Închide caietul", "Deschide cartea", "Scrie pe tablă", "Ascultă muzică"],
         correctIndex: 1,
       },
       {
         type: "fill_blank",
-        sentence: "Romencede 'not almak' için ___ denir.",
+        sentence: "Rumencede 'not almak' için ___ denir.",
         correctAnswer: "a lua notițe",
         options: ["a lua notițe", "a merge acasă", "a bea apă", "a cumpăra"],
       },
@@ -1915,12 +1915,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Boş zaman aktiviteleri ve ilgi alanlarıyla ilgili doğal cümleler kur",
     xpReward: 30,
     exercises: [
-      { type: "multiple_choice", question: '"Yüzmek" fiilinin Romence karşılığı hangisi?', options: ["A alerga", "A înota", "A dansa", "A desena"], correctIndex: 1 },
+      { type: "multiple_choice", question: '"Yüzmek" fiilinin Rumence karşılığı hangisi?', options: ["A alerga", "A înota", "A dansa", "A desena"], correctIndex: 1 },
       { type: "matching", pairs: [ { left: "Kitap okumak", right: "A citi cărți" }, { left: "Müzik dinlemek", right: "A asculta muzică" }, { left: "Resim yapmak", right: "A picta" }, { left: "Koşmak", right: "A alerga" } ] },
       { type: "fill_blank", sentence: "În weekend îmi place mult să ___.", correctAnswer: "alerg", options: ["alerg", "dorm", "aștept", "uit"] },
       { type: "translation", sentence: "Îmi place să fac fotografie", direction: "ro-tr", correctAnswer: "Fotoğraf çekmeyi seviyorum", acceptedAnswers: ["Fotoğraf çekmeyi seviyorum", "fotoğraf çekmeyi seviyorum"] },
-      { type: "multiple_choice", question: '"Boş zamanımda gitar çalıyorum" cümlesinin Romencesi hangisi?', options: ["În timpul liber citesc ziarul", "În timpul liber cânt la chitară", "În timpul liber fac curat", "În timpul liber gătesc supă"], correctIndex: 1 },
-      { type: "fill_blank", sentence: "Romencede 'hobi' demek için ___ denir.", correctAnswer: "hobby", options: ["hobby", "vacanță", "serviciu", "examen"] },
+      { type: "multiple_choice", question: '"Boş zamanımda gitar çalıyorum" cümlesinin Rumencesi hangisi?', options: ["În timpul liber citesc ziarul", "În timpul liber cânt la chitară", "În timpul liber fac curat", "În timpul liber gătesc supă"], correctIndex: 1 },
+      { type: "fill_blank", sentence: "Rumencede 'hobi' demek için ___ denir.", correctAnswer: "hobby", options: ["hobby", "vacanță", "serviciu", "examen"] },
       { type: "translation", sentence: "Satranç oynamayı öğreniyorum", direction: "tr-ro", correctAnswer: "Învăț să joc șah", acceptedAnswers: ["Învăț să joc șah", "învăț să joc șah"] },
       { type: "matching", pairs: [ { left: "Satranç", right: "Șah" }, { left: "Bisiklet", right: "Bicicletă" }, { left: "Koleksiyon", right: "Colecție" }, { left: "Kamp", right: "Camping" } ] },
     ],
@@ -1932,12 +1932,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Doğayı tarif etme, çevreyle ilgili temel kelime ve ifadeleri öğren",
     xpReward: 30,
     exercises: [
-      { type: "multiple_choice", question: '"Orman" Romence hangisidir?', options: ["Râu", "Munte", "Pădure", "Lac"], correctIndex: 2 },
+      { type: "multiple_choice", question: '"Orman" Rumence hangisidir?', options: ["Râu", "Munte", "Pădure", "Lac"], correctIndex: 2 },
       { type: "matching", pairs: [ { left: "Ağaç", right: "Copac" }, { left: "Nehir", right: "Râu" }, { left: "Dağ", right: "Munte" }, { left: "Göl", right: "Lac" } ] },
       { type: "fill_blank", sentence: "La picnic trebuie să aruncăm gunoiul la ___ .", correctAnswer: "reciclare", options: ["reciclare", "stradă", "masă", "geantă"] },
       { type: "translation", sentence: "Aerul este foarte curat aici", direction: "ro-tr", correctAnswer: "Burada hava çok temiz", acceptedAnswers: ["Burada hava çok temiz", "burada hava çok temiz"] },
-      { type: "multiple_choice", question: '"Su tasarrufu yapmalıyız" cümlesinin Romencesi hangisi?', options: ["Trebuie să economisim apă", "Trebuie să cumpărăm apă", "Trebuie să încălzim apa", "Trebuie să turnăm apă"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Romencede 'çevre' demek için ___ denir.", correctAnswer: "mediu", options: ["mediu", "oraș", "stradă", "piață"] },
+      { type: "multiple_choice", question: '"Su tasarrufu yapmalıyız" cümlesinin Rumencesi hangisi?', options: ["Trebuie să economisim apă", "Trebuie să cumpărăm apă", "Trebuie să încălzim apa", "Trebuie să turnăm apă"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Rumencede 'çevre' demek için ___ denir.", correctAnswer: "mediu", options: ["mediu", "oraș", "stradă", "piață"] },
       { type: "translation", sentence: "Geri dönüşüm kutusu nerede?", direction: "tr-ro", correctAnswer: "Unde este coșul de reciclare?", acceptedAnswers: ["Unde este coșul de reciclare?", "unde este coșul de reciclare?"] },
       { type: "matching", pairs: [ { left: "Çiçek", right: "Floare" }, { left: "Toprak", right: "Sol" }, { left: "Yağmur", right: "Ploaie" }, { left: "Rüzgar", right: "Vânt" } ] },
     ],
@@ -1949,12 +1949,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Acil durumlarda yardım isteme ve temel güvenlik ifadelerini öğren",
     xpReward: 35,
     exercises: [
-      { type: "multiple_choice", question: '"Yardım edin!" Romence nasıl söylenir?', options: ["Mulțumesc!", "Ajutor!", "Poftă bună!", "La revedere!"], correctIndex: 1 },
+      { type: "multiple_choice", question: '"Yardım edin!" Rumence nasıl söylenir?', options: ["Mulțumesc!", "Ajutor!", "Poftă bună!", "La revedere!"], correctIndex: 1 },
       { type: "matching", pairs: [ { left: "Polis", right: "Poliție" }, { left: "Ambulans", right: "Ambulanță" }, { left: "İtfaiye", right: "Pompieri" }, { left: "Hastane", right: "Spital" } ] },
       { type: "fill_blank", sentence: "În caz de urgență, trebuie să sunăm mai întâi la ___.", correctAnswer: "112", options: ["112", "prietenul meu", "vecinul", "restaurantul"] },
       { type: "translation", sentence: "Sunați la ambulanță, vă rog", direction: "ro-tr", correctAnswer: "Lütfen ambulans çağırın", acceptedAnswers: ["Lütfen ambulans çağırın", "lütfen ambulans çağırın"] },
-      { type: "multiple_choice", question: '"Yangın var" ifadesinin Romence karşılığı hangisi?', options: ["Este frig", "Este liniște", "Este incendiu", "Este târziu"], correctIndex: 2 },
-      { type: "fill_blank", sentence: "Romencede 'tehlike' demek için ___ denir.", correctAnswer: "pericol", options: ["pericol", "drum", "lecție", "muzică"] },
+      { type: "multiple_choice", question: '"Yangın var" ifadesinin Rumence karşılığı hangisi?', options: ["Este frig", "Este liniște", "Este incendiu", "Este târziu"], correctIndex: 2 },
+      { type: "fill_blank", sentence: "Rumencede 'tehlike' demek için ___ denir.", correctAnswer: "pericol", options: ["pericol", "drum", "lecție", "muzică"] },
       { type: "translation", sentence: "Adresinizi söyleyin", direction: "tr-ro", correctAnswer: "Spuneți adresa dumneavoastră", acceptedAnswers: ["Spuneți adresa dumneavoastră", "spuneți adresa dumneavoastră"] },
       { type: "matching", pairs: [ { left: "Sakin ol", right: "Calmează-te" }, { left: "Bekle", right: "Așteaptă" }, { left: "Güvende", right: "În siguranță" }, { left: "Yaralı", right: "Rănit" } ] },
     ],
@@ -1966,12 +1966,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Kültürel etkinlikler, gelenekler ve sosyal alışkanlıklarla ilgili ifadeleri öğren",
     xpReward: 35,
     exercises: [
-      { type: "multiple_choice", question: '"Bayram" Romence hangisidir?', options: ["Muzeu", "Sărbătoare", "Piață", "Bibliotecă"], correctIndex: 1 },
+      { type: "multiple_choice", question: '"Bayram" Rumence hangisidir?', options: ["Muzeu", "Sărbătoare", "Piață", "Bibliotecă"], correctIndex: 1 },
       { type: "matching", pairs: [ { left: "Gelenek", right: "Tradiție" }, { left: "Düğün", right: "Nuntă" }, { left: "Misafir", right: "Oaspete" }, { left: "Festival", right: "Festival" } ] },
       { type: "fill_blank", sentence: "Când vin musafiri, este obicei să ___ ceai.", correctAnswer: "oferim", options: ["oferim", "ascundem", "uităm", "închidem"] },
       { type: "translation", sentence: "Respectăm tradițiile familiei", direction: "ro-tr", correctAnswer: "Aile geleneklerine saygı duyuyoruz", acceptedAnswers: ["Aile geleneklerine saygı duyuyoruz", "aile geleneklerine saygı duyuyoruz"] },
-      { type: "multiple_choice", question: '"Müzeyi ziyaret ediyoruz" cümlesinin Romencesi hangisi?', options: ["Vizităm muzeul", "Închidem muzeul", "Curățăm muzeul", "Vindem muzeul"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Romencede 'kültür' için ___ kelimesi kullanılır.", correctAnswer: "cultură", options: ["cultură", "mâncare", "meserie", "stradă"] },
+      { type: "multiple_choice", question: '"Müzeyi ziyaret ediyoruz" cümlesinin Rumencesi hangisi?', options: ["Vizităm muzeul", "Închidem muzeul", "Curățăm muzeul", "Vindem muzeul"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Rumencede 'kültür' için ___ kelimesi kullanılır.", correctAnswer: "cultură", options: ["cultură", "mâncare", "meserie", "stradă"] },
       { type: "translation", sentence: "Bu festival her yıl düzenleniyor", direction: "tr-ro", correctAnswer: "Acest festival este organizat în fiecare an", acceptedAnswers: ["Acest festival este organizat în fiecare an", "acest festival este organizat în fiecare an"] },
       { type: "matching", pairs: [ { left: "Tiyatro", right: "Teatru" }, { left: "Konser", right: "Concert" }, { left: "Halk oyunu", right: "Dans popular" }, { left: "Sergi", right: "Expoziție" } ] },
     ],
@@ -1983,12 +1983,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Banka işlemleri, ödeme yöntemleri ve para yönetimiyle ilgili pratik cümleler kur",
     xpReward: 35,
     exercises: [
-      { type: "multiple_choice", question: '"Hesap" için doğru Romence kelime hangisi?', options: ["Cont", "Card", "Dobândă", "Bancnotă"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Hesap" için doğru Rumence kelime hangisi?', options: ["Cont", "Card", "Dobândă", "Bancnotă"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Kredi kartı", right: "Card de credit" }, { left: "Nakit", right: "Numerar" }, { left: "Fatura", right: "Factură" }, { left: "Banka", right: "Bancă" } ] },
       { type: "fill_blank", sentence: "Astăzi voi deschide un ___ nou la bancă.", correctAnswer: "cont", options: ["cont", "geantă", "caiet", "bilet"] },
       { type: "translation", sentence: "Vreau să schimb bani", direction: "ro-tr", correctAnswer: "Para bozdurmak istiyorum", acceptedAnswers: ["Para bozdurmak istiyorum", "para bozdurmak istiyorum"] },
-      { type: "multiple_choice", question: '"Temassız ödeme" Romence nasıl söylenir?', options: ["Plată rapidă", "Plată fără contact", "Plată în numerar", "Plată de noapte"], correctIndex: 1 },
-      { type: "fill_blank", sentence: "Romencede 'faiz' demek için ___ denir.", correctAnswer: "dobândă", options: ["dobândă", "prieten", "lecție", "vacanță"] },
+      { type: "multiple_choice", question: '"Temassız ödeme" Rumence nasıl söylenir?', options: ["Plată rapidă", "Plată fără contact", "Plată în numerar", "Plată de noapte"], correctIndex: 1 },
+      { type: "fill_blank", sentence: "Rumencede 'faiz' demek için ___ denir.", correctAnswer: "dobândă", options: ["dobândă", "prieten", "lecție", "vacanță"] },
       { type: "translation", sentence: "Aylık bütçemi takip ediyorum", direction: "tr-ro", correctAnswer: "Îmi urmăresc bugetul lunar", acceptedAnswers: ["Îmi urmăresc bugetul lunar", "îmi urmăresc bugetul lunar"] },
       { type: "matching", pairs: [ { left: "Borç", right: "Datorie" }, { left: "Gelir", right: "Venit" }, { left: "Gider", right: "Cheltuială" }, { left: "Tasarruf", right: "Economie" } ] },
     ],
@@ -2000,12 +2000,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Mesajlaşma, çevrim içi toplantılar ve sosyal medya için günlük ifadeler öğren",
     xpReward: 35,
     exercises: [
-      { type: "multiple_choice", question: '"Mesaj göndermek" Romence hangisidir?', options: ["A trimite un mesaj", "A deschide ușa", "A face cumpărături", "A găti"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Mesaj göndermek" Rumence hangisidir?', options: ["A trimite un mesaj", "A deschide ușa", "A face cumpărături", "A găti"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Bağlantı", right: "Conexiune" }, { left: "Uygulama", right: "Aplicație" }, { left: "Şifre", right: "Parolă" }, { left: "Toplantı linki", right: "Link de întâlnire" } ] },
       { type: "fill_blank", sentence: "Înainte să înceapă ședința, nu uita să ___ microfonul.", correctAnswer: "pornești", options: ["pornești", "ștergi", "vinzi", "îngheți"] },
       { type: "translation", sentence: "Conexiunea la internet este lentă", direction: "ro-tr", correctAnswer: "İnternet bağlantısı yavaş", acceptedAnswers: ["İnternet bağlantısı yavaş", "internet bağlantısı yavaş"] },
-      { type: "multiple_choice", question: '"Görüntülü arama yapalım" cümlesinin Romencesi hangisi?', options: ["Să trimitem o scrisoare", "Să facem un apel video", "Să închidem telefonul", "Să ieșim afară"], correctIndex: 1 },
-      { type: "fill_blank", sentence: "Romencede 'bildirim' için ___ kelimesi kullanılır.", correctAnswer: "notificare", options: ["notificare", "fereastră", "pagină", "hartă"] },
+      { type: "multiple_choice", question: '"Görüntülü arama yapalım" cümlesinin Rumencesi hangisi?', options: ["Să trimitem o scrisoare", "Să facem un apel video", "Să închidem telefonul", "Să ieșim afară"], correctIndex: 1 },
+      { type: "fill_blank", sentence: "Rumencede 'bildirim' için ___ kelimesi kullanılır.", correctAnswer: "notificare", options: ["notificare", "fereastră", "pagină", "hartă"] },
       { type: "translation", sentence: "Şifremi yenilemem gerekiyor", direction: "tr-ro", correctAnswer: "Trebuie să-mi resetez parola", acceptedAnswers: ["Trebuie să-mi resetez parola", "trebuie să-mi resetez parola"] },
       { type: "matching", pairs: [ { left: "Ekran", right: "Ecran" }, { left: "Kamera", right: "Cameră" }, { left: "Kulaklık", right: "Căști" }, { left: "Dosya", right: "Fișier" } ] },
     ],
@@ -2017,12 +2017,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Sağlıklı alışkanlıklar, beslenme ve egzersiz hakkında günlük cümleler kur",
     xpReward: 35,
     exercises: [
-      { type: "multiple_choice", question: '"Düzenli egzersiz" ifadesinin Romencesi hangisi?', options: ["Exercițiu regulat", "Mâncare rapidă", "Somn scurt", "Apă rece"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Düzenli egzersiz" ifadesinin Rumencesi hangisi?', options: ["Exercițiu regulat", "Mâncare rapidă", "Somn scurt", "Apă rece"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Sebze", right: "Legumă" }, { left: "Meyve", right: "Fruct" }, { left: "Yürüyüş", right: "Plimbare" }, { left: "Uyku", right: "Somn" } ] },
       { type: "fill_blank", sentence: "În fiecare dimineață beau un pahar de ___ .", correctAnswer: "apă", options: ["apă", "zahăr", "ulei", "sare"] },
       { type: "translation", sentence: "Merg la sală de trei ori pe săptămână", direction: "ro-tr", correctAnswer: "Haftada üç kez spor salonuna gidiyorum", acceptedAnswers: ["Haftada üç kez spor salonuna gidiyorum", "haftada üç kez spor salonuna gidiyorum"] },
-      { type: "multiple_choice", question: '"Şeker tüketimini azaltıyorum" cümlesinin Romencesi hangisi?', options: ["Reduc consumul de zahăr", "Cresc consumul de zahăr", "Vând zahăr", "Cumpăr zahăr"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Romencede 'kalori' için ___ kelimesi kullanılır.", correctAnswer: "calorie", options: ["calorie", "lecție", "stradă", "familie"] },
+      { type: "multiple_choice", question: '"Şeker tüketimini azaltıyorum" cümlesinin Rumencesi hangisi?', options: ["Reduc consumul de zahăr", "Cresc consumul de zahăr", "Vând zahăr", "Cumpăr zahăr"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Rumencede 'kalori' için ___ kelimesi kullanılır.", correctAnswer: "calorie", options: ["calorie", "lecție", "stradă", "familie"] },
       { type: "translation", sentence: "Akşamları erken uyumaya çalışıyorum", direction: "tr-ro", correctAnswer: "Seara încerc să mă culc devreme", acceptedAnswers: ["Seara încerc să mă culc devreme", "seara încerc să mă culc devreme"] },
       { type: "matching", pairs: [ { left: "Vitamin", right: "Vitamină" }, { left: "Protein", right: "Proteină" }, { left: "Diyet", right: "Dietă" }, { left: "Antrenman", right: "Antrenament" } ] },
     ],
@@ -2034,12 +2034,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Şehirde günlük hayat, hizmetler ve kamusal alanlarla ilgili ifadeleri öğren",
     xpReward: 40,
     exercises: [
-      { type: "multiple_choice", question: '"Belediye" Romence hangisidir?', options: ["Primărie", "Farmacie", "Piață", "Gară"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Belediye" Rumence hangisidir?', options: ["Primărie", "Farmacie", "Piață", "Gară"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Meydan", right: "Piață" }, { left: "İstasyon", right: "Stație" }, { left: "Kavşak", right: "Intersecție" }, { left: "Kaldırım", right: "Trotuar" } ] },
       { type: "fill_blank", sentence: "Pentru pașaport nou trebuie să merg la ___ .", correctAnswer: "primărie", options: ["primărie", "cafenea", "cinema", "plajă"] },
       { type: "translation", sentence: "Traficul este foarte aglomerat în centru", direction: "ro-tr", correctAnswer: "Merkezde trafik çok yoğun", acceptedAnswers: ["Merkezde trafik çok yoğun", "merkezde trafik çok yoğun"] },
-      { type: "multiple_choice", question: '"Otobüs durağı biraz ileride" cümlesinin Romencesi hangisi?', options: ["Stația de autobuz este puțin mai în față", "Autobuzul este în garaj", "Drumul este închis", "Biletul este scump"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Romencede 'mahalle' için ___ denir.", correctAnswer: "cartier", options: ["cartier", "fereastră", "restaurant", "expoziție"] },
+      { type: "multiple_choice", question: '"Otobüs durağı biraz ileride" cümlesinin Rumencesi hangisi?', options: ["Stația de autobuz este puțin mai în față", "Autobuzul este în garaj", "Drumul este închis", "Biletul este scump"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Rumencede 'mahalle' için ___ denir.", correctAnswer: "cartier", options: ["cartier", "fereastră", "restaurant", "expoziție"] },
       { type: "translation", sentence: "Şehir kartımı bugün yenilemem gerekiyor", direction: "tr-ro", correctAnswer: "Trebuie să-mi reînnoiesc cardul de oraș astăzi", acceptedAnswers: ["Trebuie să-mi reînnoiesc cardul de oraș astăzi", "trebuie să-mi reînnoiesc cardul de oraș astăzi"] },
       { type: "matching", pairs: [ { left: "Park", right: "Parc" }, { left: "Belediye otobüsü", right: "Autobuz municipal" }, { left: "Yaya geçidi", right: "Trecere de pietoni" }, { left: "Sokak lambası", right: "Lampă stradală" } ] },
     ],
@@ -2051,12 +2051,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "İş görüşmelerinde kendini ifade etme ve profesyonel sorulara cevap verme pratiği yap",
     xpReward: 40,
     exercises: [
-      { type: "multiple_choice", question: '"Özgeçmiş" için doğru Romence kelime hangisi?', options: ["CV", "Contract", "Salariu", "Program"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Özgeçmiş" için doğru Rumence kelime hangisi?', options: ["CV", "Contract", "Salariu", "Program"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Deneyim", right: "Experiență" }, { left: "Maaş", right: "Salariu" }, { left: "Pozisyon", right: "Post" }, { left: "Referans", right: "Referință" } ] },
       { type: "fill_blank", sentence: "La interviu trebuie să vorbesc clar despre ___ mele.", correctAnswer: "abilitățile", options: ["abilitățile", "vacanțele", "hobby-urile", "vecinii"] },
       { type: "translation", sentence: "Care sunt punctele tale forte?", direction: "ro-tr", correctAnswer: "Güçlü yönlerin neler?", acceptedAnswers: ["Güçlü yönlerin neler?", "güçlü yönlerin neler?"] },
-      { type: "multiple_choice", question: '"Takım çalışmasına yatkınım" cümlesinin Romencesi hangisi?', options: ["Lucrez bine în echipă", "Nu îmi place munca", "Ajung mereu târziu", "Nu am experiență"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Romencede 'mülakat' için ___ kelimesi kullanılır.", correctAnswer: "interviu", options: ["interviu", "lecție", "bibliotecă", "stradă"] },
+      { type: "multiple_choice", question: '"Takım çalışmasına yatkınım" cümlesinin Rumencesi hangisi?', options: ["Lucrez bine în echipă", "Nu îmi place munca", "Ajung mereu târziu", "Nu am experiență"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Rumencede 'mülakat' için ___ kelimesi kullanılır.", correctAnswer: "interviu", options: ["interviu", "lecție", "bibliotecă", "stradă"] },
       { type: "translation", sentence: "Bu pozisyon için motiveyim", direction: "tr-ro", correctAnswer: "Sunt motivat(ă) pentru acest post", acceptedAnswers: ["Sunt motivat pentru acest post", "Sunt motivată pentru acest post", "sunt motivat pentru acest post", "sunt motivată pentru acest post", "Sunt motivat(ă) pentru acest post", "sunt motivat(ă) pentru acest post"] },
       { type: "matching", pairs: [ { left: "Toplantı", right: "Ședință" }, { left: "Sorumluluk", right: "Responsabilitate" }, { left: "Hedef", right: "Obiectiv" }, { left: "Zaman yönetimi", right: "Managementul timpului" } ] },
     ],
@@ -2068,12 +2068,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Resmi kurumlarda sıra alma, form doldurma ve belge isteme kalıplarını öğren",
     xpReward: 45,
     exercises: [
-      { type: "multiple_choice", question: '"Randevu almak" ifadesinin Romencesi hangisi?', options: ["A lua o programare", "A pierde un dosar", "A închide ghișeul", "A plăti chiria"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Randevu almak" ifadesinin Rumencesi hangisi?', options: ["A lua o programare", "A pierde un dosar", "A închide ghișeul", "A plăti chiria"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Belge", right: "Document" }, { left: "Başvuru formu", right: "Formular de cerere" }, { left: "Nüfus müdürlüğü", right: "Serviciul de evidență" }, { left: "İmza", right: "Semnătură" } ] },
       { type: "fill_blank", sentence: "Pentru acest dosar trebuie să aduc un ___ de naștere.", correctAnswer: "certificat", options: ["certificat", "autobuz", "meniu", "cadou"] },
       { type: "translation", sentence: "Gişede sıra numarası aldım", direction: "tr-ro", correctAnswer: "Am luat un număr de ordine la ghișeu", acceptedAnswers: ["Am luat un număr de ordine la ghișeu", "am luat un număr de ordine la ghișeu"] },
-      { type: "multiple_choice", question: '"Bu formu eksiksiz doldurun" cümlesinin Romencesi hangisi?', options: ["Completați acest formular în întregime", "Aruncați acest formular", "Semnați mâine", "Mergeți acasă acum"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Romencede 'makbuz' için ___ kelimesi kullanılır.", correctAnswer: "chitanță", options: ["chitanță", "vacanță", "pătură", "oglindă"] },
+      { type: "multiple_choice", question: '"Bu formu eksiksiz doldurun" cümlesinin Rumencesi hangisi?', options: ["Completați acest formular în întregime", "Aruncați acest formular", "Semnați mâine", "Mergeți acasă acum"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Rumencede 'makbuz' için ___ kelimesi kullanılır.", correctAnswer: "chitanță", options: ["chitanță", "vacanță", "pătură", "oglindă"] },
       { type: "translation", sentence: "Belgenin onaylı kopyasına ihtiyacım var", direction: "tr-ro", correctAnswer: "Am nevoie de o copie legalizată a documentului", acceptedAnswers: ["Am nevoie de o copie legalizată a documentului", "am nevoie de o copie legalizată a documentului"] },
       { type: "matching", pairs: [ { left: "Dilekçe", right: "Petiție" }, { left: "Başvuru", right: "Solicitare" }, { left: "Yetkili", right: "Funcționar" }, { left: "Randevu", right: "Programare" } ] },
     ],
@@ -2085,12 +2085,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Yeni eve taşınma, apartman kuralları ve komşuluk iletişiminde kullanılan ifadeleri pekiştir",
     xpReward: 45,
     exercises: [
-      { type: "multiple_choice", question: '"Kira sözleşmesi" Romence hangisidir?', options: ["Contract de închiriere", "Bilet de tren", "Carte de vizită", "Program de lucru"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Kira sözleşmesi" Rumence hangisidir?', options: ["Contract de închiriere", "Bilet de tren", "Carte de vizită", "Program de lucru"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Anahtar", right: "Cheie" }, { left: "Asansör", right: "Lift" }, { left: "Aidat", right: "Taxă de întreținere" }, { left: "Taşınma", right: "Mutare" } ] },
       { type: "fill_blank", sentence: "Mâine mă ___ într-un apartament nou.", correctAnswer: "mut", options: ["mut", "gătesc", "înot", "aștept"] },
       { type: "translation", sentence: "Komşuma taşındığımı haber verdim", direction: "tr-ro", correctAnswer: "L-am anunțat pe vecinul meu că m-am mutat", acceptedAnswers: ["L-am anunțat pe vecinul meu că m-am mutat", "l-am anunțat pe vecinul meu că m-am mutat"] },
-      { type: "multiple_choice", question: '"Apartmanda gece sessiz olun" ifadesinin Romencesi hangisi?', options: ["Păstrați liniștea noaptea în bloc", "Deschideți geamul imediat", "Parcați în fața intrării", "Lăsați ușa deschisă"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Romencede 'komşu' için ___ denir.", correctAnswer: "vecin", options: ["vecin", "doctor", "șofer", "poștaș"] },
+      { type: "multiple_choice", question: '"Apartmanda gece sessiz olun" ifadesinin Rumencesi hangisi?', options: ["Păstrați liniștea noaptea în bloc", "Deschideți geamul imediat", "Parcați în fața intrării", "Lăsați ușa deschisă"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Rumencede 'komşu' için ___ denir.", correctAnswer: "vecin", options: ["vecin", "doctor", "șofer", "poștaș"] },
       { type: "translation", sentence: "Taşınma günü için kamyonet kiraladık", direction: "tr-ro", correctAnswer: "Am închiriat o dubă pentru ziua mutării", acceptedAnswers: ["Am închiriat o dubă pentru ziua mutării", "am închiriat o dubă pentru ziua mutării"] },
       { type: "matching", pairs: [ { left: "Bina girişi", right: "Intrarea blocului" }, { left: "Posta kutusu", right: "Cutie poștală" }, { left: "Kapıcı", right: "Administrator" }, { left: "Kat", right: "Etaj" } ] },
     ],
@@ -2102,12 +2102,12 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Aktarma, rezervasyon değişikliği ve seyahat sorunlarında daha ileri düzey cümleler kur",
     xpReward: 50,
     exercises: [
-      { type: "multiple_choice", question: '"Aktarmalı uçuş" Romence nasıl söylenir?', options: ["Zbor cu escală", "Drum fără hartă", "Bilet deschis", "Bagaj pierdut"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Aktarmalı uçuş" Rumence nasıl söylenir?', options: ["Zbor cu escală", "Drum fără hartă", "Bilet deschis", "Bagaj pierdut"], correctIndex: 0 },
       { type: "matching", pairs: [ { left: "Biniş kartı", right: "Carte de îmbarcare" }, { left: "Gecikme", right: "Întârziere" }, { left: "Terminal", right: "Terminal" }, { left: "Pasaport kontrolü", right: "Control pașapoarte" } ] },
       { type: "fill_blank", sentence: "Trebuie să schimb ___ pentru zborul de mâine.", correctAnswer: "rezervarea", options: ["rezervarea", "perdeaua", "cheia", "planta"] },
       { type: "translation", sentence: "Bağlantı uçuşumu kaçırdım", direction: "tr-ro", correctAnswer: "Am pierdut zborul de conexiune", acceptedAnswers: ["Am pierdut zborul de conexiune", "am pierdut zborul de conexiune"] },
-      { type: "multiple_choice", question: '"Bagajım gelmedi" cümlesinin Romencesi hangisi?', options: ["Bagajul meu nu a ajuns", "Bagajul meu este greu", "Bagajul meu este nou", "Bagajul meu este gol"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Romencede 'iptal' için ___ kelimesi kullanılır.", correctAnswer: "anulare", options: ["anulare", "plimbare", "culoare", "valoare"] },
+      { type: "multiple_choice", question: '"Bagajım gelmedi" cümlesinin Rumencesi hangisi?', options: ["Bagajul meu nu a ajuns", "Bagajul meu este greu", "Bagajul meu este nou", "Bagajul meu este gol"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Rumencede 'iptal' için ___ kelimesi kullanılır.", correctAnswer: "anulare", options: ["anulare", "plimbare", "culoare", "valoare"] },
       { type: "translation", sentence: "Rezervasyonumu bir gün ertelemek istiyorum", direction: "tr-ro", correctAnswer: "Vreau să amân rezervarea mea cu o zi", acceptedAnswers: ["Vreau să amân rezervarea mea cu o zi", "vreau să amân rezervarea mea cu o zi"] },
       { type: "matching", pairs: [ { left: "Kontuar", right: "Ghișeu" }, { left: "Varış", right: "Sosire" }, { left: "Kalkış", right: "Plecare" }, { left: "Transit alanı", right: "Zonă de tranzit" } ] },
     ],
@@ -2120,7 +2120,7 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 15,
     exercises: [
       { type: "multiple_choice", question: '"Ș" harfi Türkçede hangi sese en yakındır?', options: ["s", "ş", "ç", "j"], correctIndex: 1 },
-      { type: "fill_blank", sentence: "Romencede 'çay' kelimesi ___ olarak yazılır.", correctAnswer: "ceai", options: ["ceai", "chai", "cei", "cey"] },
+      { type: "fill_blank", sentence: "Rumencede 'çay' kelimesi ___ olarak yazılır.", correctAnswer: "ceai", options: ["ceai", "chai", "cei", "cey"] },
       { type: "translation", sentence: "Bu kelimeyi yavaşça tekrar eder misin?", direction: "tr-ro", correctAnswer: "Poți repeta acest cuvânt mai încet?", acceptedAnswers: ["Poți repeta acest cuvânt mai încet?", "poți repeta acest cuvânt mai încet?"] },
     ],
   },
@@ -2132,7 +2132,7 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 20,
     exercises: [
       { type: "matching", pairs: [{ left: "Gömlek", right: "Cămașă" }, { left: "Pantolon", right: "Pantaloni" }, { left: "Ayakkabı", right: "Pantofi" }, { left: "Ceket", right: "Geacă" }] },
-      { type: "multiple_choice", question: '"Bu tişört büyük" cümlesinin Romencesi hangisi?', options: ["Acest tricou este mic", "Acest tricou este mare", "Acești pantaloni sunt noi", "Această geacă este veche"], correctIndex: 1 },
+      { type: "multiple_choice", question: '"Bu tişört büyük" cümlesinin Rumencesi hangisi?', options: ["Acest tricou este mic", "Acest tricou este mare", "Acești pantaloni sunt noi", "Această geacă este veche"], correctIndex: 1 },
       { type: "translation", sentence: "Mavi bir kazak denemek istiyorum", direction: "tr-ro", correctAnswer: "Vreau să probez un pulover albastru", acceptedAnswers: ["Vreau să probez un pulover albastru", "vreau să probez un pulover albastru"] },
     ],
   },
@@ -2143,7 +2143,7 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Evcil hayvanlarla ilgili rutin bakım ve ihtiyaç ifadelerini öğren",
     xpReward: 20,
     exercises: [
-      { type: "multiple_choice", question: '"Mama" için doğru Romence kelime hangisi?', options: ["Hrană", "Leașă", "Cușcă", "Jucărie"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Mama" için doğru Rumence kelime hangisi?', options: ["Hrană", "Leașă", "Cușcă", "Jucărie"], correctIndex: 0 },
       { type: "fill_blank", sentence: "Pisica mea her sabah ___ ister.", correctAnswer: "mâncare", options: ["mâncare", "harită", "culoare", "fereastră"] },
       { type: "translation", sentence: "Köpeği akşam yürüyüşüne çıkarıyorum", direction: "tr-ro", correctAnswer: "Scot câinele la plimbare seara", acceptedAnswers: ["Scot câinele la plimbare seara", "scot câinele la plimbare seara"] },
     ],
@@ -2156,7 +2156,7 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 25,
     exercises: [
       { type: "translation", sentence: "Toplantı saat dokuzda başlıyor", direction: "tr-ro", correctAnswer: "Ședința începe la ora nouă", acceptedAnswers: ["Ședința începe la ora nouă", "ședința începe la ora nouă"] },
-      { type: "multiple_choice", question: '"Bugün ayın kaçı?" Romence hangisi?', options: ["Cât este ceasul?", "Ce zi este azi?", "În ce lună suntem?", "În ce dată suntem azi?"], correctIndex: 3 },
+      { type: "multiple_choice", question: '"Bugün ayın kaçı?" Rumence hangisi?', options: ["Cât este ceasul?", "Ce zi este azi?", "În ce lună suntem?", "În ce dată suntem azi?"], correctIndex: 3 },
       { type: "fill_blank", sentence: "Trenul ___ on beşte kalkıyor.", correctAnswer: "la ora", options: ["la ora", "de ora", "în ora", "pe ora"] },
     ],
   },
@@ -2167,7 +2167,7 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Market alışverişinde ürün sorma, miktar belirtme ve ödeme kalıplarını kullan",
     xpReward: 25,
     exercises: [
-      { type: "multiple_choice", question: '"Bir kilo domates alabilir miyim?" cümlesinin Romencesi hangisi?', options: ["Pot să iau un kilogram de roșii?", "Pot să vând un kilogram de roșii?", "Pot să gătesc roșii acum?", "Pot să las roșiile aici?"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Bir kilo domates alabilir miyim?" cümlesinin Rumencesi hangisi?', options: ["Pot să iau un kilogram de roșii?", "Pot să vând un kilogram de roșii?", "Pot să gătesc roșii acum?", "Pot să las roșiile aici?"], correctIndex: 0 },
       { type: "matching", pairs: [{ left: "Kasiyer", right: "Casier" }, { left: "İndirim", right: "Reducere" }, { left: "Sepet", right: "Coș" }, { left: "Fiş", right: "Bon" }] },
       { type: "translation", sentence: "Kartla ödeme yapacağım", direction: "tr-ro", correctAnswer: "Voi plăti cu cardul", acceptedAnswers: ["Voi plăti cu cardul", "voi plăti cu cardul"] },
     ],
@@ -2181,7 +2181,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "fill_blank", sentence: "Luni ___ la curs de limbă.", correctAnswer: "merg", options: ["merg", "mănânc", "citesc", "uit"] },
       { type: "translation", sentence: "Perşembe günü dişçi randevum var", direction: "tr-ro", correctAnswer: "Joi am programare la dentist", acceptedAnswers: ["Joi am programare la dentist", "joi am programare la dentist"] },
-      { type: "multiple_choice", question: '"Hafta sonu ailemi ziyaret edeceğim" Romence hangisi?', options: ["În weekend voi vizita familia mea", "În weekend uit familia mea", "În weekend scriu despre familie", "În weekend vând familia mea"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Hafta sonu ailemi ziyaret edeceğim" Rumence hangisi?', options: ["În weekend voi vizita familia mea", "În weekend uit familia mea", "În weekend scriu despre familie", "În weekend vând familia mea"], correctIndex: 0 },
     ],
   },
   "46": {
@@ -2191,7 +2191,7 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Doktorla konuşurken belirtileri açık ve doğru ifade et",
     xpReward: 30,
     exercises: [
-      { type: "multiple_choice", question: '"Ateşim var" ifadesinin Romence karşılığı hangisi?', options: ["Am febră", "Am noroc", "Am timp", "Am drum"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Ateşim var" ifadesinin Rumence karşılığı hangisi?', options: ["Am febră", "Am noroc", "Am timp", "Am drum"], correctIndex: 0 },
       { type: "translation", sentence: "Dünden beri başım dönüyor", direction: "tr-ro", correctAnswer: "De ieri am amețeli", acceptedAnswers: ["De ieri am amețeli", "de ieri am amețeli"] },
       { type: "fill_blank", sentence: "Doctorul mi-a spus să ___ mai mult.", correctAnswer: "mă odihnesc", options: ["mă odihnesc", "alerg", "zâmbesc", "cânt"] },
     ],
@@ -2204,7 +2204,7 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 35,
     exercises: [
       { type: "translation", sentence: "Rezervasyonum Ali Yılmaz adına", direction: "tr-ro", correctAnswer: "Rezervarea mea este pe numele Ali Yılmaz", acceptedAnswers: ["Rezervarea mea este pe numele Ali Yılmaz", "rezervarea mea este pe numele ali yılmaz", "rezervarea mea este pe numele ali yılmaz"] },
-      { type: "multiple_choice", question: '"Erken giriş mümkün mü?" Romence hangisi?', options: ["Este posibil check-in devreme?", "Este posibil check-out târziu?", "Este posibilă o masă aici?", "Este posibil să schimb trenul?"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Erken giriş mümkün mü?" Rumence hangisi?', options: ["Este posibil check-in devreme?", "Este posibil check-out târziu?", "Este posibilă o masă aici?", "Este posibil să schimb trenul?"], correctIndex: 0 },
       { type: "matching", pairs: [{ left: "Resepsiyon", right: "Recepție" }, { left: "Anahtar kart", right: "Cartelă de acces" }, { left: "Tek kişilik oda", right: "Cameră single" }, { left: "Kahvaltı dahil", right: "Mic dejun inclus" }] },
     ],
   },
@@ -2215,7 +2215,7 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Toplantı sırasında fikir belirtme, soru sorma ve netleştirme ifadeleri kullan",
     xpReward: 35,
     exercises: [
-      { type: "multiple_choice", question: '"Bu konuda bir önerim var" cümlesinin Romencesi hangisi?', options: ["Am o sugestie în această privință", "Am un bilet pentru această privință", "Am uitat această privință", "Am deschis această privință"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Bu konuda bir önerim var" cümlesinin Rumencesi hangisi?', options: ["Am o sugestie în această privință", "Am un bilet pentru această privință", "Am uitat această privință", "Am deschis această privință"], correctIndex: 0 },
       { type: "translation", sentence: "Sunumu toplantıdan sonra paylaşacağım", direction: "tr-ro", correctAnswer: "Voi trimite prezentarea după ședință", acceptedAnswers: ["Voi trimite prezentarea după ședință", "voi trimite prezentarea după ședință"] },
       { type: "fill_blank", sentence: "Puteți să ___ ultimul punct, vă rog?", correctAnswer: "clarificați", options: ["clarificați", "cântați", "aranjați", "închideți"] },
     ],
@@ -2228,7 +2228,7 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 40,
     exercises: [
       { type: "translation", sentence: "Romanın dili oldukça etkileyiciydi", direction: "tr-ro", correctAnswer: "Limbajul romanului a fost foarte impresionant", acceptedAnswers: ["Limbajul romanului a fost foarte impresionant", "limbajul romanului a fost foarte impresionant"] },
-      { type: "multiple_choice", question: '"Sahne tasarımı" için doğru Romence ifade hangisi?', options: ["Design de scenă", "Design de stradă", "Design de birou", "Design de tren"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Sahne tasarımı" için doğru Rumence ifade hangisi?', options: ["Design de scenă", "Design de stradă", "Design de birou", "Design de tren"], correctIndex: 0 },
       { type: "matching", pairs: [{ left: "Şiir", right: "Poezie" }, { left: "Roman", right: "Roman" }, { left: "Yazar", right: "Scriitor" }, { left: "Eleştiri", right: "Critică" }] },
     ],
   },
@@ -2239,7 +2239,7 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Dijital platformlarda güvenlik, gizlilik ve risk uyarılarıyla ilgili ifadeleri kullan",
     xpReward: 40,
     exercises: [
-      { type: "multiple_choice", question: '"İki aşamalı doğrulama" Romence hangisidir?', options: ["Verificare în doi pași", "Parolă simplă", "Conexiune lentă", "Mesaj public"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"İki aşamalı doğrulama" Rumence hangisidir?', options: ["Verificare în doi pași", "Parolă simplă", "Conexiune lentă", "Mesaj public"], correctIndex: 0 },
       { type: "translation", sentence: "Bu bağlantı güvenilir görünmüyor", direction: "tr-ro", correctAnswer: "Acest link nu pare sigur", acceptedAnswers: ["Acest link nu pare sigur", "acest link nu pare sigur"] },
       { type: "fill_blank", sentence: "Nu trebuie să ___ parola cu nimeni.", correctAnswer: "partajezi", options: ["partajezi", "cumperi", "închizi", "arunci"] },
     ],
@@ -2252,7 +2252,7 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 45,
     exercises: [
       { type: "translation", sentence: "Bu yıl liderlik becerilerimi geliştirmeyi hedefliyorum", direction: "tr-ro", correctAnswer: "Anul acesta îmi propun să îmi dezvolt abilitățile de leadership", acceptedAnswers: ["Anul acesta îmi propun să îmi dezvolt abilitățile de leadership", "anul acesta îmi propun să îmi dezvolt abilitățile de leadership"] },
-      { type: "multiple_choice", question: '"Uzmanlık alanım veri analizi" cümlesinin Romencesi hangisi?', options: ["Domeniul meu de expertiză este analiza datelor", "Domeniul meu este pauza de masă", "Domeniul meu este muzica tare", "Domeniul meu este mersul pe jos"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Uzmanlık alanım veri analizi" cümlesinin Rumencesi hangisi?', options: ["Domeniul meu de expertiză este analiza datelor", "Domeniul meu este pauza de masă", "Domeniul meu este muzica tare", "Domeniul meu este mersul pe jos"], correctIndex: 0 },
       { type: "fill_blank", sentence: "Pentru această poziție, experiența practică este foarte ___.", correctAnswer: "importantă", options: ["importantă", "lentă", "mică", "goală"] },
     ],
   },
@@ -2263,7 +2263,7 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Araştırma sunumu yaparken ileri düzey bağlaçlar ve resmi anlatım kalıpları kullan",
     xpReward: 50,
     exercises: [
-      { type: "multiple_choice", question: '"Araştırmamızın amacı" ifadesinin doğru Romencesi hangisi?', options: ["Scopul cercetării noastre", "Viteza cercetării noastre", "Vacanța cercetării noastre", "Culoarea cercetării noastre"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Araştırmamızın amacı" ifadesinin doğru Rumencesi hangisi?', options: ["Scopul cercetării noastre", "Viteza cercetării noastre", "Vacanța cercetării noastre", "Culoarea cercetării noastre"], correctIndex: 0 },
       { type: "translation", sentence: "Sonuçlar hipotezimizi büyük ölçüde destekliyor", direction: "tr-ro", correctAnswer: "Rezultatele susțin în mare măsură ipoteza noastră", acceptedAnswers: ["Rezultatele susțin în mare măsură ipoteza noastră", "rezultatele susțin în mare măsură ipoteza noastră"] },
       { type: "fill_blank", sentence: "În concluzie, datele ___ o tendință clară.", correctAnswer: "indică", options: ["indică", "ascund", "uită", "evită"] },
     ],
@@ -2275,9 +2275,9 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Günlük konuşmalarda sık kullanılan soru kalıplarını pekiştir",
     xpReward: 30,
     exercises: [
-      { type: "multiple_choice", question: '"Nerede yaşıyorsun?" cümlesinin Romencesi hangisi?', options: ["Unde locuiești?", "Când pleci?", "Ce mănânci?", "Cine vine?"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Nerede yaşıyorsun?" cümlesinin Rumencesi hangisi?', options: ["Unde locuiești?", "Când pleci?", "Ce mănânci?", "Cine vine?"], correctIndex: 0 },
       { type: "translation", sentence: "Ne zaman geliyorsun?", direction: "tr-ro", correctAnswer: "Când vii?", acceptedAnswers: ["Când vii?", "când vii?"] },
-      { type: "fill_blank", sentence: "Romencede 'Neden?' demek için ___ denir.", correctAnswer: "De ce", options: ["De ce", "Unde", "Cum", "Cine"] },
+      { type: "fill_blank", sentence: "Rumencede 'Neden?' demek için ___ denir.", correctAnswer: "De ce", options: ["De ce", "Unde", "Cum", "Cine"] },
     ],
   },
   "54": {
@@ -2289,7 +2289,7 @@ export const lessonsData: Record<string, LessonData> = {
     exercises: [
       { type: "matching", pairs: [{ left: "Masa", right: "Masă" }, { left: "Sandalye", right: "Scaun" }, { left: "Dolap", right: "Dulap" }, { left: "Lamba", right: "Lampă" }] },
       { type: "translation", sentence: "Lamba masanın üstünde", direction: "tr-ro", correctAnswer: "Lampa este pe masă", acceptedAnswers: ["Lampa este pe masă", "lampa este pe masă"] },
-      { type: "multiple_choice", question: '"Yatak" için doğru Romence kelime hangisi?', options: ["Pat", "Perete", "Fereastră", "Cană"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Yatak" için doğru Rumence kelime hangisi?', options: ["Pat", "Perete", "Fereastră", "Cană"], correctIndex: 0 },
     ],
   },
   "55": {
@@ -2299,8 +2299,8 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Vahşi hayvan adlarıyla basit cümleler kur",
     xpReward: 35,
     exercises: [
-      { type: "multiple_choice", question: '"Tilki" Romence hangisidir?', options: ["Lup", "Urs", "Vulpe", "Cerb"], correctIndex: 2 },
-      { type: "fill_blank", sentence: "Romencede 'ayı' için ___ denir.", correctAnswer: "urs", options: ["urs", "iepure", "pește", "cal"] },
+      { type: "multiple_choice", question: '"Tilki" Rumence hangisidir?', options: ["Lup", "Urs", "Vulpe", "Cerb"], correctIndex: 2 },
+      { type: "fill_blank", sentence: "Rumencede 'ayı' için ___ denir.", correctAnswer: "urs", options: ["urs", "iepure", "pește", "cal"] },
       { type: "translation", sentence: "Ormanda bir kurt gördük", direction: "tr-ro", correctAnswer: "Am văzut un lup în pădure", acceptedAnswers: ["Am văzut un lup în pădure", "am văzut un lup în pădure"] },
     ],
   },
@@ -2312,8 +2312,8 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 35,
     exercises: [
       { type: "translation", sentence: "Yarın yağmur bekleniyor", direction: "tr-ro", correctAnswer: "Mâine se așteaptă ploaie", acceptedAnswers: ["Mâine se așteaptă ploaie", "mâine se așteaptă ploaie"] },
-      { type: "multiple_choice", question: '"Sıcaklık düşecek" cümlesinin Romencesi hangisi?', options: ["Temperatura va crește", "Temperatura va scădea", "Temperatura rămâne", "Temperatura dispare"], correctIndex: 1 },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Este posibil să ___ după-amiază.", correctAnswer: "ningă", options: ["ningă", "coacă", "citească", "asculte"] },
+      { type: "multiple_choice", question: '"Sıcaklık düşecek" cümlesinin Rumencesi hangisi?', options: ["Temperatura va crește", "Temperatura va scădea", "Temperatura rămâne", "Temperatura dispare"], correctIndex: 1 },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Este posibil să ___ după-amiază.", correctAnswer: "ningă", options: ["ningă", "coacă", "citească", "asculte"] },
     ],
   },
   "57": {
@@ -2323,9 +2323,9 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Pazarda fiyat sorma ve miktar belirtme kalıplarını kullan",
     xpReward: 35,
     exercises: [
-      { type: "multiple_choice", question: '"Bir kilo domates" Romence nasıl söylenir?', options: ["Un litru de roșii", "Un kilogram de roșii", "O cutie de roșii", "Un pahar de roșii"], correctIndex: 1 },
+      { type: "multiple_choice", question: '"Bir kilo domates" Rumence nasıl söylenir?', options: ["Un litru de roșii", "Un kilogram de roșii", "O cutie de roșii", "Un pahar de roșii"], correctIndex: 1 },
       { type: "translation", sentence: "Bunlar çok taze görünüyor", direction: "tr-ro", correctAnswer: "Acestea par foarte proaspete", acceptedAnswers: ["Acestea par foarte proaspete", "acestea par foarte proaspete"] },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Cât ___ un kilogram de cartofi?", correctAnswer: "costă", options: ["costă", "merge", "scrie", "așteaptă"] },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Cât ___ un kilogram de cartofi?", correctAnswer: "costă", options: ["costă", "merge", "scrie", "așteaptă"] },
     ],
   },
   "58": {
@@ -2336,8 +2336,8 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 40,
     exercises: [
       { type: "translation", sentence: "Cumartesi sinemaya gidelim", direction: "tr-ro", correctAnswer: "Sâmbătă să mergem la cinema", acceptedAnswers: ["Sâmbătă să mergem la cinema", "sâmbătă să mergem la cinema"] },
-      { type: "multiple_choice", question: '"Pazar günü müsait misin?" cümlesinin Romencesi hangisi?', options: ["Ești ocupat luni?", "Ești liber duminică?", "Vii mâine dimineață?", "Pleci în vacanță?"], correctIndex: 1 },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Putem să ne ___ în parc la ora cinci.", correctAnswer: "întâlnim", options: ["întâlnim", "închidem", "uităm", "plecăm"] },
+      { type: "multiple_choice", question: '"Pazar günü müsait misin?" cümlesinin Rumencesi hangisi?', options: ["Ești ocupat luni?", "Ești liber duminică?", "Vii mâine dimineață?", "Pleci în vacanță?"], correctIndex: 1 },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Putem să ne ___ în parc la ora cinci.", correctAnswer: "întâlnim", options: ["întâlnim", "închidem", "uităm", "plecăm"] },
     ],
   },
   "59": {
@@ -2347,9 +2347,9 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Doktor randevusu alma ve temel şikayetleri anlatma cümleleri kur",
     xpReward: 40,
     exercises: [
-      { type: "multiple_choice", question: '"Yarın için randevu almak istiyorum" cümlesinin Romencesi hangisi?', options: ["Vreau să anulez consultația", "Vreau să fac o programare pentru mâine", "Vreau să cumpăr medicamente", "Vreau să plec acasă"], correctIndex: 1 },
+      { type: "multiple_choice", question: '"Yarın için randevu almak istiyorum" cümlesinin Rumencesi hangisi?', options: ["Vreau să anulez consultația", "Vreau să fac o programare pentru mâine", "Vreau să cumpăr medicamente", "Vreau să plec acasă"], correctIndex: 1 },
       { type: "translation", sentence: "Dün geceden beri ateşim var", direction: "tr-ro", correctAnswer: "Am febră de aseară", acceptedAnswers: ["Am febră de aseară", "am febră de aseară"] },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Mă doare foarte tare ___.", correctAnswer: "gâtul", options: ["gâtul", "ceasul", "scaunul", "drumul"] },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Mă doare foarte tare ___.", correctAnswer: "gâtul", options: ["gâtul", "ceasul", "scaunul", "drumul"] },
     ],
   },
   "60": {
@@ -2360,8 +2360,8 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 40,
     exercises: [
       { type: "translation", sentence: "Check-in nerede yapılıyor?", direction: "tr-ro", correctAnswer: "Unde se face check-in-ul?", acceptedAnswers: ["Unde se face check-in-ul?", "unde se face check-in-ul?"] },
-      { type: "multiple_choice", question: '"El bagajı" için doğru Romence ifade hangisi?', options: ["Bagaj de mână", "Bagaj de cală", "Bilet de intrare", "Număr de poartă"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Zborul nostru ___ de la poarta 12.", correctAnswer: "pleacă", options: ["pleacă", "doarme", "mănâncă", "scrie"] },
+      { type: "multiple_choice", question: '"El bagajı" için doğru Rumence ifade hangisi?', options: ["Bagaj de mână", "Bagaj de cală", "Bilet de intrare", "Număr de poartă"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Zborul nostru ___ de la poarta 12.", correctAnswer: "pleacă", options: ["pleacă", "doarme", "mănâncă", "scrie"] },
     ],
   },
   "61": {
@@ -2371,7 +2371,7 @@ export const lessonsData: Record<string, LessonData> = {
     description: "İş planı, teslim tarihi ve görev dağılımı hakkında konuş",
     xpReward: 45,
     exercises: [
-      { type: "multiple_choice", question: '"Teslim tarihi" Romence hangisidir?', options: ["Termen limită", "Pauză de cafea", "Zi liberă", "Plan de vacanță"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Teslim tarihi" Rumence hangisidir?', options: ["Termen limită", "Pauză de cafea", "Zi liberă", "Plan de vacanță"], correctIndex: 0 },
       { type: "translation", sentence: "Bu görevi haftaya kadar tamamlayacağım", direction: "tr-ro", correctAnswer: "Voi finaliza această sarcină până săptămâna viitoare", acceptedAnswers: ["Voi finaliza această sarcină până săptămâna viitoare", "voi finaliza această sarcină până săptămâna viitoare"] },
       { type: "fill_blank", sentence: "Trebuie să ___ responsabilitățile în echipă.", correctAnswer: "împărțim", options: ["împărțim", "uităm", "spălăm", "închidem"] },
     ],
@@ -2384,7 +2384,7 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 45,
     exercises: [
       { type: "translation", sentence: "Filmin sonu beni şaşırttı", direction: "tr-ro", correctAnswer: "Finalul filmului m-a surprins", acceptedAnswers: ["Finalul filmului m-a surprins", "finalul filmului m-a surprins"] },
-      { type: "multiple_choice", question: '"Oyunculuk çok başarılıydı" cümlesinin Romencesi hangisi?', options: ["Decorul a fost mic", "Actorii au fost foarte buni", "Sunetul a fost slab", "Filmul a fost scurt"], correctIndex: 1 },
+      { type: "multiple_choice", question: '"Oyunculuk çok başarılıydı" cümlesinin Rumencesi hangisi?', options: ["Decorul a fost mic", "Actorii au fost foarte buni", "Sunetul a fost slab", "Filmul a fost scurt"], correctIndex: 1 },
       { type: "fill_blank", sentence: "Mi-a plăcut mai ales ___ principal.", correctAnswer: "personajul", options: ["personajul", "drumul", "telefonul", "meniul"] },
     ],
   },
@@ -2395,7 +2395,7 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Haber kaynaklarını değerlendirme ve bilgi doğrulama ifadeleri kullan",
     xpReward: 45,
     exercises: [
-      { type: "multiple_choice", question: '"Bu haberi doğrulamamız gerekiyor" cümlesinin Romencesi hangisi?', options: ["Trebuie să verificăm această știre", "Trebuie să ignorăm această știre", "Trebuie să ștergem această știre", "Trebuie să desenăm această știre"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Bu haberi doğrulamamız gerekiyor" cümlesinin Rumencesi hangisi?', options: ["Trebuie să verificăm această știre", "Trebuie să ignorăm această știre", "Trebuie să ștergem această știre", "Trebuie să desenăm această știre"], correctIndex: 0 },
       { type: "translation", sentence: "Kaynağı güvenilir görünmüyor", direction: "tr-ro", correctAnswer: "Sursa nu pare de încredere", acceptedAnswers: ["Sursa nu pare de încredere", "sursa nu pare de încredere"] },
       { type: "fill_blank", sentence: "Înainte să distribuim, trebuie să ___ informația.", correctAnswer: "confirmăm", options: ["confirmăm", "amânăm", "uităm", "închidem"] },
     ],
@@ -2408,7 +2408,7 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 50,
     exercises: [
       { type: "translation", sentence: "Güçlü yönlerini daha çok öne çıkarabilirsin", direction: "tr-ro", correctAnswer: "Poți evidenția mai mult punctele tale forte", acceptedAnswers: ["Poți evidenția mai mult punctele tale forte", "poți evidenția mai mult punctele tale forte"] },
-      { type: "multiple_choice", question: '"Düzenli pratik yapmak önemli" cümlesinin Romencesi hangisi?', options: ["Este important să exersezi regulat", "Este important să dormi puțin", "Este important să vorbești rar", "Este important să întârzii"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Düzenli pratik yapmak önemli" cümlesinin Rumencesi hangisi?', options: ["Este important să exersezi regulat", "Este important să dormi puțin", "Este important să vorbești rar", "Este important să întârzii"], correctIndex: 0 },
       { type: "fill_blank", sentence: "Îți recomand să ___ obiective clare.", correctAnswer: "stabilești", options: ["stabilești", "pierzi", "ascunzi", "uiți"] },
     ],
   },
@@ -2419,7 +2419,7 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Resmi e-posta yazımında akademik üslup ve netlik kazan",
     xpReward: 50,
     exercises: [
-      { type: "multiple_choice", question: '"Sayın hocam" ifadesinin uygun Romence karşılığı hangisi?', options: ["Stimate domnule profesor", "Dragă prietene", "Salut vecine", "Bună tuturor"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Sayın hocam" ifadesinin uygun Rumence karşılığı hangisi?', options: ["Stimate domnule profesor", "Dragă prietene", "Salut vecine", "Bună tuturor"], correctIndex: 0 },
       { type: "translation", sentence: "E-postanıza en kısa sürede yanıt vereceğim", direction: "tr-ro", correctAnswer: "Voi răspunde la e-mailul dumneavoastră cât mai curând", acceptedAnswers: ["Voi răspunde la e-mailul dumneavoastră cât mai curând", "voi răspunde la e-mailul dumneavoastră cât mai curând"] },
       { type: "fill_blank", sentence: "Vă atașez ___ solicitat pentru evaluare.", correctAnswer: "documentul", options: ["documentul", "biletul", "fructul", "tabloul"] },
     ],
@@ -2431,9 +2431,9 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Acil durumda semptom anlatma ve yardım isteme kalıplarını öğren",
     xpReward: 40,
     exercises: [
-      { type: "multiple_choice", question: '"Nefes almakta zorlanıyorum" cümlesinin Romencesi hangisi?', options: ["Pot să alerg repede", "Am dificultăți de respirație", "Mi-e sete", "Dorm foarte bine"], correctIndex: 1 },
+      { type: "multiple_choice", question: '"Nefes almakta zorlanıyorum" cümlesinin Rumencesi hangisi?', options: ["Pot să alerg repede", "Am dificultăți de respirație", "Mi-e sete", "Dorm foarte bine"], correctIndex: 1 },
       { type: "translation", sentence: "Lütfen hemen bir doktor çağırın", direction: "tr-ro", correctAnswer: "Vă rog, chemați imediat un doctor", acceptedAnswers: ["Vă rog, chemați imediat un doctor", "vă rog, chemați imediat un doctor"] },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Am nevoie de ___ medical urgent.", correctAnswer: "ajutor", options: ["ajutor", "transport", "ceai", "pauză"] },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Am nevoie de ___ medical urgent.", correctAnswer: "ajutor", options: ["ajutor", "transport", "ceai", "pauză"] },
     ],
   },
   "67": {
@@ -2444,8 +2444,8 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 40,
     exercises: [
       { type: "translation", sentence: "Bükreş'e giden bir bilet istiyorum", direction: "tr-ro", correctAnswer: "Doresc un bilet către București", acceptedAnswers: ["Doresc un bilet către București", "doresc un bilet către bucurești"] },
-      { type: "multiple_choice", question: '"Tren kaçta kalkıyor?" cümlesinin Romencesi hangisi?', options: ["La ce oră pleacă trenul?", "Unde este autobuzul?", "Când vine taxiul?", "Cât costă avionul?"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Peronul trenului este la linia ___.", correctAnswer: "trei", options: ["trei", "frig", "mare", "lung"] },
+      { type: "multiple_choice", question: '"Tren kaçta kalkıyor?" cümlesinin Rumencesi hangisi?', options: ["La ce oră pleacă trenul?", "Unde este autobuzul?", "Când vine taxiul?", "Cât costă avionul?"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Peronul trenului este la linia ___.", correctAnswer: "trei", options: ["trei", "frig", "mare", "lung"] },
     ],
   },
 
@@ -2456,9 +2456,9 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Eczanede ilaç isteme, doz sorma ve kullanım talimatı anlama pratiği yap",
     xpReward: 40,
     exercises: [
-      { type: "multiple_choice", question: '"Boğaz ağrısı için bir ilaç istiyorum" cümlesinin Romencesi hangisi?', options: ["Doresc un medicament pentru durere în gât", "Doresc un bilet pentru tren", "Doresc o cameră la hotel", "Doresc un suc rece"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Boğaz ağrısı için bir ilaç istiyorum" cümlesinin Rumencesi hangisi?', options: ["Doresc un medicament pentru durere în gât", "Doresc un bilet pentru tren", "Doresc o cameră la hotel", "Doresc un suc rece"], correctIndex: 0 },
       { type: "translation", sentence: "Bu ilacı günde iki kez almalısınız", direction: "tr-ro", correctAnswer: "Trebuie să luați acest medicament de două ori pe zi", acceptedAnswers: ["Trebuie să luați acest medicament de două ori pe zi", "trebuie să luați acest medicament de două ori pe zi"] },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Luați pastila după ___ .", correctAnswer: "masă", options: ["masă", "drum", "film", "tren"] },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Luați pastila după ___ .", correctAnswer: "masă", options: ["masă", "drum", "film", "tren"] },
     ],
   },
   "69": {
@@ -2469,8 +2469,8 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 40,
     exercises: [
       { type: "translation", sentence: "Kendimi daha iyi hissediyorum ama hâlâ öksürüyorum", direction: "tr-ro", correctAnswer: "Mă simt mai bine, dar încă tușesc", acceptedAnswers: ["Mă simt mai bine, dar încă tușesc", "mă simt mai bine, dar încă tușesc"] },
-      { type: "multiple_choice", question: '"İki hafta sonra tekrar kontrole gelin" cümlesinin Romencesi hangisi?', options: ["Reveniți la control peste două săptămâni", "Plecați imediat acasă", "Nu mai este nevoie de tratament", "Mergeți la gară acum"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Doctorul mi-a recomandat să ___ mai mult.", correctAnswer: "odihnesc", options: ["odihnesc", "alerg", "strig", "uit"] },
+      { type: "multiple_choice", question: '"İki hafta sonra tekrar kontrole gelin" cümlesinin Rumencesi hangisi?', options: ["Reveniți la control peste două săptămâni", "Plecați imediat acasă", "Nu mai este nevoie de tratament", "Mergeți la gară acum"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Doctorul mi-a recomandat să ___ mai mult.", correctAnswer: "odihnesc", options: ["odihnesc", "alerg", "strig", "uit"] },
     ],
   },
   "70": {
@@ -2480,9 +2480,9 @@ export const lessonsData: Record<string, LessonData> = {
     description: "Sınır kapısında belge sunma, soruları yanıtlama ve yönlendirmeleri anlama",
     xpReward: 40,
     exercises: [
-      { type: "multiple_choice", question: '"Ziyaret amacım turizm" cümlesinin Romencesi hangisi?', options: ["Scopul vizitei mele este turismul", "Scopul vizitei mele este medicina", "Scopul vizitei mele este școala", "Scopul vizitei mele este sportul"], correctIndex: 0 },
+      { type: "multiple_choice", question: '"Ziyaret amacım turizm" cümlesinin Rumencesi hangisi?', options: ["Scopul vizitei mele este turismul", "Scopul vizitei mele este medicina", "Scopul vizitei mele este școala", "Scopul vizitei mele este sportul"], correctIndex: 0 },
       { type: "translation", sentence: "Burada üç gün kalacağım", direction: "tr-ro", correctAnswer: "Voi sta aici trei zile", acceptedAnswers: ["Voi sta aici trei zile", "voi sta aici trei zile"] },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Vă rog să îmi arătați ___.", correctAnswer: "pașaportul", options: ["pașaportul", "telefonul", "meniul", "caietul"] },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Vă rog să îmi arătați ___.", correctAnswer: "pașaportul", options: ["pașaportul", "telefonul", "meniul", "caietul"] },
     ],
   },
   "71": {
@@ -2493,8 +2493,8 @@ export const lessonsData: Record<string, LessonData> = {
     xpReward: 40,
     exercises: [
       { type: "translation", sentence: "Üç günlüğüne otomatik bir araç kiralamak istiyorum", direction: "tr-ro", correctAnswer: "Doresc să închiriez o mașină automată pentru trei zile", acceptedAnswers: ["Doresc să închiriez o mașină automată pentru trei zile", "doresc să închiriez o mașină automată pentru trei zile"] },
-      { type: "multiple_choice", question: '"Sigorta fiyata dahil mi?" cümlesinin Romencesi hangisi?', options: ["Asigurarea este inclusă în preț?", "Benzina este albastră?", "Mașina este foarte veche?", "Trenul vine la timp?"], correctIndex: 0 },
-      { type: "fill_blank", sentence: "Cümleyi Romence tamamla: Trebuie să returnez mașina până la ora ___.", correctAnswer: "zece", options: ["zece", "mare", "rapid", "ușor"] },
+      { type: "multiple_choice", question: '"Sigorta fiyata dahil mi?" cümlesinin Rumencesi hangisi?', options: ["Asigurarea este inclusă în preț?", "Benzina este albastră?", "Mașina este foarte veche?", "Trenul vine la timp?"], correctIndex: 0 },
+      { type: "fill_blank", sentence: "Cümleyi Rumence tamamla: Trebuie să returnez mașina până la ora ___.", correctAnswer: "zece", options: ["zece", "mare", "rapid", "ușor"] },
     ],
   },
 
@@ -2524,7 +2524,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "6": [
     {
       type: "fill_blank",
-      sentence: "Romencede 'kahve' demek için ___ denir.",
+      sentence: "Rumencede 'kahve' demek için ___ denir.",
       correctAnswer: "cafea",
       options: ["cafea", "ceai", "lapte", "apă"],
       hint: "İçecek bağlamına dikkat et.",
@@ -2543,7 +2543,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "8": [
     {
       type: "multiple_choice",
-      question: '"Kedi" Romence hangisidir?',
+      question: '"Kedi" Rumence hangisidir?',
       options: ["Câine", "Pisică", "Pasăre", "Pește"],
       correctIndex: 1,
       hint: "kedi = pisică",
@@ -2552,10 +2552,10 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "9": [
     {
       type: "fill_blank",
-      sentence: "Romencede 'öğretmen' demek için ___ denir.",
+      sentence: "Rumencede 'öğretmen' demek için ___ denir.",
       correctAnswer: "profesor",
       options: ["profesor", "medic", "avocat", "inginer"],
-      hint: "Meslek + Romence karşılığı",
+      hint: "Meslek + Rumence karşılığı",
     },
   ],
   "10": [
@@ -2571,7 +2571,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "11": [
     {
       type: "multiple_choice",
-      question: '"Kış" Romence hangisidir?',
+      question: '"Kış" Rumence hangisidir?',
       options: ["Primăvară", "Vară", "Toamnă", "Iarnă"],
       correctIndex: 3,
       hint: "iarnă = kış",
@@ -2580,7 +2580,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "12": [
     {
       type: "fill_blank",
-      sentence: "Romencede 'rüzgarlı' demek için ___ denir.",
+      sentence: "Rumencede 'rüzgarlı' demek için ___ denir.",
       correctAnswer: "vântos",
       options: ["vântos", "ploios", "însorit", "noros"],
       hint: "Hava durumu sıfatı",
@@ -2599,7 +2599,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "14": [
     {
       type: "multiple_choice",
-      question: '"Tren istasyonu" Romence ne?',
+      question: '"Tren istasyonu" Rumence ne?',
       options: ["Stație de autobuz", "Gară", "Aeroport", "Metrou"],
       correctIndex: 1,
       hint: "gară = tren istasyonu",
@@ -2608,7 +2608,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "15": [
     {
       type: "fill_blank",
-      sentence: "Romencede 'banyo' demek için ___ denir.",
+      sentence: "Rumencede 'banyo' demek için ___ denir.",
       correctAnswer: "baie",
       options: ["baie", "bucătărie", "dormitor", "balcon"],
       hint: "Ev odaları kelimeleri",
@@ -2636,7 +2636,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "18": [
     {
       type: "fill_blank",
-      sentence: "Romencede 'uyumak' demek için ___ denir.",
+      sentence: "Rumencede 'uyumak' demek için ___ denir.",
       correctAnswer: "a dormi",
       options: ["a dormi", "a mânca", "a merge", "a citi"],
       hint: "Günlük rutin fiilleri",
@@ -2655,7 +2655,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "20": [
     {
       type: "multiple_choice",
-      question: '"Köşeden sola dön" ifadesinin Romencesi hangisi?',
+      question: '"Köşeden sola dön" ifadesinin Rumencesi hangisi?',
       options: [
         "Mergi drept până la semafor",
         "La colț, fă la stânga",
@@ -2689,7 +2689,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "23": [
     {
       type: "fill_blank",
-      sentence: "Romencede 'gitmek' demek için ___ denir.",
+      sentence: "Rumencede 'gitmek' demek için ___ denir.",
       correctAnswer: "a merge",
       options: ["a merge", "a dormi", "a aștepta", "a cânta"],
       hint: "Seyahat ve yön fiilleri",
@@ -2708,7 +2708,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "25": [
     {
       type: "multiple_choice",
-      question: '"Parolamı unuttum" cümlesinin Romencesi hangisi?',
+      question: '"Parolamı unuttum" cümlesinin Rumencesi hangisi?',
       options: ["Am uitat parola", "Am trimis parola", "Am găsit parola", "Am schimbat parola"],
       correctIndex: 0,
       hint: "a uita = unutmak",
@@ -2717,7 +2717,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "26": [
     {
       type: "fill_blank",
-      sentence: "Romencede 'kontrol etmek' demek için ___ denir.",
+      sentence: "Rumencede 'kontrol etmek' demek için ___ denir.",
       correctAnswer: "a verifica",
       options: ["a verifica", "a semna", "a trimite", "a șterge"],
       hint: "Ofis ve iş fiilleri",
@@ -2745,7 +2745,7 @@ const level2To6SupplementalExercises: Record<string, Exercise[]> = {
   "29": [
     {
       type: "fill_blank",
-      sentence: "Romencede 'azaltmak' demek için ___ denir.",
+      sentence: "Rumencede 'azaltmak' demek için ___ denir.",
       correctAnswer: "a reduce",
       options: ["a reduce", "a crește", "a uita", "a arunca"],
       hint: "Çevre bağlamında kullanılan temel fiiller",

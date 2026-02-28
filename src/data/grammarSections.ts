@@ -24,11 +24,11 @@ export const grammarSections: GrammarSection[] = [
   // BÖLÜM 1 — Giriş ve Alfabe
   {
     id: "bolum-1",
-    title: "BÖLÜM 1 — Giriş: Romence Hakkında",
+    title: "BÖLÜM 1 — Giriş: Rumence Hakkında",
     content: [
       {
         type: "paragraph",
-        text: "Romence (limba română), Hint-Avrupa dil ailesinin Roman koluna mensup bir dildir. Yaklaşık 25 milyon kişi tarafından anadil olarak konuşulmakta; Romanya ve Moldova'da resmi dil statüsü taşımaktadır. Latin kökleri sayesinde İtalyanca, İspanyolca, Fransızca ve Portekizce ile büyük benzerlikler taşır — bu dilleri bilen biri Romence metnin yaklaşık %60'ını tahmin edebilir.",
+        text: "Rumence (limba română), Hint-Avrupa dil ailesinin Roman koluna mensup bir dildir. Yaklaşık 25 milyon kişi tarafından anadil olarak konuşulmakta; Romanya ve Moldova'da resmi dil statüsü taşımaktadır. Latin kökleri sayesinde İtalyanca, İspanyolca, Fransızca ve Portekizce ile büyük benzerlikler taşır — bu dilleri bilen biri Rumence metnin yaklaşık %60'ını tahmin edebilir.",
       },
       {
         type: "table",
@@ -47,7 +47,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "tip",
         title: "💡 Türkçe Konuşanlar İçin Avantajlar",
-        text: "Romence ve Türkçe, Osmanlı dönemindeki uzun temas nedeniyle 1000'den fazla ortak (veya benzer) kelime paylaşır. cafea (kahve), pilaf, geam (cam), tavan, dușman (düşman)... gibi pek çok kelimeyi zaten biliyorsunuz.\n\nRomence'nin fiil çekimi düzenli ve öngörülebilirdir; kalıpları bir kez kavradıktan sonra yeni fiillere kolayca uygulayabilirsiniz.\n\nTelaffuz fonetik kurallara büyük ölçüde uygundur: yazdığınız gibi okursunuz (birkaç özel kural dışında).",
+        text: "Rumence ve Türkçe, Osmanlı dönemindeki uzun temas nedeniyle 1000'den fazla ortak (veya benzer) kelime paylaşır. cafea (kahve), pilaf, geam (cam), tavan, dușman (düşman)... gibi pek çok kelimeyi zaten biliyorsunuz.\n\nRumence'nin fiil çekimi düzenli ve öngörülebilirdir; kalıpları bir kez kavradıktan sonra yeni fiillere kolayca uygulayabilirsiniz.\n\nTelaffuz fonetik kurallara büyük ölçüde uygundur: yazdığınız gibi okursunuz (birkaç özel kural dışında).",
       },
       {
         type: "heading",
@@ -56,7 +56,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Romence 31 harften oluşur. Bunların 26'sı standart Latin harfleriyle örtüşür; 5 tanesi ise Romence'ye özgüdür.",
+        text: "Rumence 31 harften oluşur. Bunların 26'sı standart Latin harfleriyle örtüşür; 5 tanesi ise Rumence'ye özgüdür.",
       },
       {
         type: "table",
@@ -86,7 +86,7 @@ export const grammarSections: GrammarSection[] = [
     content: [
       {
         type: "paragraph",
-        text: "Romence telaffuzu oldukça düzenli bir dildir; ancak bazı harf kombinasyonları özgün sesler üretir. Bu kombinasyonları öğrendikten sonra herhangi bir Romence kelimeyi doğru okuyabilirsiniz.",
+        text: "Rumence telaffuzu oldukça düzenli bir dildir; ancak bazı harf kombinasyonları özgün sesler üretir. Bu kombinasyonları öğrendikten sonra herhangi bir Rumence kelimeyi doğru okuyabilirsiniz.",
       },
       {
         type: "table",
@@ -109,7 +109,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "tip",
         title: "💡 Vurgu Kuralı",
-        text: "Romence'de sabit bir vurgu kuralı yoktur; vurgu kelimenin herhangi bir hecesine düşebilir. Ancak pratikte çoğu kelimede sondan ikinci hecede vurgu görülür.\n\nÖrn: ca-să (kaSA), fru-moa-să (fruMOAsă), bu-cu-reș-ti (buCUreşTI).\n\nKelime ezberlerken vurguyu da birlikte öğrenmek en sağlıklı yoldur.",
+        text: "Rumence'de sabit bir vurgu kuralı yoktur; vurgu kelimenin herhangi bir hecesine düşebilir. Ancak pratikte çoğu kelimede sondan ikinci hecede vurgu görülür.\n\nÖrn: ca-să (kaSA), fru-moa-să (fruMOAsă), bu-cu-reș-ti (buCUreşTI).\n\nKelime ezberlerken vurguyu da birlikte öğrenmek en sağlıklı yoldur.",
       },
     ],
   },
@@ -121,7 +121,7 @@ export const grammarSections: GrammarSection[] = [
     content: [
       {
         type: "paragraph",
-        text: "Romence isim sistemi üç temel ekseni üzerinde döner: cinsiyet (gen), sayı (număr) ve durum (caz). Bu üç eksen birleşince ezberlenmesi gereken biçimler ortaya çıkar; ancak kalıplar içsel bir mantık taşıdığından çoğu biçim tahmin edilebilirdir.",
+        text: "Rumence isim sistemi üç temel ekseni üzerinde döner: cinsiyet (gen), sayı (număr) ve durum (caz). Bu üç eksen birleşince ezberlenmesi gereken biçimler ortaya çıkar; ancak kalıplar içsel bir mantık taşıdığından çoğu biçim tahmin edilebilirdir.",
       },
       {
         type: "heading",
@@ -130,7 +130,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Romence'nin en dikkat çekici özelliği, çoğu Roman dilinde olmayan nötr (neutru) cinsiyi korumasıdır. Nötr isimler tekil hâlde eril gibi, çoğul hâlde dişil gibi davranır.",
+        text: "Rumence'nin en dikkat çekici özelliği, çoğu Roman dilinde olmayan nötr (neutru) cinsiyi korumasıdır. Nötr isimler tekil hâlde eril gibi, çoğul hâlde dişil gibi davranır.",
       },
       {
         type: "table",
@@ -146,7 +146,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "tip",
         title: "🔑 Nötr Cinsiyi Nasıl Ezberlemeli?",
-        text: "Nötr isimler, Romence söz varlığının yaklaşık 1/3'ünü oluşturur ve genellikle cansız nesneler, soyut kavramlar ile ödünç kelimelerdir.\n\nEn iyi strateji: Her nötr ismi hem tekil hem çoğul hâliyle öğrenmek. Örn: 'scaun / scaune', 'lucru / lucruri', 'birou / birouri'.\n\nÇoğul eki -uri ise hemen hemen her zaman nötr cinsinin işaretidir.",
+        text: "Nötr isimler, Rumence söz varlığının yaklaşık 1/3'ünü oluşturur ve genellikle cansız nesneler, soyut kavramlar ile ödünç kelimelerdir.\n\nEn iyi strateji: Her nötr ismi hem tekil hem çoğul hâliyle öğrenmek. Örn: 'scaun / scaune', 'lucru / lucruri', 'birou / birouri'.\n\nÇoğul eki -uri ise hemen hemen her zaman nötr cinsinin işaretidir.",
       },
       {
         type: "heading",
@@ -175,7 +175,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Romence dört işlevsel durum tanır. Nominatif ve Akuzatif genellikle aynı biçimi, Genitif ve Datif ise genellikle aynı biçimi paylaşır. Bu nedenle pratikte yalnızca iki biçim çifti öğrenmek yeterlidir.",
+        text: "Rumence dört işlevsel durum tanır. Nominatif ve Akuzatif genellikle aynı biçimi, Genitif ve Datif ise genellikle aynı biçimi paylaşır. Bu nedenle pratikte yalnızca iki biçim çifti öğrenmek yeterlidir.",
       },
       {
         type: "table",
@@ -197,7 +197,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Romence'nin en özgün özelliklerinden biri, belirli artikelin ismin SONUNA eklenmesidir. Bu özellik Balkanlarda 'Dil Birliği' adı verilen temas bölgesinin etkisiyle ortaya çıkmış ve Romenceyi diğer Roman dillerinden belirgin şekilde ayırır.",
+        text: "Rumence'nin en özgün özelliklerinden biri, belirli artikelin ismin SONUNA eklenmesidir. Bu özellik Balkanlarda 'Dil Birliği' adı verilen temas bölgesinin etkisiyle ortaya çıkmış ve Rumenceyi diğer Roman dillerinden belirgin şekilde ayırır.",
       },
       {
         type: "table",
@@ -228,7 +228,7 @@ export const grammarSections: GrammarSection[] = [
     content: [
       {
         type: "paragraph",
-        text: "Romence sıfatları nitelendirdikleri isimle cinsiyet, sayı ve durum bakımından uyum (acord) sağlar. Bu uyum zorunludur; ihmal edilmesi cümleyi yanlış kılar.",
+        text: "Rumence sıfatları nitelendirdikleri isimle cinsiyet, sayı ve durum bakımından uyum (acord) sağlar. Bu uyum zorunludur; ihmal edilmesi cümleyi yanlış kılar.",
       },
       {
         type: "table",
@@ -332,7 +332,7 @@ export const grammarSections: GrammarSection[] = [
     content: [
       {
         type: "paragraph",
-        text: "Romence fiil sistemi bu dilin en zengin boyutunu oluşturur. Çekim; kişi, sayı, zaman, kip ve görünüş bakımından gerçekleşir. Dört konjugasyon grubu vardır ve her grup kendi iç mantığına sahiptir.",
+        text: "Rumence fiil sistemi bu dilin en zengin boyutunu oluşturur. Çekim; kişi, sayı, zaman, kip ve görünüş bakımından gerçekleşir. Dört konjugasyon grubu vardır ve her grup kendi iç mantığına sahiptir.",
       },
       {
         type: "heading",
@@ -514,7 +514,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Conjunctiv, Romence'de son derece yaygın kullanılan bir kiptir. İstek, amaç, zorunluluk ve olasılık bildiren fiillerden sonra mutlaka să + conjunctiv gelir.",
+        text: "Conjunctiv, Rumence'de son derece yaygın kullanılan bir kiptir. İstek, amaç, zorunluluk ve olasılık bildiren fiillerden sonra mutlaka să + conjunctiv gelir.",
       },
       {
         type: "example",
@@ -556,7 +556,7 @@ export const grammarSections: GrammarSection[] = [
         pairs: [
           { ro: "apă fiartă", tr: "Kaynatılmış su (participiu sıfat olarak)" },
           { ro: "Mergând mai repede, am ajuns la timp.", tr: "Daha hızlı yürüyerek zamanında vardım." },
-          { ro: "Vorbind românește, exersăm.", tr: "Romence konuşarak pratik yapıyoruz." },
+          { ro: "Vorbind românește, exersăm.", tr: "Rumence konuşarak pratik yapıyoruz." },
         ],
       },
       {
@@ -566,7 +566,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Romence'de dönüşlü fiiller se zamiriyle işaretlenir. Türkçe'de çoğu zaman '-in-' veya '-il-' ekleriyle karşılanır.",
+        text: "Rumence'de dönüşlü fiiller se zamiriyle işaretlenir. Türkçe'de çoğu zaman '-in-' veya '-il-' ekleriyle karşılanır.",
       },
       {
         type: "table",
@@ -599,7 +599,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["Kategori", "Romence", "Türkçesi"],
+          headers: ["Kategori", "Rumence", "Türkçesi"],
           rows: [
             ["Zaman", "acum, ieri, azi/astăzi, mâine, alaltăieri, poimâine", "şimdi, dün, bugün, yarın, evvelsi gün, öbür gün"],
             ["Zaman", "deja, încă, abia, iar, mereu, niciodată", "zaten/artık, hâlâ, yeni/henüz, yine, her zaman, asla"],
@@ -651,7 +651,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["Rakam", "Romence", "Rakam", "Romence", "Rakam", "Romence"],
+          headers: ["Rakam", "Rumence", "Rakam", "Rumence", "Rakam", "Rumence"],
           rows: [
             ["0", "zero", "10", "zece", "20", "douăzeci"],
             ["1", "unu / una", "11", "unsprezece", "30", "treizeci"],
@@ -689,7 +689,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["Romence", "Türkçe"],
+          headers: ["Rumence", "Türkçe"],
           rows: [
             ["Dimineață / Prânz / Seară / Noapte", "Sabah / Öğle / Akşam / Gece"],
             ["Luni, Marți, Miercuri, Joi, Vineri", "Pazartesi, Salı, Çarşamba, Perşembe, Cuma"],
@@ -719,7 +719,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
           rows: [
             ["mamă / mamă-mea", "anne / annem"],
             ["tată / tata", "baba / babam"],
@@ -744,7 +744,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
           rows: [
             ["cap / față", "baş / yüz"],
             ["ochi / ureche / nas / gură", "göz / kulak / burun / ağız"],
@@ -767,7 +767,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
           rows: [
             ["pâine / unt / brânză / iaurt", "ekmek / tereyağı / peynir / yoğurt"],
             ["carne / pui / porc / vită / pește", "et / tavuk / domuz / sığır / balık"],
@@ -790,7 +790,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
           rows: [
             ["stradă / bulevard / piață / parc", "cadde / bulvar / meydan/pazar / park"],
             ["gară / aeroport / port / autogară", "tren istasyonu / havalimanı / liman / otobüs terminali"],
@@ -811,7 +811,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
           rows: [
             ["magazin / piață / centru comercial", "dükkan / pazar / alışveriş merkezi"],
             ["prețul / reducere / promoție / bon", "fiyat / indirim / kampanya / fiş"],
@@ -830,7 +830,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
           rows: [
             ["roșu / portocaliu / galben / verde", "kırmızı / turuncu / sarı / yeşil"],
             ["albastru / violet / roz / alb / negru / gri", "mavi / mor / pembe / beyaz / siyah / gri"],
@@ -861,7 +861,7 @@ export const grammarSections: GrammarSection[] = [
         type: "example",
         pairs: [
           { ro: "Mihai: Bună ziua! Mă numesc Mihai. Dar dumneavoastră?", tr: "İyi günler! Adım Mihai. Peki sizin adınız?" },
-          { ro: "Ayşe: Îmi pare bine de cunoștință! Vorbești bine românește.", tr: "Tanıştığımıza memnun oldum! Romenceyi iyi konuşuyorsunuz." },
+          { ro: "Ayşe: Îmi pare bine de cunoștință! Vorbești bine românește.", tr: "Tanıştığımıza memnun oldum! Rumenceyi iyi konuşuyorsunuz." },
           { ro: "Mihai: Am treizeci și doi de ani. Dumneavoastră?", tr: "Otuz iki yaşındayım. Siz?" },
           { ro: "Ayşe: Eu am douăzeci și opt. La revedere, Mihai!", tr: "Ben yirmi sekiz yaşındayım. Hoşça kalın, Mihai!" },
         ],
@@ -927,7 +927,7 @@ export const grammarSections: GrammarSection[] = [
     content: [
       {
         type: "paragraph",
-        text: "Bu sayfalar, en temel Romence yapılarını hızlıca gözden geçirmek için tasarlanmıştır.",
+        text: "Bu sayfalar, en temel Rumence yapılarını hızlıca gözden geçirmek için tasarlanmıştır.",
       },
       {
         type: "heading",
@@ -975,7 +975,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["Kalıp / Yapı", "Romence", "Türkçesi"],
+          headers: ["Kalıp / Yapı", "Rumence", "Türkçesi"],
           rows: [
             ["Yaş", "Am X ani.", "X yaşındayım."],
             ["İsim", "Mă numesc / Mă cheamă...", "Adım..."],
@@ -999,7 +999,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["Romence", "Türkçe"],
+          headers: ["Rumence", "Türkçe"],
           rows: [
             ["și", "ve"],
             ["sau", "veya"],
@@ -1111,7 +1111,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Görev: Türkçe cümleleri Romence'ye çevirin.",
+        text: "Görev: Türkçe cümleleri Rumence'ye çevirin.",
       },
       {
         type: "list",
@@ -1184,7 +1184,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Succes la învățat! Romence öğrenmek bir yolculuktur; her gün birkaç kelime daha, her gün biraz daha akıcı. La mulți ani cu limba română! 🇷🇴",
+        text: "Succes la învățat! Rumence öğrenmek bir yolculuktur; her gün birkaç kelime daha, her gün biraz daha akıcı. La mulți ani cu limba română! 🇷🇴",
       },
     ],
   },
