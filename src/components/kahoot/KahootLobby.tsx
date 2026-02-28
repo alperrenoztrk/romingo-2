@@ -12,7 +12,7 @@ function generatePin(): string {
 }
 
 export default function KahootLobby({ onRoomCreated, onBack }: Props) {
-  const [title, setTitle] = useState("Romence Quiz");
+  const [title, setTitle] = useState("Rumence Quiz");
   const [difficulty, setDifficulty] = useState<"temel" | "orta">("temel");
   const [scheduledAt, setScheduledAt] = useState("");
   const [loading, setLoading] = useState(false);

@@ -41,7 +41,7 @@ describe("TranslationPage", () => {
     render(<TranslationPage />);
 
     fireEvent.click(screen.getByLabelText("Çeviri yönünü değiştir"));
-    fireEvent.change(screen.getByPlaceholderText("Romence bir kelime veya kısa cümle yaz..."), {
+    fireEvent.change(screen.getByPlaceholderText("Rumence bir kelime veya kısa cümle yaz..."), {
       target: { value: "BUNĂ DIMINEAȚA" },
     });
 

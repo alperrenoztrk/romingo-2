@@ -36,8 +36,8 @@ export default function TranslationPage() {
     };
   }, [direction, input]);
 
-  const sourceLabel = direction === "tr-ro" ? "Türkçe" : "Romence";
-  const targetLabel = direction === "tr-ro" ? "Romence" : "Türkçe";
+  const sourceLabel = direction === "tr-ro" ? "Türkçe" : "Rumence";
+  const targetLabel = direction === "tr-ro" ? "Rumence" : "Türkçe";
   const targetLocale = direction === "tr-ro" ? "ro-RO" : "tr-TR";
 
   const speakText = (text: string, lang: string) => {
@@ -62,7 +62,7 @@ export default function TranslationPage() {
             Çeviri
           </h1>
           <p className="text-sm text-muted-foreground font-semibold">
-            Türkçe ↔ Romence hızlı çeviri
+            Türkçe ↔ Rumence hızlı çeviri
           </p>
 
           <div className="flex items-center justify-between gap-3 bg-muted rounded-xl p-2">
