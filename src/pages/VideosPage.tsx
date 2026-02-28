@@ -1,6 +1,14 @@
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+const videos = [
+  {
+    id: 1,
+    title: "Kısa Konuşma 1",
+    src: "/videos/conversation-1.mp4",
+  },
+];
+
 export default function VideosPage() {
   const navigate = useNavigate();
 
@@ -20,15 +28,23 @@ export default function VideosPage() {
           <div>
             <h1 className="font-extrabold text-foreground text-lg">Kısa Konuşma Videoları</h1>
             <p className="text-xs text-muted-foreground font-semibold">
-              Bu bölümdeki videolar kaldırıldı.
+              Günlük konuşma pratiği için kısa videolar.
             </p>
           </div>
 
-          <article className="rounded-2xl bg-card p-4 shadow-card">
-            <p className="text-sm font-semibold text-muted-foreground">
-              Şu anda gösterilecek video bulunmuyor.
-            </p>
-          </article>
+          {videos.map((video) => (
+            <article key={video.id} className="rounded-2xl bg-card p-4 shadow-card space-y-2">
+              <h2 className="text-sm font-bold text-foreground">{video.title}</h2>
+              <video
+                controls
+                className="w-full rounded-xl"
+                preload="metadata"
+              >
+                <source src={video.src} type="video/mp4" />
+                Tarayıcınız video oynatmayı desteklemiyor.
+              </video>
+            </article>
+          ))}
         </section>
       </div>
     </div>
