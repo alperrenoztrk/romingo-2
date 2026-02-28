@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookOpenText, Languages, Target, Video, Trophy } from "lucide-react";
+import { BookOpenText, Languages, Target, Video, Trophy, WandSparkles } from "lucide-react";
 import { useAuthProfile } from "@/hooks/useAuthProfile";
 import MascotFace from "@/components/MascotFace";
 
@@ -67,6 +67,15 @@ export default function HomePage() {
             <BookOpenText className="w-8 h-8 text-primary-foreground mb-2" />
             <div className="text-primary-foreground font-extrabold text-sm">Dil Bilgisi</div>
             <div className="text-primary-foreground/80 text-xs font-semibold mt-1">Rumence dil bilgisi konu anlatımı</div>
+          </button>
+
+          <button
+            onClick={() => navigate("/app/ai-tools")}
+            className="col-span-2 rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full bg-violet-600 shadow-lg"
+          >
+            <WandSparkles className="w-8 h-8 text-white mb-2" />
+            <div className="text-white font-extrabold text-sm">AI Tools • Watermark Remover</div>
+            <div className="text-white/80 text-xs font-semibold mt-1">Fotoğraf ve video editöründe watermark kaldır</div>
           </button>
         </div>
       </div>
