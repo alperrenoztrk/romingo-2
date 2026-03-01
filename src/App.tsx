@@ -27,6 +27,7 @@ import KahootPage from "./pages/KahootPage";
 import GrammarPage from "./pages/GrammarPage";
 import BlogPage from "./pages/BlogPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import DeliveryReturnPolicyPage from "./pages/DeliveryReturnPolicyPage";
 
 const queryClient = new QueryClient();
 
@@ -118,6 +119,7 @@ function AppContent() {
         <Route path="/" element={<WebsitePage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/gizlilik-politikasi" element={<PrivacyPolicyPage />} />
+        <Route path="/teslimat-ve-iade-sartlari" element={<DeliveryReturnPolicyPage />} />
         {sessionMode !== "logged_out" ? (
           <>
             <Route path="/app" element={<HomePage />} />
