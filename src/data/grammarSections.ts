@@ -10,11 +10,16 @@ export interface GrammarSection {
   content: GrammarBlock[];
 }
 
+export interface GrammarExerciseItem {
+  prompt: string;
+  answers: string[];
+}
+
 export type GrammarBlock =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string; level: 2 | 3 | 4 }
   | { type: "table"; data: GrammarTable }
-  | { type: "list"; items: string[] }
+  | { type: "list"; items: Array<string | GrammarExerciseItem> }
   | { type: "tip"; title: string; text: string }
   | { type: "warning"; title: string; text: string }
   | { type: "example"; pairs: { ro: string; tr: string }[] }
@@ -1044,17 +1049,17 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "list",
         items: [
-          "Am văzut ______ film bun ieri. (film — nötr)",
-          "______ casă este albă ve büyük. (casă — dişil, belirli tekil N)",
-          "Dau ______ carte ______ fată. (carte — dişil, belirli; fată — dişil, belirli G/D)",
-          "Am cumpărat ______ mere ve ______ pâine. (mere — çoğul, belirsiz; pâine — dişil, belirsiz)",
-          "______ copii se joacă în parc. (copii — çoğul, belirli N)",
+          { prompt: "Am văzut ______ film bun ieri. (film — nötr)", answers: ["un"] },
+          { prompt: "______ casă este albă ve büyük. (casă — dişil, belirli tekil N)", answers: ["casa"] },
+          { prompt: "Dau ______ carte ______ fată. (carte — dişil, belirli; fată — dişil, belirli G/D)", answers: ["cartea fetei"] },
+          { prompt: "Am cumpărat ______ mere ve ______ pâine. (mere — çoğul, belirsiz; pâine — dişil, belirsiz)", answers: ["niște o"] },
+          { prompt: "______ copii se joacă în parc. (copii — çoğul, belirli N)", answers: ["copiii"] },
         ],
       },
       {
         type: "tip",
         title: "Not",
-        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
+        text: "Cevabınızı kutuya yazın. Doğruysa yeşil tik, yanlışsa kırmızı çarpı görünür.",
       },
       {
         type: "heading",
@@ -1068,17 +1073,17 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "list",
         items: [
-          "Eu ______ la birou în fiecare zi. (a merge)",
-          "Tu ______ românește foarte bine! (a vorbi)",
-          "Noi ______ o cafea dimineața. (a bea)",
-          "Ei ______ la hotel de ieri. (a fi)",
-          "Ei ______ să meargă la cinema. (a vrea)",
+          { prompt: "Eu ______ la birou în fiecare zi. (a merge)", answers: ["merg"] },
+          { prompt: "Tu ______ românește foarte bine! (a vorbi)", answers: ["vorbești"] },
+          { prompt: "Noi ______ o cafea dimineața. (a bea)", answers: ["bem"] },
+          { prompt: "Ei ______ la hotel de ieri. (a fi)", answers: ["sunt"] },
+          { prompt: "Ei ______ să meargă la cinema. (a vrea)", answers: ["vor"] },
         ],
       },
       {
         type: "tip",
         title: "Not",
-        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
+        text: "Cevabınızı kutuya yazın. Doğruysa yeşil tik, yanlışsa kırmızı çarpı görünür.",
       },
       {
         type: "heading",
@@ -1092,17 +1097,17 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "list",
         items: [
-          "Eu merg la piață. → ________________________",
-          "El face temele. → ________________________",
-          "Noi vedem un film. → ________________________",
-          "Tu vii devreme. → ________________________",
-          "Ele scriu o scrisoare. → ________________________",
+          { prompt: "Eu merg la piață. → ________________________", answers: ["am mers"] },
+          { prompt: "El face temele. → ________________________", answers: ["a făcut"] },
+          { prompt: "Noi vedem un film. → ________________________", answers: ["am văzut"] },
+          { prompt: "Tu vii devreme. → ________________________", answers: ["ai venit"] },
+          { prompt: "Ele scriu o scrisoare. → ________________________", answers: ["au scris"] },
         ],
       },
       {
         type: "tip",
         title: "Not",
-        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
+        text: "Cevabınızı kutuya yazın. Doğruysa yeşil tik, yanlışsa kırmızı çarpı görünür.",
       },
       {
         type: "heading",
@@ -1116,17 +1121,17 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "list",
         items: [
-          "Yarın sinemaya gideceğim. → ________________________",
-          "Kitap masanın üstünde. → ________________________",
-          "Seninle konuşmak istiyorum. → ________________________",
-          "Bükreş'e nasıl gidebilirim? → ________________________",
-          "Bu benim en güzel günüm. → ________________________",
+          { prompt: "Yarın sinemaya gideceğim. → ________________________", answers: ["Mâine o să merg la cinema", "Mâine voi merge la cinema"] },
+          { prompt: "Kitap masanın üstünde. → ________________________", answers: ["Cartea este pe masă"] },
+          { prompt: "Seninle konuşmak istiyorum. → ________________________", answers: ["Vreau să vorbesc cu tine"] },
+          { prompt: "Bükreş'e nasıl gidebilirim? → ________________________", answers: ["Cum pot ajunge la București", "Cum ajung la București"] },
+          { prompt: "Bu benim en güzel günüm. → ________________________", answers: ["Aceasta este cea mai frumoasă zi a mea"] },
         ],
       },
       {
         type: "tip",
         title: "Not",
-        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
+        text: "Cevabınızı kutuya yazın. Doğruysa yeşil tik, yanlışsa kırmızı çarpı görünür.",
       },
       {
         type: "heading",
@@ -1140,17 +1145,17 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "list",
         items: [
-          "o fată ______ (frumos) → ________________________",
-          "niște băieți ______ (înalt) → ________________________",
-          "un om ______ (bun) → ________________________",
-          "niște case ______ (vechi) → ________________________",
-          "un scaun ______ (nou) → ________________________",
+          { prompt: "o fată ______ (frumos) → ________________________", answers: ["frumoasă"] },
+          { prompt: "niște băieți ______ (înalt) → ________________________", answers: ["înalți"] },
+          { prompt: "un om ______ (bun) → ________________________", answers: ["bun"] },
+          { prompt: "niște case ______ (vechi) → ________________________", answers: ["vechi"] },
+          { prompt: "un scaun ______ (nou) → ________________________", answers: ["nou"] },
         ],
       },
       {
         type: "tip",
         title: "Not",
-        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
+        text: "Cevabınızı kutuya yazın. Doğruysa yeşil tik, yanlışsa kırmızı çarpı görünür.",
       },
       {
         type: "heading",
@@ -1173,10 +1178,10 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "list",
         items: [
-          "Care este capitala României? → ________________________",
-          "Când a aderat România la Uniunea Europeană? → ________________________",
-          "Ce este renumit Castelul Bran? → ________________________",
-          "Ce oportunități oferă Munții Carpați? → ________________________",
+          { prompt: "Care este capitala României? → ________________________", answers: ["Capitala României este București"] },
+          { prompt: "Când a aderat România la Uniunea Europeană? → ________________________", answers: ["România a aderat la UE în 2007"] },
+          { prompt: "Ce este renumit Castelul Bran? → ________________________", answers: ["Castelul Bran, Castelul lui Dracula olarak bilinir", "Castelul Bran este cunoscut ca Castelul lui Dracula"] },
+          { prompt: "Ce oportunități oferă Munții Carpați? → ________________________", answers: ["Munții Carpați drumezi ve kış sporları için fırsatlar sunar", "Munții Carpați oferă oportunități pentru drumeții și sporturi de iarnă"] },
         ],
       },
       {
