@@ -99,7 +99,9 @@ export default function WebsitePage() {
           <div className="flex items-center gap-2">
             <img src="https://www.romingoakademi.com/static/images/logo.png" alt="Romingo" className="h-10" />
             <span className="font-extrabold text-lg hidden sm:inline">
-              <span className="text-[#D70C2C]">Romi</span><span className="text-[#0A3FA0]">ngo</span>
+              <span className="text-[#D70C2C]">Rom</span>
+              <span className="text-[#0A3FA0]">i</span>
+              <span className="text-[#0A3FA0]">ngo</span>
               <span className="text-gray-600 font-semibold ml-1">Academy</span>
             </span>
           </div>
