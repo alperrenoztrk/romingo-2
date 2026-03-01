@@ -26,6 +26,7 @@ import VideosPage from "./pages/VideosPage";
 import KahootPage from "./pages/KahootPage";
 import GrammarPage from "./pages/GrammarPage";
 import BlogPage from "./pages/BlogPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 const queryClient = new QueryClient();
 
@@ -116,6 +117,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<WebsitePage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/gizlilik-politikasi" element={<PrivacyPolicyPage />} />
         {sessionMode !== "logged_out" ? (
           <>
             <Route path="/app" element={<HomePage />} />
