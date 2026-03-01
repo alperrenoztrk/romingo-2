@@ -1,9 +1,23 @@
+import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const BLOG_BASE_URL = "https://www.romingoakademi.com";
+const BLOG_POSTS_ENDPOINT = `${BLOG_BASE_URL}/wp-json/wp/v2/posts?_embed&per_page=30&page=1`;
 
-const blogPosts = [
+type BlogPost = {
+  title: string;
+  excerpt: string;
+  href: string;
+};
+
+type WordPressPost = {
+  title?: { rendered?: string };
+  excerpt?: { rendered?: string };
+  link?: string;
+};
+
+const fallbackBlogPosts: BlogPost[] = [
   {
     title: "Romence Nasıl Öğrenilir?",
     excerpt:
@@ -48,9 +62,67 @@ const blogPosts = [
   },
 ];
 
+function stripHtml(html: string) {
+  if (!html) return "";
+
+  if (typeof window !== "undefined") {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    return doc.body.textContent?.replace(/\s+/g, " ").trim() ?? "";
+  }
+
+  return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
 export default function BlogPage() {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(fallbackBlogPosts);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadPosts = async () => {
+      try {
+        const response = await fetch(BLOG_POSTS_ENDPOINT, { signal: controller.signal });
+        if (!response.ok) {
+          return;
+        }
+
+        const posts = (await response.json()) as WordPressPost[];
+        const parsedPosts = posts
+          .map((post) => {
+            const title = stripHtml(post.title?.rendered ?? "");
+            const excerpt = stripHtml(post.excerpt?.rendered ?? "");
+            const href = post.link ?? "";
+
+            if (!title || !href) {
+              return null;
+            }
+
+            return {
+              title,
+              excerpt,
+              href,
+            };
+          })
+          .filter((post): post is BlogPost => Boolean(post));
+
+        if (parsedPosts.length > 0) {
+          setBlogPosts(parsedPosts);
+        }
+      } catch {
+        // fallbackBlogPosts will be shown when request fails
+      }
+    };
+
+    void loadPosts();
+
+    return () => controller.abort();
+  }, []);
+
+  const renderedPosts = useMemo(() => blogPosts, [blogPosts]);
+
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-nunito">
+    <div className="min-h-screen bg-white font-nunito text-gray-900">
       <header className="sticky top-0 z-20 border-b border-gray-100 bg-white/95 backdrop-blur">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4">
           <Link
@@ -84,15 +156,15 @@ export default function BlogPage() {
         </div>
 
         <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {blogPosts.map((post) => (
+          {renderedPosts.map((post) => (
             <article
-              key={post.title}
+              key={post.href}
               className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
             >
               <h2 className="mb-3 text-xl font-extrabold text-gray-900">{post.title}</h2>
               <p className="mb-5 flex-1 text-sm leading-relaxed text-gray-600">{post.excerpt}</p>
               <a
-                href={`${BLOG_BASE_URL}${post.href}`}
+                href={post.href.startsWith("http") ? post.href : `${BLOG_BASE_URL}${post.href}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-fit items-center rounded-xl bg-[#0A3FA0] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#083380]"
