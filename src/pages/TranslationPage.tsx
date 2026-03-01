@@ -61,9 +61,6 @@ export default function TranslationPage() {
             <Languages className="w-5 h-5 text-flamingo" />
             Çeviri
           </h1>
-          <p className="text-sm text-muted-foreground font-semibold">
-            Türkçe ↔ Rumence hızlı çeviri
-          </p>
 
           <div className="flex items-center justify-between gap-3 bg-muted rounded-xl p-2">
             <span className="text-sm font-bold text-foreground">{sourceLabel}</span>
