@@ -186,7 +186,7 @@ export default function WebsitePage() {
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             <button
-              onClick={() => navigate("/app")}
+              onClick={() => navigate("/app/kahoot?view=create")}
               className="bg-[#F8E71C] hover:bg-[#e6d619] text-gray-900 font-extrabold px-6 py-3 rounded-full text-base transition-colors flex items-center gap-2 shadow-lg"
             >
               <Gamepad2 className="w-5 h-5" />

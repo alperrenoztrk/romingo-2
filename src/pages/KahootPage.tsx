@@ -3,7 +3,7 @@ import KahootLobby from "@/components/kahoot/KahootLobby";
 import KahootJoin from "@/components/kahoot/KahootJoin";
 import KahootHostGame from "@/components/kahoot/KahootHostGame";
 import KahootPlayerGame from "@/components/kahoot/KahootPlayerGame";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 type KahootView =
   | { type: "menu" }
@@ -14,7 +14,9 @@ type KahootView =
 
 export default function KahootPage() {
   const navigate = useNavigate();
-  const [view, setView] = useState<KahootView>({ type: "menu" });
+  const [searchParams] = useSearchParams();
+  const initialView = searchParams.get("view") === "create" ? { type: "create" as const } : { type: "menu" as const };
+  const [view, setView] = useState<KahootView>(initialView);
 
   if (view.type === "host") {
     return (
