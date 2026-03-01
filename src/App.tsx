@@ -29,6 +29,7 @@ import BlogPage from "./pages/BlogPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import DeliveryReturnPolicyPage from "./pages/DeliveryReturnPolicyPage";
 import TermsOfUsePage from "./pages/TermsOfUsePage";
+import DistanceSalesContractPage from "./pages/DistanceSalesContractPage";
 
 const queryClient = new QueryClient();
 
@@ -122,6 +123,7 @@ function AppContent() {
         <Route path="/gizlilik-politikasi" element={<PrivacyPolicyPage />} />
         <Route path="/teslimat-ve-iade-sartlari" element={<DeliveryReturnPolicyPage />} />
         <Route path="/kullanim-sartlari" element={<TermsOfUsePage />} />
+        <Route path="/mesafeli-satis-sozlesmesi" element={<DistanceSalesContractPage />} />
         {sessionMode !== "logged_out" ? (
           <>
             <Route path="/app" element={<HomePage />} />
