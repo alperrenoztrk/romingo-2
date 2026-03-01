@@ -48,7 +48,7 @@ describe("HomePage", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole("button", { name: /Kahootu eğlenerek öğren/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Kahoot/i })).toBeInTheDocument();
   });
 
 });
