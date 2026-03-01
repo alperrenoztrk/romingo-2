@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Monitor, Award, BookOpen, Users, Globe, Shield, CheckCircle, Star, Mail, Phone, Gamepad2, MapPin } from "lucide-react";
 import { lovable } from "@/integrations/lovable/index";
 
@@ -302,7 +302,11 @@ export default function WebsitePage() {
             <ul className="space-y-3 text-lg text-white/85">
               <li><a href="#" className="hover:text-white transition-colors">Hakkımızda</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Sıkça Sorulan Sorular</a></li>
-              <li><a href="/gizlilik-politikasi" className="hover:text-white transition-colors">Gizlilik Politikası</a></li>
+              <li>
+                <Link to="/gizlilik-politikasi" className="hover:text-white transition-colors">
+                  Gizlilik Politikası
+                </Link>
+              </li>
               <li><a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Mesafeli Satış Sözleşmesi</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Teslimat ve İade Şartları</a></li>
