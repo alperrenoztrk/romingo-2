@@ -159,11 +159,12 @@ export default function WebsitePage() {
               <Gamepad2 className="w-5 h-5" />
               Eğlenerek Öğren
             </button>
-            <button
-              onClick={() => navigate("/app")}
-              className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-full text-base transition-colors shadow-lg">
-              Hemen Kayıt Ol
-            </button>
+            <a
+              href="#hakkimizda"
+              className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-full text-base transition-colors shadow-lg"
+            >
+              Hakkımızda
+            </a>
           </div>
         </div>
       </section>
