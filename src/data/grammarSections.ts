@@ -1053,8 +1053,8 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "tip",
-        title: "Cevaplar",
-        text: "1. un  2. Casa  3. cartea / fetei  4. niște / o  5. Copiii",
+        title: "Not",
+        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
       },
       {
         type: "heading",
@@ -1077,8 +1077,8 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "tip",
-        title: "Cevaplar",
-        text: "1. merg  2. vorbești  3. bem  4. sunt  5. vor",
+        title: "Not",
+        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
       },
       {
         type: "heading",
@@ -1101,8 +1101,8 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "tip",
-        title: "Cevaplar",
-        text: "1. am mers  2. a făcut  3. am văzut  4. ai venit  5. au scris",
+        title: "Not",
+        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
       },
       {
         type: "heading",
@@ -1125,8 +1125,8 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "tip",
-        title: "Cevaplar",
-        text: "1. Mâine o să merg la cinema. / Mâine voi merge la cinema.\n2. Cartea este pe masă.\n3. Vreau să vorbesc cu tine.\n4. Cum pot ajunge la București? / Cum ajung la București?\n5. Aceasta este cea mai frumoasă zi a mea.",
+        title: "Not",
+        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
       },
       {
         type: "heading",
@@ -1149,8 +1149,8 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "tip",
-        title: "Cevaplar",
-        text: "1. frumoasă  2. înalți  3. bun  4. vechi  5. nou",
+        title: "Not",
+        text: "Cevapları bölüm sonundaki cevap anahtarından kontrol edin.",
       },
       {
         type: "heading",
@@ -1173,11 +1173,40 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "list",
         items: [
-          "Care este capitala României? → Capitala României este București.",
-          "Când a aderat România la Uniunea Europeană? → România a aderat la UE în 2007.",
-          "Ce este renumit Castelul Bran? → Este cunoscut ca 'Castelul lui Dracula'.",
-          "Ce oportunități oferă Munții Carpați? → Oferă oportunități pentru drumeții și sporturi de iarnă.",
+          "Care este capitala României? → ________________________",
+          "Când a aderat România la Uniunea Europeană? → ________________________",
+          "Ce este renumit Castelul Bran? → ________________________",
+          "Ce oportunități oferă Munții Carpați? → ________________________",
         ],
+      },
+      {
+        type: "heading",
+        text: "Cevap Anahtarı",
+        level: 3,
+      },
+      {
+        type: "paragraph",
+        text: "Alıştırma 1: 1) un  2) Casa  3) cartea / fetei  4) niște / o  5) Copiii",
+      },
+      {
+        type: "paragraph",
+        text: "Alıştırma 2: 1) merg  2) vorbești  3) bem  4) sunt  5) vor",
+      },
+      {
+        type: "paragraph",
+        text: "Alıştırma 3: 1) am mers  2) a făcut  3) am văzut  4) ai venit  5) au scris",
+      },
+      {
+        type: "paragraph",
+        text: "Alıştırma 4: 1) Mâine o să merg la cinema. / Mâine voi merge la cinema.  2) Cartea este pe masă.  3) Vreau să vorbesc cu tine.  4) Cum pot ajunge la București? / Cum ajung la București?  5) Aceasta este cea mai frumoasă zi a mea.",
+      },
+      {
+        type: "paragraph",
+        text: "Alıştırma 5: 1) frumoasă  2) înalți  3) bun  4) vechi  5) nou",
+      },
+      {
+        type: "paragraph",
+        text: "Alıştırma 7: 1) Capitala României este București.  2) România a aderat la UE în 2007.  3) Castelul Bran, 'Castelul lui Dracula' olarak bilinir.  4) Munții Carpați drumezi ve kış sporları için fırsatlar sunar.",
       },
       {
         type: "divider",
