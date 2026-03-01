@@ -263,6 +263,55 @@ export default function WebsitePage() {
         </div>
       </section>
 
+      {/* About */}
+      <section id="hakkimizda" className="py-16 px-4 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-black mb-3">Hakkımızda</h2>
+            <p className="text-gray-500">Romingo Academy olarak vizyonumuz ve misyonumuz.</p>
+          </div>
+
+          <div className="bg-white border border-gray-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8 text-gray-700 leading-relaxed">
+            <div className="space-y-3">
+              <h3 className="text-xl font-extrabold text-[#0A3FA0]">Vizyonumuz</h3>
+              <p>
+                Romenceyi yalnızca bir dil değil, bir kültür köprüsü olarak öğretmek ve Romanya vatandaşlığına giden
+                yolda en güvenilir, en kapsamlı ve en erişilebilir eğitim platformu olmaktır.
+              </p>
+              <p>
+                Amacımız, Türkiye&apos;de ve dünyada Romanya ile kültürel, akademik ve hukuki bağ kurmak isteyen herkese;
+                kaliteli, sistemli ve sonuç odaklı dil eğitimiyle destek sunmak, Romenceyi öğrenmeyi keyifli, etkili ve
+                sürdürülebilir bir deneyime dönüştürmektir.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-xl font-extrabold text-[#D70C2C]">Misyonumuz</h3>
+              <p>
+                Romingo Academy&apos;nin misyonu; Romanya vatandaşlığı başvurularında zorunlu olan geçerli B1 sertifikasını
+                en doğru yöntemlerle alabilmeniz için öğrencilerine akademik doğruluğa, bireysel desteğe ve başarıya
+                odaklı bir eğitim süreci sunmaktır.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-gray-900 mb-3">Bu doğrultuda:</h4>
+              <ul className="space-y-2 text-sm sm:text-base">
+                <li className="flex items-start gap-2"><CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />Resmî kurumlarla (ILR, UAIC vb.) işbirliği içinde yürütülen güvenilir sınav hazırlık süreçleri,</li>
+                <li className="flex items-start gap-2"><CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />Her seviyeye uygun A1–A2–B1 online kursları,</li>
+                <li className="flex items-start gap-2"><CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />Canlı dersler, etütler, konuşma pratikleri ve deneme sınavlarıyla pekiştirilen eğitim sistemi,</li>
+                <li className="flex items-start gap-2"><CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />Öğrencilerimizin bireysel hedeflerine göre şekillenen danışmanlık ve rehberlik hizmetleri</li>
+              </ul>
+            </div>
+
+            <p className="font-semibold text-gray-900">
+              Bizim için her öğrenci bir dosya değil, bir başarı hikayesidir. Romingo Academy, bu hikayelerin güvenle
+              yazıldığı yer olmayı sürdürür.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section className="py-16 px-4 bg-[#0A3FA0] text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -300,7 +349,7 @@ export default function WebsitePage() {
           <div>
             <h3 className="mb-5 text-2xl font-black">FAYDALI LİNKLER</h3>
             <ul className="space-y-3 text-lg text-white/85">
-              <li><a href="#" className="hover:text-white transition-colors">Hakkımızda</a></li>
+              <li><a href="#hakkimizda" className="hover:text-white transition-colors">Hakkımızda</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Sıkça Sorulan Sorular</a></li>
               <li><a href="/gizlilik-politikasi" className="hover:text-white transition-colors">Gizlilik Politikası</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a></li>
