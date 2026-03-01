@@ -49,7 +49,7 @@ export default function HomePage() {
             className="rounded-2xl p-4 text-left active:translate-y-1 active:shadow-none transition-all w-full gradient-hero shadow-button-primary"
           >
             <Trophy className="w-8 h-8 text-primary-foreground mb-2" />
-            <div className="text-primary-foreground font-extrabold text-sm">Kahootu eğlenerek öğren</div>
+            <div className="text-primary-foreground font-extrabold text-sm">Kahoot</div>
           </button>
 
           <button
