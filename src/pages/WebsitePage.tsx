@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Monitor, Award, BookOpen, Users, Globe, Shield, CheckCircle, Star, Mail, Phone, Gamepad2 } from "lucide-react";
+import { Monitor, Award, BookOpen, Users, Globe, Shield, CheckCircle, Star, Mail, Phone, Gamepad2, MapPin } from "lucide-react";
 import { lovable } from "@/integrations/lovable/index";
 
 const features = [
@@ -287,8 +287,68 @@ export default function WebsitePage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 bg-gray-900 text-gray-400 text-center text-sm">
-        <p>© 2025 Romingo Academy. Tüm hakları saklıdır.</p>
+      <footer className="bg-[#161d2a] px-4 py-14 text-white">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <h3 className="mb-5 text-2xl font-black text-[#f8c524]">ROMİNGO ACADEMY</h3>
+            <p className="max-w-xs text-lg leading-relaxed text-white/85">
+              Romence öğrenme yolculuğunuzda size en modern ve etkili yöntemlerle rehberlik ediyoruz. A'dan Z'ye
+              tüm seviyeler için hazırlanmış video derslerle dil öğrenimini keyifli hale getirin.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="mb-5 text-2xl font-black">FAYDALI LİNKLER</h3>
+            <ul className="space-y-3 text-lg text-white/85">
+              <li><a href="#" className="hover:text-white transition-colors">Hakkımızda</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Sıkça Sorulan Sorular</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Gizlilik Politikası</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Mesafeli Satış Sözleşmesi</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Teslimat ve İade Şartları</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-5 text-2xl font-black">İLETİŞİM</h3>
+            <ul className="space-y-4 text-lg text-white/85">
+              <li className="flex items-center gap-3">
+                <MapPin className="h-5 w-5 flex-shrink-0" />
+                İstanbul, Türkiye
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="h-5 w-5 flex-shrink-0" />
+                <a href="mailto:info@romingoakademi.com" className="hover:text-white transition-colors">info@romingoakademi.com</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="h-5 w-5 flex-shrink-0" />
+                <a href="mailto:sinav@romingoakademi.com" className="hover:text-white transition-colors">sinav@romingoakademi.com</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="h-5 w-5 flex-shrink-0" />
+                <a href="tel:+905514596780" className="hover:text-white transition-colors">+90 551 459 67 80</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-5 text-2xl font-black">GÜVENLİ ÖDEME</h3>
+            <div className="flex flex-wrap gap-2">
+              {['iyzico', 'Mastercard', 'VISA', 'AMEX', 'troy'].map((provider) => (
+                <span
+                  key={provider}
+                  className="rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm font-bold tracking-wide text-white/90"
+                >
+                  {provider}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-6xl border-t border-white/20 pt-6 text-center text-sm text-white/60">
+          © 2025 Romingo Academy. Tüm hakları saklıdır.
+        </div>
       </footer>
     </div>
   );
