@@ -1,4 +1,7 @@
-import type { GrammarBlock, GrammarSection, GrammarTable } from "@/data/grammarSections";
+import { useState } from "react";
+import { Check, X } from "lucide-react";
+import { matchesWithOneLetterTolerancePerWord } from "@/lib/answerTolerance";
+import type { GrammarBlock, GrammarExerciseItem, GrammarSection, GrammarTable } from "@/data/grammarSections";
 
 function Table({ data }: { data: GrammarTable }) {
   return (
@@ -45,6 +48,33 @@ function ExamplePairs({ pairs }: { pairs: { ro: string; tr: string }[] }) {
   );
 }
 
+function ExerciseListItem({ item }: { item: GrammarExerciseItem }) {
+  const [answer, setAnswer] = useState("");
+  const trimmedAnswer = answer.trim();
+
+  const isCorrect =
+    trimmedAnswer.length > 0 &&
+    item.answers.some((expected) => matchesWithOneLetterTolerancePerWord(trimmedAnswer, expected));
+
+  const isWrong = trimmedAnswer.length > 0 && !isCorrect;
+
+  return (
+    <li className="space-y-2">
+      <p>{item.prompt}</p>
+      <div className="flex items-center gap-2">
+        <input
+          value={answer}
+          onChange={(event) => setAnswer(event.target.value)}
+          placeholder="Cevabınızı yazın"
+          className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+        />
+        {isCorrect ? <Check className="h-5 w-5 text-green-600" /> : null}
+        {isWrong ? <X className="h-5 w-5 text-red-600" /> : null}
+      </div>
+    </li>
+  );
+}
+
 function renderBlock(block: GrammarBlock, i: number) {
   switch (block.type) {
     case "paragraph":
@@ -65,7 +95,7 @@ function renderBlock(block: GrammarBlock, i: number) {
       return (
         <ol key={i} className="list-decimal list-inside space-y-1 text-sm text-foreground pl-1">
           {block.items.map((item, j) => (
-            <li key={j}>{item}</li>
+            typeof item === "string" ? <li key={j}>{item}</li> : <ExerciseListItem key={j} item={item} />
           ))}
         </ol>
       );
