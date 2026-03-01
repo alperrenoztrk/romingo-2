@@ -400,7 +400,6 @@ export default function WebsitePage() {
           </div>
 
           <div>
-            <h3 className="mb-5 text-2xl font-black">FAYDALI LİNKLER</h3>
             <ul className="space-y-3 text-lg text-white/85">
               <li><a href="#hakkimizda" className="hover:text-white transition-colors">Hakkımızda</a></li>
               <li><a href="#sss" className="hover:text-white transition-colors">Sıkça Sorulan Sorular</a></li>
