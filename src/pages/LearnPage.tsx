@@ -35,6 +35,9 @@ interface TutorialWord {
   ro: string;
 }
 
+const MIN_TUTORIAL_WORDS_PER_LESSON = 6;
+const QUESTION_IN_QUOTES_REGEX = /"([^"]+)"|'([^']+)'/;
+
 const numberTutorialWords: TutorialWord[] = [
   { tr: "Bir", ro: "Unu" },
   { tr: "İki", ro: "Doi" },
@@ -97,14 +100,22 @@ function getTutorialWords(lessonId: string): TutorialWord[] {
 
   const wordMap = new Map<string, TutorialWord>();
 
+  const addWord = (tr: string, ro: string) => {
+    const normalizedTr = tr.trim();
+    const normalizedRo = ro.trim();
+
+    if (!normalizedTr || !normalizedRo) return;
+
+    wordMap.set(`${normalizedTr}-${normalizedRo}`.toLocaleLowerCase("tr-TR"), {
+      tr: normalizedTr,
+      ro: normalizedRo,
+    });
+  };
+
   lesson.exercises.forEach((exercise) => {
     if (exercise.type === "matching") {
       exercise.pairs.forEach((pair) => {
-        const tr = pair.left.trim();
-        const ro = pair.right.trim();
-        if (tr && ro) {
-          wordMap.set(`${tr}-${ro}`.toLocaleLowerCase("tr-TR"), { tr, ro });
-        }
+        addWord(pair.left, pair.right);
       });
     }
 
@@ -113,16 +124,45 @@ function getTutorialWords(lessonId: string): TutorialWord[] {
       const tr = (isTrToRo ? exercise.sentence : exercise.correctAnswer).trim();
       const ro = (isTrToRo ? exercise.correctAnswer : exercise.sentence).trim();
 
-      if (tr && ro) {
-        wordMap.set(`${tr}-${ro}`.toLocaleLowerCase("tr-TR"), { tr, ro });
+      addWord(tr, ro);
+    }
+
+    if (exercise.type === "listening") {
+      const correctOption = exercise.options[exercise.correctIndex];
+      if (correctOption) {
+        addWord(correctOption, exercise.word);
+      }
+    }
+
+    if (exercise.type === "fill_blank") {
+      const quotedWord = exercise.sentence.match(QUESTION_IN_QUOTES_REGEX)?.[1] ?? exercise.sentence.match(QUESTION_IN_QUOTES_REGEX)?.[2];
+
+      if (/Rumencede/i.test(exercise.sentence) && quotedWord) {
+        addWord(quotedWord, exercise.correctAnswer);
+      }
+    }
+
+    if (exercise.type === "multiple_choice") {
+      const quotedWord = exercise.question.match(QUESTION_IN_QUOTES_REGEX)?.[1] ?? exercise.question.match(QUESTION_IN_QUOTES_REGEX)?.[2];
+      const correctOption = exercise.options[exercise.correctIndex];
+
+      if (!quotedWord || !correctOption) return;
+
+      if (/türkçe ne demek|türkçede ne demek/i.test(exercise.question)) {
+        addWord(correctOption, quotedWord);
+        return;
+      }
+
+      if (/rumence ne demek|rumence hangisi|rumence nasıl/i.test(exercise.question)) {
+        addWord(quotedWord, correctOption);
       }
     }
   });
 
-  const tutorialWords = Array.from(wordMap.values());
+  let tutorialWords = Array.from(wordMap.values());
 
   if (lessonId === "10") {
-    return tutorialWords
+    tutorialWords = tutorialWords
       .sort((a, b) => {
         const aKey = getDaySortKey(a.tr);
         const bKey = getDaySortKey(b.tr);
@@ -138,6 +178,31 @@ function getTutorialWords(lessonId: string): TutorialWord[] {
         return a.tr.localeCompare(b.tr, "tr-TR");
       })
       .slice(0, 12);
+  }
+
+  if (tutorialWords.length < MIN_TUTORIAL_WORDS_PER_LESSON) {
+    const lessonWords = lesson.exercises
+      .flatMap((exercise): TutorialWord[] => {
+        if (exercise.type === "translation") {
+          return [{
+            tr: exercise.direction === "tr-ro" ? exercise.sentence : exercise.correctAnswer,
+            ro: exercise.direction === "tr-ro" ? exercise.correctAnswer : exercise.sentence,
+          }];
+        }
+
+        if (exercise.type === "matching") {
+          return exercise.pairs.map((pair) => ({ tr: pair.left, ro: pair.right }));
+        }
+
+        return [];
+      })
+      .filter((word) => word.tr.trim() && word.ro.trim());
+
+    for (const word of lessonWords) {
+      addWord(word.tr, word.ro);
+    }
+
+    tutorialWords = Array.from(wordMap.values());
   }
 
   return tutorialWords.slice(0, 12);
