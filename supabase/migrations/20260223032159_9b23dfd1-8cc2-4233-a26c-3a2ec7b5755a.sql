@@ -42,7 +42,7 @@ CREATE TABLE public.kahoot_rooms (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   host_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
   pin TEXT NOT NULL UNIQUE,
-  title TEXT NOT NULL DEFAULT 'Romence Quiz',
+  title TEXT NOT NULL DEFAULT 'Rumence Quiz',
   difficulty kahoot_difficulty NOT NULL DEFAULT 'temel',
   status kahoot_room_status NOT NULL DEFAULT 'waiting',
   scheduled_at TIMESTAMPTZ,

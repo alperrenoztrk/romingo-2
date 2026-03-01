@@ -19,39 +19,39 @@ type WordPressPost = {
 
 const fallbackBlogPosts: BlogPost[] = [
   {
-    title: "Romence Nasıl Öğrenilir?",
+    title: "Rumence Nasıl Öğrenilir?",
     excerpt:
-      "Romence nasıl öğrenilir? Bu soru, Romenceye ilgi duyan herkesin ilk sorduğu ve çoğu zaman yanlış yönlendirmeler nedeniyle sürecin uzamasına sebep olan önemli bir başlangıç noktasıdır.",
+      "Rumence nasıl öğrenilir? Bu soru, Rumenceye ilgi duyan herkesin ilk sorduğu ve çoğu zaman yanlış yönlendirmeler nedeniyle sürecin uzamasına sebep olan önemli bir başlangıç noktasıdır.",
     href: "/blog/romence-nasil-ogrenilir/",
   },
   {
-    title: "Online Romence Kursu",
+    title: "Online Rumence Kursu",
     excerpt:
-      "Online Romence kursu, zaman ve mekân kısıtlaması olmadan Romenceyi sistemli biçimde öğrenmek isteyenler için en etkili yöntemlerden biridir.",
+      "Online Rumence kursu, zaman ve mekân kısıtlaması olmadan Rumenceyi sistemli biçimde öğrenmek isteyenler için en etkili yöntemlerden biridir.",
     href: "/blog/online-romence-kursu/",
   },
   {
-    title: "Romanya'da Çalışmak ve Eğitim İçin Romence",
+    title: "Romanya'da Çalışmak ve Eğitim İçin Rumence",
     excerpt:
-      "Romanya'da çalışmak ya da eğitim almak isteyenlerin en çok merak ettiği konulardan biri, Romence dil yeterliliğinin gerekip gerekmediğidir.",
+      "Romanya'da çalışmak ya da eğitim almak isteyenlerin en çok merak ettiği konulardan biri, Rumence dil yeterliliğinin gerekip gerekmediğidir.",
     href: "/blog/romanyada-calismak-egitim-icin-romence/",
   },
   {
-    title: "Romence B1 Sertifikası",
+    title: "Rumence B1 Sertifikası",
     excerpt:
-      "Romence B1 sertifikası, Romenceyi yalnızca öğrendiğinizi değil, Avrupa standartlarında etkin biçimde kullanabildiğinizi resmî olarak kanıtlayan kritik bir belgedir.",
+      "Rumence B1 sertifikası, Rumenceyi yalnızca öğrendiğinizi değil, Avrupa standartlarında etkin biçimde kullanabildiğinizi resmî olarak kanıtlayan kritik bir belgedir.",
     href: "/blog/romence-b1-sertifikasi/",
   },
   {
-    title: "Romence Dersleri",
+    title: "Rumence Dersleri",
     excerpt:
-      "Romence dersleri, dili gerçekten kullanabilmek ve bunu resmî olarak belgelemek isteyenler için planlı ve hedef odaklı ilerlemesi gereken bir öğrenme sürecidir.",
+      "Rumence dersleri, dili gerçekten kullanabilmek ve bunu resmî olarak belgelemek isteyenler için planlı ve hedef odaklı ilerlemesi gereken bir öğrenme sürecidir.",
     href: "/blog/romence-dersleri/",
   },
   {
-    title: "Romence Öğrenmeye Başlamak",
+    title: "Rumence Öğrenmeye Başlamak",
     excerpt:
-      "Romence öğrenmeye başlamak isteyenlerin en sık yaşadığı sorun, nereden başlayacağını ve nasıl ilerleyeceğini bilememektir.",
+      "Rumence öğrenmeye başlamak isteyenlerin en sık yaşadığı sorun, nereden başlayacağını ve nasıl ilerleyeceğini bilememektir.",
     href: "/blog/romence-ogrenmeye-baslamak/",
   },
   {

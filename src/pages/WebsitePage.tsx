@@ -34,7 +34,7 @@ const faqs = [
   {
     question: "Bu kurslar kimler için uygun?",
     answer:
-      "Kurslarımız, Romence'ye sıfırdan başlamak isteyenlerden mevcut dil bilgisini akademik veya profesyonel seviyeye taşımayı hedefleyenlere kadar her seviyeden öğrenciye hitap etmektedir. A1 seviyesinden başlayarak C1 seviyesine kadar uzanan geniş bir yelpazede eğitimler sunuyoruz.",
+      "Kurslarımız, Rumence'ye sıfırdan başlamak isteyenlerden mevcut dil bilgisini akademik veya profesyonel seviyeye taşımayı hedefleyenlere kadar her seviyeden öğrenciye hitap etmektedir. A1 seviyesinden başlayarak C1 seviyesine kadar uzanan geniş bir yelpazede eğitimler sunuyoruz.",
   },
   {
     question: "Dersleri kendi hızıma göre takip edebilir miyim?",
@@ -207,7 +207,7 @@ export default function WebsitePage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl sm:text-3xl font-black mb-3">Sıkça Sorulan Sorular</h2>
-            <p className="text-gray-500">Romence eğitimlerimizle ilgili en çok merak edilen konular.</p>
+            <p className="text-gray-500">Rumence eğitimlerimizle ilgili en çok merak edilen konular.</p>
           </div>
 
           <div className="space-y-4">
@@ -328,12 +328,12 @@ export default function WebsitePage() {
             <div className="space-y-3">
               <h3 className="text-xl font-extrabold text-[#0A3FA0]">Vizyonumuz</h3>
               <p>
-                Romenceyi yalnızca bir dil değil, bir kültür köprüsü olarak öğretmek ve Romanya vatandaşlığına giden
+                Rumenceyi yalnızca bir dil değil, bir kültür köprüsü olarak öğretmek ve Romanya vatandaşlığına giden
                 yolda en güvenilir, en kapsamlı ve en erişilebilir eğitim platformu olmaktır.
               </p>
               <p>
                 Amacımız, Türkiye&apos;de ve dünyada Romanya ile kültürel, akademik ve hukuki bağ kurmak isteyen herkese;
-                kaliteli, sistemli ve sonuç odaklı dil eğitimiyle destek sunmak, Romenceyi öğrenmeyi keyifli, etkili ve
+                kaliteli, sistemli ve sonuç odaklı dil eğitimiyle destek sunmak, Rumenceyi öğrenmeyi keyifli, etkili ve
                 sürdürülebilir bir deneyime dönüştürmektir.
               </p>
             </div>
@@ -394,7 +394,7 @@ export default function WebsitePage() {
           <div>
             <h3 className="mb-5 text-2xl font-black text-[#f8c524]">ROMİNGO ACADEMY</h3>
             <p className="max-w-xs text-lg leading-relaxed text-white/85">
-              Romence öğrenme yolculuğunuzda size en modern ve etkili yöntemlerle rehberlik ediyoruz. A'dan Z'ye
+              Rumence öğrenme yolculuğunuzda size en modern ve etkili yöntemlerle rehberlik ediyoruz. A'dan Z'ye
               tüm seviyeler için hazırlanmış video derslerle dil öğrenimini keyifli hale getirin.
             </p>
           </div>
