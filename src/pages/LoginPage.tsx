@@ -67,14 +67,24 @@ export default function LoginPage({ onGuestLogin }: LoginPageProps) {
             alt="Romingo logo"
             className="w-36 max-w-[45vw]"
           />
-          <button
-            type="button"
-            onClick={onGuestLogin}
-            className="inline-flex items-center gap-2 rounded-full bg-[#f15b67] px-4 py-2 text-sm font-bold text-white shadow-[0_6px_16px_-8px_rgba(241,91,103,0.8)] transition hover:opacity-90"
-          >
-            Uygulamaya gir
-            <ArrowRight className="h-4 w-4" />
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://www.romingoakademi.com/kullanicilar/kayit/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-[#f3d3cb] bg-white px-4 py-2 text-sm font-bold text-[#f15b67] transition hover:bg-[#fff4f0]"
+            >
+              Kayıt ol
+            </a>
+            <button
+              type="button"
+              onClick={onGuestLogin}
+              className="inline-flex items-center gap-2 rounded-full bg-[#f15b67] px-4 py-2 text-sm font-bold text-white shadow-[0_6px_16px_-8px_rgba(241,91,103,0.8)] transition hover:opacity-90"
+            >
+              Uygulamaya gir
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -110,6 +120,14 @@ export default function LoginPage({ onGuestLogin }: LoginPageProps) {
             <div className="rounded-3xl border border-[#f5d9d1] bg-white p-6 shadow-xl shadow-[#f15b6720]">
               <h2 className="text-xl font-black text-[#22253a]">Hemen giriş yap</h2>
               <p className="mt-1 text-sm font-medium text-[#595f76]">Kaldığın yerden devam et ya da misafir modunu kullan.</p>
+              <a
+                href="https://www.romingoakademi.com/kullanicilar/kayit/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#f15b67] underline-offset-4 hover:underline"
+              >
+                Hesabın yok mu? Kayıt ol
+              </a>
 
               <div className="mt-5 space-y-3">
                 <button
