@@ -1,12 +1,8 @@
 import { lovable } from "@/integrations/lovable/index";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowRight, CheckCircle2, Globe2, GraduationCap, LogIn, PlayCircle, Sparkles, UserPlus } from "lucide-react";
+import { CheckCircle2, Globe2, GraduationCap, PlayCircle, Sparkles, UserPlus } from "lucide-react";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
-
-type LoginPageProps = {
-  onGuestLogin: () => void;
-};
 
 const FEATURES = [
   {
@@ -34,7 +30,7 @@ const STATS = [
 
 type Tab = "login" | "register";
 
-export default function LoginPage({ onGuestLogin }: LoginPageProps) {
+export default function LoginPage() {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isAppleLoading, setIsAppleLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<Tab>("login");
@@ -132,14 +128,12 @@ export default function LoginPage({ onGuestLogin }: LoginPageProps) {
             >
               Kayıt ol
             </button>
-            <button
-              type="button"
-              onClick={onGuestLogin}
+            <a
+              href="#auth-panel"
               className="inline-flex items-center gap-2 rounded-full bg-[#f15b67] px-4 py-2 text-sm font-bold text-white shadow-[0_6px_16px_-8px_rgba(241,91,103,0.8)] transition hover:opacity-90"
             >
-              Uygulamaya gir
-              <ArrowRight className="h-4 w-4" />
-            </button>
+              Giriş yap
+            </a>
           </div>
         </div>
       </header>
@@ -173,7 +167,7 @@ export default function LoginPage({ onGuestLogin }: LoginPageProps) {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-[#f5d9d1] bg-white p-6 shadow-xl shadow-[#f15b6720]">
+            <div id="auth-panel" className="rounded-3xl border border-[#f5d9d1] bg-white p-6 shadow-xl shadow-[#f15b6720]">
               {/* Tabs */}
               <div className="mb-5 flex rounded-xl bg-[#fff3ef] p-1">
                 <button
@@ -195,7 +189,7 @@ export default function LoginPage({ onGuestLogin }: LoginPageProps) {
               {activeTab === "login" ? (
                 <>
                   <h2 className="text-xl font-black text-[#22253a]">Hemen giriş yap</h2>
-                  <p className="mt-1 text-sm font-medium text-[#595f76]">Kaldığın yerden devam et ya da misafir modunu kullan.</p>
+                  <p className="mt-1 text-sm font-medium text-[#595f76]">Kaldığın yerden devam etmek için hesabınla giriş yap.</p>
 
                   <div className="mt-5 space-y-3">
                     <button
@@ -220,14 +214,6 @@ export default function LoginPage({ onGuestLogin }: LoginPageProps) {
                       {isAppleLoading ? "Yönlendiriliyor..." : "Apple ile devam et"}
                     </button>
 
-                    <button
-                      type="button"
-                      onClick={onGuestLogin}
-                      className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#f15b67] py-3 font-extrabold text-white transition hover:opacity-90"
-                    >
-                      <LogIn className="h-4 w-4" />
-                      Misafir olarak giriş yap
-                    </button>
                   </div>
                 </>
               ) : (
