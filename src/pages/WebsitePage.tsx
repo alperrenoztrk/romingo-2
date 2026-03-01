@@ -400,7 +400,7 @@ export default function WebsitePage() {
         </div>
 
         <div className="mx-auto mt-10 max-w-6xl border-t border-white/20 pt-6 text-center text-sm text-white/60">
-          © 2025 Romingo Academy. Tüm hakları saklıdır.
+          © 2026 Romingo Academy. Tüm hakları saklıdır.
         </div>
       </footer>
     </div>
