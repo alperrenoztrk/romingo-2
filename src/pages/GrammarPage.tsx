@@ -22,10 +22,10 @@ export default function GrammarPage() {
           <header className="space-y-3 border-b border-border pb-4">
             <div className="flex items-center gap-3">
               <BookOpenText className="h-7 w-7 text-flamingo" />
-              <h1 className="text-2xl font-black text-foreground">RUMENCE DİL BİLGİSİ REHBERİ</h1>
+              <h1 className="text-2xl font-black text-foreground">RUMENCE DİL BİLGİSİ</h1>
             </div>
             <p className="text-sm text-muted-foreground font-semibold">
-              Gramatica Limbii Române · Başlangıçtan İleri Seviyeye · A1 – B2
+              Gramatica Limbii Române
             </p>
           </header>
 
