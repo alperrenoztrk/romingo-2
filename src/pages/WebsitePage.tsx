@@ -302,7 +302,7 @@ export default function WebsitePage() {
             <ul className="space-y-3 text-lg text-white/85">
               <li><a href="#" className="hover:text-white transition-colors">Hakkımızda</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Sıkça Sorulan Sorular</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Gizlilik Politikası</a></li>
+              <li><a href="/gizlilik-politikasi" className="hover:text-white transition-colors">Gizlilik Politikası</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Mesafeli Satış Sözleşmesi</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Teslimat ve İade Şartları</a></li>
