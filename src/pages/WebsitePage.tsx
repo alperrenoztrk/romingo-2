@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Monitor, Award, BookOpen, Users, Globe, Shield, CheckCircle, Star, Mail, Phone, Gamepad2 } from "lucide-react";
+import { lovable } from "@/integrations/lovable/index";
 
 const features = [
   { icon: Award, title: "Uluslararası Akredite B1 Sertifikası", desc: "Avrupa standartlarında B1 seviye Rumence sertifikası alın." },
@@ -29,6 +31,31 @@ const testimonials = [
 ];
 
 export default function WebsitePage() {
+  const [showAuthMenu, setShowAuthMenu] = useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [isAppleLoading, setIsAppleLoading] = useState(false);
+
+  const handleGoogleLogin = async () => {
+    setIsGoogleLoading(true);
+    const { error } = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: window.location.origin + "/app",
+    });
+    if (error) {
+      console.error("Google ile giriş başlatılamadı", error);
+      setIsGoogleLoading(false);
+    }
+  };
+
+  const handleAppleLogin = async () => {
+    setIsAppleLoading(true);
+    const { error } = await lovable.auth.signInWithOAuth("apple", {
+      redirect_uri: window.location.origin + "/app",
+    });
+    if (error) {
+      console.error("Apple ile giriş başlatılamadı", error);
+      setIsAppleLoading(false);
+    }
+  };
   const navigate = useNavigate();
 
   return (
@@ -57,10 +84,50 @@ export default function WebsitePage() {
               <Gamepad2 className="w-4 h-4" />
               Uygulamayı Aç
             </button>
-            <a href="https://wa.me/+905514596780" target="_blank" rel="noopener noreferrer"
-              className="bg-[#0A3FA0] hover:bg-[#083380] text-white font-bold px-4 py-2 rounded-full text-sm transition-colors hidden sm:inline-block">
-              Kayıt Ol
-            </a>
+            <div className="relative">
+              <button
+                onClick={() => setShowAuthMenu(!showAuthMenu)}
+                className="bg-[#0A3FA0] hover:bg-[#083380] text-white font-bold px-4 py-2 rounded-full text-sm transition-colors hidden sm:inline-block"
+              >
+                Kayıt Ol
+              </button>
+              {showAuthMenu && (
+                <div className="absolute right-0 top-full mt-2 w-64 rounded-2xl border border-gray-200 bg-white p-4 shadow-xl z-50">
+                  <p className="mb-3 text-xs font-bold text-gray-500">Hızlı giriş / kayıt</p>
+                  <button
+                    type="button"
+                    onClick={handleGoogleLogin}
+                    disabled={isGoogleLoading}
+                    className="mb-2 flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-bold text-gray-800 transition hover:bg-gray-50 disabled:opacity-70"
+                  >
+                    <span aria-hidden="true">G</span>
+                    {isGoogleLoading ? "Yönlendiriliyor..." : "Google ile devam et"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleAppleLogin}
+                    disabled={isAppleLoading}
+                    className="mb-3 flex w-full items-center justify-center gap-2 rounded-xl border border-black bg-black py-2.5 text-sm font-bold text-white transition hover:opacity-90 disabled:opacity-70"
+                  >
+                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                    </svg>
+                    {isAppleLoading ? "Yönlendiriliyor..." : "Apple ile devam et"}
+                  </button>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="h-px flex-1 bg-gray-200" />
+                    <span className="text-[10px] text-gray-400">veya</span>
+                    <div className="h-px flex-1 bg-gray-200" />
+                  </div>
+                  <button
+                    onClick={() => { setShowAuthMenu(false); navigate("/app"); }}
+                    className="w-full rounded-xl bg-[#0A3FA0] py-2.5 text-sm font-bold text-white transition hover:bg-[#083380]"
+                  >
+                    E-posta ile Kayıt Ol
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>
@@ -92,10 +159,11 @@ export default function WebsitePage() {
               <Gamepad2 className="w-5 h-5" />
               Eğlenerek Öğren
             </button>
-            <a href="https://wa.me/+905514596780" target="_blank" rel="noopener noreferrer"
+            <button
+              onClick={() => navigate("/app")}
               className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-full text-base transition-colors shadow-lg">
               Hemen Kayıt Ol
-            </a>
+            </button>
           </div>
         </div>
       </section>
