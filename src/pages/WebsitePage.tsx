@@ -30,6 +30,39 @@ const testimonials = [
   { name: "Zeynep Demir", package: "B1 Sertifika Paketi", text: "B1 sertifikası ile Romanya'da iş buldum. Her şey için teşekkürler!" },
 ];
 
+const faqs = [
+  {
+    question: "Bu kurslar kimler için uygun?",
+    answer:
+      "Kurslarımız, Romence'ye sıfırdan başlamak isteyenlerden mevcut dil bilgisini akademik veya profesyonel seviyeye taşımayı hedefleyenlere kadar her seviyeden öğrenciye hitap etmektedir. A1 seviyesinden başlayarak C1 seviyesine kadar uzanan geniş bir yelpazede eğitimler sunuyoruz.",
+  },
+  {
+    question: "Dersleri kendi hızıma göre takip edebilir miyim?",
+    answer:
+      "Evet! Platformumuzdaki tüm video dersler kayıt altındadır. Derslere dilediğiniz zaman, dilediğiniz yerden erişebilir, anlamadığınız yerleri tekrar izleyebilir ve tamamen kendi öğrenme hızınıza göre ilerleyebilirsiniz.",
+  },
+  {
+    question: "Derslerde anlamadığım bir konu olursa destek alabilir miyim?",
+    answer:
+      "Kesinlikle. Uzman eğitmenlerimizle düzenlediğimiz canlı soru-cevap oturumlarına katılabilir, ders videolarının altına yorum yazarak sorularınızı iletebilir veya topluluk forumlarımızda diğer öğrencilerle ve eğitmenlerle etkileşime geçebilirsiniz. Amacımız, öğrenme sürecinizde sizi asla yalnız bırakmamaktır.",
+  },
+  {
+    question: "Mobil cihazlardan dersleri izleyebilir miyim?",
+    answer:
+      "Evet, web sitemiz tüm mobil cihazlar (akıllı telefon, tablet) ve bilgisayarlarla tam uyumludur. İnternet bağlantınızın olduğu her yerden derslerinize kolayca erişebilirsiniz.",
+  },
+  {
+    question: "Ücretsiz deneme dersi veya içeriği mevcut mu?",
+    answer:
+      "Evet, platformumuzu ve eğitim metodolojimizi tanımanız için sunduğumuz ücretsiz deneme dersleri ve \"Eğlenerek Öğren\" bölümündeki interaktif oyunlarımız bulunmaktadır. Bu içeriklere göz atarak sistemimizin sizin için uygun olup olmadığına karar verebilirsiniz.",
+  },
+  {
+    question: "Başka bir sorum var, size nasıl ulaşabilirim?",
+    answer:
+      "Her türlü sorunuz için sayfamızdaki e-posta adresimiz veya telefon numaramız aracılığıyla bize kolayca ulaşabilirsiniz. Size en kısa sürede yardımcı olmaktan mutluluk duyarız.",
+  },
+];
+
 export default function WebsitePage() {
   const [showAuthMenu, setShowAuthMenu] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
@@ -165,6 +198,25 @@ export default function WebsitePage() {
             >
               Hakkımızda
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="sss" className="py-16 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-black mb-3">Sıkça Sorulan Sorular</h2>
+            <p className="text-gray-500">Romence eğitimlerimizle ilgili en çok merak edilen konular.</p>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <article key={faq.question} className="rounded-2xl border border-gray-200 bg-gray-50 p-5 sm:p-6">
+                <h3 className="text-base sm:text-lg font-extrabold text-[#0A3FA0] mb-2">{faq.question}</h3>
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{faq.answer}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -351,7 +403,7 @@ export default function WebsitePage() {
             <h3 className="mb-5 text-2xl font-black">FAYDALI LİNKLER</h3>
             <ul className="space-y-3 text-lg text-white/85">
               <li><a href="#hakkimizda" className="hover:text-white transition-colors">Hakkımızda</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Sıkça Sorulan Sorular</a></li>
+              <li><a href="#sss" className="hover:text-white transition-colors">Sıkça Sorulan Sorular</a></li>
               <li>
                 <Link to="/gizlilik-politikasi" className="hover:text-white transition-colors">
                   Gizlilik Politikası
