@@ -45,6 +45,12 @@ export default function WebsitePage() {
           </div>
           <div className="flex items-center gap-2">
             <button
+              onClick={() => navigate("/blog")}
+              className="rounded-full border border-gray-200 px-4 py-2 text-sm font-bold text-gray-700 transition-colors hover:bg-gray-50"
+            >
+              Blog
+            </button>
+            <button
               onClick={() => navigate("/app")}
               className="bg-[#F8E71C] hover:bg-[#e6d619] text-gray-900 font-bold px-4 py-2 rounded-full text-sm transition-colors flex items-center gap-2"
             >

@@ -25,6 +25,7 @@ import DailyGoalsSettingsPage from "./pages/DailyGoalsSettingsPage";
 import VideosPage from "./pages/VideosPage";
 import KahootPage from "./pages/KahootPage";
 import GrammarPage from "./pages/GrammarPage";
+import BlogPage from "./pages/BlogPage";
 
 const queryClient = new QueryClient();
 
@@ -129,6 +130,7 @@ function AppContent() {
     <div className="min-h-screen bg-background">
       <Routes>
         <Route path="/" element={<WebsitePage />} />
+        <Route path="/blog" element={<BlogPage />} />
         {sessionMode !== "logged_out" ? (
           <>
             <Route path="/app" element={<HomePage />} />
