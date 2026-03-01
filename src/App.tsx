@@ -29,7 +29,7 @@ import BlogPage from "./pages/BlogPage";
 
 const queryClient = new QueryClient();
 
-type SessionMode = "authenticated" | "logged_out" | "guest";
+type SessionMode = "authenticated" | "logged_out";
 
 const SESSION_KEY = "romingo_session_mode";
 
@@ -41,9 +41,6 @@ function AppContent() {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    const storedMode = localStorage.getItem(SESSION_KEY) as SessionMode | null;
-    const isGuestSession = storedMode === "guest";
-
     const { darkMode } = getStoredPreferences();
     applyDarkMode(darkMode);
 
@@ -56,12 +53,6 @@ function AppContent() {
         setSessionMode("authenticated");
         setActiveProfileScope(session.user.id);
         localStorage.setItem(SESSION_KEY, "authenticated");
-        return;
-      }
-
-      if (isGuestSession) {
-        setSessionMode("guest");
-        setActiveProfileScope("guest");
         return;
       }
 
@@ -102,12 +93,6 @@ function AppContent() {
     localStorage.setItem(SESSION_KEY, "logged_out");
   };
 
-  const handleGuestLogin = () => {
-    setSessionMode("guest");
-    setActiveProfileScope("guest");
-    localStorage.setItem(SESSION_KEY, "guest");
-  };
-
   if (showSplash) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
@@ -123,7 +108,7 @@ function AppContent() {
   }
 
   if (sessionMode === "logged_out" && location.pathname.startsWith("/app")) {
-    return <LoginPage onGuestLogin={handleGuestLogin} />;
+    return <LoginPage />;
   }
 
   return (
@@ -137,7 +122,7 @@ function AppContent() {
             <Route path="/app/learn" element={<LearnPage />} />
             <Route path="/app/shop" element={<ShopPage />} />
             <Route path="/app/league" element={<LeaguePage />} />
-            <Route path="/app/profile" element={<ProfilePage isGuest={sessionMode === "guest"} onLogout={handleLogout} />} />
+            <Route path="/app/profile" element={<ProfilePage onLogout={handleLogout} />} />
             <Route path="/app/settings" element={<SettingsPage />} />
             <Route path="/app/settings/profile" element={<ProfileSettingsPage />} />
             <Route path="/app/settings/security" element={<SecuritySettingsPage />} />
@@ -149,7 +134,7 @@ function AppContent() {
             <Route path="/app/lesson/:id" element={<LessonPage />} />
           </>
         ) : (
-          <Route path="/app/*" element={<LoginPage onGuestLogin={handleGuestLogin} />} />
+          <Route path="/app/*" element={<LoginPage />} />
         )}
         <Route path="*" element={<NotFound />} />
       </Routes>
