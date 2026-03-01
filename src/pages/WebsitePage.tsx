@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Monitor, Award, BookOpen, Users, Globe, Shield, CheckCircle, Star, Mail, Phone, Gamepad2, MapPin } from "lucide-react";
+import { Monitor, Award, BookOpen, Users, Globe, Shield, CheckCircle, Star, Mail, Phone, Gamepad2, MapPin, Smartphone } from "lucide-react";
 import { lovable } from "@/integrations/lovable/index";
 
 const features = [
@@ -81,7 +81,7 @@ export default function WebsitePage() {
               onClick={() => navigate("/app")}
               className="bg-[#F8E71C] hover:bg-[#e6d619] text-gray-900 font-bold px-4 py-2 rounded-full text-sm transition-colors flex items-center gap-2"
             >
-              <Gamepad2 className="w-4 h-4" />
+              <Smartphone className="w-4 h-4" />
               Uygulamayı Aç
             </button>
             <div className="relative">
@@ -329,7 +329,7 @@ export default function WebsitePage() {
             onClick={() => navigate("/app")}
             className="bg-[#F8E71C] hover:bg-[#e6d619] text-gray-900 font-extrabold px-8 py-4 rounded-full text-lg transition-colors inline-flex items-center gap-3 shadow-xl"
           >
-            <Gamepad2 className="w-6 h-6" />
+            <Smartphone className="w-6 h-6" />
             Uygulamayı Aç
           </button>
         </div>
