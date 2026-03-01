@@ -356,7 +356,11 @@ export default function WebsitePage() {
                   Gizlilik Politikası
                 </Link>
               </li>
-              <li><a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a></li>
+              <li>
+                <Link to="/kullanim-sartlari" className="hover:text-white transition-colors">
+                  Kullanım Şartları
+                </Link>
+              </li>
               <li><a href="#" className="hover:text-white transition-colors">Mesafeli Satış Sözleşmesi</a></li>
               <li><a href="/teslimat-ve-iade-sartlari" className="hover:text-white transition-colors">Teslimat ve İade Şartları</a></li>
             </ul>

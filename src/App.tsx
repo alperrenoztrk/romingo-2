@@ -28,6 +28,7 @@ import GrammarPage from "./pages/GrammarPage";
 import BlogPage from "./pages/BlogPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import DeliveryReturnPolicyPage from "./pages/DeliveryReturnPolicyPage";
+import TermsOfUsePage from "./pages/TermsOfUsePage";
 
 const queryClient = new QueryClient();
 
@@ -120,6 +121,7 @@ function AppContent() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/gizlilik-politikasi" element={<PrivacyPolicyPage />} />
         <Route path="/teslimat-ve-iade-sartlari" element={<DeliveryReturnPolicyPage />} />
+        <Route path="/kullanim-sartlari" element={<TermsOfUsePage />} />
         {sessionMode !== "logged_out" ? (
           <>
             <Route path="/app" element={<HomePage />} />
