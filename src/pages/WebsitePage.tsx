@@ -361,7 +361,11 @@ export default function WebsitePage() {
                   Kullanım Şartları
                 </Link>
               </li>
-              <li><a href="#" className="hover:text-white transition-colors">Mesafeli Satış Sözleşmesi</a></li>
+              <li>
+                <Link to="/mesafeli-satis-sozlesmesi" className="hover:text-white transition-colors">
+                  Mesafeli Satış Sözleşmesi
+                </Link>
+              </li>
               <li>
                 <Link to="/teslimat-ve-iade-sartlari" className="hover:text-white transition-colors">
                   Teslimat ve İade Şartları
