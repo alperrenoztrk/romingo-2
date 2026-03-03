@@ -479,6 +479,7 @@ export default function LessonPage() {
     return (
       <LessonComplete
         lesson={lesson}
+        mascotId={currentMascot.id}
         correctCount={correctCount}
         totalCount={exerciseIndexes.length}
         elapsedSeconds={elapsedSeconds}
