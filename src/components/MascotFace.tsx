@@ -11,10 +11,12 @@ const mascotImages: Record<string, string> = {
 };
 
 interface MascotFaceProps {
-  mascotId: "flamingo" | "cat" | "toucan" | "panda";
+  mascotId: MascotId;
   mascotName: string;
   className?: string;
 }
+
+export type MascotId = "flamingo" | "cat" | "toucan" | "panda";
 
 export default function MascotFace({ mascotId, mascotName, className = "h-20 w-20" }: MascotFaceProps) {
   return (
