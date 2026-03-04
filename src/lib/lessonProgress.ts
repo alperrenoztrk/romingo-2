@@ -60,7 +60,14 @@ export function isLessonUnlocked(lessonId: string, orderedLessonIds: string[], p
     return false;
   }
 
-  return true;
+  if (lessonIndex === 0) {
+    return true;
+  }
+
+  const previousLessonId = orderedLessonIds[lessonIndex - 1];
+  const previousLessonProgress = progress[previousLessonId];
+
+  return Boolean(previousLessonProgress?.completedAt);
 }
 
 export function getCompletedLessonsCountForDate(date = new Date()) {
