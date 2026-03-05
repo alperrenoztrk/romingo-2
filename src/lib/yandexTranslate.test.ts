@@ -16,6 +16,15 @@ describe("translateWithYandex", () => {
     await expect(translateWithYandex("Günaydın", "tr-ro")).resolves.toBe("Bună dimineața");
   });
 
+  it("supports providers that return translation text as a string", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue({
+      ok: true,
+      json: async () => ({ text: "Bună dimineața" }),
+    } as Response);
+
+    await expect(translateWithYandex("Günaydın", "tr-ro")).resolves.toBe("Bună dimineața");
+  });
+
   it("falls back to local dictionary when Yandex request fails", async () => {
     vi.spyOn(globalThis, "fetch").mockRejectedValue(new Error("network"));
 
