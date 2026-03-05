@@ -5,11 +5,12 @@ import TranslationPage from "./TranslationPage";
 describe("TranslationPage", () => {
   const originalSpeechSynthesis = globalThis.window.speechSynthesis;
   const originalUtterance = globalThis.SpeechSynthesisUtterance;
+  const originalAudio = globalThis.Audio;
 
   beforeEach(() => {
     vi.spyOn(globalThis, "fetch").mockResolvedValue({
       ok: true,
-      json: async () => ({ text: ["günaydın"] }),
+      json: async () => [["günaydın", "BUNĂ DIMINEAȚA", null, null]],
     } as Response);
 
     Object.defineProperty(globalThis.window, "speechSynthesis", {
@@ -26,6 +27,11 @@ describe("TranslationPage", () => {
       rate: 1,
       pitch: 1,
     })) as unknown as typeof SpeechSynthesisUtterance;
+
+    globalThis.Audio = vi.fn().mockImplementation(() => ({
+      preload: "none",
+      play: vi.fn().mockResolvedValue(undefined),
+    })) as unknown as typeof Audio;
   });
 
   afterEach(() => {
@@ -34,6 +40,7 @@ describe("TranslationPage", () => {
       configurable: true,
     });
     globalThis.SpeechSynthesisUtterance = originalUtterance;
+    globalThis.Audio = originalAudio;
     vi.restoreAllMocks();
   });
 
@@ -60,7 +67,8 @@ describe("TranslationPage", () => {
     await screen.findByText("günaydın");
     fireEvent.click(screen.getByLabelText("Çeviriyi sesli dinle"));
 
-    expect(window.speechSynthesis.cancel).toHaveBeenCalled();
-    expect(window.speechSynthesis.speak).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(globalThis.Audio).toHaveBeenCalled();
+    });
   });
 });

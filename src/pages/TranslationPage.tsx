@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import StatsBar from "../components/StatsBar";
 import { ArrowRightLeft, Languages, Volume2 } from "lucide-react";
 import type { TranslationDirection } from "../lib/translationDictionary";
-import { translateWithYandex } from "../lib/yandexTranslate";
+import { translateWithGoogle } from "../lib/googleTranslate";
+import { speakWithYandex } from "../lib/yandexTts";
 
 export default function TranslationPage() {
   const [direction, setDirection] = useState<TranslationDirection>("tr-ro");
@@ -23,7 +24,7 @@ export default function TranslationPage() {
     setIsTranslating(true);
 
     const timeoutId = window.setTimeout(async () => {
-      const translatedValue = await translateWithYandex(trimmedInput, direction);
+      const translatedValue = await translateWithGoogle(trimmedInput, direction);
       if (!isCancelled) {
         setTranslation(translatedValue);
         setIsTranslating(false);
@@ -40,15 +41,21 @@ export default function TranslationPage() {
   const targetLabel = direction === "tr-ro" ? "Rumence" : "Türkçe";
   const targetLocale = direction === "tr-ro" ? "ro-RO" : "tr-TR";
 
-  const speakText = (text: string, lang: string) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+  const speakText = async (text: string, lang: string) => {
+    if (!text.trim()) return;
 
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang;
-    utterance.rate = 0.95;
-    utterance.pitch = 1;
-    window.speechSynthesis.speak(utterance);
+    try {
+      await speakWithYandex(text, lang);
+    } catch {
+      if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = lang;
+      utterance.rate = 0.95;
+      utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+    }
   };
 
   return (
