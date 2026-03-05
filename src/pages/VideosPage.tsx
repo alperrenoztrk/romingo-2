@@ -7,6 +7,11 @@ const videos = [
     title: "Kısa Konuşma 1",
     src: "/videos/conversation-1.mp4",
   },
+  {
+    id: 2,
+    title: "Nerelisin? - De unde ești?",
+    src: "/videos/conversation-2.mp4",
+  },
 ];
 
 export default function VideosPage() {
