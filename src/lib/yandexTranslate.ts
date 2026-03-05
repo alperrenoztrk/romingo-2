@@ -5,6 +5,8 @@ import {
 } from "./profanityFilter";
 
 const YANDEX_TRANSLATE_BASE_URL = "https://translate.yandex.net/api/v1/tr.json/translate";
+const YANDEX_TRANSLATE_URL = import.meta.env.VITE_YANDEX_TRANSLATE_URL || YANDEX_TRANSLATE_BASE_URL;
+const YANDEX_TRANSLATE_API_KEY = import.meta.env.VITE_YANDEX_TRANSLATE_API_KEY;
 
 function getLanguagePair(direction: TranslationDirection) {
   return direction === "tr-ro"
@@ -13,17 +15,49 @@ function getLanguagePair(direction: TranslationDirection) {
 }
 
 function parseYandexTranslateResponse(payload: unknown) {
-  if (!payload || typeof payload !== "object" || !("text" in payload)) return null;
+  if (!payload || typeof payload !== "object") return null;
 
-  const { text } = payload as { text?: unknown };
-  if (!Array.isArray(text)) return null;
+  if ("text" in payload) {
+    const { text } = payload as { text?: unknown };
 
-  const translatedText = text
-    .filter((value): value is string => typeof value === "string")
-    .join(" ")
-    .trim();
+    if (typeof text === "string") {
+      const normalized = text.trim();
+      return normalized || null;
+    }
 
-  return translatedText || null;
+    if (Array.isArray(text)) {
+      const translatedText = text
+        .filter((value): value is string => typeof value === "string")
+        .join(" ")
+        .trim();
+
+      return translatedText || null;
+    }
+  }
+
+  if ("translation" in payload && typeof (payload as { translation?: unknown }).translation === "string") {
+    const normalized = (payload as { translation: string }).translation.trim();
+    return normalized || null;
+  }
+
+  if ("translations" in payload) {
+    const translations = (payload as { translations?: unknown }).translations;
+    if (Array.isArray(translations)) {
+      const translatedText = translations
+        .map((item) => {
+          if (!item || typeof item !== "object") return null;
+          const candidate = (item as { text?: unknown }).text;
+          return typeof candidate === "string" ? candidate : null;
+        })
+        .filter((value): value is string => Boolean(value))
+        .join(" ")
+        .trim();
+
+      return translatedText || null;
+    }
+  }
+
+  return null;
 }
 
 export async function translateWithYandex(input: string, direction: TranslationDirection) {
@@ -37,9 +71,19 @@ export async function translateWithYandex(input: string, direction: TranslationD
     lang: `${sourceLanguage}-${targetLanguage}`,
     text: trimmedInput,
   });
+  if (YANDEX_TRANSLATE_API_KEY) {
+    params.set("key", YANDEX_TRANSLATE_API_KEY);
+  }
 
   try {
-    const response = await fetch(`${YANDEX_TRANSLATE_BASE_URL}?${params.toString()}`);
+    const response = await fetch(YANDEX_TRANSLATE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        Accept: "application/json",
+      },
+      body: params,
+    });
     if (!response.ok) throw new Error(`Yandex Translate error: ${response.status}`);
 
     const payload = (await response.json()) as unknown;
