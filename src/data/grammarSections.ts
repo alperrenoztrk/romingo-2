@@ -26,14 +26,16 @@ export type GrammarBlock =
   | { type: "divider" };
 
 export const grammarSections: GrammarSection[] = [
+  // ─────────────────────────────────────────────────────────
   // BÖLÜM 1 — Giriş ve Alfabe
+  // ─────────────────────────────────────────────────────────
   {
     id: "bolum-1",
-    title: "BÖLÜM 1 — Giriş: Rumence Hakkında",
+    title: "BÖLÜM 1 — Giriş ve Alfabe",
     content: [
       {
         type: "paragraph",
-        text: "Rumence (limba română), Hint-Avrupa dil ailesinin Roman koluna mensup bir dildir. Yaklaşık 25 milyon kişi tarafından anadil olarak konuşulmakta; Romanya ve Moldova'da resmi dil statüsü taşımaktadır. Latin kökleri sayesinde İtalyanca, İspanyolca, Fransızca ve Portekizce ile büyük benzerlikler taşır — bu dilleri bilen biri Rumence metnin yaklaşık %60'ını tahmin edebilir.",
+        text: "Romence (limba română), Hint-Avrupa dil ailesinin Roman koluna mensup bir dildir. Yaklaşık 25 milyon kişi tarafından anadil olarak konuşulmakta; Romanya ve Moldova'da resmi dil statüsü taşımaktadır. Latin kökleri sayesinde İtalyanca, İspanyolca, Fransızca ve Portekizce ile büyük benzerlikler taşır — bu dilleri bilen biri Romence metnin yaklaşık %60'ını tahmin edebilir.",
       },
       {
         type: "table",
@@ -52,7 +54,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "tip",
         title: "💡 Türkçe Konuşanlar İçin Avantajlar",
-        text: "Rumence ve Türkçe, Osmanlı dönemindeki uzun temas nedeniyle 1000'den fazla ortak (veya benzer) kelime paylaşır. cafea (kahve), pilaf, geam (cam), tavan, dușman (düşman)... gibi pek çok kelimeyi zaten biliyorsunuz.\n\nRumence'nin fiil çekimi düzenli ve öngörülebilirdir; kalıpları bir kez kavradıktan sonra yeni fiillere kolayca uygulayabilirsiniz.\n\nTelaffuz fonetik kurallara büyük ölçüde uygundur: yazdığınız gibi okursunuz (birkaç özel kural dışında).",
+        text: "Romence ve Türkçe, Osmanlı dönemindeki uzun temas nedeniyle 1000'den fazla ortak (veya benzer) kelime paylaşır. cafea (kahve), pilaf, geam (cam), tavan, dușman (düşman)... gibi pek çok kelimeyi zaten biliyorsunuz.\n\nRomence'nin fiil çekimi düzenli ve öngörülebilirdir; kalıpları bir kez kavradıktan sonra yeni fiillere kolayca uygulayabilirsiniz.\n\nTelaffuz fonetik kurallara büyük ölçüde uygundur: yazdığınız gibi okursunuz (birkaç özel kural dışında).",
       },
       {
         type: "heading",
@@ -61,7 +63,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Rumence 31 harften oluşur. Bunların 26'sı standart Latin harfleriyle örtüşür; 5 tanesi ise Rumence'ye özgüdür.",
+        text: "Romence 31 harften oluşur. Bunların 26'sı standart Latin harfleriyle örtüşür; 5 tanesi ise Romence'ye özgüdür. Bu 5 özel harfi doğru yazmak hem yazım hem de bilgisayarda metin girişi açısından önemlidir.",
       },
       {
         type: "table",
@@ -71,7 +73,7 @@ export const grammarSections: GrammarSection[] = [
             ["ă", "Ă", "/ə/", "'e' ile 'a' arası, vurgusuz hece", "băiat /bəˈjat/ — oğlan"],
             ["â", "Â", "/ɨ/", "Türkçe'de yok; ağzı 'ı' gibi açarak 'e' demek", "cânt /kɨnt/ — şarkı söylerim"],
             ["î", "Î", "/ɨ/", "â ile birebir aynı ses", "în /ɨn/ — içinde"],
-            ["ș", "Ș", "/ʃ/", "Türkçe 'ş' ile aynı", "școală /ʃkwˈalə/ — okul"],
+            ["ș", "Ș", "/ʃ/", "Türkçe 'ş' ile aynı", "școală /ʃkwaˈlə/ — okul"],
             ["ț", "Ț", "/ts/", "Türkçe 'ts' / 'c' ünsüzü", "țară /ˈtsarə/ — ülke"],
           ],
         },
@@ -79,33 +81,82 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "warning",
         title: "â ile ă Karıştırmayın!",
-        text: "Bu iki harf çok farklı sesleri temsil eder ve kelime anlamını değiştirir:\n\n• â → /ɨ/ (dil ortada, dudaklar yarı açık, 'ı'ya yakın yuvarlak olmayan ses)\n• ă → /ə/ (şwa; İngilizce'de 'about' kelimesinin 'a'sı gibi, belirsiz ve kısa)\n\nKural: â yalnızca kelime ortasında kullanılır (cânt, român). î ise kelime başında ve sonunda kullanılır (în, a coborî). Bilgisayarda ș ve ț yazarken virgüllü (ș,ț) biçimleri kullanın, tırnaklı (ş,ţ) değil — bunlar farklı Unicode karakterleridir!",
+        text: "Bu iki harf çok farklı sesleri temsil eder ve kelime anlamını değiştirir:\n\n• â → /ɨ/ (dil ortada, dudaklar yarı açık, 'ı'ya yakın yuvarlak olmayan ses)\n• ă → /ə/ (şwa; İngilizce'de 'about' kelimesinin 'a'sı gibi, belirsiz ve kısa)\n\nKural: â yalnızca kelime ortasında kullanılır (cânt, român). î ise kelime başında ve sonunda kullanılır (în, înalt, a coborî). Bilgisayarda ș ve ț yazarken virgüllü (ș,ț) biçimleri kullanın, tırnaklı (ş,ţ) değil — bunlar farklı Unicode karakterleridir!",
+      },
+      {
+        type: "heading",
+        text: "1.2 Tam Alfabe Tablosu (Alfabetul Complet)",
+        level: 3,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Küçük", "Büyük", "Telaffuz", "Örnek Kelime", "Türkçesi"],
+          rows: [
+            ["a", "A", "/a/", "apă", "su"],
+            ["ă", "Ă", "/ə/ (şwa)", "băiat", "oğlan"],
+            ["â", "Â", "/ɨ/", "cânt", "şarkı söylerim"],
+            ["b", "B", "/b/", "bun", "iyi"],
+            ["c", "C", "/k/ veya /tʃ/", "casă / ce", "ev / ne"],
+            ["d", "D", "/d/", "dor", "özlem"],
+            ["e", "E", "/e/", "este", "o/bu (fiil)"],
+            ["f", "F", "/f/", "fată", "kız"],
+            ["g", "G", "/g/ veya /dʒ/", "gară / ger", "tren istasyonu / soğuk"],
+            ["h", "H", "/h/", "hotel", "otel"],
+            ["i", "I", "/i/", "iarnă", "kış"],
+            ["î", "Î", "/ɨ/", "în", "içinde"],
+            ["j", "J", "/ʒ/", "joi", "Perşembe"],
+            ["k", "K", "/k/", "kilogram", "kilogram (alıntı kelime)"],
+            ["l", "L", "/l/", "lapte", "süt"],
+            ["m", "M", "/m/", "masă", "masa"],
+            ["n", "N", "/n/", "noapte", "gece"],
+            ["o", "O", "/o/", "om", "adam/insan"],
+            ["p", "P", "/p/", "pâine", "ekmek"],
+            ["q", "Q", "/kw/", "(yabancı kelimelerde)", "—"],
+            ["r", "R", "/r/ (titrek)", "român", "Rumen"],
+            ["s", "S", "/s/", "soare", "güneş"],
+            ["ș", "Ș", "/ʃ/ (Türkçe ş)", "școală", "okul"],
+            ["t", "T", "/t/", "tren", "tren"],
+            ["ț", "Ț", "/ts/", "țară", "ülke"],
+            ["u", "U", "/u/", "ușă", "kapı"],
+            ["v", "V", "/v/", "vară", "yaz"],
+            ["w", "W", "/v/ veya /w/", "(yabancı kelimelerde)", "—"],
+            ["x", "X", "/ks/ veya /gz/", "exemplu", "örnek"],
+          ],
+        },
+      },
+      {
+        type: "tip",
+        title: "📌 Öğrenme Önceliği",
+        text: "K, Q, W, Y harfleri Romence'de yalnızca yabancı kökenli kelimelerde görülür (kilogram, quasar, weekend, yoga gibi). Bunları başlangıçta ezberlemek yerine önce 27 temel harfi öğrenin.\n\nRomence'ye özgü 5 harf olan Ă, Â, Î, Ș, Ț'yi doğru yazmak çok önemlidir. Özellikle Ș/ș (virgüllü) ile Ş/ş (cedillalı) farklı Unicode karakterleridir — yalnızca virgüllü olanı Romence standardıdır.",
       },
     ],
   },
 
+  // ─────────────────────────────────────────────────────────
   // BÖLÜM 2 — Sesler ve Telaffuz
+  // ─────────────────────────────────────────────────────────
   {
     id: "bolum-2",
     title: "BÖLÜM 2 — Sesler ve Telaffuz (Pronunție)",
     content: [
       {
         type: "paragraph",
-        text: "Rumence telaffuzu oldukça düzenli bir dildir; ancak bazı harf kombinasyonları özgün sesler üretir. Bu kombinasyonları öğrendikten sonra herhangi bir Rumence kelimeyi doğru okuyabilirsiniz.",
+        text: "Romence telaffuzu oldukça düzenli bir dildir; ancak bazı harf kombinasyonları özgün sesler üretir. Bu kombinasyonları öğrendikten sonra herhangi bir Romence kelimeyi doğru okuyabilirsiniz.",
       },
       {
         type: "table",
         data: {
           headers: ["Harf Kombinasyonu", "Okunuş", "Açıklama", "Örnekler"],
           rows: [
-            ["ce, ci", "/tʃe/, /tʃi/", "Türkçe 'ç' gibi", "ce (ne)→çe, cinema→çinema"],
-            ["che, chi", "/ke/, /ki/", "'h' sessiz kalır, 'k' sesi", "cheie→keye, chiar→kiyar"],
-            ["ge, gi", "/dʒe/, /dʒi/", "Türkçe 'c' gibi", "ger→cer, girafă→cirafə"],
+            ["ce, ci", "/tʃe/, /tʃi/", "Türkçe 'ç' gibi", "ce (ne)→çe, cinema→çinema, cine→çine"],
+            ["che, chi", "/ke/, /ki/", "'h' sessiz kalır, yalnızca 'k' sesi çıkar", "cheie→/keje/ (anahtar), chiar→/kjar/ (tam/bile)"],
+            ["ge, gi", "/dʒe/, /dʒi/", "Türkçe 'c' gibi", "ger→/dʒer/, girafă→/dʒirafə/ (zürafa)"],
             ["ghe, ghi", "/ge/, /gi/", "'h' sessiz, 'g' sert kalır", "ghete→gete, ghid→gid"],
-            ["oa", "/wa/", "'o'+'a' kayışması", "oameni→wameni (insanlar)"],
-            ["ea", "/ja/", "'e'+'a' kayışması", "femeie→femeje, seară→sjarə"],
-            ["ia, ie", "/ja/, /je/", "'i' yarı ünlü olur", "iarnă→yarnə (kış), ieftin→yeftin"],
-            ["x", "/ks/ veya /gz/", "Sözcük başında /ks/", "taxi, exemplu→egzemplu"],
+            ["oa", "/wa/", "'o'+'a' ünlü kaynaşması", "oameni→/wameni/ (insanlar)"],
+            ["ea", "/ea/ veya /ja/", "'e'+'a' ünlü kaynaşması", "femeie→/femeje/, seară→/sjarə/ (akşam)"],
+            ["ia, ie", "/ja/, /je/", "'i' yarı ünlü olur", "iarnă→/jarnə/ (kış), ieftin→/jeftin/ (ucuz)"],
+            ["x", "/ks/ veya /gz/", "Kelime başı ve sedasız ünsüz önünde /ks/", "taxi→/taksi/, exemplu→/egzemplu/ (örnek)"],
             ["h", "/h/", "Her zaman sesli (Türkçe gibi)", "hotel, hai (hadi)"],
             ["v", "/v/", "İngilizce v gibi", "vară (yaz), veni (gelmek)"],
           ],
@@ -114,28 +165,30 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "tip",
         title: "💡 Vurgu Kuralı",
-        text: "Rumence'de sabit bir vurgu kuralı yoktur; vurgu kelimenin herhangi bir hecesine düşebilir. Ancak pratikte çoğu kelimede sondan ikinci hecede vurgu görülür.\n\nÖrn: ca-să (kaSA), fru-moa-să (fruMOAsă), bu-cu-reș-ti (buCUreşTI).\n\nKelime ezberlerken vurguyu da birlikte öğrenmek en sağlıklı yoldur.",
+        text: "Romence'de sabit bir vurgu kuralı yoktur; vurgu kelimenin herhangi bir hecesine düşebilir. Ancak pratikte çoğu kelimede sondan ikinci hecede vurgu görülür.\n\nÖrn: ca-să (kaSA), fru-moa-să (fruMOAsă), bu-cu-reș-ti (buCUreşTI).\n\nKelime ezberlerken vurguyu da birlikte öğrenmek en sağlıklı yoldur.",
       },
     ],
   },
 
-  // BÖLÜM 3 — İsimler
+  // ─────────────────────────────────────────────────────────
+  // BÖLÜM 3 — İsimler ve Hâl Sistemi
+  // ─────────────────────────────────────────────────────────
   {
     id: "bolum-3",
-    title: "BÖLÜM 3 — İsimler (Substantive)",
+    title: "BÖLÜM 3 — İsimler ve Hâl Sistemi (Substantive și Cazuri)",
     content: [
       {
         type: "paragraph",
-        text: "Rumence isim sistemi üç temel ekseni üzerinde döner: cinsiyet (gen), sayı (număr) ve durum (caz). Bu üç eksen birleşince ezberlenmesi gereken biçimler ortaya çıkar; ancak kalıplar içsel bir mantık taşıdığından çoğu biçim tahmin edilebilirdir.",
+        text: "Romence isim sistemi üç temel ekseni üzerinde döner: cinsiyet (gen), sayı (număr) ve durum/hâl (caz). Bu üç eksen birleşince ezberlenmesi gereken biçimler ortaya çıkar; ancak kalıplar içsel bir mantık taşıdığından çoğu biçim tahmin edilebilirdir.",
       },
       {
         type: "heading",
-        text: "3.1 Grammatik Cinsiyet (Genul)",
+        text: "3.1 Gramatik Cinsiyet (Genul Gramatical)",
         level: 3,
       },
       {
         type: "paragraph",
-        text: "Rumence'nin en dikkat çekici özelliği, çoğu Roman dilinde olmayan nötr (neutru) cinsiyi korumasıdır. Nötr isimler tekil hâlde eril gibi, çoğul hâlde dişil gibi davranır.",
+        text: "Romence'nin en dikkat çekici özelliği, çoğu Roman dilinde olmayan nötr (neutru) cinsiyi korumasıdır. Nötr isimler tekil hâlde eril gibi, çoğul hâlde dişil gibi davranır.",
       },
       {
         type: "table",
@@ -151,7 +204,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "tip",
         title: "🔑 Nötr Cinsiyi Nasıl Ezberlemeli?",
-        text: "Nötr isimler, Rumence söz varlığının yaklaşık 1/3'ünü oluşturur ve genellikle cansız nesneler, soyut kavramlar ile ödünç kelimelerdir.\n\nEn iyi strateji: Her nötr ismi hem tekil hem çoğul hâliyle öğrenmek. Örn: 'scaun / scaune', 'lucru / lucruri', 'birou / birouri'.\n\nÇoğul eki -uri ise hemen hemen her zaman nötr cinsinin işaretidir.",
+        text: "Nötr isimler, Romence söz varlığının yaklaşık 1/3'ünü oluşturur ve genellikle cansız nesneler, soyut kavramlar ile ödünç kelimelerdir.\n\nEn iyi strateji: Her nötr ismi hem tekil hem çoğul hâliyle öğrenmek. Örn: 'scaun / scaune', 'lucru / lucruri', 'birou / birouri'.\n\nÇoğul eki -uri ise hemen hemen her zaman nötr cinsinin işaretidir — bu tek ipucu bile pek çok kelimeyi tanımanızı sağlar.",
       },
       {
         type: "heading",
@@ -175,34 +228,98 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "3.3 Durum Sistemi (Sistemul Cazual)",
+        text: "3.3 Hâl Sistemi — Derinlemesine (Sistemul Cazurilor)",
         level: 3,
       },
       {
         type: "paragraph",
-        text: "Rumence dört işlevsel durum tanır. Nominatif ve Akuzatif genellikle aynı biçimi, Genitif ve Datif ise genellikle aynı biçimi paylaşır. Bu nedenle pratikte yalnızca iki biçim çifti öğrenmek yeterlidir.",
+        text: "Romence beş hâl tanır. Pratik açıdan en kritik ayrım şudur: Nominatif–Akuzatif tek biçim paylaşır, Genitif–Datif de tek biçim paylaşır. Yani ezberlenecek biçim sayısı göründüğünden çok daha azdır.",
       },
       {
         type: "table",
         data: {
-          headers: ["Durum", "İşlev", "Soru Soran", "Türkçe Yaklaşımı"],
+          headers: ["Hâl", "Kısa", "Temel İşlev", "Türkçe Paraleli", "Örnek Cümle"],
           rows: [
-            ["Nominatif (N)", "Özne", "Kim / Ne?", "Yalın hâl"],
-            ["Akuzatif (Ac)", "Doğrudan nesne + edat tümleci", "Kimi / Neyi? / Nereye?", "-i / -e hâli + edat grupları"],
-            ["Genitif (G)", "İyelik (aitlik)", "Kimin / Neyin?", "-in / -nın hâli"],
-            ["Datif (D)", "Dolaylı nesne (alıcı)", "Kime / Neye?", "-e / -a hâli"],
-            ["Vokativ (V)", "Seslenme", "—", "Ey... / hitap eki"],
+            ["Nominatif", "N", "Cümlenin öznesi", "Yalın hâl", "Băiatul cântă. (Oğlan şarkı söylüyor.)"],
+            ["Akuzatif", "Ac", "Doğrudan nesne + edat tümleci", "-i/-ı/-e/-a hâli + edatlı yapılar", "Văd băiatul. (Oğlanı görüyorum.)"],
+            ["Genitif", "G", "İyelik: kimin/neyin", "-in/-nın/-ün/-nün hâli", "Cartea băiatului. (Oğlanın kitabı.)"],
+            ["Datif", "D", "Dolaylı nesne: kime/neye", "-e/-a hâli", "Dau cartea băiatului. (Kitabı oğlana veriyorum.)"],
+            ["Vokativ", "V", "Doğrudan seslenme", "Ey.../Hey... eki", "Băiete! (Ey oğlan!) / Mamă! (Anne!)"],
+          ],
+        },
+      },
+      {
+        type: "tip",
+        title: "📌 N–Ac ve G–D Birleşimi",
+        text: "Romence dilbilgisinde N ve Ac hâlleri aynı sözcük biçimini taşır; ayrımı yalnızca cümledeki görev ve bağlam belirler.\n\nAynı şekilde G ve D hâlleri de tek biçimde gösterilir. Bu durum ezberlemeyi büyük ölçüde kolaylaştırır.\n\nSonuç: Bir ismin tam çekimi için yalnızca 2 biçim çifti (N/Ac ve G/D) öğrenmek yeterlidir.",
+      },
+      {
+        type: "heading",
+        text: "3.4 Genitif–Datif: Yapı, Çekim ve Pratik Kullanım",
+        level: 3,
+      },
+      {
+        type: "paragraph",
+        text: "Genitif–Datif biçimi Romence öğrencilerinin en çok zorlandığı alandır. Romence'de bu hâl, ismin belirli artikelini aldıktan sonra özel bir biçime girer.",
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Cinsiyet ve Sayı", "Nominatif/Akuzatif (belirli)", "Genitif/Datif (belirli)", "Örnekler G/D"],
+          rows: [
+            ["Eril tekil", "băiatul", "băiatului", "cartea băiatului (oğlanın kitabı)"],
+            ["Eril tekil", "profesorul", "profesorului", "nota profesorului (öğretmenin notu)"],
+            ["Dişil tekil", "fata", "fetei", "cartea fetei (kızın kitabı)"],
+            ["Dişil tekil", "mama", "mamei", "casa mamei (annenin evi)"],
+            ["Dişil tekil", "cartea (kitap)", "cărții", "coperta cărții (kitabın kapağı)"],
+            ["Nötr tekil", "scaunul", "scaunului", "piciorul scaunului (sandalyenin ayağı)"],
+            ["Eril çoğul", "băieții", "băieților", "cartea băieților (oğlanların kitabı)"],
+            ["Dişil çoğul", "fetele", "fetelor", "cartea fetelor (kızların kitabı)"],
+            ["Nötr çoğul", "scaunele", "scaunelor", "picioarele scaunelor (sandalyelerin ayakları)"],
           ],
         },
       },
       {
         type: "heading",
-        text: "3.4 Artikel Sistemi (Sistemul Articolelor)",
+        text: "Belirsiz İsimde G/D: 'unui / unei + isim' Yapısı",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Cinsiyet", "Belirsiz Genitif/Datif", "Örnek", "Türkçesi"],
+          rows: [
+            ["Eril/Nötr tekil", "unui + isim", "Dau unui prieten. / cartea unui om", "Bir arkadaşa veriyorum. / bir adamın kitabı"],
+            ["Dişil tekil", "unei + isim", "Dau unei fete. / casa unei doamne", "Bir kıza veriyorum. / bir hanımın evi"],
+            ["Tüm çoğul", "unor + isim", "Dau unor copii. / cartea unor elevi", "Bazı çocuklara veriyorum. / bazı öğrencilerin kitabı"],
+          ],
+        },
+      },
+      {
+        type: "warning",
+        title: "Genitif Yapısında Söz Dizimi",
+        text: "Romence Genitif yapısında iyelik SONRAYA gelir (Türkçe'nin tersine!):\n\n• Türkçe: 'öğrencinin kitabı' → önce sahip, sonra nesne\n• Romence: 'cartea elevului' → önce nesne (belirli), sonra sahip (G/D biçimi)\n• YANLIŞ: *elevului cartea ✗\n• DOĞRU: cartea elevului ✓",
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "cartea profesorului de română", tr: "Romence öğretmeninin kitabı" },
+          { ro: "ușa camerei mele", tr: "Odamın kapısı" },
+          { ro: "numele orașului", tr: "Şehrin adı" },
+          { ro: "Dau unui coleg informații.", tr: "Bir meslektaşa bilgi veriyorum." },
+          { ro: "Am spus mamei adevărul.", tr: "Anneye gerçeği söyledim." },
+          { ro: "Aparțin acestei echipe.", tr: "Bu takıma aitim. (Datif: echipei)" },
+          { ro: "Îi mulțumesc profesorului.", tr: "Öğretmene teşekkür ediyorum." },
+        ],
+      },
+      {
+        type: "heading",
+        text: "3.5 Artikel Sistemi: Belirli, Belirsiz ve İşaret Artikeli",
         level: 3,
       },
       {
         type: "paragraph",
-        text: "Rumence'nin en özgün özelliklerinden biri, belirli artikelin ismin SONUNA eklenmesidir. Bu özellik Balkanlarda 'Dil Birliği' adı verilen temas bölgesinin etkisiyle ortaya çıkmış ve Rumenceyi diğer Roman dillerinden belirgin şekilde ayırır.",
+        text: "Romence'nin en özgün özelliği, belirli artikelin ismin SONUNA eklenmesidir (artakili artikel). Bu özellik Balkanlarda 'Balkan Sprachbund' (Dil Birliği) adı verilen temas bölgesinin etkisiyle ortaya çıkmış ve Romenceyi tüm diğer Roman dillerinden ayırır.",
       },
       {
         type: "table",
@@ -216,6 +333,28 @@ export const grammarSections: GrammarSection[] = [
         },
       },
       {
+        type: "heading",
+        text: "3.6 Artikel + Hâl Etkileşimi",
+        level: 3,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Hâl", "Eril Tekil", "Dişil Tekil", "Eril Çoğul", "Dişil Çoğul"],
+          rows: [
+            ["Belirsiz N/Ac", "un băiat", "o fată", "niște băieți", "niște fete"],
+            ["Belirsiz G/D", "unui băiat", "unei fete", "unor băieți", "unor fete"],
+            ["Belirli N/Ac", "băiatul", "fata", "băieții", "fetele"],
+            ["Belirli G/D", "băiatului", "fetei", "băieților", "fetelor"],
+          ],
+        },
+      },
+      {
+        type: "tip",
+        title: "🔑 Altın Kural: Belirli G/D",
+        text: "Eril/nötr tekil belirli G/D daima -lui ile biter.\nDişil tekil belirli G/D daima -ei ile biter.\nÇoğul G/D daima -lor ile biter.\n\nBu üç son ek (-lui / -ei / -lor) ezberlenirse Genitif-Datif sisteminin %90'ı çözülür.",
+      },
+      {
         type: "example",
         pairs: [
           { ro: "un băiat / băiatul / băiatului / băieții / băieților", tr: "bir oğlan / oğlan(def.) / oğlanın / oğlanlar / oğlanların" },
@@ -226,14 +365,21 @@ export const grammarSections: GrammarSection[] = [
     ],
   },
 
+  // ─────────────────────────────────────────────────────────
   // BÖLÜM 4 — Sıfatlar
+  // ─────────────────────────────────────────────────────────
   {
     id: "bolum-4",
     title: "BÖLÜM 4 — Sıfatlar (Adjective)",
     content: [
       {
         type: "paragraph",
-        text: "Rumence sıfatları nitelendirdikleri isimle cinsiyet, sayı ve durum bakımından uyum (acord) sağlar. Bu uyum zorunludur; ihmal edilmesi cümleyi yanlış kılar.",
+        text: "Romence sıfatları nitelendirdikleri isimle cinsiyet, sayı ve durum bakımından uyum (acord) sağlar. Bu uyum zorunludur; ihmal edilmesi cümleyi dilbilgisel açıdan yanlış kılar.",
+      },
+      {
+        type: "heading",
+        text: "4.1 Cinsiyet ve Sayı Uyumu (Acordul)",
+        level: 3,
       },
       {
         type: "table",
@@ -242,20 +388,47 @@ export const grammarSections: GrammarSection[] = [
           rows: [
             ["frumos", "frumos", "frumoasă", "frumoși", "frumoase", "güzel/yakışıklı"],
             ["bun", "bun", "bună", "buni", "bune", "iyi"],
-            ["mare", "mare", "mare", "mari", "mari", "büyük"],
+            ["mare", "mare", "mare", "mari", "mari", "büyük (2 biçim)"],
             ["mic", "mic", "mică", "mici", "mici", "küçük"],
             ["nou", "nou", "nouă", "noi", "noi", "yeni"],
-            ["vechi", "vechi", "veche", "vechi", "vechi", "eski"],
-            ["înalt", "înalt", "înaltă", "inalți", "înalte", "uzun boylu"],
+            ["vechi", "vechi", "veche", "vechi", "vechi", "eski (2 biçim)"],
+            ["înalt", "înalt", "înaltă", "înalți", "înalte", "uzun boylu"],
             ["scurt", "scurt", "scurtă", "scurți", "scurte", "kısa"],
             ["ieftin", "ieftin", "ieftină", "ieftini", "ieftine", "ucuz"],
             ["scump", "scump", "scumpă", "scumpi", "scumpe", "pahalı"],
+            ["tânăr", "tânăr", "tânără", "tineri", "tinere", "genç"],
+            ["bătrân", "bătrân", "bătrână", "bătrâni", "bătrâne", "yaşlı"],
+            ["drăguț", "drăguț", "drăguță", "drăguți", "drăguțe", "sevimli/hoş"],
+            ["simplu", "simplu", "simplă", "simpli", "simple", "basit/sade"],
           ],
         },
       },
       {
+        type: "tip",
+        title: "💡 2 Biçimli ve 4 Biçimli Sıfatlar",
+        text: "Romence sıfatları iki gruba ayrılır:\n\n• 4 biçimli: En kalabalık grup. Eril/Dişil tekil ve çoğul için dört farklı biçim. Örn: frumos/frumoasă/frumoși/frumoase.\n• 2 biçimli: Tekil ve çoğul için yalnızca iki biçim; eril/dişil ayrımı yoktur. Örn: mare/mari, vechi/vechi.\n• Sıfırdan değişmeyen sıfatlar: gri (gri), mov (mor), roz (pembe) — bu renkler hiç değişmez.",
+      },
+      {
         type: "heading",
-        text: "Karşılaştırma Dereceleri",
+        text: "4.2 Sıfatın Konumu ve İsimle İlişkisi",
+        level: 3,
+      },
+      {
+        type: "paragraph",
+        text: "Romence'de sıfatlar çoğunlukla ismin ARKASINA gelir. Bu özellik Türkçe'nin tam tersidir. Ancak bazı durumlarda sıfat öne geçebilir ve bu konum farkı anlam nüansı yaratır.",
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "un film bun / un bun film", tr: "iyi bir film (nötr) / iyi bir film (övgü içerir)" },
+          { ro: "omul sărac / săracul om", tr: "fakir adam (tanımlama) / zavallı adam (acıma içerir)" },
+          { ro: "același lucru de fiecare dată", tr: "her seferinde aynı şey" },
+          { ro: "primul meu job", tr: "benim ilk işim" },
+        ],
+      },
+      {
+        type: "heading",
+        text: "4.3 Derecelendirme: comparativ ve superlativ",
         level: 3,
       },
       {
@@ -263,27 +436,72 @@ export const grammarSections: GrammarSection[] = [
         data: {
           headers: ["Derece", "Yapı", "Örnek (frumos)", "Türkçe Karşılığı"],
           rows: [
-            ["Pozitif", "sıfat", "frumos", "güzel"],
-            ["Üstünlük", "mai + sıfat + decât/ca", "mai frumos decât", "daha güzel -den"],
-            ["Eşitlik", "la fel de + sıfat + ca", "la fel de frumos ca", "...kadar güzel"],
-            ["Aşağılık", "mai puțin + sıfat + decât", "mai puțin frumos", "daha az güzel"],
-            ["Göreli üst.", "cel/cea/cei/cele mai + sıfat", "cel mai frumos", "en güzel"],
-            ["Mutlak üst.", "foarte + sıfat", "foarte frumos", "çok güzel"],
-            ["Aşırılık", "prea + sıfat", "prea frumos", "fazla güzel"],
+            ["Pozitif", "sıfat yalın", "frumos", "güzel"],
+            ["Comparativ superior", "mai + sıfat (+ decât/ca)", "mai frumos decât Ion", "Ion'dan daha güzel"],
+            ["Comparativ de egalitate", "la fel de + sıfat + ca", "la fel de frumos ca Ion", "Ion kadar güzel"],
+            ["Comparativ inferior", "mai puțin + sıfat (+ decât)", "mai puțin frumos decât Ion", "Ion'dan daha az güzel"],
+            ["Superlativ relativ +", "cel/cea/cei/cele mai + sıfat", "cel mai frumos din clasă", "sınıfın en güzeli"],
+            ["Superlativ relativ -", "cel/cea/cei/cele mai puțin + sıfat", "cel mai puțin frumos", "en az güzel olan"],
+            ["Superlativ absolut", "foarte + sıfat", "foarte frumos", "çok güzel"],
+            ["Superlativ absolut (pekiştirilmiş)", "tare/extrem de + sıfat", "tare frumos / extrem de frumos", "müthiş güzel"],
+            ["Aşırılık (olumsuz)", "prea + sıfat", "prea frumos", "aşırı güzel (doğal olmayan)"],
           ],
         },
+      },
+      {
+        type: "heading",
+        text: "Düzensiz Karşılaştırma",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Türkçe", "Pozitif", "Comparativ", "Superlativ"],
+          rows: [
+            ["iyi", "bun", "mai bun", "cel mai bun"],
+            ["kötü", "rău", "mai rău", "cel mai rău"],
+            ["büyük", "mare", "mai mare", "cel mai mare"],
+            ["küçük", "mic", "mai mic", "cel mai mic"],
+            ["çok (miktar)", "mult", "mai mult", "cel mai mult"],
+            ["az", "puțin", "mai puțin", "cel mai puțin"],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "4.4 Sıfatların Hâl Uyumu",
+        level: 3,
+      },
+      {
+        type: "paragraph",
+        text: "Belirli isim grubunda sıfat da hâl biçimine girer. Dişil tekil Genitif/Datif'te sıfatın sonuna -i eklenir; eril G/D'de artikel bu işi üstlendiğinden sıfat biçimi değişmez.",
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "cartea fetei frumoase (G/D)", tr: "güzel kızın kitabı" },
+          { ro: "casa omului bogat", tr: "zengin adamın evi" },
+          { ro: "prietena fetei tinere", tr: "genç kızın kız arkadaşı" },
+          { ro: "mașina profesorului nou", tr: "yeni öğretmenin arabası" },
+        ],
       },
     ],
   },
 
+  // ─────────────────────────────────────────────────────────
   // BÖLÜM 5 — Zamirler
+  // ─────────────────────────────────────────────────────────
   {
     id: "bolum-5",
     title: "BÖLÜM 5 — Zamirler (Pronume)",
     content: [
       {
+        type: "paragraph",
+        text: "Romence zamir sistemi, özellikle bağımlı (kısa) zamirlerin konumu ve birleşimi bakımından öğrenciler için özel bir zorluk alanı oluşturur. Dilbilimde 'klitik' olarak da adlandırılan bu kısa zamir biçimleri, tek başına vurgu alamaz; daima bir fiile yaslanarak kullanılır.",
+      },
+      {
         type: "heading",
-        text: "5.1 Kişi Zamirleri",
+        text: "5.1 Kişi Zamirleri — Tüm Hâller",
         level: 3,
       },
       {
@@ -303,13 +521,82 @@ export const grammarSections: GrammarSection[] = [
         },
       },
       {
-        type: "tip",
-        title: "📌 Kısa Zamirlerin Konumu",
-        text: "Kısa (klitik) zamir biçimleri daima fiilin hemen önüne, olumsuzluk 'nu'sundan hemen sonra gelir:\n\n• Mă vede. → Beni görüyor.\n• Nu mă vede. → Beni görmüyor.\n• Îți dau cartea. → Sana kitabı veriyorum.\n\nUzun biçimler edatlardan sonra veya vurgu amacıyla kullanılır: La mine → Bende / Benimki.",
+        type: "heading",
+        text: "5.2 Bağımlı Zamir Konumu ve Birleşim Kuralları",
+        level: 3,
       },
       {
         type: "heading",
-        text: "5.2 İyelik Sıfatları",
+        text: "A. Kısa Zamir Fiilin ÖNÜNDE: Proklitik Kullanım",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Yapı", "Örnek", "Türkçesi"],
+          rows: [
+            ["bağımlı zamir + fiil (olumlu)", "Mă vede. / Îl cunosc. / Îți scriu.", "Beni görüyor. / Onu tanıyorum. / Sana yazıyorum."],
+            ["nu + bağımlı zamir + fiil (olumsuz)", "Nu mă vede. / Nu îl cunosc.", "Beni görmüyor. / Onu tanımıyorum."],
+            ["Cümle başı + bağımlı zamir + fiil", "Ea îl iubește. / Ion îmi scrie.", "O onu seviyor. / Ion bana yazıyor."],
+            ["İki bağımlı zamir: önce Datif, sonra Akuzatif", "Mi-l dă. / Ți-l dau.", "Onu bana veriyor. / Sana onu veriyorum."],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "B. Kısa Zamir Fiilin ARKASINDA: Enklitik Kullanım",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Durum", "Örnek", "Türkçesi"],
+          rows: [
+            ["Olumlu emir kipi (imperativ)", "Dă-mi! / Du-te! / Spune-i! / Ajută-mă!", "Ver bana! / Git! / Ona söyle! / Bana yardım et!"],
+            ["Mastar (infinitiv) biçiminde", "a-l vedea / a-i spune / a mă duce", "onu görmek / ona söylemek / gitmek"],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "C. İki Bağımlı Zamirin Birlikte Kullanımı",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Datif Kısa", "Akuzatif Kısa", "Birleşik Biçim", "Örnek", "Türkçesi"],
+          rows: [
+            ["îmi (bana)", "îl", "mi-l", "Mi-l dă.", "Onu bana veriyor."],
+            ["îmi", "o", "mi-o", "Mi-o dă.", "Onu (dişil) bana veriyor."],
+            ["îți (sana)", "îl", "ți-l", "Ți-l dau.", "Onu sana veriyorum."],
+            ["îți", "o", "ți-o", "Ți-o trimit.", "Onu sana gönderiyorum."],
+            ["îi (ona)", "îl", "i-l", "I-l spun.", "Onu ona söylüyorum."],
+            ["ne (bize)", "îl", "ni-l", "Ni-l arată.", "Onu bize gösteriyor."],
+            ["vă (size)", "o", "vi-o", "Vi-o explic.", "Onu size açıklıyorum."],
+            ["le (onlara)", "îl", "li-l", "Li-l dau.", "Onu onlara veriyorum."],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "D. Uzun (Vurgulu) Zamir Biçimleri",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Kullanım", "Örnek", "Türkçesi"],
+          rows: [
+            ["Edattan sonra", "La mine. / Fără tine. / Cu el.", "Bende. / Sensiz. / Onunla."],
+            ["Karşıtlık/vurgu için", "Pe mine mă vede, nu pe tine.", "Beni görüyor, seni değil."],
+            ["Yüklem tümleci olarak", "Asta e pentru mine.", "Bu benim için."],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "5.3 İyelik Sıfatları ve Zamirleri",
         level: 3,
       },
       {
@@ -317,48 +604,109 @@ export const grammarSections: GrammarSection[] = [
         data: {
           headers: ["Sahip", "Eril Tek.", "Dişil Tek.", "Eril Çoğ.", "Dişil Çoğ.", "Örnek"],
           rows: [
-            ["eu", "meu", "mea", "mei", "mele", "fratele meu (erkek kardeşim)"],
-            ["tu", "tău", "ta", "tăi", "tale", "mașina ta (araban)"],
-            ["el", "său / lui", "sa / lui", "săi / lui", "sale / lui", "prietenii săi (arkadaşları)"],
-            ["ea", "său / ei", "sa / ei", "săi / ei", "sale / ei", "casa sa (evi)"],
-            ["noi", "nostru", "noastră", "noștri", "noastre", "copiii noștri (çocuklarımız)"],
-            ["voi", "vostru", "voastră", "voștri", "voastre", "părinții voștri (aileniz)"],
-            ["ei/ele", "lor", "lor", "lor", "lor", "cartea lor (onların kitabı)"],
+            ["eu", "meu", "mea", "mei", "mele", "fratele meu / prietena mea"],
+            ["tu", "tău", "ta", "tăi", "tale", "câinele tău / cartea ta"],
+            ["el", "său / lui", "sa / lui", "săi / lui", "sale / lui", "prietenii săi / casa lui Ion"],
+            ["ea", "său / ei", "sa / ei", "săi / ei", "sale / ei", "frații săi / familia ei"],
+            ["noi", "nostru", "noastră", "noștri", "noastre", "copiii noștri / casa noastră"],
+            ["voi", "vostru", "voastră", "voștri", "voastre", "părinții voștri / ideea voastră"],
+            ["ei/ele", "lor", "lor", "lor", "lor", "cartea lor / părinții lor"],
           ],
         },
       },
-    ],
-  },
-
-  // BÖLÜM 6 — Fiiller
-  {
-    id: "bolum-6",
-    title: "BÖLÜM 6 — Fiiller (Verbe) — Kapsamlı Konu Anlatımı",
-    content: [
       {
-        type: "paragraph",
-        text: "Rumence fiil sistemi bu dilin en zengin boyutunu oluşturur. Çekim; kişi, sayı, zaman, kip ve görünüş bakımından gerçekleşir. Dört konjugasyon grubu vardır ve her grup kendi iç mantığına sahiptir.",
+        type: "tip",
+        title: "📌 İyelik Zamiri Kullanımı: al/a/ai/ale",
+        text: "İyelik sıfatları bağımsız zamir olarak kullanıldığında başlarına al/a/ai/ale gösterme artikeli alır:\n\n• al meu / a mea / ai mei / ale mele → benimki (eril/dişil tekil, eril/dişil çoğul)\n• Acesta e al tău. → Bu seninki.\n• Mașina asta e a mea, nu a ta. → Bu araba benimki, senin değil.\n• Copiii ăia sunt ai lor. → O çocuklar onlarınki.",
       },
       {
         type: "heading",
-        text: "6.1 Dört Konjugasyon Grubu",
+        text: "5.4 İşaret, Belirsizlik ve Soru Zamirleri",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["Grup", "Mastar Son Eki", "Yaygın Fiiller"],
+          headers: ["Zamir Türü", "Romence", "Türkçesi", "Notlar"],
           rows: [
-            ["I", "-a", "a cânta, a lucra, a aştepta, a pleca, a intra"],
-            ["II", "-ea", "a vedea, a putea, a cădea, a bea, a tăcea"],
-            ["III", "-e", "a merge, a face, a scrie, a zice, a pune, a cunoaşte"],
-            ["IV", "-i / -î", "a veni, a dormi, a auzi, a coborî, a hotărî"],
+            ["İşaret (yakın)", "acesta (m) / aceasta (f) / ăsta/asta (günlük)", "bu", "Eril/Nötr: acesta; Dişil: aceasta"],
+            ["İşaret (uzak)", "acela (m) / aceea (f) / ăla/aia (günlük)", "o / şu", "Eril: acela; Dişil: aceea"],
+            ["İşaret (çoğul yakın)", "aceștia (m) / acestea (f)", "bunlar", "Akuzatif: pe aceștia / pe acestea"],
+            ["İşaret (çoğul uzak)", "aceia (m) / acelea (f)", "onlar / şunlar", "Akuzatif: pe aceia / pe acelea"],
+            ["Belirsizlik", "cineva (biri), ceva (bir şey)", "—", "Olumsuz: nimeni, nimic"],
+            ["Belirsizlik", "toată lumea (herkes), fiecare (her biri)", "—", "fiecare + tekil fiil"],
+            ["Soru", "cine (kim), ce (ne), care (hangi), câți/câte (kaç)", "—", "kim, ne, hangi, kaç"],
+            ["Relatif", "care (ki/olan), pe care (ki onu/n)", "—", "ki o, ki onu"],
+          ],
+        },
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "Cine a venit? — Cineva necunoscut.", tr: "Kim geldi? — Birileri (tanımadık biri)." },
+          { ro: "Ce vrei? — Nimic special.", tr: "Ne istiyorsun? — Özel bir şey değil." },
+          { ro: "Care din ele e mai bună?", tr: "Hangisi daha iyi?" },
+          { ro: "Omul care vorbește e profesorul.", tr: "Konuşan adam öğretmen." },
+          { ro: "Cartea pe care o citesc e interesantă.", tr: "Okuduğum kitap ilginç. (pe care = relatif Ac)" },
+          { ro: "Toată lumea știe asta.", tr: "Herkes bunu biliyor." },
+          { ro: "Fiecare copil are nevoie de iubire.", tr: "Her çocuğun sevgiye ihtiyacı vardır." },
+        ],
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────
+  // BÖLÜM 6 — Fiiller
+  // ─────────────────────────────────────────────────────────
+  {
+    id: "bolum-6",
+    title: "BÖLÜM 6 — Fiiller (Verbe) — Kip ve Zaman Sistemi",
+    content: [
+      {
+        type: "paragraph",
+        text: "Romence fiil sistemi bu dilin en zengin boyutunu oluşturur. Çekim; kişi, sayı, zaman, kip ve görünüş bakımından gerçekleşir. Dört konjugasyon grubu vardır ve her grup kendi iç mantığına sahiptir.",
+      },
+      {
+        type: "heading",
+        text: "6.1 Kip Haritası — Romence Fiil Sistemi Özeti",
+        level: 3,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Kip (Mod)", "Alt Zamanlar / Biçimler", "Temel İşlevi", "Türkçe Paraleli"],
+          rows: [
+            ["indicativ (haber kipi)", "Prezent, Imperfect, perfect compus, MMP, viitor I, II, anterior", "Gerçek eylemler", "Bildirme kipleri"],
+            ["conjunctiv (isteme kipi)", "conjunctiv prezent, conjunctiv trecut", "İstek, amaç, zorunluluk", "İstek kipi / -meli yapısı"],
+            ["condițional (koşul kipi)", "condițional prezent, condițional trecut", "Koşullu durum, nazik istek", "-se/-saydı yapıları"],
+            ["imperativ (emir kipi)", "prezent (tu / voi)", "Emir, yasaklama, istek", "Emir kipi"],
+            ["infinitiv (mastar)", "a + fiil (değişmez)", "Fiil adı; nesne/özne işlevi", "Mastar (-mak/-mek)"],
+            ["participiu (geçmiş ortaç)", "Geçmiş ortaç", "Tamamlanmış eylem; sıfat", "-miş ortacı"],
+            ["gerunziu (ulaç)", "Kök + -ând / -ind", "Eşzamanlı ya da bitişik eylem", "-arak/-erek"],
+            ["supin (eylemlik)", "de + participiu", "Edilgen anlam, yükümlülük", "(Türkçe'de tam karşılığı yok)"],
           ],
         },
       },
       {
         type: "heading",
-        text: "6.2 Prezent — Şimdiki / Geniş Zaman",
+        text: "6.2 Dört Konjugasyon Grubu ve Mastar",
+        level: 3,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Grup", "Mastar Son Eki", "Yaygın Fiiller", "Önemli Not"],
+          rows: [
+            ["I", "-a", "a cânta, a lucra, a aștepta, a pleca, a intra", "En kalabalık grup; yeni öğrenilen fiiller de bu gruba girer"],
+            ["II", "-ea", "a vedea, a putea, a cădea, a bea, a tăcea", "Görece az sayıda fiil; ancak çok sık kullanılırlar"],
+            ["III", "-e", "a merge, a face, a scrie, a zice, a pune, a cunoaște", "Düzensizlik en fazla bu grupta görülür"],
+            ["IV", "-i / -î", "a veni, a dormi, a auzi, a coborî, a hotărî", "-î mastarlı fiiller kendi içinde düzenli çekime sahiptir"],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "6.3 Prezent — Şimdiki / Geniş Zaman",
         level: 3,
       },
       {
@@ -389,19 +737,19 @@ export const grammarSections: GrammarSection[] = [
             ["tu", "ești", "ai", "vrei", "știi", "dai", "iei"],
             ["el/ea", "este", "are", "vrea", "știe", "dă", "ia"],
             ["noi", "suntem", "avem", "vrem", "știm", "dăm", "luăm"],
-            ["voi", "sunteți", "aveți", "vreți", "știți", "dati", "luați"],
+            ["voi", "sunteți", "aveți", "vreți", "știți", "dați", "luați"],
             ["ei/ele", "sunt", "au", "vor", "știu", "dau", "iau"],
           ],
         },
       },
       {
         type: "heading",
-        text: "6.3 Perfect Compus — Bileşik Geçmiş Zaman",
+        text: "6.4 Perfect Compus — Bileşik Geçmiş Zaman",
         level: 3,
       },
       {
         type: "paragraph",
-        text: "Günlük konuşmada en sık kullanılan geçmiş zamandır. Yapısı: a avea çekimi + participiu (geçmiş ortaç).",
+        text: "Günlük konuşmada en sık kullanılan geçmiş zamandır. Yapısı: a avea çekimi + participiu (geçmiş ortaç). Türkçe'nin hem -dı/-di hem de -mış/-miş geçmişini karşılayabilir.",
       },
       {
         type: "table",
@@ -420,11 +768,11 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "tip",
         title: "💡 Participiu (Geçmiş Ortaç) Kuralları",
-        text: "Grup I (-a): kök + -at → cântat, lucrat, aşteptat, plecat\nGrup II (-ea): kök + -ut → văzut, putut, căzut, băut\nGrup III (-e): çoğunlukla düzensiz → mers, făcut, scris, zis, pus\nGrup IV (-i/-î): kök + -it → venit, dormit, auzit, coborât\n\nDüzensiz ortaçlar: a fi→fost, a da→dat, a lua→luat, a vedea→văzut, a merge→mers, a face→făcut",
+        text: "Grup I (-a): kök + -at → cântat, lucrat, așteptat, plecat\nGrup II (-ea): kök + -ut → văzut, putut, căzut, băut\nGrup III (-e): çoğunlukla düzensiz → mers, făcut, scris, zis, pus\nGrup IV (-i/-î): kök + -it → venit, dormit, auzit, coborât\n\nDüzensiz ortaçlar: a fi→fost, a da→dat, a lua→luat, a vedea→văzut, a merge→mers, a face→făcut",
       },
       {
         type: "heading",
-        text: "6.4 Imperfect — Süregelen/Alışkanlık Geçmiş Zaman",
+        text: "6.5 Imperfect — Süregelen/Alışkanlık Geçmiş Zaman",
         level: 3,
       },
       {
@@ -455,12 +803,12 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "6.5 Mai Mult ca Perfect — Pluperfect",
+        text: "6.6 Mai Mult ca Perfect — Pluperfect",
         level: 3,
       },
       {
         type: "paragraph",
-        text: "Başka bir geçmiş eylemden daha önce tamamlanmış eylemleri anlatır. Türkçe'de '-mıştı / -dıydı' yapısına karşılık gelir.",
+        text: "Başka bir geçmiş eylemden daha önce tamamlanmış eylemleri anlatır. Türkçe'de '-mıştı / -dıydı' yapısına karşılık gelir. Romence'nin bu zamanı tamamen sentetiktir (yardımcı fiil kullanmaz).",
       },
       {
         type: "table",
@@ -478,7 +826,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "6.6 Viitor — Gelecek Zaman",
+        text: "6.7 Viitor — Gelecek Zaman",
         level: 3,
       },
       {
@@ -495,7 +843,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "6.7 Condițional — Şart ve Koşul Kipi",
+        text: "6.8 Condițional — Şart ve Koşul Kipi",
         level: 3,
       },
       {
@@ -514,12 +862,12 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "6.9 Conjunctiv — Bağlam Kipi (Subjunctiv)",
+        text: "6.9 Conjunctiv — İsteme Kipi (Subjunctiv)",
         level: 3,
       },
       {
         type: "paragraph",
-        text: "Conjunctiv, Rumence'de son derece yaygın kullanılan bir kiptir. İstek, amaç, zorunluluk ve olasılık bildiren fiillerden sonra mutlaka să + conjunctiv gelir.",
+        text: "Conjunctiv, Romence'de son derece yaygın kullanılan ve Türkçe'de tek bir yapıya karşılık gelmeyen bir kiptir. İstek, amaç, zorunluluk ve olasılık bildiren fiillerden sonra mutlaka să + conjunctiv gelir.",
       },
       {
         type: "example",
@@ -530,7 +878,7 @@ export const grammarSections: GrammarSection[] = [
           { ro: "Sper să câștigăm.", tr: "Kazanmayı umuyoruz." },
           { ro: "Mi-e frică să vorbesc.", tr: "Konuşmaktan korkuyorum." },
           { ro: "Îl rog să vină.", tr: "Gelmesini rica ediyorum." },
-          { ro: "Lasă-mă să explic.", tr: "Açıklamamı izin ver." },
+          { ro: "Lasă-mă să explic.", tr: "Açıklamamıza izin verin." },
         ],
       },
       {
@@ -561,7 +909,7 @@ export const grammarSections: GrammarSection[] = [
         pairs: [
           { ro: "apă fiartă", tr: "Kaynatılmış su (participiu sıfat olarak)" },
           { ro: "Mergând mai repede, am ajuns la timp.", tr: "Daha hızlı yürüyerek zamanında vardım." },
-          { ro: "Vorbind românește, exersăm.", tr: "Rumence konuşarak pratik yapıyoruz." },
+          { ro: "Vorbind românește, exersăm.", tr: "Romence konuşarak pratik yapıyoruz." },
         ],
       },
       {
@@ -571,7 +919,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Rumence'de dönüşlü fiiller se zamiriyle işaretlenir. Türkçe'de çoğu zaman '-in-' veya '-il-' ekleriyle karşılanır.",
+        text: "Romence'de dönüşlü fiiller se zamiriyle işaretlenir. Türkçe'de çoğu zaman '-in-' veya '-il-' ekleriyle karşılanır; ancak Romence'deki kullanım çok daha geniştir.",
       },
       {
         type: "table",
@@ -588,10 +936,123 @@ export const grammarSections: GrammarSection[] = [
           ],
         },
       },
+      {
+        type: "heading",
+        text: "6.12 Düzensiz Fiiller (Verbe Neregulate)",
+        level: 3,
+      },
+      {
+        type: "heading",
+        text: "A. a fi — olmak",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Kişi", "Prezent", "Imperfect", "Perfect Compus", "Conjunctiv"],
+          rows: [
+            ["eu", "sunt", "eram", "am fost", "să fiu"],
+            ["tu", "ești", "erai", "ai fost", "să fii"],
+            ["el/ea", "este / e", "era", "a fost", "să fie"],
+            ["noi", "suntem", "eram", "am fost", "să fim"],
+            ["voi", "sunteți", "erați", "ați fost", "să fiți"],
+            ["ei/ele", "sunt", "erau", "au fost", "să fie"],
+          ],
+        },
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "Sunt student.", tr: "Öğrenciyim." },
+          { ro: "Era obosit.", tr: "Yorgundu." },
+          { ro: "Am fost la mare.", tr: "Denize gittim. (Denizdeydim.)" },
+          { ro: "Fie ce-o fi.", tr: "Ne olursa olsun." },
+        ],
+      },
+      {
+        type: "heading",
+        text: "B. a avea — sahip olmak / yardımcı fiil",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Kişi", "Prezent", "Imperfect", "Perfect Compus", "Conjunctiv"],
+          rows: [
+            ["eu", "am", "aveam", "am avut", "să am"],
+            ["tu", "ai", "aveai", "ai avut", "să ai"],
+            ["el/ea", "are", "avea", "a avut", "să aibă"],
+            ["noi", "avem", "aveam", "am avut", "să avem"],
+            ["voi", "aveți", "aveați", "ați avut", "să aveți"],
+            ["ei/ele", "au", "aveau", "au avut", "să aibă"],
+          ],
+        },
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "Am o carte.", tr: "Bir kitabım var." },
+          { ro: "Nu am timp.", tr: "Zamanım yok." },
+          { ro: "Ai dreptate.", tr: "Haklısın." },
+          { ro: "Să aibă răbdare.", tr: "Sabrı olsun." },
+        ],
+      },
+      {
+        type: "heading",
+        text: "C. a vrea — istemek",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Kişi", "Prezent", "Imperfect", "Conjunctiv"],
+          rows: [
+            ["eu", "vreau", "voiam", "să vreau"],
+            ["tu", "vrei", "voiai", "să vrei"],
+            ["el/ea", "vrea", "voia", "să vrea"],
+            ["noi", "vrem", "voiam", "să vrem"],
+            ["voi", "vreți", "voiați", "să vreți"],
+            ["ei/ele", "vor", "voiau", "să vrea"],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "D. Sık Kullanılan Düzensiz Fiiller — Özet Tablo",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Mastar", "Prezent (eu/tu/el)", "Participiu", "İmperativ (tu)", "Türkçesi"],
+          rows: [
+            ["a merge", "merg / mergi / merge", "mers", "mergi!", "gitmek"],
+            ["a face", "fac / faci / face", "făcut", "fă!", "yapmak"],
+            ["a da", "dau / dai / dă", "dat", "dă!", "vermek"],
+            ["a lua", "iau / iei / ia", "luat", "ia!", "almak"],
+            ["a ști", "știu / știi / știe", "știut", "știi!", "bilmek"],
+            ["a putea", "pot / poți / poate", "putut", "—", "yapabilmek"],
+            ["a veni", "vin / vii / vine", "venit", "vino!", "gelmek"],
+            ["a vedea", "văd / vezi / vede", "văzut", "vezi!", "görmek"],
+            ["a fi", "sunt / ești / este", "fost", "fii!", "olmak"],
+            ["a bea", "beau / bei / bea", "băut", "bea!", "içmek"],
+            ["a ține", "țin / ții / ține", "ținut", "ține!", "tutmak"],
+            ["a pune", "pun / pui / pune", "pus", "pune!", "koymak"],
+            ["a zice", "zic / zici / zice", "zis", "zi!", "söylemek/demek"],
+          ],
+        },
+      },
+      {
+        type: "tip",
+        title: "📌 Düzensiz Fiilleri Öğrenme Stratejisi",
+        text: "Her düzensiz fiilin mutlaka şu üç biçimini ezberleyin: (1) mastar, (2) el/ea çekimi (en çok değişen), (3) participiu.\n\na face — face — făcut; a merge — merge — mers; a da — dă — dat\n\nGeri kalan biçimler bu temel çekimden türetilebilir.",
+      },
     ],
   },
 
+  // ─────────────────────────────────────────────────────────
   // BÖLÜM 7 — Zarflar ve Edatlar
+  // ─────────────────────────────────────────────────────────
   {
     id: "bolum-7",
     title: "BÖLÜM 7 — Zarflar ve Edatlar (Adverbe și Prepoziții)",
@@ -604,7 +1065,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["Kategori", "Rumence", "Türkçesi"],
+          headers: ["Kategori", "Romence", "Türkçesi"],
           rows: [
             ["Zaman", "acum, ieri, azi/astăzi, mâine, alaltăieri, poimâine", "şimdi, dün, bugün, yarın, evvelsi gün, öbür gün"],
             ["Zaman", "deja, încă, abia, iar, mereu, niciodată", "zaten/artık, hâlâ, yeni/henüz, yine, her zaman, asla"],
@@ -617,46 +1078,309 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "7.2 Temel Edatlar",
+        text: "7.2 Edatlar ve Hâl İlişkisi — Derinlemesine",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["Edat", "Yönettiği Durum", "Temel Anlamı", "Örnekler"],
+          headers: ["Edat", "Hâl", "Temel Anlam", "Yaygın Kullanımlar + Örnekler"],
           rows: [
-            ["în", "Akuzatif / Lokatif", "içinde, -de/-da", "în casă (evde), în România, în 2024"],
-            ["la", "Akuzatif", "-e/-a (yön) / -de/-da", "la școală, la medic, la ora 8"],
-            ["de", "Akuzatif", "-den/-dan, ait, hakkında", "de la Cluj, de dimineaţă, vorbesc de tine"],
-            ["pe", "Akuzatif", "üstünde; nesne belirteç", "pe masă, pe stradă, îl văd pe Ion"],
-            ["cu", "Akuzatif", "ile, -le/-la", "cu prietenii, cu mașina, cafea cu lapte"],
-            ["fără", "Akuzatif", "olmadan, -siz/-sız", "fără zahăr, fără tine, fără probleme"],
-            ["pentru", "Akuzatif", "için", "pentru tine, pentru mâine"],
-            ["spre", "Akuzatif", "-e doğru", "spre casă, spre nord"],
-            ["lângă", "Akuzatif", "yanında, yakınında", "lângă mine, lângă școală"],
-            ["între", "Akuzatif", "arasında", "între noi, între 5 și 10"],
-            ["asupra", "Genitif", "üzerinde (soyut)", "asupra problemei, influență asupra ei"],
-            ["din", "Akuzatif", "içinden, -den/-dan", "vin din Turcia, o carte din bibliotecă"],
+            ["în", "Akuzatif", "içinde, -de", "în casă / în România / în 2024 / în fiecare zi (her gün)"],
+            ["la", "Akuzatif", "-e (yön), -da (konum)", "la școală / la medic / la ora opt"],
+            ["pe", "Akuzatif", "üstünde; belirli nesne belirteci", "pe masă / pe stradă / Îl văd pe Ion."],
+            ["de", "Akuzatif", "-den, ait, hakkında, neden", "vin de la Cluj / de dimineață / vorbesc de tine / de ce (neden)"],
+            ["cu", "Akuzatif", "ile, araç", "cu prietenii / cu mașina / Vorbesc cu el."],
+            ["fără", "Akuzatif", "olmadan", "fără tine / fără probleme / cafea fără zahăr"],
+            ["pentru", "Akuzatif", "için, adına", "pentru tine / Fac asta pentru tine."],
+            ["spre", "Akuzatif", "-e doğru", "spre casă / spre nord / spre seară (akşama doğru)"],
+            ["lângă", "Akuzatif", "yanında", "Stau lângă tine. / lângă ușă"],
+            ["între", "Akuzatif", "arasında", "între noi / între cinci și șase"],
+            ["prin", "Akuzatif", "boyunca, içinden", "prin pădure (orman içinden) / prin telefon"],
+            ["până la", "Akuzatif", "-e kadar", "până la gară / până la ora trei"],
+            ["din", "Akuzatif", "içinden, köken", "vin din Turcia / o carte din bibliotecă / din copilărie"],
+            ["despre", "Akuzatif", "hakkında", "Vorbesc despre tine. / un film despre dragoste"],
+            ["contra / împotriva", "Genitif", "karşı", "contra vântului / împotriva legii"],
+            ["asupra", "Genitif", "üzerinde (soyut)", "influență asupra mea / decizie asupra problemei"],
+            ["deasupra", "Genitif", "fiziksel olarak üstünde", "deasupra mesei (masanın üstünde)"],
+            ["dedesubtul", "Genitif", "altında", "dedesubtul patului"],
+            ["înaintea", "Genitif", "önünde, -den önce", "înaintea ta / înaintea mesei"],
+            ["în fața", "Genitif", "yüzüne karşı, önünde", "în fața școlii"],
+            ["în urma", "Genitif", "ardından, sonucunda", "în urma accidentului"],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "7.3 pe ile Belirli İnsan Nesnesi Kuralı",
+        level: 3,
+      },
+      {
+        type: "paragraph",
+        text: "Romence'de insan olan doğrudan nesneler pe edatıyla işaretlenir. Bu kural Türkçe'nin belirli nesne -i/-ı/-u/-ü ekine benzer.",
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "Văd un om.", tr: "Bir adam görüyorum. — belirsiz, pe yok" },
+          { ro: "Îl văd pe Ion.", tr: "Ion'u görüyorum. — belirli kişi → pe zorunlu" },
+          { ro: "O iubesc pe Maria.", tr: "Maria'yı seviyorum. — özel isim → pe zorunlu" },
+          { ro: "Chem pe cineva.", tr: "Birini çağırıyorum. → pe cineva, pe nimeni, pe toată lumea" },
+        ],
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────
+  // BÖLÜM 8 — Bağlaçlar ve Cümle Yapıları (YENİ)
+  // ─────────────────────────────────────────────────────────
+  {
+    id: "bolum-8",
+    title: "BÖLÜM 8 — Bağlaçlar ve Cümle Yapıları (Conjuncții și Propoziții)",
+    content: [
+      {
+        type: "paragraph",
+        text: "Romence bağlaç sistemi, basit cümlelerden karmaşık yan cümlecik yapılarına geçişin temelidir.",
+      },
+      {
+        type: "heading",
+        text: "8.1 Temel Bağlaçlar (Conjuncțiile Principale)",
+        level: 3,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Bağlaç", "Türkçesi", "Tür", "Örnekler"],
+          rows: [
+            ["și", "ve, da", "Sıralama", "Ea cântă și dansează. / Ion și Maria"],
+            ["sau", "veya, ya da", "Seçenek", "Cafea sau ceai?"],
+            ["ori... ori / fie... fie", "ya... ya da", "Seçenek (çiftli)", "Ori vii, ori pleci. / Fie bine, fie rău."],
+            ["dar / ci", "ama, ancak, aksine", "Karşıtlık", "Vreau, dar nu pot. / Nu el, ci ea a venit."],
+            ["însă / totuși", "bununla birlikte, yine de", "Kısıtlayıcı", "E obosit, însă lucrează."],
+            ["deci / prin urmare", "dolayısıyla, o hâlde", "Sonuç", "Știu, deci pot."],
+            ["că", "ki, -dığını", "Nesne cümleciği", "Știu că ești acolo. / Cred că vine."],
+            ["să", "ki (conjunctiv), için", "Amaç / conjunctiv tetikleyicisi", "Vreau să merg. / Vine să te vadă."],
+            ["dacă", "eğer, -se/-sa", "Koşul", "Dacă vrei, mergem. / Nu știu dacă vine."],
+            ["când", "ne zaman, -dığında", "Zaman", "Când vine, vorbim."],
+            ["deși / cu toate că", "her ne kadar, -se de", "Karşıtlık (tavizli)", "Deși e târziu, rămân."],
+            ["pentru că / fiindcă", "çünkü, -dığı için", "Neden", "Nu vin pentru că sunt bolnav."],
+            ["ca să / pentru ca să", "...için, -mek amacıyla", "Amaç", "Înveți ca să știi. / Fac asta pentru ca să te ajut."],
+            ["înainte să / înainte de a", "...dan önce", "Zaman (öncesi)", "Înainte să plec, sun."],
+            ["după ce", "...dan sonra", "Zaman (sonrası)", "După ce am mâncat, am plecat."],
+            ["în timp ce / pe când", "...iken, -dığı sırada", "Eşzamanlılık", "Ea cântă în timp ce el citește."],
+            ["deoarece / întrucât", "zira, çünkü", "Neden (resmî)", "Nu pot veni, deoarece sunt ocupat."],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "8.2 Yan Cümlecikler ve Relatif Yapılar",
+        level: 3,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Relatif Biçim", "Hâl/İşlev", "Örnek Cümle", "Türkçesi"],
+          rows: [
+            ["care", "N/Ac (özne veya insan dışı nesne)", "Omul care vorbește e profesorul.", "Konuşan adam öğretmen."],
+            ["pe care", "Ac (insan nesne)", "Cartea pe care o citesc e bună.", "Okuduğum kitap iyi."],
+            ["căruia / căreia", "Datif (eril/dişil)", "Băiatului căruia i-am dat cartea...", "Kitabı verdiğim oğlan..."],
+            ["al cărui / a cărei", "Genitif (eril/dişil sahip)", "Omul al cărui copil...", "Çocuğu olan adam..."],
+            ["unde", "Yer zarfı olarak", "Locul unde m-am născut.", "Doğduğum yer."],
+            ["când", "Zaman zarfı olarak", "Ziua când ne-am întâlnit.", "Tanıştığımız gün."],
+          ],
+        },
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "Omul care stă acolo e vecinul meu.", tr: "Orada oturan adam komşumdur." },
+          { ro: "Fata pe care o văd e sora lui.", tr: "Gördüğüm kız onun kız kardeşi." },
+          { ro: "Locul unde locuiesc e liniștit.", tr: "Yaşadığım yer sakin." },
+          { ro: "Știu că vine mâine.", tr: "Yarın geleceğini biliyorum." },
+          { ro: "Îți cer să fii atent.", tr: "Dikkatli olmanı istiyorum." },
+          { ro: "E important să înveți în fiecare zi.", tr: "Her gün çalışman önemli." },
+        ],
+      },
+      {
+        type: "heading",
+        text: "8.3 Koşul Cümleleri (Perioadele Ipotetice)",
+        level: 3,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Tip", "Koşul Cümlesi (dacă...)", "Sonuç Cümlesi", "Anlam"],
+          rows: [
+            ["Tip I — Gerçek/Olası", "Dacă ai timp,", "vino la noi. / o să vii la noi.", "Zamanın varsa, bize gel/geleceksin."],
+            ["Tip II — Gerçek Dışı (şimdi)", "Dacă aș avea bani,", "aș călători în lume.", "Param olsaydı, dünyayı gezerdim."],
+            ["Tip III — Geçmiş Gerçek Dışı", "Dacă aș fi știut,", "aș fi venit mai devreme.", "Bilseydim, daha erken gelirdim."],
+          ],
+        },
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "Dacă plouă, stau acasă.", tr: "Yağmur yağarsa evde kalırım. (Tip I)" },
+          { ro: "Dacă ar ploua, aș sta acasă.", tr: "Yağmur yağsaydı evde kalırdım. (Tip II)" },
+          { ro: "Dacă ar fi plouat, aș fi stat acasă.", tr: "Yağmur yağmış olsaydı evde kalmış olurdum. (Tip III)" },
+          { ro: "Dacă știi răspunsul, spune-mi.", tr: "Cevabı biliyorsan söyle. (Tip I — emir sonucu)" },
+          { ro: "Chiar dacă ar vrea, nu ar putea.", tr: "İstese bile yapamaz. (chiar dacă = bile)" },
+        ],
+      },
+      {
+        type: "heading",
+        text: "că vs. să farkı",
+        level: 4,
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "Știu că Maria vine mâine.", tr: "Maria'nın yarın geleceğini biliyorum. (gerçek bilgi → că)" },
+          { ro: "Vreau să vină Maria mâine.", tr: "Maria'nın yarın gelmesini istiyorum. (istek → să)" },
+          { ro: "Mi-e frică că nu vine.", tr: "Gelmeyeceğinden korkuyorum. (kaygı + gerçek → că)" },
+          { ro: "Mă tem să nu vină.", tr: "Gelmeyecek diye korkuyorum. (olası önlem → să nu)" },
+          { ro: "Îi spun că e bine.", tr: "Ona iyisin diyorum. (bilgi aktarımı → că)" },
+          { ro: "Îi spun să fie atent.", tr: "Ona dikkatli olmasını söylüyorum. (talimat → să)" },
+        ],
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────
+  // BÖLÜM 9 — Söz Dizimi (YENİ)
+  // ─────────────────────────────────────────────────────────
+  {
+    id: "bolum-9",
+    title: "BÖLÜM 9 — Söz Dizimi (Sintaxă Românească)",
+    content: [
+      {
+        type: "paragraph",
+        text: "Romence temel olarak Özne–Yüklem–Nesne (ÖYN) düzenini izler; ancak söz dizimi bakımından oldukça esnektir. Kelime sırası bilgi yapısını, vurguyu ve konuşmacının niyetini yansıtır.",
+      },
+      {
+        type: "heading",
+        text: "9.1 Temel Sözcük Sırası: ÖYN ve Esneklik",
+        level: 3,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Sıra", "Yapı", "Örnek", "Türkçesi", "Vurgu/Not"],
+          rows: [
+            ["Temel", "Ö–Y–N", "Maria citește o carte.", "Maria bir kitap okuyor.", "Nötr, günlük kullanım"],
+            ["Özne sona", "Y–N–Ö", "Citește o carte Maria.", "Maria bir kitap okuyor.", "Özne yeni bilgi"],
+            ["Nesne öne", "N–Ö–Y", "O carte citește Maria.", "Bir kitap okuyor Maria.", "Nesne öne çıkmış; odak"],
+            ["Yüklem öne", "Y–Ö–N", "Citește Maria o carte.", "Maria kitap okuyor.", "Hafif resmî"],
+          ],
+        },
+      },
+      {
+        type: "tip",
+        title: "💡 Türkçe ile Fark",
+        text: "Türkçe'de yüklem (fiil) her zaman sona gelir; Romence'de yüklem ortadadır.\nRomence'de vurgu, ek yerine kelime SİRASINI değiştirerek sağlanır.\nÖzne fiil çekiminden anlaşıldığı için dışarıda bırakılabilir (pro-drop): 'Merg la piață.' = 'Pazara gidiyorum.'",
+      },
+      {
+        type: "heading",
+        text: "9.2 Soru ve Olumsuzluk Yapıları",
+        level: 3,
+      },
+      {
+        type: "heading",
+        text: "A. Soru Yapıları",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Soru Türü", "Yapı", "Örnek", "Türkçesi"],
+          rows: [
+            ["Evet/Hayır sorusu", "Söz dizimi değişmez; yalnızca yükselen tonlama", "Mergi la piață?", "Pazara gidiyor musun?"],
+            ["Soru sözcüğü ile", "Soru sözcüğü + özne + yüklem", "Unde mergi? / Ce face Maria?", "Nereye gidiyorsun? / Maria ne yapıyor?"],
+            ["Cine / Ce sorusu", "Cine + V / Ce + V", "Cine a sunat? / Ce s-a întâmplat?", "Kim aradı? / Ne oldu?"],
+            ["Care sorusu", "Care + belirli isim", "Care mașină e a ta?", "Hangi araba senin?"],
+            ["Câți/Câte sorusu", "Câți/Câte + isim", "Câți copii ai?", "Kaç çocuğun var?"],
+            ["De ce sorusu", "De ce + V", "De ce plângi?", "Neden ağlıyorsun?"],
+            ["Cum sorusu", "Cum + V / Cum e + isim", "Cum te cheamă? / Cum e vremea?", "Adın ne? / Hava nasıl?"],
+          ],
+        },
+      },
+      {
+        type: "heading",
+        text: "B. Olumsuzluk Yapıları",
+        level: 4,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Yapı", "Örnekler", "Türkçesi"],
+          rows: [
+            ["nu + fiil (basit olumsuz)", "Nu știu. / Nu am venit.", "Bilmiyorum. / Gelmedim."],
+            ["nu + bağımlı zamir + fiil", "Nu mă vede. / Nu îl cunosc.", "Beni görmüyor. / Onu tanımıyorum."],
+            ["nu... nimic (çift olumsuz)", "Nu știu nimic.", "Hiçbir şey bilmiyorum."],
+            ["nu... nimeni", "Nu am văzut pe nimeni.", "Hiç kimseyi görmedim."],
+            ["nu... niciodată", "Nu merg niciodată acolo.", "Oraya hiç gitmem / asla gitmem."],
+            ["nu... nicăieri", "Nu am găsit-o nicăieri.", "Onu hiçbir yerde bulamadım."],
+            ["nu... deloc", "Nu e deloc frumos.", "Hiç güzel değil."],
+          ],
+        },
+      },
+      {
+        type: "warning",
+        title: "Romence'de Çift Olumsuz ZORUNLUDUR",
+        text: "Türkçe'de 'Hiç kimseyi görmedim' gibi birden fazla olumsuzluk unsuru doğal ve gereklidir.\n\nRomence'de de aynı kural geçerlidir: nu ile birlikte nimic, nimeni, niciodată, nicăieri kullanımı zorunludur.\n\n• YANLIŞ: *Știu nimic. (nu olmadan nimic kullanılamaz)\n• DOĞRU: Nu știu nimic.\n\nİngilizce'nin aksine Romence çift olumsuz dilbilgisel olarak doğrudur ve standart kullanımdır.",
+      },
+      {
+        type: "heading",
+        text: "9.3 Vurgu ve Öncül–Odak Yapısı",
+        level: 3,
+      },
+      {
+        type: "example",
+        pairs: [
+          { ro: "Maria citește o carte. (nötr)", tr: "Maria bir kitap okuyor." },
+          { ro: "O carte citește Maria. (kitap vurgulu)", tr: "Maria bir KİTAP okuyor (film değil, kitap)." },
+          { ro: "Pe Maria am văzut-o, nu pe Ion.", tr: "Maria'yı gördüm, Ion'u değil. (karşıtlık vurgusu)" },
+          { ro: "Azi am venit mai devreme. (azi öne çıkmış)", tr: "BUGÜN daha erken geldim." },
+        ],
+      },
+      {
+        type: "heading",
+        text: "9.4 Özel Yapılar: pe, că, să, care",
+        level: 3,
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Yapı", "Kural", "Örnekler", "Türkçesi"],
+          rows: [
+            ["pe + belirli insan nesnesi", "Akuzatif nesne belirliyse ve insansa pe zorunlu", "Îl văd pe profesor. / O chem pe Maria.", "Öğretmeni görüyorum. / Maria'yı çağırıyorum."],
+            ["că + indicativ", "Haber kipinde bildirme; gerçek durum aktarımı", "Știu că e acasă. / Cred că plouă.", "Evde olduğunu biliyorum. / Yağdığını düşünüyorum."],
+            ["să + conjunctiv", "İstek, amaç, zorunluluk, emir aktarımı", "Vreau să merg. / Trebuie să fii atent.", "Gitmek istiyorum. / Dikkatli olmalısın."],
+            ["care (relatif)", "İnsan veya nesne yerine geçen relatif zamir", "Omul care vorbește. / Cartea care e pe masă.", "Konuşan adam. / Masadaki kitap."],
+            ["pe care (relatif Ac)", "Belirli insan/nesne relatif nesnesi", "Omul pe care îl văd. / Cartea pe care o citesc.", "Gördüğüm adam. / Okuduğum kitap."],
           ],
         },
       },
     ],
   },
 
-  // BÖLÜM 8 — Sayılar ve Zaman
+  // ─────────────────────────────────────────────────────────
+  // BÖLÜM 10 — Sayılar ve Zaman İfadeleri
+  // ─────────────────────────────────────────────────────────
   {
-    id: "bolum-8",
-    title: "BÖLÜM 8 — Sayılar ve Zaman İfadeleri",
+    id: "bolum-10",
+    title: "BÖLÜM 10 — Sayılar ve Zaman İfadeleri",
     content: [
       {
         type: "heading",
-        text: "8.1 Sayılar (Numerale)",
+        text: "10.1 Sayılar (Numerale)",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["Rakam", "Rumence", "Rakam", "Rumence", "Rakam", "Rumence"],
+          headers: ["Rakam", "Romence", "Rakam", "Romence", "Rakam", "Romence"],
           rows: [
             ["0", "zero", "10", "zece", "20", "douăzeci"],
             ["1", "unu / una", "11", "unsprezece", "30", "treizeci"],
@@ -674,11 +1398,11 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "tip",
         title: "💡 Sayı + İsim Kuralı",
-        text: "1 ve 2 sayıları cinsiyete göre değişir: un băiat / o fată / doi băieți / două fete.\n\n3-19 arası sayılar isimden önce doğrudan kullanılır: trei cărți (üç kitap), cinci copii (beş çocuk).\n\n20 ve üzeri sayılardan sonra isimle arasına 'de' bağlacı girer: douăzeci de oameni (yirmi kişi), o sută de lei (yüz ley).",
+        text: "1 ve 2 sayıları cinsiyete göre değişir: un băiat / o fată / doi băieți / două fete.\n\n3-19 arası sayılar isimden önce doğrudan kullanılır: trei cărți (üç kitap), cinci copii (beş çocuk).\n\n20 ve üzeri sayılardan sonra isimle arasına 'de' bağlacı girer: douăzeci de oameni (yirmi kişi), o sută de lei (yüz ley).\n\nYılları söylerken: mil nouă sute optzeci și cinci (1985).",
       },
       {
         type: "heading",
-        text: "8.2 Saat ve Gün İfadeleri",
+        text: "10.2 Saat ve Gün İfadeleri",
         level: 3,
       },
       {
@@ -694,7 +1418,7 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "table",
         data: {
-          headers: ["Rumence", "Türkçe"],
+          headers: ["Romence", "Türkçe"],
           rows: [
             ["Dimineață / Prânz / Seară / Noapte", "Sabah / Öğle / Akşam / Gece"],
             ["Luni, Marți, Miercuri, Joi, Vineri", "Pazartesi, Salı, Çarşamba, Perşembe, Cuma"],
@@ -707,10 +1431,12 @@ export const grammarSections: GrammarSection[] = [
     ],
   },
 
-  // BÖLÜM 9 — Tematik Kelime Listeleri
+  // ─────────────────────────────────────────────────────────
+  // BÖLÜM 11 — Tematik Kelime Listeleri
+  // ─────────────────────────────────────────────────────────
   {
-    id: "bolum-9",
-    title: "BÖLÜM 9 — Tematik Kelime Listeleri (Vocabular Tematic)",
+    id: "bolum-11",
+    title: "BÖLÜM 11 — Tematik Kelime Listeleri (Vocabular Tematic)",
     content: [
       {
         type: "paragraph",
@@ -718,13 +1444,13 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "9.1 Aile (Familie)",
+        text: "11.1 Aile (Familie)",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
           rows: [
             ["mamă / mamă-mea", "anne / annem"],
             ["tată / tata", "baba / babam"],
@@ -743,17 +1469,17 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "9.2 Vücut ve Sağlık (Corp și Sănătate)",
+        text: "11.2 Vücut ve Sağlık (Corp și Sănătate)",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
           rows: [
             ["cap / față", "baş / yüz"],
             ["ochi / ureche / nas / gură", "göz / kulak / burun / ağız"],
-            ["gât / umăr / brăț / mână", "boyun / omuz / kol / el"],
+            ["gât / umăr / braț / mână", "boyun / omuz / kol / el"],
             ["piept / spate / burtă / picior", "göğüs / sırt / karın / bacak"],
             ["a durea — mă doare capul", "acımak — başım ağrıyor"],
             ["febră / răceală / gripă", "ateş / nezle / grip"],
@@ -766,13 +1492,13 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "9.3 Yiyecek ve İçecek (Mâncare și Băuturi)",
+        text: "11.3 Yiyecek ve İçecek (Mâncare și Băuturi)",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
           rows: [
             ["pâine / unt / brânză / iaurt", "ekmek / tereyağı / peynir / yoğurt"],
             ["carne / pui / porc / vită / pește", "et / tavuk / domuz / sığır / balık"],
@@ -789,13 +1515,13 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "9.4 Şehir ve Ulaşım (Oraș și Transport)",
+        text: "11.4 Şehir ve Ulaşım (Oraș și Transport)",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
           rows: [
             ["stradă / bulevard / piață / parc", "cadde / bulvar / meydan/pazar / park"],
             ["gară / aeroport / port / autogară", "tren istasyonu / havalimanı / liman / otobüs terminali"],
@@ -805,18 +1531,20 @@ export const grammarSections: GrammarSection[] = [
             ["a merge pe jos / a conduce", "yürümek / araba sürmek"],
             ["la stânga / la dreapta / înainte / înapoi", "sola / sağa / ileri / geri"],
             ["Unde este...? / Cum ajung la...?", "...nerede? / ...nasıl gidebilirim?"],
+            ["centru / periferie / cartier", "merkez / çevre / semt/mahalle"],
+            ["hotel / hostel / apartament", "otel / hostel / daire"],
           ],
         },
       },
       {
         type: "heading",
-        text: "9.5 Alışveriş (Cumpărături)",
+        text: "11.5 Alışveriş (Cumpărături)",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
           rows: [
             ["magazin / piață / centru comercial", "dükkan / pazar / alışveriş merkezi"],
             ["prețul / reducere / promoție / bon", "fiyat / indirim / kampanya / fiş"],
@@ -829,13 +1557,13 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "9.6 Renkler, Şekiller ve Boyutlar",
+        text: "11.6 Renkler, Şekiller ve Boyutlar",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["🇷🇴 Rumence", "🇹🇷 Türkçe"],
+          headers: ["🇷🇴 Romence", "🇹🇷 Türkçe"],
           rows: [
             ["roșu / portocaliu / galben / verde", "kırmızı / turuncu / sarı / yeşil"],
             ["albastru / violet / roz / alb / negru / gri", "mavi / mor / pembe / beyaz / siyah / gri"],
@@ -848,25 +1576,66 @@ export const grammarSections: GrammarSection[] = [
     ],
   },
 
-  // BÖLÜM 10 — Diyaloglar
+  // ─────────────────────────────────────────────────────────
+  // BÖLÜM 12 — Diyaloglar
+  // ─────────────────────────────────────────────────────────
   {
-    id: "bolum-10",
-    title: "BÖLÜM 10 — Diyaloglar (Dialoguri)",
+    id: "bolum-12",
+    title: "BÖLÜM 12 — Diyaloglar (Dialoguri)",
     content: [
       {
+        type: "heading",
+        text: "12.1 Temel Günlük Kalıplar (Expresii Uzuale)",
+        level: 3,
+      },
+      {
         type: "paragraph",
-        text: "Aşağıdaki diyaloglar, gerçek hayat durumlarını yansıtan ve öğrenilen yapıları pratiğe döken konuşma örnekleridir.",
+        text: "Aşağıdaki kalıplar Romence günlük konuşmasında en sık karşılaşılan ifadelerdir.",
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Romence", "Türkçesi", "Kullanım Bağlamı"],
+          rows: [
+            ["Bună ziua!", "İyi günler!", "Resmi selamlama (gündüz)"],
+            ["Bună dimineața!", "Günaydın!", "Sabah selamlama"],
+            ["Bună seara!", "İyi akşamlar!", "Akşam selamlama"],
+            ["Noapte bună!", "İyi geceler!", "Vedalaşma (gece)"],
+            ["Salut! / Alo!", "Selam! / Hey!", "Samimi/gayrı resmi"],
+            ["Ce faci?", "Nasılsın?", "Arkadaşça soru"],
+            ["Ce mai faci?", "Ne var ne yok? / Nasıl gidiyor?", "Samimi hal hatır sorma"],
+            ["Bine, mulțumesc.", "İyiyim, teşekkürler.", "Standart yanıt"],
+            ["Și tu?", "Sen nasılsın? / Ya sen?", "Karşılıklı soru"],
+            ["Mulțumesc! / Mulțumesc frumos!", "Teşekkür ederim! / Çok teşekkürler!", "Her bağlamda"],
+            ["Cu plăcere! / Cu drag!", "Rica ederim! / Memnuniyetle!", "Teşekküre yanıt"],
+            ["Scuze! / Îmi pare rău!", "Özür dilerim! / Üzgünüm!", "Özür dileme"],
+            ["Nu face nimic.", "Önemli değil. / Sorun yok.", "Özrü kabul"],
+            ["Te rog. / Vă rog. (resmi)", "Lütfen. / Rica ederim.", "İstek bildirme"],
+            ["Da / Nu", "Evet / Hayır", "Temel yanıtlar"],
+            ["Desigur! / Bineînțeles!", "Tabii ki! / Elbette!", "Onay"],
+            ["Nu știu. / Nu înțeleg.", "Bilmiyorum. / Anlamıyorum.", "Cevapsızlık / Dil zorluğu"],
+            ["Puteți repeta, vă rog?", "Tekrar eder misiniz, lütfen?", "Dil öğrencisi için"],
+            ["Vorbesc puțin românește.", "Biraz Romence biliyorum.", "Alçakgönüllü cevap"],
+            ["La revedere! / Pa!", "Hoşça kalın! / Güle güle!", "Resmi / Samimi veda"],
+            ["Pe curând!", "Görüşürüz yakında!", "Tekrar buluşma umuduyla"],
+          ],
+        },
+      },
+      {
+        type: "tip",
+        title: "💡 ce faci? vs. ce mai faci?",
+        text: "Ce faci? → 'Ne yapıyorsun?' veya 'Nasılsın?' — genel hal hatır sorusu.\n\nCe mai faci? → 'Ne var ne yok?' — 'mai' zarfı 'hâlâ / son zamanlarda' anlamı katar, daha samimi ve sıcak bir tondur. Uzun süredir görülmeyen biriyle karşılaşınca tercih edilir.\n\nBine, mulțumesc. Dar tu? → İyiyim teşekkürler. Ya sen? (Dar = ama/peki; samimi bağlamda).",
       },
       {
         type: "heading",
-        text: "10.1 Diyalog: İlk Tanışma",
+        text: "12.2 Diyalog: İlk Tanışma",
         level: 3,
       },
       {
         type: "example",
         pairs: [
           { ro: "Mihai: Bună ziua! Mă numesc Mihai. Dar dumneavoastră?", tr: "İyi günler! Adım Mihai. Peki sizin adınız?" },
-          { ro: "Ayşe: Îmi pare bine de cunoștință! Vorbești bine românește.", tr: "Tanıştığımıza memnun oldum! Rumenceyi iyi konuşuyorsunuz." },
+          { ro: "Ayşe: Îmi pare bine de cunoștință! Vorbești bine românește.", tr: "Tanıştığımıza memnun oldum! Romenceyi iyi konuşuyorsunuz." },
           { ro: "Mihai: Am treizeci și doi de ani. Dumneavoastră?", tr: "Otuz iki yaşındayım. Siz?" },
           { ro: "Ayşe: Eu am douăzeci și opt. La revedere, Mihai!", tr: "Ben yirmi sekiz yaşındayım. Hoşça kalın, Mihai!" },
         ],
@@ -874,11 +1643,11 @@ export const grammarSections: GrammarSection[] = [
       {
         type: "tip",
         title: "🔑 Dilbilgisi Notları",
-        text: "'Mă numesc' → dönüşlü fiil, lit: 'kendime ad takıyorum'; resmi tanışmada kullanılır.\n'Dumneavoastră' → son derece resmi 'siz/sizin' zamiri; kısaltması: dvs.\n'Am treizeci și doi de ani' → yaş ifadesinde 'de ani' obligatördür (20+ sayılar).\n'Mai am mult de învățat' → 'mai' zarfı + a avea + de + mastar = 'hâlâ ... yapmam gerek' anlamı.",
+        text: "'Mă numesc' → dönüşlü fiil, lit: 'kendime ad takıyorum'; resmi tanışmada kullanılır.\n'Dumneavoastră' → son derece resmi 'siz/sizin' zamiri; kısaltması: dvs. Günlük dilde 'tu' tercih edilir.\n'Am treizeci și doi de ani' → yaş ifadesinde 'de ani' obligatördür (20+ sayılar).\n'Mai am mult de învățat' → 'mai' zarfı + a avea + de + mastar = 'hâlâ ... yapmam gerek' anlamı.",
       },
       {
         type: "heading",
-        text: "10.2 Diyalog: Restoranda (La Restaurant)",
+        text: "12.3 Diyalog: Restoranda (La Restaurant)",
         level: 3,
       },
       {
@@ -894,7 +1663,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "10.3 Diyalog: Yol Tarifi (Indicații de Drum)",
+        text: "12.4 Diyalog: Yol Tarifi (Indicații de Drum)",
         level: 3,
       },
       {
@@ -909,7 +1678,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "10.4 Diyalog: Telefon Görüşmesi (Convorbire Telefonică)",
+        text: "12.5 Diyalog: Telefon Görüşmesi (Convorbire Telefonică)",
         level: 3,
       },
       {
@@ -925,18 +1694,20 @@ export const grammarSections: GrammarSection[] = [
     ],
   },
 
-  // BÖLÜM 11 — Cheat Sheets
+  // ─────────────────────────────────────────────────────────
+  // BÖLÜM 13 — Hızlı Başvuru Sayfaları
+  // ─────────────────────────────────────────────────────────
   {
-    id: "bolum-11",
-    title: "BÖLÜM 11 — Hızlı Başvuru Sayfaları (Cheat Sheets)",
+    id: "bolum-13",
+    title: "BÖLÜM 13 — Hızlı Başvuru Sayfaları (Cheat Sheets)",
     content: [
       {
         type: "paragraph",
-        text: "Bu sayfalar, en temel Rumence yapılarını hızlıca gözden geçirmek için tasarlanmıştır.",
+        text: "Bu sayfalar, en temel Romence yapılarını hızlıca gözden geçirmek için tasarlanmıştır.",
       },
       {
         type: "heading",
-        text: "Cheat Sheet 1 — Fiil Zamanları Özeti",
+        text: "Hızlı Başvuru 1 — Fiil Zamanları Özeti",
         level: 3,
       },
       {
@@ -958,7 +1729,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "Cheat Sheet 2 — Artikel Tablosu",
+        text: "Hızlı Başvuru 2 — Artikel Tablosu",
         level: 3,
       },
       {
@@ -974,23 +1745,24 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "Cheat Sheet 4 — Temel Kalıplar ve Yapılar",
+        text: "Hızlı Başvuru 3 — Temel Kalıplar ve Yapılar",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["Kalıp / Yapı", "Rumence", "Türkçesi"],
+          headers: ["Kalıp / Yapı", "Romence", "Türkçesi"],
           rows: [
             ["Yaş", "Am X ani.", "X yaşındayım."],
             ["İsim", "Mă numesc / Mă cheamă...", "Adım..."],
             ["Meslek", "Sunt + meslek adı", "Ben + meslek'im."],
             ["Memleket", "Sunt din + şehir/ülke.", "...'den/danım."],
-            ["Beğeni", "Îmi place + isim/a + infinitiv.", "...seviyorum."],
+            ["Beğeni", "Îmi place + isim / să + conjunctiv.", "...seviyorum / ...yapmayı seviyorum."],
             ["İhtiyaç", "Am nevoie de + isim.", "...'e ihtiyacım var."],
             ["Zorunluluk", "Trebuie să + conjunctiv.", "...meli/malıyım."],
             ["İzin istemek", "Pot să + conjunctiv?", "...yabilir miyim?"],
-            ["Istek", "Vreau să + conjunctiv.", "...mek istiyorum."],
+            ["İstek", "Vreau să + conjunctiv.", "...mek istiyorum."],
+            ["Koşul", "Dacă + prezent, prezent/viitor.", "Eğer ... -se, ... -r."],
             ["Karşılaştırma", "mai + sıfat + decât", "daha ... -den"],
             ["Olumsuz", "Nu + fiil (+zamir önde)", "...mıyor/-me-"],
           ],
@@ -998,13 +1770,13 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "heading",
-        text: "Cheat Sheet 5 — Bağlaçlar ve Edatlar",
+        text: "Hızlı Başvuru 4 — Bağlaçlar ve Edatlar",
         level: 3,
       },
       {
         type: "table",
         data: {
-          headers: ["Rumence", "Türkçe"],
+          headers: ["Romence", "Türkçe"],
           rows: [
             ["și", "ve"],
             ["sau", "veya"],
@@ -1018,6 +1790,14 @@ export const grammarSections: GrammarSection[] = [
             ["deci", "dolayısıyla"],
             ["totuși", "bununla birlikte"],
             ["fie...fie", "ya...ya da"],
+            ["în", "içinde / -de"],
+            ["la", "-e / -de (konum)"],
+            ["de", "-den / ait"],
+            ["pe", "üstünde / nesne"],
+            ["cu", "ile"],
+            ["fără", "olmadan / -siz"],
+            ["pentru", "için"],
+            ["spre", "-e doğru"],
             ["lângă", "yanında"],
             ["între", "arasında"],
             ["din", "içinden / -den"],
@@ -1028,10 +1808,12 @@ export const grammarSections: GrammarSection[] = [
     ],
   },
 
-  // BÖLÜM 12 — Alıştırmalar
+  // ─────────────────────────────────────────────────────────
+  // BÖLÜM 14 — Alıştırmalar ve Testler
+  // ─────────────────────────────────────────────────────────
   {
-    id: "bolum-12",
-    title: "BÖLÜM 12 — Alıştırmalar ve Testler (Exerciții și Teste)",
+    id: "bolum-14",
+    title: "BÖLÜM 14 — Alıştırmalar ve Testler (Exerciții și Teste)",
     content: [
       {
         type: "paragraph",
@@ -1050,10 +1832,10 @@ export const grammarSections: GrammarSection[] = [
         type: "list",
         items: [
           { prompt: "Am văzut ______ film bun ieri. (film — nötr)", answers: ["un"] },
-          { prompt: "______ casă este albă ve büyük. (casă — dişil, belirli tekil N)", answers: ["casa"] },
+          { prompt: "______ casă este albă ve büyük. (casă — dişil, belirli tekil N)", answers: ["casa", "Casa"] },
           { prompt: "Dau ______ carte ______ fată. (carte — dişil, belirli; fată — dişil, belirli G/D)", answers: ["cartea fetei"] },
           { prompt: "Am cumpărat ______ mere ve ______ pâine. (mere — çoğul, belirsiz; pâine — dişil, belirsiz)", answers: ["niște o"] },
-          { prompt: "______ copii se joacă în parc. (copii — çoğul, belirli N)", answers: ["copiii"] },
+          { prompt: "______ copii se joacă în parc. (copii — çoğul, belirli N)", answers: ["copiii", "Copiii"] },
         ],
       },
       {
@@ -1218,7 +2000,7 @@ export const grammarSections: GrammarSection[] = [
       },
       {
         type: "paragraph",
-        text: "Succes la învățat! Rumence öğrenmek bir yolculuktur; her gün birkaç kelime daha, her gün biraz daha akıcı. La mulți ani cu limba română! 🇷🇴",
+        text: "Succes la învățat! Romence öğrenmek bir yolculuktur; her gün birkaç kelime daha, her gün biraz daha akıcı. La mulți ani cu limba română! 🇷🇴",
       },
     ],
   },
